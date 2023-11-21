@@ -1,0 +1,314 @@
+.mainUiContainer {
+  display: flex;
+  align-items: flex-start;
+  gap: 19px;
+  color: var(--secondary-color-white);
+  background: var(--main-bg-color-black);
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.sidebar {
+  grid-area: sidebar;
+}
+.content {
+  grid-area: content;
+  background: var(--main-color-pink);
+  padding: 24px 32px;
+  /* height: fit-content; */
+}
+
+.header {
+  grid-area: header;
+}
+
+.mainUI_wrapper {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: 5fr 1fr 1fr;
+  grid-template-rows: 300px 1fr 1fr;
+  grid-template-areas:
+    "sidebar header header"
+    "sidebar content content";
+  color: #444;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.box {
+  color: #fff;
+  border-radius: 24px;
+  position: relative;
+}
+
+.header {
+  background-color: #999;
+}
+
+.houseDesignImg {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+}
+.search {
+  position: relative;
+  color: #aaa;
+  font-size: 16px;
+}
+
+.search {
+  display: inline-block;
+  width: 100%;
+}
+
+.search input {
+  width: 100%;
+  background: #fcfcfc;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  box-shadow: 0 0 3px #ccc, 0 10px 15px #ebebeb inset;
+  outline: none;
+}
+
+.search input {
+  /* text-indent: 32px; */
+  padding: 12px 16px;
+}
+.search img {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+}
+
+.search img {
+  left: auto;
+  right: 10px;
+}
+.mainUISearchTitle {
+  margin-bottom: 16px;
+  font-family: Poppins-500;
+}
+.mainUIHouseDesignArrows {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.mainUIHouseDesignLeftBtn,
+.mainUIHouseDesignRightBtn {
+  width: 40px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--secondary-color-pink);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+}
+.mainUIHouseDesignContent {
+  position: absolute;
+  bottom: 30px;
+  left: 30px;
+}
+.mainUIHouseDesignInfo {
+  margin: 16px 0;
+}
+.mainUIHouseDesignInfo_applyBtn {
+  padding: 12px 24px;
+  font-family: Poppins-600;
+  display: block;
+  width: fit-content;
+}
+.mainUIHouseDesignInfo_title {
+  font-family: Poppins-700;
+  text-transform: uppercase;
+}
+.header .mainUIHouseDesignContent {
+  left: 15px;
+  bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 93%;
+}
+.header .mainUIHouseDesignContent .mainUIHouseDesignInfo {
+  width: 80%;
+}
+.mainUIGoShoppingMoreLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainUIGoShoppingMoreBtn {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--secondary-color-white);
+}
+
+.mainUIGoShoppingMoreBtn .mainUIGoShoppingMoreLink {
+  width: 100%;
+  height: 100%;
+  border: none;
+  position: absolute;
+  z-index: 5;
+  transition: 0.3s ease;
+}
+.mainUIGoShoppingMoreBtn:hover .mainUIGoShoppingMoreLink {
+  color: #fff;
+}
+.mainUIGoShoppingMoreBtn:active .mainUIGoShoppingMoreLink {
+  transform: scale(0.8);
+}
+
+.mainUIGoShoppingMoreBtn::before {
+  content: "";
+  display: block;
+  width: 120%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--main-color-pink);
+  border: none;
+  position: absolute;
+  transform: scale(0);
+  transition: 0.5s;
+}
+.mainUIGoShoppingMoreBtn:hover::before {
+  transform: scale(1);
+}
+
+.mainUIGoShoppingMoreBtn::after {
+  content: "";
+  display: block;
+  width: 120%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  position: absolute;
+  transform: scale(0);
+  transition: 0.3s;
+}
+.mainUIGoShoppingMoreBtn:active::after {
+  transform: scale(1);
+}
+.mainUIHouseDesignInfo_desc {
+  font-size: 14px;
+}
+.mainUIHouseDesignInfo_applyBtn {
+  font-size: 18px;
+}
+.mainUIHouseDesignInfo_title {
+  font-size: 54px;
+}
+.header .mainUIHouseDesignInfo_title {
+  font-size: 36px;
+}
+@media screen and (max-width: 1500px) {
+  .mainUIHouseDesignInfo_desc {
+    font-size: 12px;
+  }
+  .mainUIHouseDesignInfo_applyBtn {
+    font-size: 16px;
+  }
+  .mainUIHouseDesignInfo_title {
+    font-size: 44px;
+  }
+  .header .mainUIHouseDesignInfo_title {
+    font-size: 26px;
+  }
+  .mainUIGoShoppingMoreBtn {
+    width: 45px;
+    height: 45px;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .mainUIHouseDesignInfo_desc {
+    font-size: 10px;
+  }
+  .mainUIHouseDesignInfo_applyBtn {
+    font-size: 14px;
+  }
+  .mainUIHouseDesignInfo_title {
+    font-size: 34px;
+  }
+  .header .mainUIHouseDesignInfo_title {
+    font-size: 20px;
+  }
+  .mainUIGoShoppingMoreBtn {
+    width: 40px;
+    height: 40px;
+  }
+  .header .mainUIHouseDesignContent {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 797px) {
+  .mainUI_wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .mainUIHouseDesignInfo_desc {
+    font-size: 14px;
+  }
+  .mainUIHouseDesignInfo_applyBtn {
+    font-size: 18px;
+  }
+  .mainUIHouseDesignInfo_title {
+    font-size: 35px;
+  }
+  .header .mainUIHouseDesignInfo_title {
+    font-size: 40px;
+  }
+  .mainUIGoShoppingMoreBtn {
+    width: 60px;
+    height: 60px;
+  }
+  .header .mainUIHouseDesignContent {
+    left: 30px;
+    bottom: 30px;
+  }
+}
+@media screen and (max-width: 660px) {
+  .mainUIHouseDesignInfo_title {
+    font-size: 25px;
+  }
+  .header .mainUIHouseDesignInfo_title {
+    font-size: 25px;
+  }
+  .mainUIGoShoppingMoreBtn {
+    width: 50px;
+    height: 50px;
+  }
+  .header .mainUIHouseDesignContent {
+    left: 30px;
+    bottom: 30px;
+  }
+  .mainUIHouseDesignInfo_applyBtn {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .mainUIHouseDesignInfo_title {
+    font-size: 20px;
+  }
+  .header .mainUIHouseDesignInfo_title {
+    font-size: 20px;
+  }
+  .mainUIGoShoppingMoreBtn {
+    width: 50px;
+    height: 50px;
+  }
+  .mainUIHouseDesignInfo_desc {
+    font-size: 12px;
+  }
+  .mainUIHouseDesignInfo_applyBtn {
+    font-size: 12px;
+  }
+}

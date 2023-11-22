@@ -53,9 +53,6 @@
   .reviewProfileDesc p {
     font-size: 14px;
   }
-  .sliderContainer {
-    gap: 25px;
-  }
 }
 @media screen and (max-width: 1280px) {
   .reviewProfileImg {
@@ -67,9 +64,6 @@
   }
   .reviewProfileDesc p {
     font-size: 12px;
-  }
-  .sliderContainer {
-    gap: 20px;
   }
   .review {
     padding: 25px;

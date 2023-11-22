@@ -1,0 +1,43 @@
+.partnersContainer {
+  background: #0f0f0f;
+  color: var(--secondary-color-white);
+  padding-top: 40px;
+  padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.partnerWrapper {
+  display: flex;
+}
+.partner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 200px;
+  margin: 20px 0;
+  align-items: center;
+}
+.partner p {
+  margin-top: 24px;
+  font-family: Poppins-500;
+  text-align: center;
+  font-size: 18px;
+}
+@media screen and (max-width: 1280px) {
+  .partner p {
+    font-size: 14px;
+  }
+  .partner {
+    width: 150px;
+  }
+}
+@media screen and (max-width: 797px) {
+  .partner {
+    width: 200px;
+  }
+  .partner p {
+    font-size: 16px;
+  }
+}

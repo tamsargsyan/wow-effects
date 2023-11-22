@@ -8,11 +8,6 @@
   padding-top: 100px;
   padding-bottom: 100px;
 }
-.furnitureImg {
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
 .furnitureBtn {
   position: absolute;
   bottom: 0;
@@ -40,8 +35,12 @@
   background: var(--main-bg-color-black);
 }
 .furnitureImg {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   width: 100%;
   height: 300px;
+  position: relative;
 }
 .furnitureInfoTitle {
   font-size: 20px;

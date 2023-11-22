@@ -1,0 +1,20 @@
+.containerTitle {
+  font-family: Poppins-700;
+  font-size: 32px;
+  text-transform: uppercase;
+}
+@media screen and (max-width: 1280px) {
+  .containerTitle {
+    font-size: 27px;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .containerTitle {
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 797px) {
+  .containerTitle {
+    font-size: 24px;
+  }
+}

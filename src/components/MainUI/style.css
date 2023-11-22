@@ -14,13 +14,10 @@
   grid-area: content;
   background: var(--main-color-pink);
   padding: 24px 32px;
-  /* height: fit-content; */
 }
-
 .header {
   grid-area: header;
 }
-
 .mainUI_wrapper {
   display: grid;
   grid-gap: 20px;
@@ -29,22 +26,16 @@
   grid-template-areas:
     "sidebar header header"
     "sidebar content content";
-  color: #444;
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
 }
-
 .box {
-  color: #fff;
   border-radius: 24px;
   position: relative;
+  background-size: cover;
+  background-position: center;
 }
-
-.header {
-  background-color: #999;
-}
-
 .houseDesignImg {
   width: 100%;
   height: 100%;
@@ -70,9 +61,7 @@
   box-shadow: 0 0 3px #ccc, 0 10px 15px #ebebeb inset;
   outline: none;
 }
-
 .search input {
-  /* text-indent: 32px; */
   padding: 12px 16px;
 }
 .search img {
@@ -89,6 +78,7 @@
 .mainUISearchTitle {
   margin-bottom: 16px;
   font-family: Poppins-500;
+  font-size: 20px;
 }
 .mainUIHouseDesignArrows {
   display: flex;
@@ -108,8 +98,10 @@
 }
 .mainUIHouseDesignContent {
   position: absolute;
-  bottom: 30px;
-  left: 30px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 50px;
 }
 .mainUIHouseDesignInfo {
   margin: 16px 0;
@@ -125,15 +117,14 @@
   text-transform: uppercase;
 }
 .header .mainUIHouseDesignContent {
-  left: 15px;
-  bottom: 15px;
+  padding: 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 93%;
 }
 .header .mainUIHouseDesignContent .mainUIHouseDesignInfo {
   width: 80%;
+  margin: 0;
 }
 .mainUIGoShoppingMoreLink {
   display: flex;
@@ -141,63 +132,6 @@
   align-items: center;
 }
 
-.mainUIGoShoppingMoreBtn {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  overflow: hidden;
-  background: var(--secondary-color-white);
-}
-
-.mainUIGoShoppingMoreBtn .mainUIGoShoppingMoreLink {
-  width: 100%;
-  height: 100%;
-  border: none;
-  position: absolute;
-  z-index: 5;
-  transition: 0.3s ease;
-}
-.mainUIGoShoppingMoreBtn:hover .mainUIGoShoppingMoreLink {
-  color: #fff;
-}
-.mainUIGoShoppingMoreBtn:active .mainUIGoShoppingMoreLink {
-  transform: scale(0.8);
-}
-
-.mainUIGoShoppingMoreBtn::before {
-  content: "";
-  display: block;
-  width: 120%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: var(--main-color-pink);
-  border: none;
-  position: absolute;
-  transform: scale(0);
-  transition: 0.5s;
-}
-.mainUIGoShoppingMoreBtn:hover::before {
-  transform: scale(1);
-}
-
-.mainUIGoShoppingMoreBtn::after {
-  content: "";
-  display: block;
-  width: 120%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  position: absolute;
-  transform: scale(0);
-  transition: 0.3s;
-}
-.mainUIGoShoppingMoreBtn:active::after {
-  transform: scale(1);
-}
 .mainUIHouseDesignInfo_desc {
   font-size: 14px;
 }
@@ -210,43 +144,89 @@
 .header .mainUIHouseDesignInfo_title {
   font-size: 36px;
 }
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1600px) {
+  .mainUIHouseDesignContent {
+    padding: 40px;
+  }
+  .mainUIHouseDesignInfo_title {
+    font-size: 46px;
+  }
+  .header .mainUIHouseDesignInfo_title {
+    font-size: 28px;
+  }
   .mainUIHouseDesignInfo_desc {
     font-size: 12px;
   }
-  .mainUIHouseDesignInfo_applyBtn {
-    font-size: 16px;
+  .header .mainUIHouseDesignContent {
+    padding: 27px;
   }
-  .mainUIHouseDesignInfo_title {
-    font-size: 44px;
-  }
-  .header .mainUIHouseDesignInfo_title {
-    font-size: 26px;
-  }
-  .mainUIGoShoppingMoreBtn {
-    width: 45px;
-    height: 45px;
+    .mainUI_wrapper {
+    grid-template-columns: 4fr 1fr 1fr;
   }
 }
-@media screen and (max-width: 1280px) {
-  .mainUIHouseDesignInfo_desc {
-    font-size: 10px;
-  }
-  .mainUIHouseDesignInfo_applyBtn {
-    font-size: 14px;
+@media screen and (max-width: 1400px) {
+  .mainUIHouseDesignContent {
+    padding: 30px;
   }
   .mainUIHouseDesignInfo_title {
-    font-size: 34px;
+    font-size: 40px;
   }
   .header .mainUIHouseDesignInfo_title {
     font-size: 20px;
   }
-  .mainUIGoShoppingMoreBtn {
-    width: 40px;
-    height: 40px;
+  .mainUIHouseDesignInfo_desc {
+    font-size: 10px;
   }
   .header .mainUIHouseDesignContent {
-    width: 90%;
+    padding: 20px;
+  }
+  .mainUI_wrapper {
+    grid-gap: 15px;
+  }
+  .content {
+    padding: 20px;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .mainUIHouseDesignContent {
+    padding: 20px;
+  }
+  .mainUIHouseDesignInfo_title {
+    font-size: 30px;
+  }
+  .header .mainUIHouseDesignInfo_title {
+    font-size: 16px;
+  }
+  .mainUIHouseDesignInfo_desc {
+    font-size: 10px;
+  }
+  .header .mainUIHouseDesignContent {
+    padding: 15px;
+  }
+  .mainUI_wrapper {
+    grid-template-rows: 200px 1fr 1fr;
+    grid-template-columns: 4.5fr 1fr 1fr;
+  }
+  .content {
+    padding: 24px 25px;
+  }
+  .mainUISearchTitle {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .content {
+    padding: 20px;
+  }
+  .search input {
+    padding: 10px;
+  }
+  .mainUISearchTitle {
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  .mainUI_wrapper {
+    grid-gap: 10px;
   }
 }
 @media screen and (max-width: 797px) {
@@ -266,49 +246,56 @@
   .header .mainUIHouseDesignInfo_title {
     font-size: 40px;
   }
-  .mainUIGoShoppingMoreBtn {
-    width: 60px;
-    height: 60px;
+  .header {
+    width: 100%;
+    height: 300px;
   }
-  .header .mainUIHouseDesignContent {
-    left: 30px;
-    bottom: 30px;
+  .sidebar {
+    width: 100%;
+    height: 450px;
+  }
+  .content {
+    padding: 16px;
+    font-size: 20px;
   }
 }
 @media screen and (max-width: 660px) {
   .mainUIHouseDesignInfo_title {
-    font-size: 25px;
+    font-size: 32px;
   }
   .header .mainUIHouseDesignInfo_title {
-    font-size: 25px;
+    font-size: 32px;
   }
-  .mainUIGoShoppingMoreBtn {
-    width: 50px;
-    height: 50px;
+  .mainUIHouseDesignContent {
+    left: 0;
+    bottom: 20px;
+    width: 100%;
+    padding: 0 16px;
   }
   .header .mainUIHouseDesignContent {
-    left: 30px;
-    bottom: 30px;
+    left: 0;
+    bottom: 20px;
+    width: 100%;
+    padding: 0 16px;
   }
   .mainUIHouseDesignInfo_applyBtn {
     font-size: 14px;
   }
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 400px) {
   .mainUIHouseDesignInfo_title {
-    font-size: 20px;
+    font-size: 25px;
+  }
+  .mainUIHouseDesignLeftBtn,
+  .mainUIHouseDesignRightBtn {
+    width: 30px;
+    height: 30px;
+  }
+  .mainUIHouseDesignInfo_desc,
+  .mainUIHouseDesignInfo_applyBtn {
+    font-size: 10px;
   }
   .header .mainUIHouseDesignInfo_title {
-    font-size: 20px;
-  }
-  .mainUIGoShoppingMoreBtn {
-    width: 50px;
-    height: 50px;
-  }
-  .mainUIHouseDesignInfo_desc {
-    font-size: 12px;
-  }
-  .mainUIHouseDesignInfo_applyBtn {
-    font-size: 12px;
+    font-size: 25px;
   }
 }

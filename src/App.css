@@ -5,10 +5,11 @@
   --main-padding-lr-desktop: 120px;
   --main-padding-lr-tablet_1: 100px;
   --main-padding-lr-tablet_2: 45px;
-    --main-padding-lr-tablet_3: 30px;
+  --main-padding-lr-tablet_3: 30px;
   --main-padding-lr-mobile: 16px;
   --main-border-radius: 12px;
   --main-bg-color-black: #000;
+  --alternative-white-color: #bfbfbf;
 }
 .container {
   padding-left: var(--main-padding-lr-desktop);

@@ -16,6 +16,16 @@
 .fullTitleBtn {
   font-size: 18px;
 }
+.fullTitleContainerWithoutBtn {
+  text-align: center;
+  justify-content: center;
+}
+.fullTitleContainerWithoutBtn .fullTitleDesc {
+  width: 100%;
+}
+.fullTitleContainerWithoutBtn .fullTitle {
+  width: 800px;
+}
 @media screen and (max-width: 1280px) {
   .fullTitleBtn {
     font-size: 16px;
@@ -47,7 +57,7 @@
   .fullTitleBtn {
     display: none;
   }
-  .fullTitle{
+  .fullTitle {
     width: 100%;
     text-align: center;
   }

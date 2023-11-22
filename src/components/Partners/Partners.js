@@ -46,7 +46,7 @@ const Partners = () => {
       <Title title='Our partners' />
       <Slider className='partnersSlider'>
         {partners.map(partner => (
-          <div className='partnerWrapper'>
+          <div className='partnerWrapper' key={partner.id}>
             <div className='partner'>
               <img src={partner.img} alt={partner.name} />
               <p>{partner.name}</p>

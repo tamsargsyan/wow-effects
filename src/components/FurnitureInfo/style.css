@@ -1,0 +1,129 @@
+.furnitureContainer {
+  color: var(--secondary-color-white);
+  background: #0f0f0f;
+  display: flex;
+  flex-direction: column;
+  gap: 200px;
+  margin-top: 100px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+.furnitureImg {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.furnitureBtn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 16px;
+}
+.furnituresWrapper {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.furnitureBtn a {
+  padding: 6px 12px;
+  font-size: 14px;
+}
+.furnitureInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+}
+.furniture {
+  width: 100%;
+  border-radius: 16px;
+  background: var(--main-bg-color-black);
+}
+.furnitureImg {
+  width: 100%;
+  height: 300px;
+}
+.furnitureInfoTitle {
+  font-size: 20px;
+}
+.furnitureInfoPrice {
+  opacity: 0.8;
+  font-family: Poppins-700;
+  font-size: 24px;
+}
+@media screen and (max-width: 1600px) {
+  .furnitureImg {
+    height: 200px;
+  }
+  .furnitureInfoTitle {
+    font-size: 18px;
+  }
+  .furnitureInfoPrice {
+    font-size: 22px;
+  }
+}
+@media screen and (max-width: 1440px) {
+  .furnitureImg {
+    height: 180px;
+  }
+  .furnitureInfoTitle {
+    font-size: 16px;
+  }
+  .furnitureInfoPrice {
+    font-size: 20px;
+  }
+  .furnitureBtn a {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .furnitureImg {
+    height: 120px;
+  }
+  .furnitureInfoTitle {
+    font-size: 12px;
+  }
+  .furnitureInfoPrice {
+    font-size: 16px;
+  }
+  .furnitureBtn a {
+    font-size: 10px;
+  }
+  .furnitureContainer {
+    gap: 150px;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .furnitureImg {
+    height: 100px;
+  }
+  .furnitureInfoTitle {
+    font-size: 8px;
+  }
+  .furnitureInfoPrice {
+    font-size: 12px;
+  }
+  .furnitureBtn a {
+    font-size: 8px;
+  }
+  .furnitureContainer {
+    gap: 120px;
+  }
+}
+@media screen and (max-width: 797px) {
+  .furnituresWrapper {
+    flex-direction: column;
+  }
+  .furnitureImg {
+    height: 272px;
+  }
+  .furnitureInfoTitle {
+    font-size: 20px;
+  }
+  .furnitureInfoPrice {
+    font-size: 24px;
+  }
+  .furnitureBtn a {
+    font-size: 14px;
+  }
+}

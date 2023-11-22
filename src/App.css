@@ -11,6 +11,9 @@
   --main-bg-color-black: #000;
   --alternative-white-color: #bfbfbf;
 }
+body {
+  background: var(--main-bg-color-black);
+}
 .container {
   padding-left: var(--main-padding-lr-desktop);
   padding-right: var(--main-padding-lr-desktop);

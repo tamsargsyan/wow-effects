@@ -1,4 +1,5 @@
 import AboutCompany from "../components/AboutCompany/AboutCompany";
+import FurnitureInfos from "../components/FurnitureInfo/FurnitureInfos";
 import MainUI from "../components/MainUI/MainUI";
 import Partners from "../components/Partners/Partners";
 import Portfolio from "../components/Portfolio/Portfolio";
@@ -12,6 +13,7 @@ const Home = () => {
       <Portfolio />
       <Reviews />
       <Partners />
+      <FurnitureInfos />
     </div>
   );
 };

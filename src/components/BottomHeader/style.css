@@ -5,6 +5,19 @@
   align-items: center;
   padding-top: 24px;
   padding-bottom: 24px;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(-100%);
+  transition: 0.3s ease;
+}
+.bottomHeaderContainerHidden {
+}
+.bottomHeaderContainerVisible {
+  opacity: 1;
+  transform: translateY(0);
 }
 .bottomHeader2 {
   display: flex;

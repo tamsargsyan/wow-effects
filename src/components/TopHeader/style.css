@@ -6,6 +6,8 @@
   color: var(--secondary-color-white);
   padding-top: 6px;
   padding-bottom: 6px;
+  position: relative;
+  z-index: 9999;
 }
 .topHeader1 {
   display: flex;

@@ -1,6 +1,6 @@
 .reviewsContainer {
   background: var(--main-bg-color-black);
   color: var(--secondary-color-white);
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 200px;
+  padding-bottom: 200px;
 }

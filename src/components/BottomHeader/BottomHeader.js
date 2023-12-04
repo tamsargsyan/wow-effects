@@ -5,6 +5,7 @@ import Button from "../Button/Button";
 import { Dropdown, Space } from "antd";
 import ARROW_DOWN from "../../assets/icons/arrow-down-white.svg";
 import { useWindowSize } from "../../hooks/useWindowSize";
+import { useEffect, useState } from "react";
 
 const BottomHeader = () => {
   const menu = [
@@ -61,8 +62,26 @@ const BottomHeader = () => {
 
   const { width } = useWindowSize();
 
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.pageYOffset;
+
+      setVisible(prevScrollPos > currentScrollPos);
+      setPrevScrollPos(currentScrollPos);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [prevScrollPos, visible]);
+
   return (
-    <div className='bottomHeaderContainer container'>
+    <div
+      className={`${
+        visible ? "bottomHeaderContainerVisible" : "bottomHeaderContainerHidden"
+      } bottomHeaderContainer container`}>
       <div className='bottomHeaderLogo'>
         <NavLink>
           <img src={WOW_LOGO} alt='Wow logo' />

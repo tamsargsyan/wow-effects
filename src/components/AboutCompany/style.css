@@ -82,7 +82,7 @@
   .aboutCompanyContainer {
     flex-direction: column;
     flex-flow: column-reverse;
-    padding: 0 16px;
+    padding: 100px 16px;
   }
   .aboutCompanyInfo,
   .aboutCompanyImg {

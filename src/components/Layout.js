@@ -5,8 +5,8 @@ import { TopHeader } from "./TopHeader/TopHeader";
 const Layout = ({ children }) => {
   return (
     <div>
-      <TopHeader />
-      <BottomHeader />
+      {/* <TopHeader /> */}
+      {/* <BottomHeader /> */}
       <div>
         <Outlet />
       </div>

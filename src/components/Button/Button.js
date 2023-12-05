@@ -1,10 +1,10 @@
 import { NavLink } from "react-router-dom";
 import "./style.css";
 
-const Button = ({ link, text, style, className }) => {
+const Button = ({ link, text, style, className, to }) => {
   if (link)
     return (
-      <NavLink style={style} className={className}>
+      <NavLink style={style} className={className} to={to}>
         {text}
       </NavLink>
     );

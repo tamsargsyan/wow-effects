@@ -1,0 +1,218 @@
+.authContainer {
+  color: var(--secondary-color-white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+.authFormContainer {
+  padding-top: 120px;
+  padding-bottom: 120px;
+  width: 50%;
+  max-height: 100vh;
+  overflow-y: auto;
+}
+.authSecondPart {
+  width: 50%;
+  height: inherit;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.authForm {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.authFormGroup label {
+  display: block;
+  font-family: Poppins-600;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+.authFormGroup input {
+  padding: 16px 20px;
+  border-radius: 8px;
+  background: var(--alternative-black-color);
+  outline: none;
+  border: none;
+  width: 100%;
+  color: var(--secondary-color-white);
+  font-size: 16px;
+}
+.authError {
+  margin-top: 10px;
+  color: #cc0000;
+  font-size: 14px;
+}
+.authGreeting {
+  margin-top: 60px;
+  margin-bottom: 32px;
+}
+.authLogo img {
+  width: 222px;
+}
+.authFormGroup input::placeholder {
+  font-size: 16px;
+  opacity: 0.7;
+}
+.authGreetingTitle {
+  font-family: Poppins-700;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  font-size: 32px;
+}
+.authGreetingDescription {
+  opacity: 0.7;
+  font-size: 18px;
+}
+.authCredentials {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.authCredentialsGreetings {
+  font-size: 16px;
+}
+.authCredentialsGreetings a {
+  color: var(--main-color-pink);
+  font-family: Poppins-700;
+  text-decoration: none;
+  font-size: 16px;
+}
+.authCredentialsOr {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.authCredentialsLine1,
+.authCredentialsLine2 {
+  background: rgba(255, 255, 255, 0.2);
+  width: 100%;
+  height: 1px;
+}
+.authCredentialsOr p {
+  font-size: 16px;
+}
+.authCredentialsBtns {
+  display: flex;
+  gap: 16px;
+}
+.authCredentialsBtns button {
+  display: flex;
+  padding: 12px 24px;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex: 1 0 0;
+  border-radius: 8px;
+  background: var(--alternative-black-color);
+  color: var(--secondary-color-white);
+  font-family: Poppins-500;
+  outline: none;
+  border: none;
+  font-size: 16px;
+}
+@media screen and (max-width: 1600px) {
+  .authLogo img {
+    width: 170px;
+  }
+  .authGreetingTitle {
+    font-size: 28px;
+  }
+  .authGreetingDescription {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 1400px) {
+  .authFormGroup label,
+  .authFormGroup input,
+  .authCredentialsOr p,
+  .authCredentialsGreetings,
+  .authFormGroup input::placeholder {
+    font-size: 14px;
+  }
+  .authGreetingTitle {
+    font-size: 22px;
+  }
+  .authError {
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .authFormGroup label,
+  .authFormGroup input,
+  .authCredentialsOr p,
+  .authCredentialsGreetings,
+  .authFormGroup input::placeholder {
+    font-size: 12px;
+  }
+  .authGreetingTitle {
+    font-size: 18px;
+  }
+  .authError {
+    font-size: 11px;
+  }
+  .authGreetingDescription {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .authSecondPart {
+    display: none;
+  }
+  .authFormContainer {
+    width: 100%;
+  }
+  .authLogo img {
+    width: 200px;
+  }
+  .authGreetingTitle {
+    font-size: 32px;
+  }
+  .authGreetingDescription {
+    font-size: 18px;
+  }
+  .authFormGroup label,
+  .authFormGroup input,
+  .authCredentialsOr p,
+  .authCredentialsGreetings,
+  .authFormGroup input::placeholder {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .authLogo img {
+    width: 150px;
+  }
+  .authGreetingTitle {
+    font-size: 22px;
+  }
+  .authGreetingDescription {
+    font-size: 16px;
+  }
+  .authFormGroup label,
+  .authFormGroup input,
+  .authCredentialsOr p,
+  .authCredentialsGreetings,
+  .authFormGroup input::placeholder {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .authGreetingTitle {
+    font-size: 18px;
+  }
+  .authGreetingDescription {
+    font-size: 14px;
+  }
+  .authFormGroup label,
+  .authFormGroup input,
+  .authCredentialsOr p,
+  .authCredentialsGreetings,
+  .authFormGroup input::placeholder {
+    font-size: 12px;
+  }
+}

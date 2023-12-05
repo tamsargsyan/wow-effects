@@ -120,6 +120,7 @@ const BottomHeader = () => {
         <div className='bottomHeaderSignIn'>
           <Button
             link={true}
+            to='sign-in'
             text='Sign In'
             style={{
               backgroundColor: "var(--main-bg-color-black)",
@@ -132,6 +133,7 @@ const BottomHeader = () => {
           />
           <Button
             link={true}
+            to='sign-up'
             text='Register'
             style={{
               backgroundColor: "var(--main-color-pink)",

@@ -24,13 +24,16 @@
   transition: 0.3s ease;
 }
 .aboutCompanyImg:hover {
-    scale: 1.03;
+  scale: 1.03;
 }
 .aboutCompanyInfo {
   width: 35%;
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+.aboutUsPageAboutCompanyContainer .aboutCompanyImg {
+  border-radius: 0;
 }
 .aboutCompanyDesc {
   width: 100%;

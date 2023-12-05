@@ -3,6 +3,9 @@
   font-size: 32px;
   text-transform: uppercase;
 }
+.aboutUsPageAboutCompanyContainerTitle {
+  text-transform: capitalize;
+}
 @media screen and (max-width: 1280px) {
   .containerTitle {
     font-size: 27px;
@@ -16,5 +19,95 @@
 @media screen and (max-width: 797px) {
   .containerTitle {
     font-size: 24px;
+  }
+}
+/* pages title */
+.pagesTitleContainer {
+  /* padding: 80px 0; */
+  padding-top: 80px;
+  padding-bottom: 80px;
+  color: var(--secondary-color-white);
+  display: flex;
+  justify-content: center;
+  gap: 152px;
+}
+.pagesTitle {
+  color: var(--secondary-color-white);
+  font-family: Poppins-700;
+  font-size: 54px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.pagesTitleDescription {
+  color: var(--alternative-white-color);
+  font-size: 18px;
+  width: 61rem;
+}
+@media screen and (max-width: 1700px) {
+  .pagesTitleContainer {
+    gap: 142px;
+  }
+  .pagesTitle {
+    font-size: 44px;
+  }
+  .pagesTitleDescription {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 1600px) {
+  .pagesTitle {
+    font-size: 34px;
+  }
+  .pagesTitleDescription {
+    font-size: 14px;
+    width: 50rem;
+  }
+}
+@media screen and (max-width: 1400px) {
+  .pagesTitleContainer {
+    gap: 100px;
+  }
+  .pagesTitle {
+    font-size: 30px;
+  }
+  .pagesTitleDescription {
+    font-size: 12px;
+    width: 45rem;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .pagesTitle {
+    font-size: 24px;
+  }
+  .pagesTitleDescription {
+    font-size: 10px;
+    width: 40rem;
+  }
+  .pagesTitleContainer {
+    gap: 80px;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .pagesTitle {
+    font-size: 20px;
+  }
+  .pagesTitleDescription {
+    width: 35rem;
+  }
+  .pagesTitleContainer {
+    gap: 70px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .pagesTitleContainer {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .pagesTitle {
+    font-size: 30px;
+  }
+  .pagesTitleDescription {
+    font-size: 14px;
+    width: 100%;
   }
 }

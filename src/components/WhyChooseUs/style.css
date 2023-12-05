@@ -1,0 +1,129 @@
+.whyChooseUsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+  margin-bottom: 200px;
+}
+.whyChooseUsReasons {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  width: 100%;
+}
+.reasonBoxWrapper {
+  border-radius: 24px;
+  background: var(--alternative-black-color);
+  color: var(--secondary-color-white);
+  padding: 32px;
+  width: 396px;
+  /* height: 290px; */
+}
+.reasonBoxIcon {
+  width: 48px;
+  height: 48px;
+  object-fit: scale-down;
+}
+.whyChooseUsTitle {
+  color: var(--secondary-color-white);
+  font-family: Poppins-900;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 40px;
+}
+.reasonBoxTitle {
+  color: var(--secondary-color-white);
+  text-transform: uppercase;
+  font-family: Poppins-600;
+  margin-top: 16px;
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+.reasonBoxDescription {
+  color: var(--secondary-color-white);
+  opacity: 0.6;
+  font-size: 16px;
+}
+@media screen and (max-width: 1700px) {
+  .reasonBoxTitle {
+    font-size: 16px;
+  }
+  .reasonBoxDescription {
+    font-size: 12px;
+  }
+  .reasonBoxIcon {
+    width: 40px;
+    height: 40px;
+  }
+}
+@media screen and (max-width: 1600px) {
+  .reasonBoxTitle {
+    font-size: 14px;
+  }
+  .reasonBoxDescription {
+    font-size: 10px;
+  }
+  .reasonBoxIcon {
+    width: 30px;
+    height: 30px;
+  }
+}
+@media screen and (max-width: 1440px) {
+  .whyChooseUsReasons {
+    flex-wrap: wrap;
+  }
+  .reasonBoxTitle {
+    font-size: 20px;
+  }
+  .reasonBoxDescription {
+    font-size: 18px;
+  }
+  .reasonBoxIcon {
+    width: 48px;
+    height: 48px;
+  }
+  .reasonBoxWrapper {
+    width: 48%;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .whyChooseUsReasons {
+    flex-wrap: wrap;
+  }
+  .reasonBoxTitle {
+    font-size: 20px;
+  }
+  .reasonBoxDescription {
+    font-size: 18px;
+  }
+  .reasonBoxIcon {
+    width: 48px;
+    height: 48px;
+  }
+  .reasonBoxWrapper {
+    width: 47%;
+  }
+}
+@media screen and (max-width: 900px) {
+  .reasonBoxWrapper {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .whyChooseUsTitle {
+    font-size: 30px;
+  }
+}
+@media screen and (max-width: 410px) {
+  .reasonBoxTitle {
+    font-size: 18px;
+  }
+  .reasonBoxDescription {
+    font-size: 16px;
+  }
+  .reasonBoxIcon {
+    width: 35px;
+    height: 35px;
+  }
+}

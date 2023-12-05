@@ -15,6 +15,10 @@
   font-family: "Poppins-700";
   src: url(./Poppins/Poppins-Bold.ttf);
 }
+@font-face {
+  font-family: "Poppins-900";
+  src: url(./Poppins/Poppins-Black.ttf);
+}
 * {
   margin: 0;
   padding: 0;

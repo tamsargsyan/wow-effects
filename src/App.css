@@ -10,6 +10,7 @@
   --main-border-radius: 12px;
   --main-bg-color-black: #000;
   --alternative-white-color: #bfbfbf;
+  --alternative-black-color: #0f0f0f;
 }
 body {
   background: var(--main-bg-color-black);

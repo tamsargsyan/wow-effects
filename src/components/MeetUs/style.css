@@ -1,0 +1,128 @@
+.meetUsContainer {
+  background: var(--main-bg-color-black);
+  color: var(--secondary-color-white);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 70px;
+  padding-bottom: 50px;
+  position: relative;
+  padding-bottom: 200px;
+}
+.meetUsMembers {
+  display: flex;
+  gap: 32px;
+}
+.meetUsMemberImg {
+  height: 400px;
+  border-radius: 12px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.meetUsMember {
+  width: 466px;
+}
+.meetUsInfo {
+  width: 539px;
+}
+.meetUsDesc {
+  width: 100%;
+  color: var(--alternative-white-color);
+  margin-top: 8px;
+  font-size: 18px;
+}
+.meetUsMemberName {
+  font-family: Poppins-600;
+  margin: 10px 0;
+  font-size: 20px;
+}
+.meetUsMemberPosition {
+  opacity: 0.7;
+  font-size: 16px;
+}
+@media screen and (max-width: 1700px) {
+  .meetUsDesc {
+    font-size: 16px;
+  }
+  .meetUsMemberImg {
+    height: 350px;
+  }
+  .meetUsMember {
+    width: 400px;
+  }
+}
+@media screen and (max-width: 1600px) {
+  .meetUsMemberImg {
+    height: 300px;
+  }
+  .meetUsMember {
+    width: 350px;
+  }
+  .meetUsDesc {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 1400px) {
+  .meetUsMemberImg {
+    height: 250px;
+  }
+  .meetUsMember {
+    width: 300px;
+  }
+  .meetUsMemberName {
+    font-size: 18px;
+  }
+  .meetUsMemberPosition {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .meetUsDesc {
+    font-size: 10px;
+  }
+  .meetUsMemberImg {
+    height: 200px;
+  }
+  .meetUsMember {
+    width: 250px;
+  }
+  .meetUsMemberName {
+    font-size: 14px;
+  }
+  .meetUsMemberPosition {
+    font-size: 10px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .meetUsContainer {
+    flex-direction: column;
+  }
+  .meetUsDesc {
+    font-size: 14px;
+  }
+  .meetUsMembers {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  .meetUsMember {
+    width: 47%;
+  }
+  .meetUsMemberName {
+    font-size: 16px;
+  }
+  .meetUsMemberPosition {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 610px) {
+  .meetUsMember {
+    width: 100%;
+  }
+  .meetUsMemberImg {
+    height: 300px;
+  }
+  .meetUsInfo {
+    width: 100%;
+  }
+}

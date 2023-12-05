@@ -1,0 +1,108 @@
+.countingNumbersContainer {
+  display: flex;
+  justify-content: space-between;
+  color: var(--secondary-color-white);
+  padding-top: 200px;
+  padding-bottom: 200px;
+}
+.countingNumbers {
+  display: flex;
+  gap: 32px;
+}
+.countingNumberContainer {
+  padding-top: 31px;
+  padding-bottom: 31px;
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
+  width: 396px;
+}
+.countingNumbersfirstTitle {
+  font-size: 20px;
+}
+.countingNumberName {
+  font-size: 24px;
+}
+.countingNumber {
+  color: var(--main-color-pink);
+  font-size: 140px;
+}
+@media screen and (max-width: 1700px) {
+  .countingNumberContainer {
+    width: 300px;
+  }
+  .countingNumber {
+    font-size: 100px;
+  }
+  .countingNumberName {
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 1400px) {
+  .countingNumberContainer {
+    width: 250px;
+  }
+  .countingNumber {
+    font-size: 80px;
+  }
+  .countingNumberName {
+    font-size: 18px;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .countingNumberContainer {
+    width: 200px;
+  }
+  .countingNumber {
+    font-size: 50px;
+  }
+  .countingNumberName {
+    font-size: 14px;
+  }
+  .countingNumbersfirstTitle {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .countingNumberContainer {
+    width: 130px;
+  }
+  .countingNumber {
+    font-size: 30px;
+  }
+  .countingNumberName {
+    font-size: 10px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .countingNumbersContainer {
+    flex-direction: column;
+  }
+  .countingNumbers {
+    margin-top: 32px;
+  }
+  .countingNumbersfirstTitle {
+    font-size: 20px;
+  }
+  .countingNumberContainer {
+    width: 200px;
+  }
+  .countingNumber {
+    font-size: 40px;
+  }
+  .countingNumberName {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .countingNumbers {
+    flex-direction: column;
+  }
+  .countingNumberContainer {
+    width: 100%;
+  }
+  .countingNumber {
+    font-size: 100px;
+  }
+  .countingNumberName{
+    font-size: 24px;
+  }
+}

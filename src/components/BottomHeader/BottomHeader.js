@@ -12,13 +12,13 @@ const BottomHeader = () => {
     {
       id: 1,
       name: "Custom furniture production",
-      to: "",
+      to: "/wow/custom-furniture-production",
       dropdown: null,
     },
     {
       id: 2,
       name: "Interior Design",
-      to: "",
+      to: "/wow/interior-design",
       dropdown: null,
     },
     {
@@ -43,19 +43,19 @@ const BottomHeader = () => {
     {
       id: 4,
       name: "About Us",
-      to: "",
+      to: "/wow/about-us",
       dropdown: null,
     },
     {
       id: 5,
       name: "Portfolio",
-      to: "",
+      to: "/wow/portfolio",
       dropdown: null,
     },
     {
       id: 6,
       name: "Contact Us",
-      to: "",
+      to: "/wow/contact-us",
       dropdown: null,
     },
   ];
@@ -111,7 +111,9 @@ const BottomHeader = () => {
                 </NavLink>
               </Dropdown>
             ) : (
-              <NavLink key={m.id}>{m.name}</NavLink>
+              <NavLink to={m.to} key={m.id}>
+                {m.name}
+              </NavLink>
             );
           })}
         </div>

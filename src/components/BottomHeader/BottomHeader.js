@@ -83,7 +83,7 @@ const BottomHeader = () => {
         visible ? "bottomHeaderContainerVisible" : "bottomHeaderContainerHidden"
       } bottomHeaderContainer container`}>
       <div className='bottomHeaderLogo'>
-        <NavLink>
+        <NavLink to='/wow'>
           <img src={WOW_LOGO} alt='Wow logo' />
         </NavLink>
       </div>

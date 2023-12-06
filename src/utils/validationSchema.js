@@ -11,3 +11,15 @@ export const signUpSchema = yup.object().shape({
     .required("Password confirmation is a required field")
     .oneOf([yup.ref("password")], "Passwords must match"),
 });
+
+export const signInSchema = yup.object().shape({
+  email: yup.string().email("Invalid email").required("Email is required"),
+  password: yup
+    .string()
+    .required("Password is a required field")
+    .min(8, "Password must be at least 8 characters"),
+});
+
+export const passwordRecoverySchema = yup.object().shape({
+  email: yup.string().email("Invalid email").required("Email is required"),
+});

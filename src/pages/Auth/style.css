@@ -33,6 +33,7 @@
 }
 .authFormGroup input {
   padding: 16px 20px;
+  padding-right: 55px;
   border-radius: 8px;
   background: var(--alternative-black-color);
   outline: none;
@@ -115,6 +116,30 @@
   border: none;
   font-size: 16px;
 }
+.authHub {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.rememberMeHandler {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.checkbox-wrapper-23 input + label {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+}
+.rememberMeHandlerTitle {
+  font-size: 16px;
+}
+.passwordRecoveryTitle {
+  cursor: pointer;
+  opacity: 0.7;
+  font-size: 16px;
+}
+
 @media screen and (max-width: 1600px) {
   .authLogo img {
     width: 170px;
@@ -131,7 +156,9 @@
   .authFormGroup input,
   .authCredentialsOr p,
   .authCredentialsGreetings,
-  .authFormGroup input::placeholder {
+  .authFormGroup input::placeholder,
+  .rememberMeHandlerTitle,
+  .rememberMeHandlerTitle {
     font-size: 14px;
   }
   .authGreetingTitle {
@@ -140,13 +167,19 @@
   .authError {
     font-size: 13px;
   }
+  .checkbox-wrapper-23 input + label {
+    width: 20px;
+    height: 20px;
+  }
 }
 @media screen and (max-width: 1280px) {
   .authFormGroup label,
   .authFormGroup input,
   .authCredentialsOr p,
   .authCredentialsGreetings,
-  .authFormGroup input::placeholder {
+  .authFormGroup input::placeholder,
+  .rememberMeHandlerTitle,
+  .passwordRecoveryTitle {
     font-size: 12px;
   }
   .authGreetingTitle {
@@ -157,6 +190,10 @@
   }
   .authGreetingDescription {
     font-size: 14px;
+  }
+  .checkbox-wrapper-23 input + label {
+    width: 17px;
+    height: 17px;
   }
 }
 @media screen and (max-width: 1100px) {
@@ -179,8 +216,14 @@
   .authFormGroup input,
   .authCredentialsOr p,
   .authCredentialsGreetings,
-  .authFormGroup input::placeholder {
+  .authFormGroup input::placeholder,
+  .rememberMeHandlerTitle,
+  .passwordRecoveryTitle {
     font-size: 16px;
+  }
+  .checkbox-wrapper-23 input + label {
+    width: 24px;
+    height: 24px;
   }
 }
 @media screen and (max-width: 600px) {
@@ -197,8 +240,14 @@
   .authFormGroup input,
   .authCredentialsOr p,
   .authCredentialsGreetings,
-  .authFormGroup input::placeholder {
+  .authFormGroup input::placeholder,
+  .rememberMeHandlerTitle,
+  .passwordRecoveryTitle {
     font-size: 14px;
+  }
+  .checkbox-wrapper-23 input + label {
+    width: 20px;
+    height: 20px;
   }
 }
 @media screen and (max-width: 400px) {
@@ -212,7 +261,137 @@
   .authFormGroup input,
   .authCredentialsOr p,
   .authCredentialsGreetings,
-  .authFormGroup input::placeholder {
+  .authFormGroup input::placeholder,
+  .rememberMeHandlerTitle,
+  .passwordRecoveryTitle {
     font-size: 12px;
   }
+  .checkbox-wrapper-23 input + label {
+    width: 17px;
+    height: 17px;
+  }
+}
+
+/* eye animation */
+.authFormGroupInput {
+  position: relative;
+}
+.eyeContainer {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+#eye {
+  --duration-blink: 0.2s;
+  --duration-lashes: 0.2s;
+  --delay-lashes: var(--duration-blink);
+  --duration-pupil: 0.1s;
+  --delay-pupil: calc(var(--duration-blink) * 2 / 3);
+}
+
+#eye-bottom,
+#eye-top {
+  stroke-linecap: round;
+}
+
+#eye-top,
+#eye-lashes {
+  transition: var(--duration-blink) ease-in;
+}
+
+#eye-pupil {
+  opacity: 0;
+  transition: opacity var(--duration-pupil) var(--delay-pupil) ease;
+}
+
+.eyeOpen #eye-top,
+.eyeOpen #eye-lashes {
+  transform: rotateX(0.5turn);
+  animation: scaleUp var(--duration-lashes) var(--delay-lashes) ease-in-out;
+}
+
+.eyeOpen #eye-pupil {
+  opacity: 1;
+}
+
+.eyeClose #eye-lashes {
+  animation: scaleDown var(--duration-lashes) var(--duration-blink) ease-in-out;
+}
+
+.eyeClose #eye-pupil {
+  opacity: 0;
+}
+
+@keyframes scaleUp {
+  50% {
+    transform: rotateX(0.5turn) scaleY(1.15);
+  }
+
+  to {
+    transform: rotateX(0.5turn) scaleY(1);
+  }
+}
+
+@keyframes scaleDown {
+  50% {
+    transform: scaleY(1.15);
+  }
+
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* checkbox anim */
+.checkbox-wrapper-23 *,
+.checkbox-wrapper-23 *:after,
+.checkbox-wrapper-23 *:before {
+  box-sizing: border-box;
+}
+
+.checkbox-wrapper-23 input {
+  position: absolute;
+  opacity: 0;
+}
+
+.checkbox-wrapper-23 input:checked + label svg path {
+  stroke-dashoffset: 0;
+}
+
+.checkbox-wrapper-23 input:focus + label {
+  transform: scale(1.03);
+}
+
+.checkbox-wrapper-23 input + label {
+  display: block;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--alternative-black-color);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.checkbox-wrapper-23 input + label:active {
+  transform: scale(1.02);
+  border-radius: 12px;
+}
+
+.checkbox-wrapper-23 input + label svg {
+  pointer-events: none;
+  padding: 2px;
+  margin-bottom: 2px;
+}
+
+.checkbox-wrapper-23 input + label svg path {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 4px;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 101;
+  transition: all 250ms cubic-bezier(1, 0, 0.37, 0.91);
 }

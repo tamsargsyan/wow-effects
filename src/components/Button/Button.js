@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import "./style.css";
 
-const Button = ({ link, text, style, className, to }) => {
+const Button = ({ link, text, style, className, to, btnType }) => {
   if (link)
     return (
       <NavLink style={style} className={className} to={to}>
@@ -9,7 +9,7 @@ const Button = ({ link, text, style, className, to }) => {
       </NavLink>
     );
   return (
-    <button style={style} className={className}>
+    <button type={btnType} style={style} className={className}>
       {text}
     </button>
   );

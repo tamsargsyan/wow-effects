@@ -11,16 +11,12 @@ import "./style.css";
 
 const items = [
   {
-    label: <Link>1st menu item</Link>,
+    label: <Link>ru</Link>,
     key: "0",
   },
   {
-    label: <Link>1st menu item</Link>,
+    label: <Link>am</Link>,
     key: "1",
-  },
-  {
-    label: <Link>1st menu item</Link>,
-    key: "3",
   },
 ];
 

@@ -31,7 +31,7 @@ const Auth = ({ auth }) => {
       }}
       className='authContainer'>
       <div className='authFormContainer container'>
-        <NavLink to='/wow' className='authLogo'>
+        <NavLink to='/' className='authLogo'>
           <Img src={LOGO} alt='Wow Logo' className='authLogoImg' />
         </NavLink>
         {passwordRecovery ? (
@@ -178,12 +178,12 @@ const Auth = ({ auth }) => {
             <div className='authCredentials'>
               {auth === "sign-up" ? (
                 <p className='authCredentialsGreetings'>
-                  Have an account? <NavLink to='/wow/sign-in'>Log In</NavLink>
+                  Have an account? <NavLink to='/sign-in'>Log In</NavLink>
                 </p>
               ) : (
                 <p className='authCredentialsGreetings'>
                   Don’t have an account?{" "}
-                  <NavLink to='/wow/sign-up'>Register</NavLink>
+                  <NavLink to='/sign-up'>Register</NavLink>
                 </p>
               )}
               <div className='authCredentialsOr'>

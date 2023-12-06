@@ -4,7 +4,7 @@ import { TopHeader } from "./TopHeader/TopHeader";
 
 const Layout = () => {
   const location = useLocation();
-  const hideHeadersPaths = ["/wow/sign-in", "/wow/sign-up"];
+  const hideHeadersPaths = ["/sign-in", "/sign-up"];
   const shouldHideHeaders = hideHeadersPaths.includes(location.pathname);
 
   return (

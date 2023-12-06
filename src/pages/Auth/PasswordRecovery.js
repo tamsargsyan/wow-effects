@@ -50,7 +50,7 @@ const PasswordRecovery = ({ setPasswordRecovery }) => {
           </div>
           <p className='authCredentialsGreetings'>
             Didn’t receive a mail?{" "}
-            <NavLink to='/wow/sign-up'>Click to resend</NavLink>
+            <NavLink to='/sign-up'>Click to resend</NavLink>
           </p>
         </motion.div>
       ) : (

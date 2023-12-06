@@ -12,13 +12,13 @@ const BottomHeader = () => {
     {
       id: 1,
       name: "Custom furniture production",
-      to: "/wow/custom-furniture-production",
+      to: "/custom-furniture-production",
       dropdown: null,
     },
     {
       id: 2,
       name: "Interior Design",
-      to: "/wow/interior-design",
+      to: "/interior-design",
       dropdown: null,
     },
     {
@@ -43,19 +43,19 @@ const BottomHeader = () => {
     {
       id: 4,
       name: "About Us",
-      to: "/wow/about-us",
+      to: "/about-us",
       dropdown: null,
     },
     {
       id: 5,
       name: "Portfolio",
-      to: "/wow/portfolio",
+      to: "/portfolio",
       dropdown: null,
     },
     {
       id: 6,
       name: "Contact Us",
-      to: "/wow/contact-us",
+      to: "/contact-us",
       dropdown: null,
     },
   ];
@@ -83,7 +83,7 @@ const BottomHeader = () => {
         visible ? "bottomHeaderContainerVisible" : "bottomHeaderContainerHidden"
       } bottomHeaderContainer container`}>
       <div className='bottomHeaderLogo'>
-        <NavLink to='/wow'>
+        <NavLink to='/'>
           <img src={WOW_LOGO} alt='Wow logo' />
         </NavLink>
       </div>

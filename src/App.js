@@ -12,12 +12,12 @@ const App = () => {
   return (
     <AnimatePresence>
       <Routes>
-        <Route path='/wow' element={<Layout />}>
+        <Route path='/' element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path='/wow/about-us' element={<AboutUs />} />
-          <Route path='/wow/sign-in' element={<SignInAuth auth='sign-in' />} />
-          <Route path='/wow/sign-up' element={<SignUpAuth auth='sign-up' />} />
-          <Route path='/wow/contact-us' element={<Contact />} />
+          <Route path='/about-us' element={<AboutUs />} />
+          <Route path='/sign-in' element={<SignInAuth auth='sign-in' />} />
+          <Route path='/sign-up' element={<SignUpAuth auth='sign-up' />} />
+          <Route path='/contact-us' element={<Contact />} />
         </Route>
       </Routes>
     </AnimatePresence>

@@ -47,7 +47,7 @@
 }
 .blogReadMore p {
   font-family: Poppins-500;
-  color: #fff;
+  color: var(--secondary-color-white);;
   font-size: 18px;
 }
 @media screen and (max-width: 1600px) {

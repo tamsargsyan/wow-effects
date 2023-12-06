@@ -9,6 +9,7 @@ const FullTitle = ({
   desc,
   btnLink,
   withoutBtn,
+  to,
 }) => {
   return (
     <div
@@ -21,7 +22,7 @@ const FullTitle = ({
       </div>
       {!withoutBtn && (
         <div className='fullTitleBtn'>
-          <Button text='View More' style={btnStyle} link={btnLink} />
+          <Button text='View More' style={btnStyle} link={btnLink} to={to} />
         </div>
       )}
     </div>

@@ -40,14 +40,14 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   outline: none;
   background: transparent;
-  color: #fff;
+  color: var(--secondary-color-white);;
   font-size: 16px;
 }
 .footerItems input::placeholder {
   font-size: 16px;
 }
 .footerTitle {
-  color: #fff;
+  color: var(--secondary-color-white);;
   font-family: Poppins-700;
   font-weight: 700;
   text-transform: uppercase;
@@ -76,7 +76,7 @@
 .footerPrivacy,
 .footerTerms,
 .footerCopyRight {
-  color: #fff;
+  color: var(--secondary-color-white);;
   font-size: 16px;
   text-decoration: none;
 }

@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import IMG_1 from "../../assets/ui-fake-images/portfolio-work-1.svg";
 import IMG_2 from "../../assets/ui-fake-images/portfolio-work-2.svg";
 import IMG_3 from "../../assets/ui-fake-images/portfolio-work-3.svg";
@@ -6,7 +7,7 @@ import IMG_5 from "../../assets/ui-fake-images/portfolio-work-5.svg";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import Button from "../Button/Button";
 import FullTitle from "../FullTitle/FullTitle";
-import SecondButton from "../SecondButton/SecondButton";
+import PortfolioBox from "./PortfolioBox";
 import "./style.css";
 
 const Portfolio = () => {
@@ -56,6 +57,7 @@ const Portfolio = () => {
         title='our portfolio'
         desc="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
         btnLink={true}
+        to='/portfolio'
         btnStyle={{
           border: "1px solid rgba(255, 255, 255, 0.40)",
           borderRadius: "8px",
@@ -68,18 +70,14 @@ const Portfolio = () => {
       />
       <div className='portfolioWrapper'>
         {portfolio.map(p => (
-          <div
-            key={p.id}
-            className={`${p.className} portfolioBox`}
-            style={{ backgroundImage: `url(${p.img})` }}>
-            <div className='portfolioBoxInfo'>
-              <div className='portfolioBoxTitleWrapper'>
-                <p className='portfolioBoxTitle'>{p.name}</p>
-                <p className='portfolioBoxDesc'>{p.desc}</p>
-              </div>
-              <SecondButton className='moreBtnLarge portfolioWorkMoreBtn' />
-            </div>
-          </div>
+          <Fragment keu={p.id}>
+            <PortfolioBox
+              className={p.className}
+              img={p.img}
+              name={p.name}
+              description={p.desc}
+            />
+          </Fragment>
         ))}
       </div>
       {width < 797 && (

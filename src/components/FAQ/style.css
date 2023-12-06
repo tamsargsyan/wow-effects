@@ -27,7 +27,7 @@
   border-radius: 18px;
   background: #101010;
   box-shadow: 0px 5px 16px 0px rgba(8, 15, 52, 0.06);
-  color: #fff;
+  color: var(--secondary-color-white);
   font-family: Poppins-500;
   transition: 650ms ease;
 }
@@ -65,7 +65,7 @@
   transition: max-height 650ms;
 }
 .answer p {
-  color: #fff;
+  color: var(--secondary-color-white);
   padding: 24px 32px;
   padding-top: 0;
 }
@@ -90,7 +90,7 @@
   transform: rotate(180deg);
 }
 .accordion-item:target {
-  border: 1px solid #af4b85;
+  border: 1px solid var(--main-color-pink);
   border-radius: 18px;
   box-shadow: 0px 6px 16px 0px rgba(74, 58, 255, 0.19);
 }

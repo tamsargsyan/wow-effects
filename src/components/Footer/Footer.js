@@ -121,8 +121,8 @@ const Footer = ({ slider }) => {
                 text='Send'
                 style={{
                   borderRadius: "4px",
-                  background: "#AF4B85",
-                  color: "#fff",
+                  background: "var(--main-color-pink)",
+                  color: "var(--secondary-color-white)",
                   border: "none",
                   width: "fit-content",
                 }}

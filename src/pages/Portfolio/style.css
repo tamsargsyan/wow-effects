@@ -1,0 +1,182 @@
+.filterPanel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.filterBtns {
+  display: flex;
+  gap: 12px;
+}
+.filterBtn {
+  border-radius: 12px;
+  padding: 10px 24px;
+  border: none;
+  width: fit-content;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+/* dropdown anim */
+
+.filterDropHolder {
+  border-radius: 10px;
+  position: relative;
+}
+
+.filterDropHolder:after {
+  content: "";
+  position: absolute;
+  width: 250px;
+  height: 5px;
+  background: rgba(0, 0, 0, 0);
+  display: block;
+  top: 100px;
+  left: 37px;
+  margin: auto;
+  border-radius: 50%;
+  box-shadow: 0 15px 10px rgba(0, 0, 0, 0.4);
+}
+.filterDropdown {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.filterDropdown > p {
+  font-size: 16px;
+}
+
+.filterDropHolder,
+.seeMoreBtn {
+  background: transparent;
+  color: var(--secondary-color-white);
+  padding: 10px 24px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+}
+.seeMoreBtn {
+  color: #fff !important;
+}
+.filterMenu {
+  position: absolute;
+  right: 0;
+  top: 50px;
+  width: 228px;
+  cursor: pointer;
+  opacity: 0;
+  transform-style: preserve-3d;
+  transform: rotatey(180deg) rotateX(5deg) translatey(100px);
+  backface-visibility: hidden;
+  background: var(--alternative-black-color);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  transition: all 0.8s;
+  z-index: 5;
+  overflow: hidden;
+  padding: 3px;
+}
+
+.filterMenu li {
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  color: #e8f8ff;
+  transition: all 0.3s;
+  list-style: none;
+}
+
+.filterMenu li:hover {
+  padding-left: 20px;
+}
+
+.filterMenu li:last-child {
+  border: none;
+}
+
+.showMenu {
+  opacity: 1;
+  transform: rotateX(0deg) translatey(0px);
+}
+
+.portfolioHolderContainer {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(21vw, 1fr)
+  ); /* Adjust as needed */
+  grid-auto-rows: minmax(300px, auto); /* Minimum height for each row */
+  gap: 32px;
+  gap: 32px;
+  margin-top: 48px;
+}
+.portfolioCard {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  border-radius: 16px;
+  height: 100%;
+  /* width: 29vw; */
+}
+.portfolioCard:nth-child(2n) {
+  height: 100%;
+  grid-row: span 2;
+}
+.portfolioCard:nth-child(2n + 1) {
+  /* grid-column: 1;  */
+}
+.portfolioCardInfo {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 24px;
+}
+.portfolioDetails {
+  width: 300px;
+}
+.filterBtn,
+.filterDropdown p,
+.filterMenu li {
+  font-size: 18px;
+}
+.portfolioDetailsTitle {
+  color: #fff;
+  font-family: Poppins-700;
+  font-size: 24px;
+}
+.portfolioDetailsDescription {
+  color: #fff;
+  font-size: 16px;
+}
+@media screen and (max-width: 1600px) {
+  .filterBtn,
+  .filterDropdown p,
+  .filterMenu li,
+  .portfolioDetailsDescription {
+    font-size: 13px;
+  }
+  .portfolioDetailsTitle {
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 700px) {
+  .filterPanel {
+    flex-direction: column;
+    gap: 32px;
+    align-items: flex-start;
+  }
+}
+@media screen and (max-width: 600px) {
+  .portfolioHolderContainer {
+    grid-template-columns: repeat(auto-fill, minmax(100%, 1fr));
+  }
+  .filterBtns {
+    flex-direction: column;
+  }
+  .filterMenu {
+    left: 0;
+    right: auto;
+  }
+}

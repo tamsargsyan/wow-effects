@@ -16,17 +16,19 @@ import Button from "../Button/Button";
 import { NavLink } from "react-router-dom";
 import { useWindowSize } from "../../hooks/useWindowSize";
 
-const Footer = () => {
+const Footer = ({ slider }) => {
   const imgs = [IMG_1, IMG_2, IMG_3, IMG_4, IMG_5, IMG_6];
   const { width } = useWindowSize();
 
   return (
     <div className='footerContainer'>
-      <div className='footerImages'>
-        {(width < 797 ? imgs.slice(0, 3) : imgs).map((img, i) => (
-          <img src={img} alt='Footer' key={i} />
-        ))}
-      </div>
+      {slider && (
+        <div className='footerImages'>
+          {(width < 797 ? imgs.slice(0, 3) : imgs).map((img, i) => (
+            <img src={img} alt='Footer' key={i} />
+          ))}
+        </div>
+      )}
       <div className='footer container'>
         <div className='footer1'>
           <div className='footer1Logo'>

@@ -23,3 +23,15 @@ export const signInSchema = yup.object().shape({
 export const passwordRecoverySchema = yup.object().shape({
   email: yup.string().email("Invalid email").required("Email is required"),
 });
+
+export const contactSchema = yup.object().shape({
+  full_name: yup
+    .string()
+    .matches(/^[A-Za-z]+$/, "Name should only contain letters")
+    .required("Name is a required field"),
+  email: yup.string().email("Invalid email").required("Email is required"),
+  phone: yup
+    .string()
+    .matches(/^[0-9]+$/, "Phone number should contain only numbers"),
+  message: yup.string().required("This is a required field"),
+});

@@ -143,3 +143,59 @@
     padding-top: 0;
   }
 }
+.contactFAQ {
+  padding: 0;
+}
+.contactFAQ .accordion-link {
+  padding: 12px 16px;
+  border-radius: 12px;
+}
+.contactFAQ .answer p {
+  padding: 12px 16px;
+  opacity: 0.6;
+}
+.contactFAQ .accordion {
+  width: 100%;
+}
+.contactFAQ .accordionArrow {
+  border-radius: 12px;
+}
+.contactFAQ .accordion-item:target .accordionArrow {
+  background: rgba(255, 255, 255, 0.06);
+}
+.contactFAQ .accordion-item:target {
+  border: none;
+  box-shadow: none;
+  border-radius: 12px;
+}
+@media screen and (max-width: 1600px) {
+  .contactFAQ .accordion-link {
+    font-size: 16px;
+  }
+  .contactFAQ .answer p {
+    font-size: 12px;
+  }
+  .contactFAQ .accordionArrow {
+    width: 24px;
+    height: 24px;
+  }
+  .contactFAQ .accordionArrow {
+    border-radius: 6px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .contactFAQ .accordion-link {
+    font-size: 20px;
+  }
+  .contactFAQ .answer p {
+    font-size: 18px;
+  }
+}
+@media screen and (max-width: 600px) {
+ .contactFAQ .accordion-link {
+    font-size: 18px;
+  }
+  .contactFAQ .answer p {
+    font-size: 16px;
+  }
+}

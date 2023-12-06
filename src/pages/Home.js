@@ -59,8 +59,8 @@ const Home = () => {
       <Partners />
       <FurnitureInfos />
       <Blog />
-      <FAQ />
-      <Footer />
+      <FAQ title='faq' className='mainFAQ' />
+      <Footer slider={true} />
     </motion.div>
   );
 };

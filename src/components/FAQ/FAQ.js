@@ -2,7 +2,7 @@ import Title from "../Title/Title";
 import ARROW from "../../assets/icons/arrow-down-white.svg";
 import "./style.css";
 
-const FAQ = () => {
+const FAQ = ({ title, className }) => {
   const faq = [
     {
       id: 1,
@@ -37,8 +37,8 @@ const FAQ = () => {
   ];
 
   return (
-    <div className='faqContainer'>
-      <Title title='faq' />
+    <div className={`${className} faqContainer`}>
+      {title && <Title title={title} />}
       <div className='accordion'>
         {faq.map(f => (
           <div className='accordion-item' id={`question${f.id}`} key={f.id}>

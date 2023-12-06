@@ -52,7 +52,7 @@ const AboutUs = () => {
       />
       <CountingNumbers />
       <MeetUs />
-      <Footer />
+      <Footer slider={true} />
     </motion.div>
   );
 };

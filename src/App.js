@@ -6,6 +6,7 @@ import { Route, Routes } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import SignInAuth from "./pages/Auth/SignInAuth";
 import SignUpAuth from "./pages/Auth/SignUpAuth";
+import Contact from "./pages/Contact";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
           <Route path='/wow/about-us' element={<AboutUs />} />
           <Route path='/wow/sign-in' element={<SignInAuth auth='sign-in' />} />
           <Route path='/wow/sign-up' element={<SignUpAuth auth='sign-up' />} />
+          <Route path='/wow/contact-us' element={<Contact />} />
         </Route>
       </Routes>
     </AnimatePresence>

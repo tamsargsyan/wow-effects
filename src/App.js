@@ -10,6 +10,7 @@ import Contact from "./pages/Contact";
 import PortfolioPage from "./pages/Portfolio/PortfolioPage";
 import Shop from "./pages/Shop";
 import { useEffect } from "react";
+import SinglePortfolioPage from "./pages/Portfolio/SinglePortfolioPage";
 
 const App = () => {
   const location = useLocation();
@@ -31,6 +32,10 @@ const App = () => {
           <Route path='/sign-up' element={<SignUpAuth auth='sign-up' />} />
           <Route path='/contact-us' element={<Contact />} />
           <Route path='/portfolio' element={<PortfolioPage />} />
+          <Route
+            path='/portfolio/:portfolioName'
+            element={<SinglePortfolioPage />}
+          />
           <Route path='/shop' element={<Shop />} />
         </Route>
       </Routes>

@@ -13,6 +13,73 @@ import IMG_5 from "../../assets/ui-fake-images/portfolio-work-5.svg";
 import "./style.css";
 import SecondButton from "../../components/SecondButton/SecondButton";
 
+export const portfolios = [
+  {
+    id: 1,
+    name: "Name of the work",
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    img: IMG_1,
+    slug: "portfolio1",
+  },
+  {
+    id: 2,
+    name: "Name of the work",
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    img: IMG_2,
+    slug: "portfolio2",
+  },
+  {
+    id: 3,
+    name: "Name of the work",
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    img: IMG_3,
+    slug: "portfolio3",
+  },
+  {
+    id: 4,
+    name: "Name of the work",
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    img: IMG_4,
+    slug: "portfolio4",
+  },
+  {
+    id: 5,
+    name: "Name of the work",
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    img: IMG_5,
+    slug: "portfolio5",
+  },
+  {
+    id: 6,
+    name: "Name of the work",
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    img: IMG_1,
+    slug: "portfolio6",
+  },
+  {
+    id: 7,
+    name: "Name of the work",
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    img: IMG_2,
+    slug: "portfolio7",
+  },
+  {
+    id: 8,
+    name: "Name of the work",
+    description:
+      "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    img: IMG_3,
+    slug: "portfolio8",
+  },
+];
+
 const PortfolioPage = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [selectedItem, setSelectedItem] = useState("Trending");
@@ -53,65 +120,6 @@ const PortfolioPage = () => {
     {
       id: 3,
       name: "Trending",
-    },
-  ];
-
-  const portfolios = [
-    {
-      id: 1,
-      name: "Name of the work",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      img: IMG_1,
-    },
-    {
-      id: 2,
-      name: "Name of the work",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      img: IMG_2,
-    },
-    {
-      id: 3,
-      name: "Name of the work",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      img: IMG_3,
-    },
-    {
-      id: 4,
-      name: "Name of the work",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      img: IMG_4,
-    },
-    {
-      id: 5,
-      name: "Name of the work",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      img: IMG_5,
-    },
-    {
-      id: 6,
-      name: "Name of the work",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      img: IMG_1,
-    },
-    {
-      id: 7,
-      name: "Name of the work",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      img: IMG_2,
-    },
-    {
-      id: 8,
-      name: "Name of the work",
-      description:
-        "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
-      img: IMG_3,
     },
   ];
 
@@ -180,7 +188,10 @@ const PortfolioPage = () => {
                   <p className='portfolioDetailsTitle'>{p.name}</p>
                   <p className='portfolioDetailsDescription'>{p.description}</p>
                 </div>
-                <SecondButton className='moreBtnLarge portfolioWorkMoreBtn' />
+                <SecondButton
+                  className='moreBtnLarge portfolioWorkMoreBtn'
+                  to={`/portfolio/${p.slug}`}
+                />
               </div>
             </div>
           ))}

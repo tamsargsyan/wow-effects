@@ -1,0 +1,230 @@
+.portfolioOverviewContainer {
+  width: 100%;
+  height: 640px;
+  color: var(--secondary-color-white);
+  position: relative;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+.portfolioOverview {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-bottom: 60px;
+}
+.portfolioSpecs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+}
+.portfolioSpecsItem {
+  border-radius: 12px;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+/* sizes */
+.portfolioSummary {
+  width: 824px;
+}
+.portfolioSummaryTitle {
+  font-family: Poppins-700;
+  margin-bottom: 16px;
+  font-size: 56px;
+}
+.portfolioSummaryDescription {
+  opacity: 0.7;
+  font-size: 18px;
+}
+.portfolioSpecs {
+  width: 538px;
+}
+.portfolioSpecsItem {
+  gap: 8px;
+  padding: 24px;
+  width: 260px;
+  height: 116px;
+}
+.portfolioSpecsTitle {
+  font-family: Poppins-700;
+  font-size: 24px;
+}
+.portfolioSpecsDescription {
+  font-size: 16px;
+}
+.portfolioOverviewBackdrop {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.72) 100%
+  );
+}
+/* portfolio achievements */
+.portfolioAchievements {
+  display: flex;
+  flex-direction: column;
+  color: var(--secondary-color-white);
+  padding: 120px 260px;
+  gap: 200px;
+}
+.portfolioAchievementItem {
+  display: flex;
+  gap: 32px;
+}
+.portfolioAchievementItemInfo {
+  width: 50%;
+}
+.portfolioAchievementImages {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+/* sizes */
+.portfolioAchievementItemTitle {
+  font-family: Poppins-600;
+  margin-bottom: 16px;
+  font-size: 24px;
+}
+.portfolioAchievementItemDescription {
+  color: rgba(255, 255, 255, 0.6);
+  font-family: Poppins;
+  font-size: 18px;
+}
+.portfolioAchievementImages img {
+  height: 500px;
+  border-radius: 12px;
+  object-fit: cover;
+}
+/* portfolio slider */
+.portfolioSliderContainer {
+  color: #fff;
+  padding-top: 200px;
+  padding-bottom: 200px;
+}
+.singlePortfolioCard {
+  width: 539px;
+  height: 300px !important;
+  flex: 0 0 auto;
+}
+@media screen and (max-width: 1600px) {
+  .portfolioOverviewContainer {
+    height: 500px;
+  }
+  .portfolioSummary {
+    width: 750px;
+  }
+  .portfolioSummaryTitle {
+    font-size: 48px;
+  }
+  .portfolioSummaryDescription {
+    font-size: 16px;
+  }
+  .portfolioSpecsItem {
+    width: 235px;
+    height: 100px;
+  }
+  .portfolioSpecsTitle {
+    font-size: 20px;
+  }
+  .portfolioSpecsDescription {
+    font-size: 14px;
+  }
+  .portfolioAchievements {
+    padding-left: 220px;
+    padding-right: 220px;
+  }
+  .portfolioAchievementItemTitle {
+    font-size: 20px;
+  }
+  .portfolioAchievementItemDescription {
+    font-size: 14px;
+  }
+  .portfolioAchievementImages img {
+    height: 350px;
+  }
+}
+@media screen and (max-width: 1440px) {
+  .portfolioOverviewContainer {
+    height: 450px;
+  }
+  .portfolioSummary {
+    width: 635px;
+  }
+  .portfolioSummaryTitle {
+    font-size: 40px;
+  }
+  .portfolioSummaryDescription {
+    font-size: 13px;
+  }
+  .portfolioSpecsItem {
+    width: 210px;
+    height: 90px;
+  }
+  .portfolioSpecsTitle {
+    font-size: 17px;
+  }
+  .portfolioSpecsDescription {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 1400px) {
+  .portfolioAchievements {
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+  .portfolioAchievementItemTitle {
+    font-size: 18px;
+  }
+  .portfolioAchievementItemDescription {
+    font-size: 12px;
+  }
+  .portfolioAchievementImages img {
+    height: 320px;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .portfolioOverviewContainer {
+    height: 400px;
+  }
+  .portfolioSummary {
+    width: 490px;
+  }
+  .portfolioSummaryTitle {
+    font-size: 35px;
+  }
+  .portfolioSummaryDescription {
+    font-size: 12px;
+  }
+  .portfolioSpecsTitle {
+    font-size: 14px;
+  }
+  .portfolioSpecsDescription {
+    font-size: 11px;
+  }
+  .portfolioSpecsItem {
+    width: 190px;
+    height: 80px;
+  }
+  .portfolioAchievementItemTitle {
+    font-size: 16px;
+  }
+  .portfolioAchievementItemDescription {
+    font-size: 10px;
+  }
+  .portfolioAchievementImages img {
+    height: 300px;
+  }
+}

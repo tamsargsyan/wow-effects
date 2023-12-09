@@ -1,0 +1,131 @@
+.controlPanelContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.controlPanelWaypointOverview {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32px;
+}
+.controlPanelWaypoint {
+  text-decoration: none;
+  padding: 16px 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  background: #0f0f0f;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.06);
+  display: block;
+  width: 350px;
+  /* height: 186px; */
+}
+.controlPanelWaypointOverview .controlPanelWaypointOverviewIcon {
+  width: 60px;
+  height: 60px;
+  border-radius: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--secondary-color-white);
+  /* object-fit: cover; */
+}
+.controlPanelWaypointOverviewPerson .controlPanelWaypointOverviewIcon img {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  object-fit: cover;
+}
+.controlPanelPen {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  background: #000;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+.controlPanelPen img {
+  width: 24px;
+  height: 24px;
+}
+.controlPanelTitle {
+  color: var(--secondary-color-white);
+  font-family: Poppins-500;
+  margin-bottom: 8px;
+  font-size: 20px;
+}
+.controlPanelDescription {
+  color: #888;
+  font-size: 16px;
+}
+.controlPanelDescription span {
+  color: var(--secondary-color-white);
+}
+.controlPanelWaypointOverviewIconAnother {
+  /* object-fit: none !important; */
+  padding: 18px;
+}
+@media screen and (max-width: 1600px) {
+  .accountDashboardArea {
+    padding-left: 220px !important;
+    padding-right: 220px !important;
+  }
+  .controlPanelWaypoint {
+    width: 48%;
+  }
+  .controlPanelWaypointOverview .controlPanelWaypointOverviewIcon {
+    width: 50px;
+    height: 50px;
+  }
+  .controlPanelTitle {
+    font-size: 18px;
+  }
+  .controlPanelDescription {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 1440px) {
+  .accountDashboardArea {
+    padding-left: 150px !important;
+    padding-right: 150px !important;
+  }
+  .controlPanelWaypoint {
+    width: 47%;
+  }
+  .controlPanelWaypointOverview .controlPanelWaypointOverviewIcon {
+    width: 50px;
+    height: 50px;
+  }
+  .controlPanelTitle {
+    font-size: 18px;
+  }
+  .controlPanelDescription {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .controlPanelWaypointOverview .controlPanelWaypointOverviewIcon {
+    width: 45px;
+    height: 45px;
+  }
+  .controlPanelWaypointOverview {
+    margin-bottom: 25px;
+  }
+  .controlPanelTitle {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 1150px) {
+  .accountDashboardArea {
+    padding-left: 100px !important;
+    padding-right: 100px !important;
+  }
+}
+@media screen and (max-width: 1075px) {
+  .controlPanelWaypoint {
+    width: 100%;
+  }
+}

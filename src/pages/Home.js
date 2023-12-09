@@ -11,18 +11,11 @@ import Reviews from "../components/Reviews/Reviews";
 import IMG from "../assets/ui-fake-images/about-company-1.jpg";
 import BG from "../assets/ui-fake-images/about-company-bg.svg";
 import { motion } from "framer-motion";
+import { animate, initial } from "../utils/transition";
 
 const Home = () => {
   return (
-    <motion.div
-      initial={{
-        opacity: 0,
-      }}
-      animate={{
-        opacity: 1,
-      }}
-      className='home'
-      id='home'>
+    <motion.div initial={initial} animate={animate} className='home' id='home'>
       <MainUI />
       <AboutCompany
         title='about our company'

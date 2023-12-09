@@ -1,0 +1,38 @@
+.accountSidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.sidebarWaypoint {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #fff;
+  text-decoration: none;
+  transition: 0.3s ease;
+  padding: 12px 0;
+  border-radius: 12px;
+  width: 200px;
+  font-size: 16px;
+}
+.sidebarWaypoint:hover {
+  /* background-color: var(--secondary-color-pink); */
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.sidebarWaypoint.active {
+  white-space: nowrap;
+  background-color: var(--main-color-pink);
+  padding-left: 24px;
+  padding-right: 24px;
+}
+@media screen and (max-width: 1440px) {
+  .sidebarWaypoint {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 1280px) {
+    .sidebarWaypoint {
+        width: 180px;
+    }
+}

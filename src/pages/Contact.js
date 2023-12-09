@@ -11,6 +11,7 @@ import Img from "../components/Img";
 import Map from "../components/Map";
 import FAQ from "../components/FAQ/FAQ";
 import Footer from "../components/Footer/Footer";
+import { animate, initial } from "../utils/transition";
 
 const Contact = () => {
   const contactDetails = [
@@ -51,12 +52,8 @@ const Contact = () => {
 
   return (
     <motion.div
-      initial={{
-        opacity: 0,
-      }}
-      animate={{
-        opacity: 1,
-      }}
+      initial={initial}
+      animate={animate}
       className='contactContainer'
       style={{ paddingTop: "80px" }}>
       <ContactLayout

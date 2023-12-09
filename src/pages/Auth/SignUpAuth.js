@@ -10,6 +10,7 @@ import "./style.css";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { signUpSchema } from "../../utils/validationSchema";
+import { animate, initial } from "../../utils/transition";
 
 const Auth = ({ auth }) => {
   const [showPasswords, setShowPasswords] = useState({
@@ -25,14 +26,7 @@ const Auth = ({ auth }) => {
   };
 
   return (
-    <motion.div
-      initial={{
-        opacity: 0,
-      }}
-      animate={{
-        opacity: 1,
-      }}
-      className='authContainer'>
+    <motion.div initial={initial} animate={animate} className='authContainer'>
       <div className='authFormContainer container'>
         <NavLink to='/' className='authLogo'>
           <Img src={LOGO} alt='Wow Logo' className='authLogoImg' />

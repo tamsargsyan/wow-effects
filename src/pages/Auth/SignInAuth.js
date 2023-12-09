@@ -11,6 +11,7 @@ import { useState } from "react";
 import PasswordRecovery from "./PasswordRecovery";
 import { motion } from "framer-motion";
 import { signInSchema } from "../../utils/validationSchema";
+import { animate, initial } from "../../utils/transition";
 
 const Auth = ({ auth }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -22,14 +23,7 @@ const Auth = ({ auth }) => {
   const [passwordRecovery, setPasswordRecovery] = useState(false);
 
   return (
-    <motion.div
-      initial={{
-        opacity: 0,
-      }}
-      animate={{
-        opacity: 1,
-      }}
-      className='authContainer'>
+    <motion.div initial={initial} animate={animate} className='authContainer'>
       <div className='authFormContainer container'>
         <NavLink to='/' className='authLogo'>
           <Img src={LOGO} alt='Wow Logo' className='authLogoImg' />

@@ -12,6 +12,7 @@ import IMG_4 from "../../assets/ui-fake-images/portfolio-work-4.svg";
 import IMG_5 from "../../assets/ui-fake-images/portfolio-work-5.svg";
 import "./style.css";
 import SecondButton from "../../components/SecondButton/SecondButton";
+import { animate, initial } from "../../utils/transition";
 
 export const portfolios = [
   {
@@ -125,12 +126,8 @@ const PortfolioPage = () => {
 
   return (
     <motion.div
-      initial={{
-        opacity: 0,
-      }}
-      animate={{
-        opacity: 1,
-      }}
+      initial={initial}
+      animate={animate}
       className='portfolioPageContainer'>
       <PagesTitle
         title='our works'

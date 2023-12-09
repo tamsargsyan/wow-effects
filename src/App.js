@@ -11,6 +11,8 @@ import PortfolioPage from "./pages/Portfolio/PortfolioPage";
 import Shop from "./pages/Shop";
 import { useEffect } from "react";
 import SinglePortfolioPage from "./pages/Portfolio/SinglePortfolioPage";
+import ControlPanel from "./pages/Account/ControlPanel/ControlPanel";
+import Settings from "./pages/Account/Settings/Settings";
 
 const App = () => {
   const location = useLocation();
@@ -37,6 +39,8 @@ const App = () => {
             element={<SinglePortfolioPage />}
           />
           <Route path='/shop' element={<Shop />} />
+          <Route path='/account/control-panel' element={<ControlPanel />} />
+          <Route path='/account/settings' element={<Settings />} />
         </Route>
       </Routes>
     </AnimatePresence>

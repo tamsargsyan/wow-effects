@@ -10,6 +10,7 @@ import Slider from "../../components/Slider/Slider";
 import SecondButton from "../../components/SecondButton/SecondButton";
 import { portfolios } from "./PortfolioPage";
 import Title from "../../components/Title/Title";
+import { animate, initial } from "../../utils/transition";
 
 const SinglePortfolioPage = () => {
   const { portfolioName } = useParams();
@@ -51,13 +52,7 @@ const SinglePortfolioPage = () => {
   ];
 
   return (
-    <motion.div
-      initial={{
-        opacity: 0,
-      }}
-      animate={{
-        opacity: 1,
-      }}>
+    <motion.div initial={initial} animate={animate}>
       <div
         className='portfolioOverviewContainer'
         style={{ backgroundImage: `url(${portfolio.img})` }}>

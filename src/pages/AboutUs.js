@@ -9,16 +9,13 @@ import CountingNumbers from "../components/CountingNumbers/CountingNumbers";
 import Footer from "../components/Footer/Footer";
 import MeetUs from "../components/MeetUs/MeetUs";
 import { motion } from "framer-motion";
+import { animate, initial } from "../utils/transition";
 
 const AboutUs = () => {
   return (
     <motion.div
-      initial={{
-        opacity: 0,
-      }}
-      animate={{
-        opacity: 1,
-      }}
+      initial={initial}
+      animate={animate}
       className='aboutUsContainer'>
       <PagesTitle
         title='about us'

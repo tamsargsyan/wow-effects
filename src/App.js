@@ -13,6 +13,7 @@ import { useEffect } from "react";
 import SinglePortfolioPage from "./pages/Portfolio/SinglePortfolioPage";
 import ControlPanel from "./pages/Account/ControlPanel/ControlPanel";
 import Settings from "./pages/Account/Settings/Settings";
+import Address from "./pages/Account/Address/Address";
 
 const App = () => {
   const location = useLocation();
@@ -41,6 +42,7 @@ const App = () => {
           <Route path='/shop' element={<Shop />} />
           <Route path='/account/control-panel' element={<ControlPanel />} />
           <Route path='/account/settings' element={<Settings />} />
+          <Route path='/account/address' element={<Address />} />
         </Route>
       </Routes>
     </AnimatePresence>

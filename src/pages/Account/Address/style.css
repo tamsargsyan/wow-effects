@@ -1,0 +1,140 @@
+.addNewAddressBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 16px;
+}
+.adressesWrapper {
+  margin-top: 32px;
+  display: flex;
+  gap: 24px;
+}
+.adressesWrapper {
+  color: #fff;
+}
+.addressWrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: #0f0f0f;
+  border-radius: 12px;
+  border: 1px solid #af4b85;
+}
+.address {
+  display: flex;
+  gap: 8px;
+  color: #888;
+  font-size: 16px;
+}
+.addressLabel {
+  display: flex;
+  gap: 16px;
+}
+.addressLabel label {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.addressTitle {
+  font-family: Poppins-500;
+  margin-bottom: 8px;
+  font-size: 18px;
+}
+.addressTitle p span {
+  color: var(--main-color-pink);
+}
+.addressActionPanel {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+.addressActionPanel button {
+  background: transparent;
+  border: none;
+  outline: none;
+  padding: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.addressActionPanel button img {
+  width: 20px;
+  height: 20px;
+  object-fit: none;
+}
+
+.newAddresFormGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.newAddresFormGroup label {
+  font-size: 14px;
+}
+.newAddresFormGroup label span {
+  color: var(--main-color-pink);
+}
+.newAddresFormGroupInput input {
+  width: 100%;
+  padding: 16px 20px;
+  border-radius: 8px;
+  background: #0f0f0f;
+  border: none;
+  outline: none;
+  color: #fff;
+  opacity: 0.7;
+  font-size: 16px;
+}
+.newAddressError {
+  color: #cc0000;
+  font-size: 12px;
+}
+#newAddressForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.addAddressBtn {
+  padding: 12px 32px;
+  border-radius: 8px;
+  margin-top: 32px;
+}
+/* radio style */
+input[type="radio"] {
+  --s: 1em;
+  --c: var(--main-color-pink);
+
+  height: var(--s);
+  aspect-ratio: 1;
+  border: calc(var(--s) / 9) solid #939393;
+  padding: calc(var(--s) / 16);
+  background: radial-gradient(farthest-side, var(--c) 94%, #0000) 50%/0 0
+    no-repeat content-box;
+  border-radius: 50%;
+  outline-offset: calc(var(--s) / 9);
+  appearance: none;
+  cursor: pointer;
+  font-size: inherit;
+  transition: 0.3s;
+}
+input[type="radio"]:checked {
+  border-color: var(--c);
+  background-size: 100% 100%;
+}
+
+input[type="radio"]:disabled {
+  background: linear-gradient(#939393 0 0) 50%/100% 20% no-repeat content-box;
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media print {
+  input[type="radio"] {
+    -webkit-appearance: auto;
+    -moz-appearance: auto;
+    appearance: auto;
+    background: none;
+  }
+}

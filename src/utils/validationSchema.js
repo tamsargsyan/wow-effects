@@ -62,3 +62,22 @@ export const accountManagementSchema = yup.object().shape({
     .required("Password confirmation is a required field")
     .oneOf([yup.ref("new_password")], "Passwords must match"),
 });
+
+export const newAddressSchema = yup.object().shape({
+  country: yup
+    .string()
+    .matches(/^[A-Za-z]+$/, "Name should only contain letters")
+    .required("Name is a required field"),
+  city: yup
+    .string()
+    .matches(/^[A-Za-z]+$/, "Name should only contain letters")
+    .required("Name is a required field"),
+  address: yup
+    .string()
+    .matches(/^[A-Za-z]+$/, "Name should only contain letters")
+    .required("Name is a required field"),
+  zip_code: yup
+    .string()
+    .matches(/^[A-Za-z]+$/, "Name should only contain letters")
+    .required("Name is a required field"),
+});

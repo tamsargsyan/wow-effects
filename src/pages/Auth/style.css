@@ -121,19 +121,6 @@
   justify-content: space-between;
   align-items: center;
 }
-.rememberMeHandler {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-.checkbox-wrapper-23 input + label {
-  width: 24px;
-  height: 24px;
-  border-radius: 4px;
-}
-.rememberMeHandlerTitle {
-  font-size: 16px;
-}
 .passwordRecoveryTitle {
   cursor: pointer;
   opacity: 0.7;
@@ -344,54 +331,4 @@
   to {
     transform: scaleY(1);
   }
-}
-
-/* checkbox anim */
-.checkbox-wrapper-23 *,
-.checkbox-wrapper-23 *:after,
-.checkbox-wrapper-23 *:before {
-  box-sizing: border-box;
-}
-
-.checkbox-wrapper-23 input {
-  position: absolute;
-  opacity: 0;
-}
-
-.checkbox-wrapper-23 input:checked + label svg path {
-  stroke-dashoffset: 0;
-}
-
-.checkbox-wrapper-23 input:focus + label {
-  transform: scale(1.03);
-}
-
-.checkbox-wrapper-23 input + label {
-  display: block;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background: var(--alternative-black-color);
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.checkbox-wrapper-23 input + label:active {
-  transform: scale(1.02);
-  border-radius: 12px;
-}
-
-.checkbox-wrapper-23 input + label svg {
-  pointer-events: none;
-  padding: 2px;
-  margin-bottom: 2px;
-}
-
-.checkbox-wrapper-23 input + label svg path {
-  fill: none;
-  stroke: rgba(255, 255, 255, 0.1);
-  stroke-width: 4px;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-  stroke-dasharray: 100;
-  stroke-dashoffset: 101;
-  transition: all 250ms cubic-bezier(1, 0, 0.37, 0.91);
 }

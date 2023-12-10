@@ -35,3 +35,30 @@ export const contactSchema = yup.object().shape({
     .matches(/^[0-9]+$/, "Phone number should contain only numbers"),
   message: yup.string().required("This is a required field"),
 });
+
+export const accountManagementSchema = yup.object().shape({
+  name: yup
+    .string()
+    .matches(/^[A-Za-z]+$/, "Name should only contain letters")
+    .required("Name is a required field"),
+  last_name: yup
+    .string()
+    .matches(/^[A-Za-z]+$/, "Name should only contain letters")
+    .required("Name is a required field"),
+  email: yup.string().email("Invalid email").required("Email is required"),
+  phone: yup
+    .string()
+    .matches(/^[0-9]+$/, "Phone number should contain only numbers"),
+  current_password: yup
+    .string()
+    .required("Password is a required field")
+    .min(8, "Password must be at least 8 characters"),
+  new_password: yup
+    .string()
+    .required("Password is a required field")
+    .min(8, "Password must be at least 8 characters"),
+  password_confirmation: yup
+    .string()
+    .required("Password confirmation is a required field")
+    .oneOf([yup.ref("new_password")], "Passwords must match"),
+});

@@ -3,6 +3,12 @@
   gap: 80px;
   padding: 80px 260px 200px 260px;
 }
+.accountPageTitle {
+  color: #fff;
+  font-family: Poppins-600;
+  margin-bottom: 28px;
+  font-size: 24px;
+}
 @media screen and (max-width: 1600px) {
   .accountDashboardArea {
     gap: 60px;

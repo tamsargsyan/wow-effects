@@ -1,3 +1,84 @@
-div {
-    color: #fff
+.accountSettingsContainer {
+  color: #fff;
+}
+.accountManagementAvatarImg {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 16px;
+}
+.accountManagementAvatarImg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+.accountAvatarUploadBtn label {
+  display: block;
+  width: fit-content;
+  color: #af4b85;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid rgba(136, 136, 136, 0.1);
+  background: #fbfbfb;
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.04);
+  font-family: Poppins-600;
+  padding: 10px 16px;
+  font-size: 16px;
+}
+.accountManagementForm {
+  margin-top: 32px;
+}
+#accountManagementForm {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.accountManagementPersonalData {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.accountMangementFormGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 539px;
+}
+.accountMangementFormGroup label {
+  font-size: 14px;
+}
+.accountMangementFormGroup label span {
+  color: #af4b85;
+}
+.accountMangementFormGroupInput input {
+  width: 100%;
+  outline: none;
+  padding: 16px 20px;
+  border-radius: 8px;
+  background: #0f0f0f;
+  border: none;
+  color: #fff;
+  opacity: 0.7;
+  font-size: 16px;
+}
+.passwordModification {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.accountMangementError {
+  color: #cc0000;
+  font-size: 12px;
+}
+.accountManagementDivider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+}
+.accountMangementSaveBtn {
+  width: fit-content;
+  border-radius: 8px;
+  padding: 12px 32px;
+  font-size: 18px;
 }

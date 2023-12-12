@@ -14,6 +14,7 @@ import SinglePortfolioPage from "./pages/Portfolio/SinglePortfolioPage";
 import ControlPanel from "./pages/Account/ControlPanel/ControlPanel";
 import Settings from "./pages/Account/Settings/Settings";
 import Address from "./pages/Account/Address/Address";
+import Orders from "./pages/Account/Orders/Orders";
 
 const App = () => {
   const location = useLocation();
@@ -43,6 +44,7 @@ const App = () => {
           <Route path='/account/control-panel' element={<ControlPanel />} />
           <Route path='/account/settings' element={<Settings />} />
           <Route path='/account/address' element={<Address />} />
+          <Route path='/account/orders' element={<Orders />} />
         </Route>
       </Routes>
     </AnimatePresence>

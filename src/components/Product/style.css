@@ -1,0 +1,78 @@
+.productWrapper {
+  color: #fff;
+  border-radius: 16px;
+  background: #0f0f0f;
+}
+.productImg {
+  width: 345px;
+  height: 250px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-top-right-radius: inherit;
+  border-top-left-radius: inherit;
+  padding: 16px;
+}
+.productSaveBtn {
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(20px);
+  padding: 12px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  float: right;
+}
+.productSaveBtn img {
+  width: 24px;
+  height: 24px;
+}
+.productDetails {
+  padding: 16px;
+}
+.productInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.productRegulatorBtn {
+  padding: 12px;
+  font-family: Poppins-600;
+  border-radius: 8px;
+  font-size: 18px;
+}
+.productGuide {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.productPending {
+  padding: 6px 12px;
+  border-radius: 8px;
+  width: fit-content;
+  margin-bottom: 12px;
+}
+.in_progress {
+  background: rgba(255, 216, 78, 0.2);
+  color: #ffd84e;
+}
+.ordered {
+  background: rgba(39, 174, 96, 0.2);
+  color: #27ae60;
+}
+.productPendingTitle {
+  font-family: Poppins-600;
+  font-size: 16px;
+}
+.productGuideTitle {
+  font-size: 20px;
+}
+.productGuidePrice {
+  opacity: 0.8;
+  font-family: Poppins-700;
+  font-size: 24px;
+}

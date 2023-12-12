@@ -1,0 +1,46 @@
+.orders {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+.orderPipelineWrapper {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 70px;
+  position: relative;
+}
+.orderPipelinePath {
+  position: absolute;
+  left: 30px;
+  top: 20px;
+  width: 90%;
+  height: 1px;
+  background: #af4b85;
+}
+.orderPipeline {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.orderPipelinePath {
+  border: 1px dashed #af4b85;
+}
+.orderPipelineIcon {
+  background: #af4b85;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+}
+.orderPipelineTitle {
+  font-family: Poppins-500;
+  font-size: 16px;
+}
+.orderPipelineDate {
+  color: #888;
+  font-size: 14px;
+}
+.orderTiming {
+    
+}

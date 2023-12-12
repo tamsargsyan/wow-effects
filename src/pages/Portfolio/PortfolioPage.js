@@ -14,6 +14,21 @@ import "./style.css";
 import SecondButton from "../../components/SecondButton/SecondButton";
 import { animate, initial } from "../../utils/transition";
 
+export const filterStatus = [
+  {
+    id: 1,
+    name: "Trending",
+  },
+  {
+    id: 2,
+    name: "Trending",
+  },
+  {
+    id: 3,
+    name: "Trending",
+  },
+];
+
 export const portfolios = [
   {
     id: 1,
@@ -106,21 +121,6 @@ const PortfolioPage = () => {
     {
       id: 3,
       name: "Interior Design",
-    },
-  ];
-
-  const filterStatus = [
-    {
-      id: 1,
-      name: "Trending",
-    },
-    {
-      id: 2,
-      name: "Trending",
-    },
-    {
-      id: 3,
-      name: "Trending",
     },
   ];
 

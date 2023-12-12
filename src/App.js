@@ -8,13 +8,13 @@ import SignInAuth from "./pages/Auth/SignInAuth";
 import SignUpAuth from "./pages/Auth/SignUpAuth";
 import Contact from "./pages/Contact";
 import PortfolioPage from "./pages/Portfolio/PortfolioPage";
-import Shop from "./pages/Shop";
 import { useEffect } from "react";
 import SinglePortfolioPage from "./pages/Portfolio/SinglePortfolioPage";
 import ControlPanel from "./pages/Account/ControlPanel/ControlPanel";
 import Settings from "./pages/Account/Settings/Settings";
 import Address from "./pages/Account/Address/Address";
 import Orders from "./pages/Account/Orders/Orders";
+import Shop from "./pages/Shop/Shop";
 
 const App = () => {
   const location = useLocation();

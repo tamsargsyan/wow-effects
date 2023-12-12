@@ -1,0 +1,100 @@
+.filteringSectionTitle {
+  font-family: Poppins-700;
+  font-size: 24px;
+}
+.filterOptionsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.filteringOptionsTitleContainer {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* margin-bottom: 16px; */
+}
+.filterOptionsTitle {
+  font-family: Poppins-600;
+  font-size: 20px;
+}
+.filteringOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.filteringOption {
+  text-decoration: none;
+}
+.filteringOption p {
+  color: #fff;
+  text-decoration: none;
+  opacity: 0.7;
+  font-size: 16px;
+}
+.filteringOptionCategory:first-child p {
+  color: #af4b85;
+  opacity: 1;
+  font-family: Poppins-700;
+  font-size: 16px;
+}
+
+/* plus to minus */
+.filteringOptionsMinusPlus {
+  color: #fff;
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+
+.filteringOptionsMinusPlus span {
+  position: absolute;
+  transition: 300ms;
+  background: #fff;
+  border-radius: 2px;
+}
+
+/* Create the "+" shape by positioning the spans absolutely */
+.filteringOptionsMinusPlus span:first-child {
+  top: 25%;
+  bottom: 25%;
+  width: 10%;
+  left: 45%;
+}
+
+.filteringOptionsMinusPlus span:last-child {
+  left: 25%;
+  right: 25%;
+  height: 10%;
+  top: 45%;
+}
+
+/* Morph the shape when the .filteringOptionsMinusPlus is hovered over */
+.filterOptionsContainerActive .filteringOptionsMinusPlus span {
+  transform: rotate(90deg);
+}
+
+.filterOptionsContainerActive .filteringOptionsMinusPlus span:last-child {
+  left: 50%;
+  right: 50%;
+}
+.filteringOptions {
+  /* max-height: 0; */
+  display: none;
+  overflow: hidden;
+  transition: 0.3s ease;
+}
+.filterOptionsContainerActive .filteringOptions {
+  /* max-height: 500px; */
+  display: flex;
+}
+
+/* color */
+.filteringOptions:has(.filteringOptionColor) {
+  flex-direction: row;
+}
+.filteringOptionColor {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}

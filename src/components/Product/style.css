@@ -2,6 +2,7 @@
   color: #fff;
   border-radius: 16px;
   background: #0f0f0f;
+  width: fit-content;
 }
 .productImg {
   width: 345px;

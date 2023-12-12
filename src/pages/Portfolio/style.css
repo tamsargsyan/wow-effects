@@ -21,6 +21,7 @@
 .filterDropHolder {
   border-radius: 10px;
   position: relative;
+  width: fit-content;
 }
 
 .filterDropHolder:after {

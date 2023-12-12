@@ -4,28 +4,28 @@ import "./style.css";
 import Product from "../../../components/Product/Product";
 import Modal from "../../../components/Modal/Modal";
 
-const Orders = () => {
-  const orders = [
-    {
-      id: 1,
-      name: "Bronze faucet",
-      price: "$99.00",
-      pending: "in_progress",
-    },
-    {
-      id: 2,
-      name: "Bronze faucet",
-      price: "$99.00",
-      pending: "ordered",
-    },
-    {
-      id: 3,
-      name: "Bronze faucet",
-      price: "$99.00",
-      pending: "in_progress",
-    },
-  ];
+export const orders = [
+  {
+    id: 1,
+    name: "Bronze faucet",
+    price: "$99.00",
+    pending: "in_progress",
+  },
+  {
+    id: 2,
+    name: "Bronze faucet",
+    price: "$99.00",
+    pending: "ordered",
+  },
+  {
+    id: 3,
+    name: "Bronze faucet",
+    price: "$99.00",
+    pending: "in_progress",
+  },
+];
 
+const Orders = () => {
   const [viewOrder, setViewOrder] = useState(false);
 
   const orderPipeline = [

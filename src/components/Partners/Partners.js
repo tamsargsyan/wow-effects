@@ -2,6 +2,9 @@ import Slider from "../Slider/Slider";
 import Title from "../Title/Title";
 import PARTNER_1 from "../../assets/partners/partner-1.svg";
 import "./style.css";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchData } from "../../redux/actions/partnersActions";
 
 const Partners = () => {
   const partners = [
@@ -41,6 +44,15 @@ const Partners = () => {
       name: "Lorem Ipsum",
     },
   ];
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchData());
+  }, [dispatch]);
+
+  const part = useSelector(state => state.partners);
+  console.log(part);
+
   return (
     <div className='partnersContainer container'>
       <Title title='Our partners' />

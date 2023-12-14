@@ -1,0 +1,69 @@
+.basketOverlay {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(1.5px);
+}
+.basketContainer {
+  width: 522px;
+  height: 100vh;
+  position: fixed;
+  right: 0;
+  top: 0;
+  background: #000;
+  color: #fff;
+  padding: 32px;
+}
+.basketHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 54px;
+}
+.basketHeaderTitle {
+  font-family: Poppins-600;
+  font-size: 24px;
+}
+.basketHeaderClose {
+  background: transparent;
+  border: none;
+  outline: none;
+}
+.basketProducts {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 16px;
+}
+.basketSubtotalPriceContainer {
+  margin-top: 32px;
+  padding: 32px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  text-align: end;
+}
+.basketContinueCheckoutBtn {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 32px;
+  width: 100%;
+}
+.basketContinueCheckoutBtn .mainBtn {
+  padding: 12px 32px;
+  border-radius: 8px;
+  width: 100%;
+  font-family: Poppins-600;
+  font-size: 18px;
+}
+.basketBody {
+  overflow-y: auto;
+  max-height: 69vh;
+}
+.basketBody::-webkit-scrollbar {
+  display: none;
+}

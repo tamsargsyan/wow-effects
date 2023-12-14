@@ -11,12 +11,14 @@ const Checkbox = ({ text, className }) => {
           </svg>
         </label>
       </div>
-      <label
-        className='checkboxTitle'
-        // for="check-23"
-      >
-        {text}
-      </label>
+      {text && (
+        <label
+          className='checkboxTitle'
+          // for="check-23"
+        >
+          {text}
+        </label>
+      )}
     </div>
   );
 };

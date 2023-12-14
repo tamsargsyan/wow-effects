@@ -1,0 +1,144 @@
+.singleShopContainer {
+  color: #fff;
+}
+.personalizationStation {
+  padding-top: 50px;
+  padding-bottom: 170px;
+}
+.shopSuggestionsSliderContainer {
+  margin-bottom: 200px;
+}
+.personalizationStation {
+  padding-left: 260px;
+  padding-right: 260px;
+}
+.productImgsContainer {
+  display: flex;
+  gap: 16px;
+}
+.productSmallImgs {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  gap: 16px;
+}
+.productSmallImgs img {
+  width: 140px;
+  height: 140px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+.productMainImg {
+  height: 608px;
+  width: 640px;
+}
+.productMainImg img {
+  border-radius: 4px;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.choiceConfig {
+  display: flex;
+  gap: 60px;
+}
+.valueVaultContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.valueVaultDividor {
+  height: 1px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.1);
+}
+.valueVaultTitleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+.valueVaultTitle {
+  font-family: Poppins-500;
+  font-size: 24px;
+  /* letter-spacing: 0.6px; */
+}
+.valueVaultPrice {
+  font-family: Poppins-700;
+  font-size: 32px;
+}
+.valueVaultDescription {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 16px;
+}
+.pricecountContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.priceContainer {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+.priceCountTitle {
+  font-family: Poppins-500;
+  font-size: 18px;
+}
+.priceCountOptions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+.priceCountOptions button {
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 50%;
+  border: none;
+  outline: none;
+}
+.priceCountOptions button:first-child {
+  background: #484540;
+}
+.quantityContainer {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+.typeMaterialContainer {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  gap: 12px;
+}
+.typeContainer {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+.materialContainer {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.typeMaterialTitle {
+  width: 100px;
+  opacity: 0.7;
+  font-size: 18px;
+}
+.typeMaterialDescription {
+  font-size: 16px;
+}
+.typeMaterialContainer .btns {
+  margin-top: 48px;
+}
+.addToCartBtn {
+  border-radius: 8px;
+  font-family: Poppins-600;
+  padding: 12px 32px;
+  font-size: 18px;
+}
+.detailsOverviewFAQ {
+  margin-top: 60px;
+}

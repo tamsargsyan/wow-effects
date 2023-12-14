@@ -16,6 +16,8 @@ import { orders } from "../Account/Orders/Orders";
 import Product from "../../components/Product/Product";
 import Button from "../../components/Button/Button";
 import Footer from "../../components/Footer/Footer";
+import { useDispatch } from "react-redux";
+import { addToBasket } from "../../redux/actions/basketActions";
 
 const Shop = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -29,6 +31,8 @@ const Shop = () => {
     setSelectedItem(item);
     setShowMenu(false);
   };
+
+  const dispatch = useDispatch();
 
   return (
     <motion.div initial={initial} animate={animate} className='shopContainer'>
@@ -113,7 +117,9 @@ const Shop = () => {
                   name={order.name}
                   price={order.price}
                   // pending={order.pending}
-                  // onBtnClick={() => setViewOrder(true)}
+                  onBtnClick={() => dispatch(addToBasket(order))}
+                  btnText='Add to cart'
+                  img={order.img}
                 />
               </Fragment>
             ))}

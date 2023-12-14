@@ -70,7 +70,7 @@ const Portfolio = () => {
       />
       <div className='portfolioWrapper'>
         {portfolio.map(p => (
-          <Fragment keu={p.id}>
+          <Fragment key={p.id}>
             <PortfolioBox
               className={p.className}
               img={p.img}

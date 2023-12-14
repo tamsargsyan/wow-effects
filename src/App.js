@@ -15,6 +15,9 @@ import Settings from "./pages/Account/Settings/Settings";
 import Address from "./pages/Account/Address/Address";
 import Orders from "./pages/Account/Orders/Orders";
 import Shop from "./pages/Shop/Shop";
+import SingleShop from "./pages/Shop/SingleShop/SingleShop";
+import CheckoutOrder from "./pages/Shop/Checkout/CheckoutOrder";
+import CheckoutPlaceOrder from "./pages/Shop/Checkout/CheckoutPlaceOrder";
 
 const App = () => {
   const location = useLocation();
@@ -41,6 +44,12 @@ const App = () => {
             element={<SinglePortfolioPage />}
           />
           <Route path='/shop' element={<Shop />} />
+          <Route path='/shop/:productName' element={<SingleShop />} />
+          <Route path='/checkout/order' element={<CheckoutOrder />} />
+          <Route
+            path='/checkout/place-order'
+            element={<CheckoutPlaceOrder />}
+          />
           <Route path='/account/control-panel' element={<ControlPanel />} />
           <Route path='/account/settings' element={<Settings />} />
           <Route path='/account/address' element={<Address />} />

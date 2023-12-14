@@ -1,0 +1,75 @@
+.quantity-field {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 40px;
+}
+
+.quantity-field .value-button {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  /* border: none; */
+  /* margin: 0px; */
+  width: 40px;
+  height: 100%;
+  color: #fff;
+  /* padding: 0; */
+  /* outline: none; */
+  transition: 0.3s ease;
+}
+.quantity-field .value-button:hover {
+  background: rgba(255, 255, 255, 0.07);
+}
+/* .quantity-field .value-button:hover {
+  background: rgb(230, 230, 230);
+} */
+/* 
+.quantity-field .value-button:active {
+  background: rgb(210, 210, 210);
+} */
+
+.quantity-field .decrease-button {
+  /* margin-right: -4px; */
+  border-radius: 8px 0 0 8px;
+  border-right: none;
+}
+
+.quantity-field .increase-button {
+  /* margin-left: -4px; */
+  border-radius: 0 8px 8px 0;
+  border-left: none;
+}
+
+.quantity-field .number {
+  display: inline-block;
+  text-align: center;
+  border: none;
+  /* border-top: 1px solid #ddd; */
+  /* border-bottom: 1px solid #ddd; */
+  /* color: #000; */
+  /* margin: 0px; */
+  /* border: 1px solid rgba(255, 255, 255, 0.04); */
+  /* border: none; */
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  /* border-bottom: 1px solid rgba(255, 255, 255, 0.04); */
+  width: 40px;
+  height: 100%;
+  line-height: 40px;
+  font-size: 11pt;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+/* .quantity-field .number::selection {
+  background: none;
+} */
+
+/*
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+*/

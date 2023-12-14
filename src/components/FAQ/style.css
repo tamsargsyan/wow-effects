@@ -163,7 +163,8 @@
 .contactFAQ .accordion-item:target .accordionArrow {
   background: rgba(255, 255, 255, 0.06);
 }
-.contactFAQ .accordion-item:target {
+.contactFAQ .accordion-item:target,
+.detailsOverviewFAQ .accordion-item:target {
   border: none;
   box-shadow: none;
   border-radius: 12px;
@@ -192,10 +193,33 @@
   }
 }
 @media screen and (max-width: 600px) {
- .contactFAQ .accordion-link {
+  .contactFAQ .accordion-link {
     font-size: 18px;
   }
   .contactFAQ .answer p {
     font-size: 16px;
   }
+}
+
+.detailsOverviewFAQ .accordion {
+  width: 100%;
+}
+.detailsOverviewFAQ .accordion-item {
+  margin: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.detailsOverviewFAQ .accordion-link,
+.detailsOverviewFAQ .answer p {
+  padding: 16px;
+  padding-left: 0;
+}
+.detailsOverviewFAQ .accordion-link,
+.detailsOverviewFAQ .answer {
+  background: #000;
+}
+.detailsOverviewFAQ .accordion-link {
+  color: #fff;
+  font-feature-settings: "clig" off, "liga" off;
+  font-family: Poppins-500;
+  font-size: 24px;
 }

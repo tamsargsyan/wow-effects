@@ -25,6 +25,11 @@ button {
 input::placeholder {
   color: inherit;
 }
+.btns {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
 @media screen and (max-width: 1100px) {
   .container {
     padding-left: var(--main-padding-lr-tablet_1);

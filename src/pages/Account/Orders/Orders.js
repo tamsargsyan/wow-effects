@@ -3,25 +3,32 @@ import AccountLayout from "../AccountLayout";
 import "./style.css";
 import Product from "../../../components/Product/Product";
 import Modal from "../../../components/Modal/Modal";
+import IMG from "../../../assets/ui-fake-images/portfolio-page-1.jpg";
 
 export const orders = [
   {
     id: 1,
-    name: "Bronze faucet",
+    title: "Bronze faucet",
+    description: "description",
     price: "$99.00",
     pending: "in_progress",
+    img: IMG,
   },
   {
     id: 2,
-    name: "Bronze faucet",
+    title: "Bronze faucet",
+    description: "description",
     price: "$99.00",
     pending: "ordered",
+    img: IMG,
   },
   {
     id: 3,
-    name: "Bronze faucet",
+    title: "Bronze faucet",
+    description: "description",
     price: "$99.00",
     pending: "in_progress",
+    img: IMG,
   },
 ];
 
@@ -66,10 +73,12 @@ const Orders = () => {
           {orders.map((order, i) => (
             <Fragment key={i}>
               <Product
-                name={order.name}
+                name={order.title}
                 price={order.price}
                 pending={order.pending}
                 onBtnClick={() => setViewOrder(true)}
+                btnText='Manage'
+                img={IMG}
               />
             </Fragment>
           ))}

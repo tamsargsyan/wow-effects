@@ -6,6 +6,11 @@ import { Dropdown, Space } from "antd";
 import ARROW_DOWN from "../../assets/icons/arrow-down-white.svg";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import { useEffect, useState } from "react";
+import HEART from "../../assets/icons/heart-without-bg.svg";
+import BASKET from "../../assets/icons/basket-without-bg.svg";
+import Img from "../Img";
+import { useDispatch } from "react-redux";
+import { openBasketModal } from "../../redux/actions/basketActions";
 
 const BottomHeader = () => {
   const menu = [
@@ -77,6 +82,8 @@ const BottomHeader = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [prevScrollPos, visible]);
 
+  const dispatch = useDispatch();
+
   return (
     <div
       className={`${
@@ -118,6 +125,16 @@ const BottomHeader = () => {
           })}
         </div>
         <div className='bottomHeaderSignIn'>
+          <div className='quickPick'>
+            <button className='quickPickFavorites'>
+              <Img src={HEART} alt='Heart' />
+            </button>
+            <button
+              className='quickPickBasket'
+              onClick={() => dispatch(openBasketModal())}>
+              <Img src={BASKET} alt='Basket' />
+            </button>
+          </div>
           <Button
             link={true}
             to='sign-in'

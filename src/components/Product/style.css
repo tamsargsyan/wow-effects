@@ -14,24 +14,6 @@
   border-top-left-radius: inherit;
   padding: 16px;
 }
-.productSaveBtn {
-  border-radius: 8px;
-  background: #fff;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2);
-  backdrop-filter: blur(20px);
-  padding: 12px;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: none;
-  float: right;
-}
-.productSaveBtn img {
-  width: 24px;
-  height: 24px;
-}
 .productDetails {
   padding: 16px;
 }

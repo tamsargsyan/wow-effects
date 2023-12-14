@@ -6,7 +6,7 @@ import { useWindowSize } from "../../hooks/useWindowSize";
 
 const Slider = ({ children, className }) => {
   const sliderRef = useRef(null);
-  const scrollAmount = 100;
+  const scrollAmount = 320;
   const { width } = useWindowSize();
 
   return (

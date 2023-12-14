@@ -1,21 +1,20 @@
-import IMG from "../../assets/ui-fake-images/portfolio-page-1.jpg";
-import HEART from "../../assets/icons/heart-gray.svg";
 import "./style.css";
 import Button from "../Button/Button";
+import SaveButton from "../SaveButton/SaveButton";
 
-const Product = ({ name, price, pending, onBtnClick }) => {
+const Product = ({ name, price, pending, onBtnClick, btnText, img }) => {
   const checkPending = () => {
     let result = "";
     if (pending === "in_progress") return (result = "In Progress");
     if (pending === "ordered") return (result = "Ordered");
+
+    return result;
   };
 
   return (
     <div className='productWrapper'>
-      <div className='productImg' style={{ backgroundImage: `url(${IMG})` }}>
-        <button className='productSaveBtn'>
-          <img src={HEART} alt='Heart' />
-        </button>
+      <div className='productImg' style={{ backgroundImage: `url(${img})` }}>
+        <SaveButton />
       </div>
       <div className='productDetails'>
         <div className={`${pending} productPending`}>
@@ -27,7 +26,7 @@ const Product = ({ name, price, pending, onBtnClick }) => {
             <p className='productGuidePrice'>${price}</p>
           </div>
           <Button
-            text='Manage'
+            text={btnText}
             onClick={onBtnClick}
             className='productRegulatorBtn'
             style={{

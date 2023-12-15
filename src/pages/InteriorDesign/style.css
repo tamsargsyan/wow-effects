@@ -1,0 +1,107 @@
+.interiorDesignWorkingTitle1 {
+  color: #af4b85;
+  font-family: Poppins-600;
+  margin-bottom: 12px;
+  text-align: center;
+  font-size: 18px;
+}
+.interiorDesignWorkingTitle2 {
+  color: #fff;
+  font-family: Poppins-700;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 40px;
+}
+.interiorDesignWorkingProcessContainer {
+  padding-left: 200px;
+  padding-right: 200px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 160px;
+  margin-bottom: 160px;
+}
+.interiorDesignWorkingProcessMap {
+  color: #fff;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.compassImgWrapper {
+  width: 80px;
+  height: 80px;
+  padding: 10px;
+  border-radius: 12px;
+  background: #af4b85;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.compassImgWrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: none;
+}
+.workingProcessMapTitle {
+  color: #fff;
+  font-family: Poppins-600;
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+.workingProcessMapDesc {
+  color: #959595;
+  text-align: center;
+  font-size: 18px;
+}
+.interiorDesignWorkingProcessMapContainer {
+  display: flex;
+  gap: 80px;
+  margin-top: 100px;
+  margin-bottom: 160px;
+  position: relative;
+}
+.workingProcessLine {
+  position: absolute;
+  border: 1px dashed rgba(175, 75, 133, 0.4);
+  width: 80%;
+  left: 80px;
+  top: 40px;
+  z-index: -1;
+}
+.package {
+  border-radius: 24px;
+  background: #0f0f0f;
+  padding: 32px;
+  color: #fff;
+  /* width: 25rem; */
+}
+.packageTitle {
+  font-family: Poppins-700;
+  font-size: 24px;
+  margin-bottom: 24px;
+}
+.packagePrice {
+  color: #af4b85;
+  font-family: Poppins-700;
+  font-size: 44px;
+  margin-bottom: 24px;
+}
+.packageDesc {
+  color: #959595;
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+.packageBtn {
+  color: #fff;
+  font-family: Poppins-600;
+  padding: 16px 20px;
+  font-size: 18px;
+  border: none;
+}
+.packages {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 154px;
+}

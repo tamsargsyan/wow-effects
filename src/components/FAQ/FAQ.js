@@ -3,56 +3,56 @@ import ARROW from "../../assets/icons/arrow-down-white.svg";
 import "./style.css";
 
 const FAQ = ({ title, className, data }) => {
-  const faq = [
-    {
-      id: 1,
-      title: "Question 1",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+
+  const faq2 = {
+    faq_main: {
+      heading_en: "sfhjbk123258",
+      heading_ru: "hhvuj",
+      heading_am: "sfsg",
+      description_en: "<p>afsdg</p>",
+      description_ru: "<p>sdgg</p>",
+      description_am: "<p>sgsg</p>",
+      faqs: [
+        {
+          id: 4,
+          question_en: "<p>bghgvbujfd147</p>",
+          question_ru: "<p>fhgfh</p>",
+          question_am: "<p>fhfghg</p>",
+          answer_en: "<p>hgfhg</p>",
+          answer_ru: "<p>fhgj</p>",
+          answer_am: "<p>dgthut</p>",
+        },
+      ],
     },
-    {
-      id: 2,
-      title: "Question 2",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    },
-    {
-      id: 3,
-      title: "Question 3",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    },
-    {
-      id: 4,
-      title: "Question 4",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    },
-    {
-      id: 5,
-      title: "Question 5",
-      description:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    },
-  ];
+  };
+
+  const lang = "en";
 
   return (
     <div className={`${className} faqContainer`}>
       {title && <Title title={title} />}
       <div className='accordion'>
-        {(data ? data : faq).map(f => (
+        {(data ? data.faq_main.faqs : faq2.faq_main.faqs).map(f => (
           <div className='accordion-item' id={`question${f.id}`} key={f.id}>
             <a className='accordion-link' href={`#question${f.id}`}>
-              <div className='flex'>
-                <p>{f.title}</p>
-              </div>
+              <div
+                className='flex'
+                dangerouslySetInnerHTML={{ __html: f[`question_${lang}`] }}
+              />
+              {/* <p
+                  dangerouslySetInnerHTML={{ __html: f[`question_${lang}`] }}
+                /> */}
+              {/* </div> */}
               <div className='accordionArrow'>
                 <img src={ARROW} alt='Arrow' />
               </div>
             </a>
-            <div className='answer'>
-              <p>{f.description}</p>
-            </div>
+            <div
+              className='answer'
+              dangerouslySetInnerHTML={{ __html: f[`answer_${lang}`] }}
+            />
+            {/* <p dangerouslySetInnerHTML={{ __html: f[`answer_${lang}`] }} /> */}
+            {/* </div> */}
           </div>
         ))}
       </div>

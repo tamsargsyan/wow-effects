@@ -2,6 +2,7 @@ import axios from "axios";
 
 // const BASE_URL = process.env.WOW_EFFECT_BASE_URL;
 const BASE_URL = "https://prod.machtech.site/Armine/WowEffect/api";
+export const STORAGE_URL = "https://prod.machtech.site/Armine/WowEffect";
 
 const apiService = {
   get: async (endpoint, params = {}, headers = {}) => {

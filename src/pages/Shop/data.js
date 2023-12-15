@@ -114,23 +114,24 @@ export const colors = [
   },
 ];
 
-export const details = [
-  {
-    id: 1,
-    title: "Details & Overview",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+export const details = {
+  faq_main: {
+    heading_en: "sfhjbk123258",
+    heading_ru: "hhvuj",
+    heading_am: "sfsg",
+    description_en: "<p>afsdg</p>",
+    description_ru: "<p>sdgg</p>",
+    description_am: "<p>sgsg</p>",
+    faqs: [
+      {
+        id: 4,
+        question_en: "<p>bghgvbujfd147</p>",
+        question_ru: "<p>fhgfh</p>",
+        question_am: "<p>fhfghg</p>",
+        answer_en: "<p>hgfhg</p>",
+        answer_ru: "<p>fhgj</p>",
+        answer_am: "<p>dgthut</p>",
+      },
+    ],
   },
-  {
-    id: 2,
-    title: "Dimensions",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  },
-  {
-    id: 3,
-    title: "Product Reviews",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-  },
-];
+};

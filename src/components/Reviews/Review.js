@@ -1,15 +1,18 @@
+import { STORAGE_URL } from "../../services/apiService";
 import "./review.css";
 
-const Review = ({ star }) => {
+const Review = ({ star, name, desc, img }) => {
   const stars = Array.from({ length: 5 }, (_, i) => i < star);
-
+  console.log(`${STORAGE_URL}/${img}`);
   return (
     <div className='reviewWrapper'>
       <div className='review'>
         <div className='reviewProfile'>
-          <div className='reviewProfileImg'></div>
+          <div
+            className='reviewProfileImg'
+            style={{ backgroundImage: `url(${STORAGE_URL}/${img})` }}></div>
           <div className='reviewProfileNameStar'>
-            <p className='reviewProfileName'>Name Surname</p>
+            <p className='reviewProfileName'>{name}</p>
             <div className='reviewProfileStar'>
               {stars.map((item, i) => (
                 <svg
@@ -29,12 +32,7 @@ const Review = ({ star }) => {
           </div>
         </div>
         <div className='reviewProfileDesc'>
-          <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and
-          </p>
+          <p dangerouslySetInnerHTML={{ __html: desc }} />
         </div>
       </div>
     </div>

@@ -18,7 +18,10 @@ const FullTitle = ({
       } fullTitleContainer`}>
       <div className='fullTitle'>
         <Title title={title} />
-        <p className='fullTitleDesc'>{desc}</p>
+        <p
+          className='fullTitleDesc'
+          dangerouslySetInnerHTML={{ __html: desc }}
+        />
       </div>
       {!withoutBtn && (
         <div className='fullTitleBtn'>

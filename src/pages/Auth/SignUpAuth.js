@@ -11,6 +11,8 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { signUpSchema } from "../../utils/validationSchema";
 import { animate, initial } from "../../utils/transition";
+import apiService from "../../services/apiService";
+import Spinner from "../../components/Spinner/Spinner";
 
 const Auth = ({ auth }) => {
   const [showPasswords, setShowPasswords] = useState({
@@ -25,8 +27,30 @@ const Auth = ({ auth }) => {
     }));
   };
 
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [responseData, setResponseData] = useState(null);
+
+  const handleRegister = async values => {
+    await apiService.post(
+      "register",
+      {},
+      values,
+      ({ loading, error, data }) => {
+        setLoading(loading);
+        setError(error);
+        setResponseData(data);
+      }
+    );
+  };
+
   return (
     <motion.div initial={initial} animate={animate} className='authContainer'>
+      {loading && (
+        <div className='spinnerContainer'>
+          <Spinner />
+        </div>
+      )}
       <div className='authFormContainer container'>
         <NavLink to='/' className='authLogo'>
           <Img src={LOGO} alt='Wow Logo' className='authLogoImg' />
@@ -58,6 +82,7 @@ const Auth = ({ auth }) => {
             }}
             onSubmit={(values, actions) => {
               console.log(values);
+              handleRegister(values);
               actions.setSubmitting(false);
             }}
             validationSchema={signUpSchema}>

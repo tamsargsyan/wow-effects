@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useState } from "react";
 
 // const BASE_URL = process.env.WOW_EFFECT_BASE_URL;
 const BASE_URL = "https://prod.machtech.site/Armine/WowEffect/api";
@@ -17,6 +18,27 @@ const apiService = {
       return response.data;
     } catch (error) {
       throw error;
+    }
+  },
+  post: async (endpoint, data = {}, headers = {}, setStateCallback) => {
+    try {
+      setStateCallback({ loading: true, error: null, data: null });
+
+      const response = await axios.post(`${BASE_URL}/${endpoint}`, data, {
+        headers: {
+          "Access-Control-Allow-Headers": "*",
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Methods":
+            "GET, POST, OPTIONS, PUT, PATCH, DELETE",
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": "true",
+          ...headers,
+        },
+      });
+
+      setStateCallback({ loading: false, error: null, data: response.data });
+    } catch (error) {
+      setStateCallback({ loading: false, error, data: null });
     }
   },
 };

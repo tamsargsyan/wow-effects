@@ -1,8 +1,10 @@
 import FullTitle from "../FullTitle/FullTitle";
 import "./style.css";
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import Review from "./Review";
 import Slider from "../Slider/Slider";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchData } from "../../redux/actions/reviewsActions";
 
 const Reviews = () => {
   const reviews = {
@@ -76,14 +78,14 @@ const Reviews = () => {
 
   const lang = "en";
 
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(fetchData());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(fetchData());
+  }, [dispatch]);
 
-  // const revi = useSelector(state => state.reviews);
-  // console.log(revi);
+  const revi = useSelector(state => state.reviews);
+  console.log(revi);
 
   return (
     <div className='reviewsContainer container'>

@@ -3,7 +3,7 @@ import "./review.css";
 
 const Review = ({ star, name, desc, img }) => {
   const stars = Array.from({ length: 5 }, (_, i) => i < star);
-  console.log(`${STORAGE_URL}/${img}`);
+
   return (
     <div className='reviewWrapper'>
       <div className='review'>

@@ -10,8 +10,9 @@ import FURNITURE_7 from "../../assets/ui-fake-images/furniture-3.jpg";
 import FURNITURE_8 from "../../assets/ui-fake-images/furniture-4.jpg";
 import "./style.css";
 import { useWindowSize } from "../../hooks/useWindowSize";
+import { removeHtmlTags } from "../../Helpers/removeHtmlTags";
 
-const FurnitureInfos = () => {
+const FurnitureInfos = ({ product_suggestions }) => {
   const furnitures = [
     {
       id: 1,
@@ -109,14 +110,15 @@ const FurnitureInfos = () => {
   ];
 
   const { width } = useWindowSize();
+  const lang = "en";
 
   return (
     <div className='furnitureContainer container'>
-      {furnitures.map(fur => (
+      {product_suggestions.map(fur => (
         <div className='furnitureInfoContainer' key={fur.id}>
           <FullTitle
-            title={fur.name}
-            desc={fur.desc}
+            title={fur[`heading_${lang}`]}
+            desc={removeHtmlTags(fur[`description_${lang}`])}
             btnLink={true}
             btnStyle={{
               border: "none",
@@ -127,10 +129,11 @@ const FurnitureInfos = () => {
               display: "block",
               width: "fit-content",
             }}
+            to={fur.link}
           />
           <div className='furnituresWrapper'>
-            {fur.furnitures.map(f => (
-              <div className='furniture' key={f.id}>
+            {furnitures[0].furnitures.map((f, i) => (
+              <div className='furniture' key={i}>
                 <div
                   className='furnitureImg'
                   style={{ backgroundImage: `url(${f.img})` }}>

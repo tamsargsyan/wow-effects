@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "./style.css";
 
 const Button = ({
@@ -11,16 +11,18 @@ const Button = ({
   icon,
   alt,
   onClick,
+  target,
 }) => {
   if (link)
     return (
-      <NavLink
+      <Link
         style={style}
         className={`${className} mainBtn`}
         to={to}
-        onClick={onClick}>
+        onClick={onClick}
+        target={target}>
         {text}
-      </NavLink>
+      </Link>
     );
   return (
     <button

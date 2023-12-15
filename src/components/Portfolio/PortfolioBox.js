@@ -1,7 +1,7 @@
 import SecondButton from "../SecondButton/SecondButton";
 import "./style.css";
 
-const PortfolioBox = ({ className, img, name, description }) => {
+const PortfolioBox = ({ className, img, name, description, to }) => {
   return (
     <div
       className={`${className} portfolioBox`}
@@ -11,7 +11,7 @@ const PortfolioBox = ({ className, img, name, description }) => {
           <p className='portfolioBoxTitle'>{name}</p>
           <p className='portfolioBoxDesc'>{description}</p>
         </div>
-        <SecondButton className='moreBtnLarge portfolioWorkMoreBtn' />
+        <SecondButton className='moreBtnLarge portfolioWorkMoreBtn' to={to} />
       </div>
     </div>
   );

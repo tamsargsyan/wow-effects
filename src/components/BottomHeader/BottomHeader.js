@@ -14,22 +14,22 @@ import { openBasketModal } from "../../redux/actions/basketActions";
 
 const BottomHeader = () => {
   const menu = [
-    {
-      id: 1,
-      name: "Custom furniture production",
-      to: "/custom-furniture-production",
-      dropdown: null,
-    },
-    {
-      id: 2,
-      name: "Interior Design",
-      to: "/interior-design",
-      dropdown: null,
-    },
+    // {
+    //   id: 1,
+    //   name: "Custom furniture production",
+    //   to: "/custom-furniture-production",
+    //   dropdown: null,
+    // },
+    // {
+    //   id: 2,
+    //   name: "Interior Design",
+    //   to: "/interior-design",
+    //   dropdown: null,
+    // },
     {
       id: 3,
       name: "Shop",
-      to: "",
+      to: "/shop",
       dropdown: [
         {
           label: <Link>1st menu item</Link>,
@@ -53,12 +53,18 @@ const BottomHeader = () => {
     },
     {
       id: 5,
+      name: "Blog",
+      to: "/blog",
+      dropdown: null,
+    },
+    {
+      id: 6,
       name: "Portfolio",
       to: "/portfolio",
       dropdown: null,
     },
     {
-      id: 6,
+      id: 7,
       name: "Contact Us",
       to: "/contact-us",
       dropdown: null,
@@ -105,7 +111,8 @@ const BottomHeader = () => {
                 }}
                 trigger={["click"]}>
                 <NavLink
-                  onClick={e => e.preventDefault()}
+                  // onClick={e => e.preventDefault()}
+                  to={m.to}
                   className='bottomHeaderShopBtn'>
                   <Space>
                     {m.name}
@@ -178,7 +185,8 @@ const BottomHeader = () => {
                     }}
                     trigger={["click"]}>
                     <NavLink
-                      onClick={e => e.preventDefault()}
+                      // onClick={e => e.preventDefault()}
+                      to={m.to}
                       className='bottomHeaderShopBtnMobile'>
                       <Space>
                         {m.name}

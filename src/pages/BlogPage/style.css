@@ -1,0 +1,25 @@
+.blogPageContainer {
+  padding: 80px 260px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+.blogPageOverviewContainer {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+}
+.overviewSmallBlogs {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+@media screen and (max-width: 1280px) {
+  .blogPageContainer {
+    padding-left: 200px;
+    padding-right: 200px;
+  }
+  .blogPageOverviewContainer {
+    gap: 25px;
+  }
+}

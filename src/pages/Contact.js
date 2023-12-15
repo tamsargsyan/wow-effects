@@ -12,6 +12,7 @@ import Map from "../components/Map";
 import FAQ from "../components/FAQ/FAQ";
 import Footer from "../components/Footer/Footer";
 import { animate, initial } from "../utils/transition";
+import { removeHtmlTags } from "../Helpers/removeHtmlTags";
 
 const Contact = () => {
   const contactDetails = [
@@ -35,20 +36,39 @@ const Contact = () => {
     },
   ];
 
-  const addresses = [
-    {
-      id: 1,
-      icon: LOCATION,
-      title: "Address",
-      description: "Address name",
+  // const addresses = [
+  //   {
+  //     id: 1,
+  //     icon: LOCATION,
+  //     title: "Address",
+  //     description: "Address name",
+  //   },
+  //   {
+  //     id: 2,
+  //     icon: LOCATION,
+  //     title: "Address",
+  //     description: "Address name",
+  //   },
+  // ];
+
+  const locations = {
+    locations: {
+      heading_en: "jnljdb123",
+      heading_ru: "dfhbfdh",
+      heading_am: "gdzha",
+      description_en: "<p>fdhshn</p>",
+      description_ru: "<p>dgdh</p>",
+      description_am: "<p>her</p>",
+      address_1_en: "dfhdfh",
+      address_1_ru: "dhh",
+      address_1_am: "dhdh",
+      address_2_en: "dfhf",
+      address_2_ru: "dhfd",
+      address_2_am: "hfghngf",
     },
-    {
-      id: 2,
-      icon: LOCATION,
-      title: "Address",
-      description: "Address name",
-    },
-  ];
+  };
+
+  const lang = "en";
 
   return (
     <motion.div
@@ -176,11 +196,35 @@ const Contact = () => {
         <FAQ className='contactFAQ' />
       </ContactLayout>
       <ContactLayout
-        pageTitle='Locations'
-        pageDescription='Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+        pageTitle={locations.locations[`heading_${lang}`]}
+        pageDescription={removeHtmlTags(locations.locations[`description_${lang}`])}
         detailsChildren={
           <>
-            {addresses.map(detail => (
+            <div className='contactDetail'>
+              <div className='contactDetailIcon'>
+                <Img src={LOCATION} alt='Locations' />
+              </div>
+              <div className='contactDetailInfo'>
+                <p className='contactDetailInfoDescription'>Address</p>
+                <p className='contactDetailInfoTitle'>
+                  {locations.locations[`address_1_${lang}`]}
+                </p>
+                <button className='addressViewMapBtn'>View Map</button>
+              </div>
+            </div>
+            <div className='contactDetail'>
+              <div className='contactDetailIcon'>
+                <Img src={LOCATION} alt='Locations' />
+              </div>
+              <div className='contactDetailInfo'>
+                <p className='contactDetailInfoDescription'>Address</p>
+                <p className='contactDetailInfoTitle'>
+                  {locations.locations[`address_2_${lang}`]}
+                </p>
+                <button className='addressViewMapBtn'>View Map</button>
+              </div>
+            </div>
+            {/* {addresses.map(detail => (
               <div className='contactDetail' key={detail.id}>
                 <div className='contactDetailIcon'>
                   <Img src={detail.icon} alt={detail.title} />
@@ -191,7 +235,7 @@ const Contact = () => {
                   <button className='addressViewMapBtn'>View Map</button>
                 </div>
               </div>
-            ))}
+            ))} */}
           </>
         }>
         <div className='contactMap'>

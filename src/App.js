@@ -18,6 +18,7 @@ import Shop from "./pages/Shop/Shop";
 import SingleShop from "./pages/Shop/SingleShop/SingleShop";
 import CheckoutOrder from "./pages/Shop/Checkout/CheckoutOrder";
 import CheckoutPlaceOrder from "./pages/Shop/Checkout/CheckoutPlaceOrder";
+import BlogPage from "./pages/BlogPage/BlogPage";
 
 const App = () => {
   const location = useLocation();
@@ -43,6 +44,7 @@ const App = () => {
             path='/portfolio/:portfolioName'
             element={<SinglePortfolioPage />}
           />
+          <Route path='/blog' element={<BlogPage />} />
           <Route path='/shop' element={<Shop />} />
           <Route path='/shop/:productName' element={<SingleShop />} />
           <Route path='/checkout/order' element={<CheckoutOrder />} />

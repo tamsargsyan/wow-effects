@@ -1,26 +1,26 @@
-import * as actionTypes from "../types/partnersType";
+import * as actionTypes from "../types/faqTypes";
 
 const initialState = {
-  partners: null,
+  faq: null,
   loading: false,
   error: null,
 };
 
-const partnersReducer = (state = initialState, action) => {
+const faqReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.FETCH_PARTNERS_LOADING:
+    case actionTypes.FETCH_FAQ_LOADING:
       return {
         ...state,
         loading: true,
         error: null,
       };
-    case actionTypes.FETCH_PARTNERS_SUCCESS:
+    case actionTypes.FETCH_FAQ_SUCCESS:
       return {
         ...state,
         loading: false,
-        partners: action.payload,
+        faq: action.payload,
       };
-    case actionTypes.FETCH_PARTNERS_ERROR:
+    case actionTypes.FETCH_FAQ_ERROR:
       return {
         ...state,
         loading: false,
@@ -31,4 +31,4 @@ const partnersReducer = (state = initialState, action) => {
   }
 };
 
-export default partnersReducer;
+export default faqReducer;

@@ -1,26 +1,25 @@
-// reviewsActions.js
 import apiService from "../../services/apiService";
-import * as actionTypes from "../types/partnersType";
+import * as actionTypes from "../types/homeTypes";
 
 export const fetchDataStart = () => ({
-  type: actionTypes.FETCH_PARTNERS_LOADING,
+  type: actionTypes.FETCH_HOME_LOADING,
 });
 
 export const fetchDataSuccess = data => ({
-  type: actionTypes.FETCH_PARTNERS_SUCCESS,
+  type: actionTypes.FETCH_HOME_SUCCESS,
   payload: data,
 });
 
 export const fetchDataFailure = error => ({
-  type: actionTypes.FETCH_PARTNERS_ERROR,
+  type: actionTypes.FETCH_HOME_ERROR,
   payload: error,
 });
 
-export const fetchPartners = () => {
+export const fetchHome = () => {
   return dispatch => {
     dispatch(fetchDataStart());
     apiService
-      .get("partners")
+      .get("/")
       .then(data => {
         dispatch(fetchDataSuccess(data));
       })

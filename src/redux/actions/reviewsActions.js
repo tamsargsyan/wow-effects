@@ -16,7 +16,7 @@ export const fetchDataFailure = error => ({
   payload: error,
 });
 
-export const fetchData = () => {
+export const fetchReviews = () => {
   return dispatch => {
     dispatch(fetchDataStart());
     apiService

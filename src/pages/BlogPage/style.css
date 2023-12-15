@@ -1,25 +1,121 @@
 .blogPageContainer {
-  padding: 80px 260px;
+  padding: 80px 0;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 50px;
 }
 .blogPageOverviewContainer {
   display: flex;
   gap: 32px;
   justify-content: center;
+  width: 100%;
+  padding-left: 200px;
+  padding-right: 200px;
 }
 .overviewSmallBlogs {
   display: flex;
   flex-direction: column;
   gap: 32px;
 }
+.blogPageSections {
+  margin-top: 200px;
+  width: 100%;
+  padding: 0 200px;
+}
+.blogPageSectionTitle {
+  color: #fff;
+  font-family: Poppins-700;
+  margin-bottom: 32px;
+  font-size: 24px;
+}
+.overviewLargeBlogContainer {
+  width: 100%;
+}
+.overviewSmallBlogs {
+}
+@media screen and (max-width: 1400px) {
+  .blogPageOverviewContainer,
+  .blogPageSections {
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+}
 @media screen and (max-width: 1280px) {
   .blogPageContainer {
-    padding-left: 200px;
-    padding-right: 200px;
+    /* padding-left: 200px;
+    padding-right: 200px; */
+  }
+  .blogPageOverviewContainer,
+  .blogPageSections {
+    padding-left: 100px;
+    padding-right: 100px;
   }
   .blogPageOverviewContainer {
     gap: 25px;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .blogPageOverviewContainer,
+  .blogPageSections {
+    padding-left: 70px;
+    padding-right: 70px;
+  }
+}
+@media screen and (max-width: 960px) {
+  .blogPageOverviewContainer,
+  .blogPageSections {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .blogPageOverviewContainer {
+    gap: 48px;
+  }
+  .blogPageOverviewContainer {
+    flex-direction: column;
+  }
+  .overviewLargeBlog .singleBlogBoxTitle {
+    font-size: 20px;
+  }
+  .overviewLargeBlog .singleBlogBoxDescription {
+    font-size: 16px;
+  }
+  .singleBlogBoxLink a {
+    font-size: 16px;
+  }
+  .singleBlogBoxLink a img {
+    width: 15px;
+    height: 15px;
+  }
+  .singleBlogBoxBtn .mainBtn {
+    font-size: 14px;
+  }
+  .singleBlogBoxContainer_small .singleBlogBoxTitle {
+    font-size: 18px;
+  }
+  .singleBlogBoxContainer_small .singleBlogBoxDescription {
+    display: none;
+  }
+  .singleBlogBoxContainer_small .singleBlogBoxInfoContainer {
+    gap: 16px;
+  }
+  .overviewSmallBlog .singleBlogBoxImg {
+    width: 160px;
+    height: 160px;
+  }
+  .blogSectionBlog {
+    width: 100%;
+  }
+  .singleBlogBoxContainer_small .singleBlogBoxInfoContainer {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .blogPageOverviewContainer,
+  .blogPageSections {
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }

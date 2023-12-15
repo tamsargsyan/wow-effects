@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useState } from "react";
 
 // const BASE_URL = process.env.WOW_EFFECT_BASE_URL;
 const BASE_URL = "https://prod.machtech.site/Armine/WowEffect/api";
@@ -8,13 +7,7 @@ export const STORAGE_URL = "https://prod.machtech.site/Armine/WowEffect";
 const apiService = {
   get: async (endpoint, params = {}, headers = {}) => {
     try {
-      const response = await axios.get(`${BASE_URL}/${endpoint}`, {
-        params: { ...params },
-        headers: {
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Origin": "*",
-        },
-      });
+      const response = await axios.get(`${BASE_URL}/${endpoint}`);
       return response.data;
     } catch (error) {
       throw error;

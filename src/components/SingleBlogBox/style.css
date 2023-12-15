@@ -65,7 +65,7 @@
   width: 20rem;
 }
 .overviewLargeBlog {
-  width: 824px;
+  /* width: 824px; */
 }
 .overviewLargeBlog .singleBlogBoxInfoContainer {
   gap: 16px;
@@ -88,6 +88,14 @@
   width: 200px;
   height: 200px;
 }
+.blogPageSectionBlogs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+}
+.blogSectionBlog {
+  width: 325px;
+}
 @media screen and (max-width: 1600px) {
   .overviewLargeBlog .singleBlogBoxTitle {
     font-size: 20px;
@@ -99,7 +107,7 @@
     font-size: 14px;
   }
   .overviewLargeBlog {
-    width: 570px;
+    /* width: 570px; */
   }
   .singleBlogBoxContainer_small .singleBlogBoxTitle {
     font-size: 14px;
@@ -126,7 +134,7 @@
     font-size: 12px;
   }
   .overviewLargeBlog {
-    width: 500px;
+    width: 100%;
   }
   .singleBlogBoxContainer_small .singleBlogBoxTitle {
     font-size: 12px;

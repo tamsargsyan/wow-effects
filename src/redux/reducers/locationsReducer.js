@@ -1,26 +1,26 @@
-import * as actionTypes from "../types/partnersType";
+import * as actionTypes from "../types/locationsTypes";
 
 const initialState = {
-  partners: null,
+  locations: null,
   loading: false,
   error: null,
 };
 
 const partnersReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.FETCH_PARTNERS_LOADING:
+    case actionTypes.FETCH_LOCATIONS_LOADING:
       return {
         ...state,
         loading: true,
         error: null,
       };
-    case actionTypes.FETCH_PARTNERS_SUCCESS:
+    case actionTypes.FETCH_LOCATIONS_SUCCESS:
       return {
         ...state,
         loading: false,
-        partners: action.payload,
+        locations: action.payload,
       };
-    case actionTypes.FETCH_PARTNERS_ERROR:
+    case actionTypes.FETCH_LOCATIONS_ERROR:
       return {
         ...state,
         loading: false,

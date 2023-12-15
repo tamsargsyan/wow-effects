@@ -3,7 +3,7 @@
 import * as actionTypes from "../types/reviewsTypes";
 
 const initialState = {
-  reviews: [],
+  reviews: null,
   loading: false,
   error: null,
 };

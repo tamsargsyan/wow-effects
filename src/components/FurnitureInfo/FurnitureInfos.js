@@ -114,8 +114,8 @@ const FurnitureInfos = ({ product_suggestions }) => {
 
   return (
     <div className='furnitureContainer container'>
-      {product_suggestions.map(fur => (
-        <div className='furnitureInfoContainer' key={fur.id}>
+      {product_suggestions.map((fur, i) => (
+        <div className='furnitureInfoContainer' key={i}>
           <FullTitle
             title={fur[`heading_${lang}`]}
             desc={removeHtmlTags(fur[`description_${lang}`])}

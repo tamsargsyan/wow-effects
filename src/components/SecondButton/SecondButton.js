@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ARROW_FALL_PINK from "../../assets/icons/arrow-fall-white.svg";
 import ARROW_FALL_WHITE from "../../assets/icons/arrow-fall-pink.svg";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./style.css";
 
 const SecondButton = ({ className, to, target }) => {

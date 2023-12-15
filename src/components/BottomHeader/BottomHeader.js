@@ -20,12 +20,12 @@ const BottomHeader = () => {
     //   to: "/custom-furniture-production",
     //   dropdown: null,
     // },
-    // {
-    //   id: 2,
-    //   name: "Interior Design",
-    //   to: "/interior-design",
-    //   dropdown: null,
-    // },
+    {
+      id: 2,
+      name: "Interior Design",
+      to: "/interior-design",
+      dropdown: null,
+    },
     {
       id: 3,
       name: "Shop",

@@ -1,10 +1,11 @@
 {
   "name": "wow-effects",
   "version": "0.1.0",
-  "homepage": "http://wow.bitrix-24.am/",
+  "homepage": "https://woweffect.am/",
   "private": true,
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@reduxjs/toolkit": "^2.0.1",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",

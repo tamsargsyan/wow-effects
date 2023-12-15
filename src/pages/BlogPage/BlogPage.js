@@ -4,6 +4,7 @@ import "./style.css";
 import Footer from "../../components/Footer/Footer";
 import { animate, initial } from "../../utils/transition";
 import { motion } from "framer-motion";
+import Button from "../../components/Button/Button";
 
 const BlogPage = () => {
   const blogs = {
@@ -85,6 +86,68 @@ const BlogPage = () => {
                 />
               </Fragment>
             ))}
+          </div>
+        </div>
+        <div className='blogPageSections'>
+          <p className='blogPageSectionTitle'>Latest blog posts</p>
+          <div className='blogPageSectionBlogs'>
+            {blogs.blog_main.posts.map((blog, i) => (
+              <Fragment key={i}>
+                <SingleBlogBox
+                  className='blogSectionBlog'
+                  size='small'
+                  style={{
+                    flexDirection: "column",
+                    gap: "32px",
+                  }}
+                  name='Blog title heading will go here'
+                  description='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum...'
+                  btnText='Custom furniture production'
+                />
+              </Fragment>
+            ))}
+            <Button
+              className='seeMoreBtn'
+              text='See More'
+              link={false}
+              style={{
+                background: "rgba(255, 255, 255, 0.05)",
+                color: "rgba(255, 255, 255, 0.60)",
+                marginTop: "48px",
+                width: "100%",
+              }}
+            />
+          </div>
+        </div>
+        <div className='blogPageSections'>
+          <p className='blogPageSectionTitle'>Category name</p>
+          <div className='blogPageSectionBlogs'>
+            {blogs.blog_main.posts.map((blog, i) => (
+              <Fragment key={i}>
+                <SingleBlogBox
+                  className='blogSectionBlog'
+                  size='small'
+                  style={{
+                    flexDirection: "column",
+                    gap: "32px",
+                  }}
+                  name='Blog title heading will go here'
+                  description='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum...'
+                  btnText='Custom furniture production'
+                />
+              </Fragment>
+            ))}
+            <Button
+              className='seeMoreBtn'
+              text='See More'
+              link={false}
+              style={{
+                background: "rgba(255, 255, 255, 0.05)",
+                color: "rgba(255, 255, 255, 0.60)",
+                marginTop: "48px",
+                width: "100%",
+              }}
+            />
           </div>
         </div>
       </div>

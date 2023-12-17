@@ -21,6 +21,7 @@ import CheckoutPlaceOrder from "./pages/Shop/Checkout/CheckoutPlaceOrder";
 import BlogPage from "./pages/BlogPage/BlogPage";
 import InteriorDesign from "./pages/InteriorDesign/InteriorDesign";
 import CustomCraft from "./pages/CustomCraft/CustomCraft";
+import Article from "./pages/Article/Article";
 
 const App = () => {
   const location = useLocation();
@@ -47,6 +48,7 @@ const App = () => {
             element={<SinglePortfolioPage />}
           />
           <Route path='/blog' element={<BlogPage />} />
+          <Route path='/blog/:blogName' element={<Article />} />
           <Route path='/interior-design' element={<InteriorDesign />} />
           <Route path='/customcraft' element={<CustomCraft />} />
           <Route path='/shop' element={<Shop />} />

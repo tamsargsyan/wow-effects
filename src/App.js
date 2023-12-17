@@ -25,6 +25,7 @@ import Article from "./pages/Article/Article";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import Career from "./pages/Career/Career";
 import Position from "./pages/Position/Position";
+import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
 
 const App = () => {
   const location = useLocation();
@@ -56,6 +57,7 @@ const App = () => {
           <Route path='/customcraft' element={<CustomCraft />} />
           <Route path='/career' element={<Career />} />
           <Route path='/career/:position' element={<Position />} />
+          <Route path='/privacy-policy' element={<PrivacyPolicy />} />
           <Route path='/shop' element={<Shop />} />
           <Route path='/shop/:productName' element={<SingleShop />} />
           <Route path='/checkout/order' element={<CheckoutOrder />} />

@@ -14,6 +14,7 @@ import COMPASS from "../../assets/icons/map-locations-compass-white.svg";
 import Button from "../../components/Button/Button";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { contactSchema } from "../../utils/validationSchema";
+import UPLOAD from "../../assets/icons/upload-white.svg";
 
 const InteriorDesign = () => {
   const dispatch = useDispatch();
@@ -138,99 +139,115 @@ const InteriorDesign = () => {
                 </div>
               ))}
             </div>
-            <Formik
-              initialValues={{
-                full_name: "",
-                email: "",
-                phone: "",
-                message: "",
-              }}
-              onSubmit={(values, actions) => {
-                console.log(values);
-                actions.setSubmitting(false);
-              }}
-              validationSchema={contactSchema}>
-              {() => (
-                <Form className='contactForm'>
-                  <div className='contactFormGroup'>
-                    <label htmlFor='full_name'>Full Name</label>
-                    <div className='contactFormGroupInput'>
-                      <Field
-                        type='text'
-                        name='full_name'
-                        placeholder='Enter your full name'
-                      />
-                    </div>
-                    <ErrorMessage
-                      name='full_name'
-                      component='p'
-                      className='authError'
-                    />
-                  </div>
-                  <div className='contactFormGroup2ndLayout'>
+            <div className='interiorDesignContactUsContainer'>
+              <div className='interorDesignContactUsTitleContainer'>
+                <p className='interorDesignContactUsTitle'>Contact Us</p>
+                <p className='interorDesignContactUsDescription'>
+                  The night is dark and full of terrors. What is dead may never
+                  die. And now his watch is ended. All men must die.
+                </p>
+              </div>
+              <Formik
+                initialValues={{
+                  full_name: "",
+                  email: "",
+                  phone: "",
+                  message: "",
+                }}
+                onSubmit={(values, actions) => {
+                  console.log(values);
+                  actions.setSubmitting(false);
+                }}
+                validationSchema={contactSchema}>
+                {() => (
+                  <Form className='contactForm'>
                     <div className='contactFormGroup'>
-                      <label htmlFor='email'>Email Address</label>
-                      <div className='contactFormGroupInput'>
-                        <Field
-                          type='email'
-                          name='email'
-                          placeholder='Enter your email address'
-                        />
-                      </div>
-                      <ErrorMessage
-                        name='email'
-                        component='p'
-                        className='authError'
-                      />
-                    </div>
-                    <div className='contactFormGroup'>
-                      <label htmlFor='phone'>Phone Number</label>
+                      <label htmlFor='full_name'>Full Name *</label>
                       <div className='contactFormGroupInput'>
                         <Field
                           type='text'
-                          name='phone'
-                          placeholder='Enter your phone number'
+                          name='full_name'
+                          placeholder='Enter your full name'
                         />
                       </div>
                       <ErrorMessage
-                        name='phone'
+                        name='full_name'
                         component='p'
                         className='authError'
                       />
                     </div>
-                  </div>
-                  <div className='contactFormGroup'>
-                    <label htmlFor='message'>Message</label>
-                    <div className='contactFormGroupInput'>
-                      <Field
-                        type='text'
+                    <div className='contactFormGroup2ndLayout'>
+                      <div className='contactFormGroup'>
+                        <label htmlFor='email'>Email Address *</label>
+                        <div className='contactFormGroupInput'>
+                          <Field
+                            type='email'
+                            name='email'
+                            placeholder='Enter your email address'
+                          />
+                        </div>
+                        <ErrorMessage
+                          name='email'
+                          component='p'
+                          className='authError'
+                        />
+                      </div>
+                      <div className='contactFormGroup'>
+                        <label htmlFor='phone'>Phone Number *</label>
+                        <div className='contactFormGroupInput'>
+                          <Field
+                            type='text'
+                            name='phone'
+                            placeholder='Enter your phone number'
+                          />
+                        </div>
+                        <ErrorMessage
+                          name='phone'
+                          component='p'
+                          className='authError'
+                        />
+                      </div>
+                    </div>
+                    <div className='contactFormGroup'>
+                      <label htmlFor='message'>Message</label>
+                      <div className='contactFormGroupInput'>
+                        <Field
+                          type='text'
+                          name='message'
+                          placeholder='Enter your message'
+                        />
+                      </div>
+                      <ErrorMessage
                         name='message'
-                        placeholder='Enter your message'
+                        component='p'
+                        className='authError'
                       />
                     </div>
-                    <ErrorMessage
-                      name='message'
-                      component='p'
-                      className='authError'
+                    <div className='upload-btn-wrapper'>
+                      <button>
+                        <Img src={UPLOAD} alt='Upload' />
+                        Upload
+                      </button>
+                      <input type='file' name='myfile' />
+                    </div>
+                    <Button
+                      btnType='submit'
+                      link={false}
+                      text='Apply'
+                      style={{
+                        backgroundColor: "var(--main-color-pink)",
+                        border: "none",
+                        fontFamily: "Poppins-600",
+                        borderRadius: "var(--main-border-radius)",
+                        color: "var(--secondary-color-white)",
+                        width: "fit-content",
+                      }}
+                      className='bottomHeaderRegisterBtn'
                     />
-                  </div>
-                  <Button
-                    btnType='submit'
-                    link={false}
-                    text='Send Message'
-                    style={{
-                      backgroundColor: "var(--main-color-pink)",
-                      border: "none",
-                      fontFamily: "Poppins-600",
-                      borderRadius: "var(--main-border-radius)",
-                      color: "var(--secondary-color-white)",
-                      width: "fit-content",
-                    }}
-                    className='bottomHeaderRegisterBtn'
-                  />
-                </Form>
-              )}
-            </Formik>
+                  </Form>
+                )}
+              </Formik>
+            </div>
           </div>
           <Portfolio portfolio_main={home.home.portfolio_main} />
           <Footer slider={true} />

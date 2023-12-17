@@ -24,6 +24,7 @@ import CustomCraft from "./pages/CustomCraft/CustomCraft";
 import Article from "./pages/Article/Article";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import Career from "./pages/Career/Career";
+import Position from "./pages/Position/Position";
 
 const App = () => {
   const location = useLocation();
@@ -54,6 +55,7 @@ const App = () => {
           <Route path='/interior-design' element={<InteriorDesign />} />
           <Route path='/customcraft' element={<CustomCraft />} />
           <Route path='/career' element={<Career />} />
+          <Route path='/career/:position' element={<Position />} />
           <Route path='/shop' element={<Shop />} />
           <Route path='/shop/:productName' element={<SingleShop />} />
           <Route path='/checkout/order' element={<CheckoutOrder />} />

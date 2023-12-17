@@ -22,6 +22,7 @@ import BlogPage from "./pages/BlogPage/BlogPage";
 import InteriorDesign from "./pages/InteriorDesign/InteriorDesign";
 import CustomCraft from "./pages/CustomCraft/CustomCraft";
 import Article from "./pages/Article/Article";
+import PageNotFound from "./pages/PageNotFound/PageNotFound";
 
 const App = () => {
   const location = useLocation();
@@ -62,6 +63,7 @@ const App = () => {
           <Route path='/account/settings' element={<Settings />} />
           <Route path='/account/address' element={<Address />} />
           <Route path='/account/orders' element={<Orders />} />
+          <Route path='*' element={<PageNotFound />} />
         </Route>
       </Routes>
     </AnimatePresence>

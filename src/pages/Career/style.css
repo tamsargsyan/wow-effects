@@ -1,0 +1,215 @@
+.careerContainer {
+  color: #fff;
+  padding-top: 80px;
+}
+.careerTitle {
+  color: #fff;
+  font-family: Poppins-700;
+  font-size: 54px;
+  text-transform: uppercase;
+}
+.careerDescription {
+  color: #bfbfbf;
+  font-size: 18px;
+}
+.careerTitleContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.positionsFilteringTitle {
+  color: #fff;
+  /* text-align: center; */
+  font-family: Poppins-700;
+  font-size: 24px;
+}
+.positionsFilteringTitle span {
+  color: #fff;
+  opacity: 0.7;
+  margin-left: 12px;
+  font-size: 18px;
+}
+.positionsContainer {
+  margin-top: 80px;
+  margin-bottom: 200px;
+}
+.positionsFilertingBtns {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.positionsFilertingBtns .search {
+  width: fit-content;
+}
+.positionsFilertingBtns .search input {
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: none;
+  color: #fff;
+  border: none;
+}
+.positionsBtns {
+  display: flex;
+  gap: 12px;
+}
+.positionsFilteringContainer {
+  margin-bottom: 32px;
+}
+.careerContainer {
+  padding-left: 200px;
+  padding-right: 200px;
+}
+.filterBtn {
+  padding: 10px 24px;
+  border-radius: 12px;
+  font-size: 18px;
+}
+.vacancy {
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 32px;
+  display: flex;
+  justify-content: space-between;
+}
+.vacancyDetailsTitle {
+  color: #fff;
+  /* text-align: center; */
+  font-family: Poppins-700;
+  font-size: 24px;
+}
+.vacancyDetailsTitleBtn {
+  padding: 6px 12px;
+  border-radius: 30px;
+  border: 1px solid #af4b85;
+  background: transparent;
+  color: #af4b85;
+  font-family: Poppins-500;
+  font-size: 14px;
+}
+.vacancyDetailsTitleContainer {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.vacancyDetailsDescription {
+  color: #bfbfbf;
+  font-size: 18px;
+}
+.vacancyInfo {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.vacancyInfo div {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #bfbfbf;
+  font-size: 18px;
+}
+.vacancyDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.vacanciesContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 40px;
+}
+.vacanciesContainer {
+  margin-bottom: 40px;
+}
+@media screen and (max-width: 1600px) {
+  .careerTitle {
+    font-size: 45px;
+  }
+  .careerDescription {
+    font-size: 16px;
+  }
+  .filterBtn {
+    font-size: 16px;
+  }
+  .positionsFilteringTitle {
+    font-size: 18px;
+  }
+  .vacancyDetailsTitle {
+    font-size: 20px;
+  }
+  .careerContainer {
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+}
+@media screen and (max-width: 1400px) {
+  .careerContainer {
+    padding-left: 100px;
+    padding-right: 100px;
+  }
+}
+@media screen and (max-width: 1280px) {
+  .careerTitle {
+    font-size: 40px;
+  }
+  .careerDescription {
+    font-size: 14px;
+  }
+  .filterBtn {
+    font-size: 12px;
+  }
+  .positionsFilteringTitle {
+    font-size: 16px;
+  }
+  .vacancyDetailsTitle {
+    font-size: 18px;
+  }
+  .vacancyDetailsDescription {
+    font-size: 16px;
+  }
+  .vacancyInfo div {
+    font-size: 16px;
+  }
+  .vacancyInfo div img {
+    width: 20px;
+    height: 20px;
+  }
+  .careerContainer {
+    padding-left: 90px;
+    padding-right: 90px;
+  }
+  .vacancyDetailsTitleBtn {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .positionsFilertingBtns {
+    flex-direction: column-reverse;
+    gap: 16px;
+  }
+  .positionsFilertingBtns .filterDropHolder {
+    width: 100%;
+  }
+  .positionsFilertingBtns .search {
+    width: 100%;
+  }
+  .vacancy {
+    flex-direction: column-reverse;
+    gap: 16px;
+  }
+  .careerContainer {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .vacancyDetailsTitle {
+    font-size: 20px;
+  }
+  .vacancyDetailsTitleBtn {
+    font-size: 14px;
+  }
+  .vacancyDetailsDescription {
+    font-size: 16px;
+  }
+  .vacancyInfo div {
+    font-size: 16px;
+  }
+}

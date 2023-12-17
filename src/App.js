@@ -23,6 +23,7 @@ import InteriorDesign from "./pages/InteriorDesign/InteriorDesign";
 import CustomCraft from "./pages/CustomCraft/CustomCraft";
 import Article from "./pages/Article/Article";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
+import Career from "./pages/Career/Career";
 
 const App = () => {
   const location = useLocation();
@@ -52,6 +53,7 @@ const App = () => {
           <Route path='/blog/:blogName' element={<Article />} />
           <Route path='/interior-design' element={<InteriorDesign />} />
           <Route path='/customcraft' element={<CustomCraft />} />
+          <Route path='/career' element={<Career />} />
           <Route path='/shop' element={<Shop />} />
           <Route path='/shop/:productName' element={<SingleShop />} />
           <Route path='/checkout/order' element={<CheckoutOrder />} />

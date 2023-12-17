@@ -13,8 +13,6 @@
   transform: translateY(-100%);
   transition: 0.3s ease;
 }
-.bottomHeaderContainerHidden {
-}
 .bottomHeaderContainerVisible {
   opacity: 1;
   transform: translateY(0);
@@ -77,6 +75,10 @@
   height: 100%;
   display: block;
 }
+.bottomHeaderLogo a img {
+  width: 100%;
+  height: 100%;
+}
 .bottomHeaderShopBtnImg {
   width: 15px;
   padding-bottom: 3px;
@@ -100,102 +102,104 @@
   background: transparent;
   outline: none;
   border: none;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
 }
 .quickPick button img {
   width: 100%;
   height: 100%;
 }
-@media screen and (max-width: 1600px) {
+.mobileMenu {
+  display: none;
+}
+@media screen and (max-width: 1750px) {
   .bottomHeaderMenu a,
   .bottomHeaderShopBtn {
     font-size: 14px;
+  }
+  .bottomHeaderLogo {
+    width: 150px;
   }
   .bottomHeaderRegisterBtn,
   .bottomHeaderSignInBtn {
     font-size: 16px;
   }
-  .bottomHeaderLogo a img {
-    width: 150px;
+  .quickPick button {
+    width: 25px;
+    height: 25px;
   }
   .bottomHeader2 {
-    gap: 40px;
-  }
-  .bottomHeaderMenu {
-    gap: 26px;
-  }
-  .bottomHeaderShopBtnImg {
-    width: 13px;
-    padding-bottom: 2px;
-  }
-  .quickPick button {
-    width: 30px;
-    height: 30px;
+    gap: 50px;
   }
 }
-@media screen and (max-width: 1400px) {
+@media screen and (max-width: 1600px) {
   .bottomHeaderMenu a,
   .bottomHeaderShopBtn {
     font-size: 12px;
+  }
+  .bottomHeaderLogo {
+    width: 120px;
   }
   .bottomHeaderRegisterBtn,
   .bottomHeaderSignInBtn {
     font-size: 14px;
-    padding: 12px 27px;
   }
-  .bottomHeaderLogo a img {
-    width: 120px;
+  .quickPick button {
+    width: 20px;
+    height: 20px;
   }
   .bottomHeader2 {
-    gap: 30px;
+    gap: 40px;
+  }
+  .bottomHeaderRegisterBtn, .bottomHeaderSignInBtn {
+    padding: 12px 25px;
   }
   .bottomHeaderMenu {
-    gap: 20px;
-  }
-  .bottomHeaderShopBtnImg {
-    width: 13px;
-    padding-bottom: 2px;
+    gap: 27px;
   }
 }
-@media screen and (max-width: 1280px) {
-  .bottomHeaderLogo {
-    display: none;
-  }
-  .bottomHeader2 {
-    width: 100%;
-    justify-content: space-between;
-  }
-}
-@media screen and (max-width: 1100px) {
-  .bottomHeaderRegisterBtn,
-  .bottomHeaderSignInBtn {
-    padding: 10px 20px;
-  }
-}
-@media screen and (max-width: 1011px) {
-  .bottomHeaderMenu a,
+@media screen and (max-width: 1400px) {
+   .bottomHeaderMenu a,
   .bottomHeaderShopBtn {
     font-size: 10px;
+  }
+  .bottomHeaderLogo {
+    width: 100px;
   }
   .bottomHeaderRegisterBtn,
   .bottomHeaderSignInBtn {
     font-size: 12px;
-    padding: 9px 15px;
+  }
+  .quickPick button {
+    width: 15px;
+    height: 15px;
+  }
+  .bottomHeader2 {
+    gap: 30px;
+  }
+  .bottomHeaderRegisterBtn, .bottomHeaderSignInBtn {
+    padding: 12px 25px;
   }
   .bottomHeaderMenu {
-    gap: 10px;
-  }
-  .bottomHeaderSignIn {
-    gap: 5px;
-  }
-  .bottomHeaderShopBtnImg {
-    width: 12px;
-    padding-top: 6px;
+    gap: 24px;
   }
 }
-.mobileMenu {
-  display: none;
+.ant-space-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ant-space-item img {
+  width: 100%;
+  height: 100%;
+}
+@media screen and (max-width: 1280px) {
+  .quickPick {
+    gap: 15px;
+  }
+  .bottomHeaderLogo {
+    display: none;
+  }
 }
 @media screen and (max-width: 700px) {
   .bottomHeaderMenu,

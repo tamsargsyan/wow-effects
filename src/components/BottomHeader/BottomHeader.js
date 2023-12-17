@@ -14,12 +14,12 @@ import { openBasketModal } from "../../redux/actions/basketActions";
 
 const BottomHeader = () => {
   const menu = [
-    // {
-    //   id: 1,
-    //   name: "Custom furniture production",
-    //   to: "/custom-furniture-production",
-    //   dropdown: null,
-    // },
+    {
+      id: 1,
+      name: "Custom furniture production",
+      to: "/customcraft",
+      dropdown: null,
+    },
     {
       id: 2,
       name: "Interior Design",

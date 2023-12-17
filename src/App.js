@@ -20,6 +20,7 @@ import CheckoutOrder from "./pages/Shop/Checkout/CheckoutOrder";
 import CheckoutPlaceOrder from "./pages/Shop/Checkout/CheckoutPlaceOrder";
 import BlogPage from "./pages/BlogPage/BlogPage";
 import InteriorDesign from "./pages/InteriorDesign/InteriorDesign";
+import CustomCraft from "./pages/CustomCraft/CustomCraft";
 
 const App = () => {
   const location = useLocation();
@@ -47,6 +48,7 @@ const App = () => {
           />
           <Route path='/blog' element={<BlogPage />} />
           <Route path='/interior-design' element={<InteriorDesign />} />
+          <Route path='/customcraft' element={<CustomCraft />} />
           <Route path='/shop' element={<Shop />} />
           <Route path='/shop/:productName' element={<SingleShop />} />
           <Route path='/checkout/order' element={<CheckoutOrder />} />

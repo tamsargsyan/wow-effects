@@ -1,0 +1,361 @@
+.interiorDesignWorkingTitle1 {
+  color: #af4b85;
+  font-family: Poppins-600;
+  margin-bottom: 12px;
+  text-align: center;
+  font-size: 18px;
+}
+.interiorDesignWorkingTitle2 {
+  color: #fff;
+  font-family: Poppins-700;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 40px;
+}
+.interiorDesignWorkingProcessContainer {
+  padding-left: 200px;
+  padding-right: 200px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 160px;
+  margin-bottom: 160px;
+}
+.interiorDesignWorkingProcessMap {
+  color: #fff;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.compassImgWrapper {
+  width: 80px;
+  height: 80px;
+  padding: 10px;
+  border-radius: 12px;
+  background: #af4b85;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.compassImgWrapper img {
+  width: 30px;
+  height: 30px;
+  /* object-fit: contain; */
+}
+.workingProcessMapTitle {
+  color: #fff;
+  font-family: Poppins-600;
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+.workingProcessMapDesc {
+  color: #959595;
+  text-align: center;
+  font-size: 18px;
+}
+.interiorDesignWorkingProcessMapContainer {
+  display: flex;
+  gap: 80px;
+  margin-top: 100px;
+  margin-bottom: 160px;
+  position: relative;
+}
+.workingProcessLine {
+  position: absolute;
+  border: 1px dashed rgba(175, 75, 133, 0.4);
+  width: 80%;
+  left: 80px;
+  top: 40px;
+  z-index: -1;
+}
+.package {
+  border-radius: 24px;
+  background: #0f0f0f;
+  padding: 32px;
+  color: #fff;
+  /* width: 25rem; */
+}
+.packageTitle {
+  font-family: Poppins-700;
+  font-size: 24px;
+  margin-bottom: 24px;
+}
+.packagePrice {
+  color: #af4b85;
+  font-family: Poppins-700;
+  font-size: 44px;
+  margin-bottom: 24px;
+}
+.packageDesc {
+  color: #959595;
+  font-size: 18px;
+  margin-bottom: 40px;
+}
+.packageBtn {
+  color: #fff;
+  font-family: Poppins-600;
+  padding: 16px 20px;
+  font-size: 18px;
+  border: none;
+}
+.packages {
+  display: flex;
+  gap: 32px;
+  margin-bottom: 154px;
+}
+.interiorDesignContactUsContainer {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+}
+.interorDesignContactUsTitleContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  width: 550px;
+}
+.interorDesignContactUsTitle {
+  font-family: Poppins-600;
+  font-size: 48px;
+}
+.interorDesignContactUsDescription {
+  color: #959595;
+  font-size: 18px;
+}
+.interiorDesignContactUsContainer .contactFormGroupInput input::placeholder {
+  opacity: 0.6;
+}
+.upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+.upload-btn-wrapper button {
+  /* border: 2px solid gray;
+  color: gray;
+  background-color: white; */
+  /* padding: 8px 20px; */
+  /* border-radius: 8px; */
+  /* font-size: 20px; */
+  /* font-weight: bold; */
+  color: #fff;
+  background: transparent;
+  padding: 12px 32px;
+  border-radius: 8px;
+  border: 1px dashed rgba(255, 255, 255, 0.6);
+  box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.04);
+  font-family: Poppins-500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+}
+.upload-btn-wrapper input[type="file"] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+}
+@media screen and (max-width: 1600px) {
+  .compassImgWrapper {
+    width: 70px;
+    height: 70px;
+  }
+  .compassImgWrapper img {
+    width: 20px;
+    height: 20px;
+  }
+  .workingProcessMapTitle {
+    font-size: 18px;
+  }
+  .workingProcessMapDesc {
+    font-size: 16px;
+  }
+  .interiorDesignWorkingTitle2 {
+    font-size: 30px;
+  }
+  .interiorDesignWorkingTitle1 {
+    font-size: 16px;
+  }
+  .packageTitle {
+    font-size: 20px;
+  }
+  .packagePrice {
+    font-size: 40px;
+  }
+  .packageDesc {
+    font-size: 14px;
+  }
+  .packageBtn {
+    font-size: 14px;
+  }
+  .interiorDesignWorkingProcessContainer {
+    padding-left: 150px;
+    padding-right: 150px;
+  }
+}
+@media screen and (max-width: 1600px) {
+  .interorDesignContactUsTitle {
+    font-size: 40px;
+  }
+  .interorDesignContactUsDescription {
+    font-size: 16px;
+  }
+  .interorDesignContactUsTitleContainer {
+    gap: 28px;
+  }
+  .interorDesignContactUsTitleContainer {
+    width: 500px;
+  }
+}
+/* @media screen and (max-width: 1400px) {
+  .interorDesignContactUsTitle {
+    font-size: 35px;
+  }
+  .interorDesignContactUsDescription {
+    font-size: 14px;
+  }
+  .interorDesignContactUsTitleContainer {
+    gap: 20px;
+  }
+  .interorDesignContactUsTitleContainer {
+    width: 450px;
+  }
+} */
+@media screen and (max-width: 1280px) {
+  .interiorDesignWorkingTitle2 {
+    font-size: 25px;
+  }
+  .interiorDesignWorkingTitle1 {
+    font-size: 13px;
+  }
+  .compassImgWrapper {
+    width: 60px;
+    height: 60px;
+  }
+  .compassImgWrapper img {
+    width: 15px;
+    height: 15px;
+  }
+  .workingProcessMapTitle {
+    font-size: 16px;
+  }
+  .workingProcessMapDesc {
+    font-size: 14px;
+  }
+  .package {
+    padding: 20px;
+  }
+  .packageTitle {
+    font-size: 18px;
+  }
+  .packagePrice {
+    font-size: 32px;
+  }
+  .packageDesc {
+    font-size: 12px;
+  }
+  .packagePrice,
+  .packageTitle {
+    margin-bottom: 20px;
+  }
+  .packageDesc {
+    margin-bottom: 30px;
+  }
+  .packageBtn {
+    font-size: 12px;
+  }
+  .interiorDesignWorkingProcessContainer {
+    padding-left: 120px;
+    padding-right: 120px;
+  }
+  .interorDesignContactUsTitle {
+    font-size: 35px;
+  }
+  .interorDesignContactUsDescription {
+    font-size: 14px;
+  }
+  .interorDesignContactUsTitleContainer {
+    gap: 20px;
+  }
+  .interorDesignContactUsTitleContainer {
+    width: 450px;
+  }
+}
+@media screen and (max-width: 1100px) {
+  .workingProcessLine {
+    display: none;
+  }
+  .interiorDesignWorkingProcessMapContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+  .workingProcessMapTitle {
+    font-size: 18px;
+  }
+  .workingProcessMapDesc {
+    font-size: 16px;
+  }
+  .compassImgWrapper {
+    width: 48px;
+    height: 48px;
+  }
+  .compassImgWrapper img {
+    width: 24px;
+    height: 24px;
+  }
+  .interiorDesignWorkingTitle1 {
+    font-size: 16px;
+  }
+  .interiorDesignWorkingTitle2 {
+    font-size: 24px;
+  }
+  .interiorDesignWorkingProcessMapContainer {
+    gap: 24px;
+    margin-top: 40px;
+  }
+  .packages {
+    flex-direction: column;
+  }
+  .package {
+    padding: 24px;
+  }
+  .packagePrice {
+    font-size: 20px;
+  }
+  .packagePrice {
+    font-size: 32px;
+  }
+  .packageDesc {
+    font-size: 16px;
+  }
+  .packageBtn {
+    font-size: 18px;
+  }
+  .packagePrice,
+  .packageTitle {
+    margin-bottom: 24px;
+  }
+  .packageDesc {
+    margin-bottom: 30px;
+  }
+  .interiorDesignContactUsContainer {
+    flex-direction: column;
+    gap: 40px;
+  }
+  .interorDesignContactUsTitle {
+    font-size: 24px;
+  }
+  .interorDesignContactUsDescription {
+    font-size: 16px;
+  }
+}
+@media screen and (max-width: 900px) {
+  .interiorDesignWorkingProcessContainer {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}

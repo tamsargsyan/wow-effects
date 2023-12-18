@@ -11,6 +11,10 @@ import FURNITURE_8 from "../../assets/ui-fake-images/furniture-4.jpg";
 import "./style.css";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import { removeHtmlTags } from "../../Helpers/removeHtmlTags";
+import { Fragment } from "react";
+import Product from "../../components/Product/Product";
+import { useDispatch } from "react-redux";
+import { addToBasket } from "../../redux/actions/basketActions";
 
 const FurnitureInfos = ({ product_suggestions }) => {
   const furnitures = [
@@ -110,6 +114,7 @@ const FurnitureInfos = ({ product_suggestions }) => {
   ];
 
   const { width } = useWindowSize();
+  const dispatch = useDispatch();
   const lang = "en";
 
   return (
@@ -133,32 +138,43 @@ const FurnitureInfos = ({ product_suggestions }) => {
           />
           <div className='furnituresWrapper'>
             {furnitures[0].furnitures.map((f, i) => (
-              <div className='furniture' key={i}>
-                <div
-                  className='furnitureImg'
-                  style={{ backgroundImage: `url(${f.img})` }}>
-                  <div className='furnitureBtn'>
-                    <Button
-                      link={true}
-                      text='Selling Fast'
-                      style={{
-                        background: "rgba(255, 255, 255, 0.90",
-                        fontFamily: "Poppins-700",
-                        color: "var(--main-color-pink)",
-                        display: "block",
-                        width: "fit-content",
-                        borderRadius: "6px",
-                        textDecoration: "none",
-                        padding: "6px 12px",
-                      }}
-                    />
-                  </div>
-                </div>
-                <div className='furnitureInfo'>
-                  <p className='furnitureInfoTitle'>Bronze faucet</p>
-                  <p className='furnitureInfoPrice'>$99.00</p>
-                </div>
-              </div>
+              <Fragment key={i}>
+                <Product
+                  name={f.name}
+                  price={f.price}
+                  // pending={order.pending}
+                  // onBtnClick={() => setViewOrder(true)}
+                  onBtnClick={() => dispatch(addToBasket(f))}
+                  btnText='Add to cart'
+                  img={f.img}
+                />
+              </Fragment>
+              // <div className='furniture' key={i}>
+              //   <div
+              //     className='furnitureImg'
+              //     style={{ backgroundImage: `url(${f.img})` }}>
+              //     <div className='furnitureBtn'>
+              //       <Button
+              //         link={true}
+              //         text='Selling Fast'
+              //         style={{
+              //           background: "rgba(255, 255, 255, 0.90",
+              //           fontFamily: "Poppins-700",
+              //           color: "var(--main-color-pink)",
+              //           display: "block",
+              //           width: "fit-content",
+              //           borderRadius: "6px",
+              //           textDecoration: "none",
+              //           padding: "6px 12px",
+              //         }}
+              //       />
+              //     </div>
+              //   </div>
+              //   <div className='furnitureInfo'>
+              //     <p className='furnitureInfoTitle'>Bronze faucet</p>
+              //     <p className='furnitureInfoPrice'>$99.00</p>
+              //   </div>
+              // </div>
             ))}
           </div>
           {width < 797 && (

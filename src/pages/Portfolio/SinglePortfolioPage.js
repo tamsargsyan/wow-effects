@@ -11,6 +11,8 @@ import SecondButton from "../../components/SecondButton/SecondButton";
 import { portfolios } from "./PortfolioPage";
 import Title from "../../components/Title/Title";
 import { animate, initial } from "../../utils/transition";
+import { useWindowSize } from "../../hooks/useWindowSize";
+import { useEffect, useState } from "react";
 
 const SinglePortfolioPage = () => {
   const { portfolioName } = useParams();
@@ -50,6 +52,24 @@ const SinglePortfolioPage = () => {
       imgs: [PORTFOLIO_IMG_1, PORTFOLIO_IMG_2, PORTFOLIO_IMG_3],
     },
   ];
+
+  const { width } = useWindowSize();
+  const [showArrowBtns, setShowArrowBtns] = useState(false);
+
+  useEffect(() => {
+    const sliderContainer = document.querySelector(".slider ");
+    const items = document.querySelectorAll(".portfolioCard");
+    const gap = 32;
+    let totalWidth = 0;
+    if (sliderContainer && items) {
+      items.forEach(img => {
+        //@ts-ignore
+        totalWidth += img.offsetWidth + gap;
+      });
+      //@ts-ignore
+      setShowArrowBtns(totalWidth > sliderContainer.offsetWidth);
+    }
+  }, [width]);
 
   return (
     <motion.div initial={initial} animate={animate}>
@@ -111,7 +131,7 @@ const SinglePortfolioPage = () => {
       </div>
       <div className='portfolioSliderContainer container'>
         <Title title='Related Projects' />
-        <Slider className='portfolioSlider'>
+        <Slider className='portfolioSlider' showArrowBtns={showArrowBtns}>
           {portfolios.map(prt => (
             <div
               className='portfolioCard singlePortfolioCard'

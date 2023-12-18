@@ -5,8 +5,7 @@ import IMG_1 from "../../../assets/ui-fake-images/chair-yellow.jpg";
 import IMG_2 from "../../../assets/ui-fake-images/chair-yellow-2.png";
 import IMG_3 from "../../../assets/ui-fake-images/chair-yellow-3.png";
 import Img from "../../../components/Img";
-import "./style.css";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Slider from "../../../components/Slider/Slider";
 import Title from "../../../components/Title/Title";
 import Product from "../../../components/Product/Product";
@@ -18,10 +17,31 @@ import { details } from "../data";
 import QauntityField from "../../../components/QauntityField/QauntityField";
 import { useDispatch } from "react-redux";
 import { addToBasket } from "../../../redux/actions/basketActions";
+import { useWindowSize } from "../../../hooks/useWindowSize";
+import "./style.css";
 
 const SingleShop = () => {
   const imgs = [IMG_1, IMG_2, IMG_3, IMG_1];
   const dispatch = useDispatch();
+  const { width } = useWindowSize();
+  const [showArrowBtns, setShowArrowBtns] = useState(false);
+
+  useEffect(() => {
+    const sliderContainer = document.querySelector(".slider ");
+    const items = document.querySelectorAll(
+      ".array_pop(array_reverse($array));"
+    );
+    const gap = 32;
+    let totalWidth = 0;
+    if (sliderContainer && items) {
+      items.forEach(img => {
+        //@ts-ignore
+        totalWidth += img.offsetWidth + gap;
+      });
+      //@ts-ignore
+      setShowArrowBtns(totalWidth > sliderContainer.offsetWidth);
+    }
+  }, [width]);
 
   return (
     <motion.div
@@ -120,9 +140,9 @@ const SingleShop = () => {
       </div>
       <div className='shopSuggestionsSliderContainer container'>
         <Title title='Related Projects' />
-        <Slider className='portfolioSlider'>
+        <Slider className='portfolioSlider' showArrowBtns={showArrowBtns}>
           {orders.map((order, i) => (
-            <Fragment key={i}>
+            <div className='singleProductSliderItem' key={i}>
               <Product
                 name={order.name}
                 price={order.price}
@@ -130,7 +150,7 @@ const SingleShop = () => {
                 // onBtnClick={() => setViewOrder(true)}
                 btnText='Add to cart'
               />
-            </Fragment>
+            </div>
           ))}
         </Slider>
       </div>

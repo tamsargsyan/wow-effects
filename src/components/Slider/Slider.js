@@ -1,24 +1,26 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import ARROW_LEFT from "../../assets/icons/arrow-left-white.svg";
 import ARROW_RIGHT from "../../assets/icons/arrow-right-white.svg";
 import "./style.css";
 import { useWindowSize } from "../../hooks/useWindowSize";
 
-const Slider = ({ children, className }) => {
+const Slider = ({ children, className, showArrowBtns }) => {
   const sliderRef = useRef(null);
   const scrollAmount = 320;
   const { width } = useWindowSize();
 
   return (
     <div className={`${className} slider`}>
-      <button
-        className='sliderBtn sliderLeftBtn'
-        onClick={() => {
-          const container = sliderRef.current;
-          container.scrollLeft -= scrollAmount;
-        }}>
-        <img src={ARROW_LEFT} alt='Arrow' />
-      </button>
+      {showArrowBtns && (
+        <button
+          className='sliderBtn sliderLeftBtn'
+          onClick={() => {
+            const container = sliderRef.current;
+            container.scrollLeft -= scrollAmount;
+          }}>
+          <img src={ARROW_LEFT} alt='Arrow' />
+        </button>
+      )}
       {width < 797 ? (
         className !== "partnersSlider" && (
           <div className='sliderContainer' ref={sliderRef}>
@@ -30,14 +32,16 @@ const Slider = ({ children, className }) => {
           {children}
         </div>
       )}
-      <button
-        className='sliderBtn sliderRightBtn'
-        onClick={() => {
-          const container = sliderRef.current;
-          container.scrollLeft += scrollAmount;
-        }}>
-        <img src={ARROW_RIGHT} alt='Arrow' />
-      </button>
+      {showArrowBtns && (
+        <button
+          className='sliderBtn sliderRightBtn'
+          onClick={() => {
+            const container = sliderRef.current;
+            container.scrollLeft += scrollAmount;
+          }}>
+          <img src={ARROW_RIGHT} alt='Arrow' />
+        </button>
+      )}
       {width < 797 && className === "partnersSlider" && (
         <div className='partnersSliderWrapper'>
           <div className='sliderContainer' ref={sliderRef}>

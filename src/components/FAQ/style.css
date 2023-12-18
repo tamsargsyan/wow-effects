@@ -14,6 +14,7 @@
 }
 .accordion-item {
   margin-bottom: 16px;
+  transition: 0.3s ease;
 }
 
 .accordion-link {
@@ -82,32 +83,33 @@
 .accordionArrow img {
   width: 50%;
   height: 50%;
+  transition: 0.3s ease;
 }
-.accordion-item:target .accordionArrow {
+.accordion-item-open .accordionArrow {
   background: var(--main-color-pink);
 }
-.accordion-item:target .accordionArrow img {
+.accordion-item-open .accordionArrow img {
   transform: rotate(180deg);
 }
-.accordion-item:target {
+.accordion-item-open {
   border: 1px solid var(--main-color-pink);
   border-radius: 18px;
   box-shadow: 0px 6px 16px 0px rgba(74, 58, 255, 0.19);
 }
-.accordion-item:target .accordion-link {
+.accordion-item-open .accordion-link {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 }
-.accordion-item:target .answer {
+.accordion-item-open .answer {
   max-height: 20rem;
   border-radius: 18px;
   border-top-right-radius: 0;
   border-top-left-radius: 0;
 }
-.accordion-item:target .accordion-link .ion-md-arrow-forward {
+.accordion-item-open .accordion-link .ion-md-arrow-forward {
   display: none;
 }
-.accordion-item:target .accordion-link .ion-md-arrow-down {
+.accordion-item-open .accordion-link .ion-md-arrow-down {
   display: block;
 }
 .accordion-link {
@@ -160,11 +162,11 @@
 .contactFAQ .accordionArrow {
   border-radius: 12px;
 }
-.contactFAQ .accordion-item:target .accordionArrow {
+.contactFAQ .accordion-item-open .accordionArrow {
   background: rgba(255, 255, 255, 0.06);
 }
-.contactFAQ .accordion-item:target,
-.detailsOverviewFAQ .accordion-item:target {
+.contactFAQ .accordion-item-open,
+.detailsOverviewFAQ .accordion-item-open {
   border: none;
   box-shadow: none;
   border-radius: 12px;

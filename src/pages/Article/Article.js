@@ -15,7 +15,7 @@ import SecondButton from "../../components/SecondButton/SecondButton";
 import Slider from "../../components/Slider/Slider";
 import Footer from "../../components/Footer/Footer";
 import SingleBlogBox from "../../components/SingleBlogBox/SingleBlogBox";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { useWindowSize } from "../../hooks/useWindowSize";
 
 const Article = () => {
@@ -107,6 +107,22 @@ const Article = () => {
   const lang = "en";
 
   const { width } = useWindowSize();
+  const [showArrowBtns, setShowArrowBtns] = useState(false);
+
+  useEffect(() => {
+    const sliderContainer = document.querySelector(".slider ");
+    const items = document.querySelectorAll(".blogItem");
+    const gap = 32;
+    let totalWidth = 0;
+    if (sliderContainer && items) {
+      items.forEach(img => {
+        //@ts-ignore
+        totalWidth += img.offsetWidth + gap;
+      });
+      //@ts-ignore
+      setShowArrowBtns(totalWidth > sliderContainer.offsetWidth);
+    }
+  }, [width]);
 
   return (
     <div>
@@ -228,9 +244,9 @@ const Article = () => {
       </div>
       <div className='portfolioSliderContainer container'>
         <Title title='Related Projects' />
-        <Slider className='portfolioSlider'>
+        <Slider className='portfolioSlider' showArrowBtns={showArrowBtns}>
           {blogs.blog_main.posts.map((blog, i) => (
-            <Fragment key={i}>
+            <div className='blogItem' key={i}>
               <SingleBlogBox
                 className='blogSectionBlog'
                 size='small'
@@ -242,7 +258,7 @@ const Article = () => {
                 description='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum...'
                 btnText='Interior Design'
               />
-            </Fragment>
+            </div>
           ))}
         </Slider>
       </div>

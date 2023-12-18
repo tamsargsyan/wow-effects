@@ -1,9 +1,9 @@
 import Title from "../Title/Title";
 import ARROW from "../../assets/icons/arrow-down-white.svg";
 import "./style.css";
+import { useState } from "react";
 
 const FAQ = ({ title, className, data }) => {
-
   const faq2 = {
     faq_main: {
       heading_en: "sfhjbk123258",
@@ -27,14 +27,30 @@ const FAQ = ({ title, className, data }) => {
   };
 
   const lang = "en";
+  const [openAccordion, setOpenAccordion] = useState(null);
 
   return (
     <div className={`${className} faqContainer`}>
       {title && <Title title={title} />}
       <div className='accordion'>
         {(data ? data.faq_main.faqs : faq2.faq_main.faqs).map(f => (
-          <div className='accordion-item' id={`question${f.id}`} key={f.id}>
-            <a className='accordion-link' href={`#question${f.id}`}>
+          <div
+            className={`${
+              openAccordion === f.id && "accordion-item-open"
+            } accordion-item`}
+            id={`question${f.id}`}
+            key={f.id}>
+            <a
+              className={`${
+                openAccordion === f.id && "accordion-link-open"
+              } accordion-link`}
+              href={`#question${f.id}`}
+              onClick={e => {
+                e.preventDefault();
+                openAccordion === f.id
+                  ? setOpenAccordion(null)
+                  : setOpenAccordion(f.id);
+              }}>
               <div
                 className='flex'
                 dangerouslySetInnerHTML={{ __html: f[`question_${lang}`] }}

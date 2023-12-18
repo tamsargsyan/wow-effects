@@ -3,17 +3,35 @@ import Checkbox from "../../../components/Checkbox/Checkbox";
 import CheckoutLayout from "./CheckoutLayout";
 import "./style.css";
 import { useDispatch, useSelector } from "react-redux";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { removeFromBasket } from "../../../redux/actions/basketActions";
 import Slider from "../../../components/Slider/Slider";
 import Title from "../../../components/Title/Title";
 import { orders } from "../../Account/Orders/Orders";
 import Product from "../../../components/Product/Product";
 import Button from "../../../components/Button/Button";
+import { useWindowSize } from "../../../hooks/useWindowSize";
 
 const CheckoutOrder = () => {
   const basketItems = useSelector(state => state.basket.items);
   const dispatch = useDispatch();
+  const { width } = useWindowSize();
+  const [showArrowBtns, setShowArrowBtns] = useState(false);
+
+  useEffect(() => {
+    const sliderContainer = document.querySelector(".slider ");
+    const items = document.querySelectorAll(".productSliderItem");
+    const gap = 32;
+    let totalWidth = 0;
+    if (sliderContainer && items) {
+      items.forEach(img => {
+        //@ts-ignore
+        totalWidth += img.offsetWidth + gap;
+      });
+      //@ts-ignore
+      setShowArrowBtns(totalWidth > sliderContainer.offsetWidth);
+    }
+  }, [width]);
 
   return (
     <CheckoutLayout>
@@ -83,9 +101,9 @@ const CheckoutOrder = () => {
       </div>
       <div className='shopSuggestionsSliderContainer container'>
         <Title title='Related Projects' />
-        <Slider className='portfolioSlider'>
+        <Slider className='portfolioSlider' showArrowBtns={showArrowBtns}>
           {orders.map((order, i) => (
-            <Fragment key={i}>
+            <div className='productSliderItem' key={i}>
               <Product
                 name={order.name}
                 price={order.price}
@@ -93,7 +111,7 @@ const CheckoutOrder = () => {
                 // onBtnClick={() => setViewOrder(true)}
                 btnText='Add to cart'
               />
-            </Fragment>
+            </div>
           ))}
         </Slider>
       </div>

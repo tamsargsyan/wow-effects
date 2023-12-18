@@ -93,7 +93,7 @@ const Home = () => {
           <FurnitureInfos product_suggestions={home.home.product_suggestions} />
           <Blog />
           <FAQ title='faq' className='mainFAQ' data={faq.faq} />
-          <Footer slider={true} />
+          <Footer slider={false} />
         </>
       )}
     </motion.div>

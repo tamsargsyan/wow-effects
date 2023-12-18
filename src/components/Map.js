@@ -2,8 +2,8 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-const Map = () => {
-  const mapCenter = [40.185959, 44.521062];
+const Map = ({ coords, addressTitle }) => {
+  const mapCenter = coords;
   const tileLayerUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
   const attribution = "Map data © OpenStreetMap contributors";
 
@@ -23,7 +23,7 @@ const Map = () => {
       style={{ height: "100%", width: "100%", borderRadius: "inherit" }}>
       <TileLayer attribution={attribution} url={tileLayerUrl} />
       <Marker position={mapCenter} icon={centerIcon}>
-        <Popup>Abovyan 25</Popup>
+        <Popup>{addressTitle}</Popup>
       </Marker>
     </MapContainer>
   );

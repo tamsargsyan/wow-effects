@@ -17,17 +17,7 @@ const apiService = {
     try {
       setStateCallback({ loading: true, error: null, data: null });
 
-      const response = await axios.post(`${BASE_URL}/${endpoint}`, data, {
-        headers: {
-          "Access-Control-Allow-Headers": "*",
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Methods":
-            "GET, POST, OPTIONS, PUT, PATCH, DELETE",
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Credentials": "true",
-          ...headers,
-        },
-      });
+      const response = await axios.post(`${BASE_URL}/${endpoint}`, data);
 
       setStateCallback({ loading: false, error: null, data: response.data });
     } catch (error) {

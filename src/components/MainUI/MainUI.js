@@ -142,7 +142,7 @@ const MainUI = ({ go_shopping, slides }) => {
             <SecondButton
               className='moreBtnLarge'
               to={go_shopping.link}
-              target='_blank'
+              // target='_blank'
             />
           </div>
         </div>

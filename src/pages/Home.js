@@ -8,7 +8,6 @@ import MainUI from "../components/MainUI/MainUI";
 import Partners from "../components/Partners/Partners";
 import Portfolio from "../components/Portfolio/Portfolio";
 import Reviews from "../components/Reviews/Reviews";
-// import IMG from "../assets/ui-fake-images/about-company-1.jpg";
 import BG from "../assets/ui-fake-images/about-company-bg.svg";
 import { motion } from "framer-motion";
 import { animate, initial } from "../utils/transition";
@@ -21,6 +20,8 @@ import { fetchPartners } from "../redux/actions/partnersActions";
 import { fetchHome } from "../redux/actions/homeActions";
 import Spinner from "../components/Spinner/Spinner";
 import { fetchFAQ } from "../redux/actions/faqActions";
+import Locations from "../components/Locations/Locations";
+import { fetchLocations } from "../redux/actions/locationsActions";
 
 const Home = () => {
   const lang = "en";
@@ -32,12 +33,14 @@ const Home = () => {
     dispatch(fetchPartners());
     dispatch(fetchHome());
     dispatch(fetchFAQ());
+    dispatch(fetchLocations());
   }, [dispatch]);
 
   const home = useSelector(state => state.home);
   const reviews = useSelector(state => state.reviews);
   const partners = useSelector(state => state.partners);
   const faq = useSelector(state => state.faq);
+  const locations = useSelector(state => state.locations);
 
   if (
     home.loading &&
@@ -47,7 +50,8 @@ const Home = () => {
     partners.loading &&
     partners.partners === null &&
     faq.loading &&
-    faq.faq === null
+    faq.faq === null &&
+    locations.locations === null
   )
     return (
       <div className='spinnerContainer'>
@@ -57,45 +61,53 @@ const Home = () => {
 
   return (
     <motion.div initial={initial} animate={animate} className='home' id='home'>
-      {home.home && reviews.reviews && partners.partners && faq.faq && (
-        <>
-          <MainUI
-            go_shopping={home.home.go_shopping}
-            slides={home.home.slides}
-          />
-          <AboutCompany
-            title={home.home.about_section[`heading_${lang}`]}
-            description={removeHtmlTags(
-              home.home.about_section[`description_${lang}`]
-            )}
-            btn={
-              <Button
-                link={true}
-                text='Read More'
-                className='aboutCompanyReadMoreBtn'
-                style={{
-                  fontFamily: "Poppins-600",
-                  textDecoration: "none",
-                  color: "var(--secondary-color-white)",
-                  background: "var(--main-color-pink)",
-                  borderRadius: "8px",
-                  display: "block",
-                  width: "fit-content",
-                }}
-              />
-            }
-            img={`${STORAGE_URL}/${home.home.about_section.image}`}
-            bgImg={BG}
-          />
-          <Portfolio portfolio_main={home.home.portfolio_main} />
-          <Reviews reviews={reviews.reviews} />
-          <Partners partners={partners.partners} />
-          <FurnitureInfos product_suggestions={home.home.product_suggestions} />
-          <Blog />
-          <FAQ title='faq' className='mainFAQ' data={faq.faq} />
-          <Footer slider={false} />
-        </>
-      )}
+      {home.home &&
+        reviews.reviews &&
+        partners.partners &&
+        faq.faq &&
+        locations.locations?.locations && (
+          <>
+            <MainUI
+              go_shopping={home.home.go_shopping}
+              slides={home.home.slides}
+            />
+            <AboutCompany
+              title={home.home.about_section[`heading_${lang}`]}
+              description={removeHtmlTags(
+                home.home.about_section[`description_${lang}`]
+              )}
+              btn={
+                <Button
+                  link={true}
+                  to={`/${home.home.about_section.link}`}
+                  text='Read More'
+                  className='aboutCompanyReadMoreBtn'
+                  style={{
+                    fontFamily: "Poppins-600",
+                    textDecoration: "none",
+                    color: "var(--secondary-color-white)",
+                    background: "var(--main-color-pink)",
+                    borderRadius: "8px",
+                    display: "block",
+                    width: "fit-content",
+                  }}
+                />
+              }
+              img={`${STORAGE_URL}/${home.home.about_section.image}`}
+              bgImg={BG}
+            />
+            <Portfolio portfolio_main={home.home.portfolio_main} />
+            <Reviews reviews={reviews.reviews} />
+            <Partners partners={partners.partners} />
+            <FurnitureInfos
+              product_suggestions={home.home.product_suggestions}
+            />
+            <Blog />
+            <FAQ title='faq' className='mainFAQ' data={faq.faq} />
+            <Locations locations={locations.locations?.locations} />
+            <Footer slider={false} />
+          </>
+        )}
     </motion.div>
   );
 };

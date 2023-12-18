@@ -2,17 +2,27 @@ import IMG_404 from "../../assets/not-found-404.svg";
 import Button from "../../components/Button/Button";
 import Footer from "../../components/Footer/Footer";
 import Img from "../../components/Img";
+import { motion } from "framer-motion";
+import { initial, animate } from "../../utils/transition";
 import "./style.css";
 
 const PageNotFound = () => {
   return (
-    <div>
+    <motion.div initial={initial} animate={animate}>
       <div className='pageNotFoundContainer'>
-        <div className='img404'>
+        <motion.div
+          initial={{
+            y: -100,
+            opacity: 0,
+          }}
+          animate={{ y: 0, opacity: 1 }}
+          className='img404'>
           <Img src={IMG_404} alt='404' />
-        </div>
+        </motion.div>
         <div className='pageNotFoundTitleContainer'>
-          <p className='pageNotFoundTitle'>Oops...</p>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+            <p className='pageNotFoundTitle'>Oops...</p>
+          </motion.div>
           <p className='pageNotFoundDescription'>
             Sorry, the page you are looking for doesn’t exist or has been moved.
           </p>
@@ -34,7 +44,7 @@ const PageNotFound = () => {
         </div>
       </div>
       <Footer />
-    </div>
+    </motion.div>
   );
 };
 

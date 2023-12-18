@@ -30,20 +30,21 @@ const BottomHeader = () => {
       id: 3,
       name: "Shop",
       to: "/shop",
-      dropdown: [
-        {
-          label: <Link>1st menu item</Link>,
-          key: "0",
-        },
-        {
-          label: <Link>1st menu item</Link>,
-          key: "1",
-        },
-        {
-          label: <Link>1st menu item</Link>,
-          key: "3",
-        },
-      ],
+      dropdown: null,
+      // dropdown: [
+      //   {
+      //     label: <Link>1st menu item</Link>,
+      //     key: "0",
+      //   },
+      //   {
+      //     label: <Link>1st menu item</Link>,
+      //     key: "1",
+      //   },
+      //   {
+      //     label: <Link>1st menu item</Link>,
+      //     key: "3",
+      //   },
+      // ],
     },
     {
       id: 4,

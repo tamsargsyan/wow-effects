@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import ContactLayout from "../components/ContactLayout/ContactLayout";
 import { ErrorMessage, Field, Form, Formik } from "formik";
@@ -8,14 +8,13 @@ import EMAIL from "../assets/icons/sms-white.svg";
 import TELEPHONE from "../assets/icons/telephone-ring-white.svg";
 import Button from "../components/Button/Button";
 import Img from "../components/Img";
-import Map from "../components/Map";
 import FAQ from "../components/FAQ/FAQ";
 import Footer from "../components/Footer/Footer";
 import { animate, initial } from "../utils/transition";
-import { removeHtmlTags } from "../Helpers/removeHtmlTags";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLocations } from "../redux/actions/locationsActions";
 import Spinner from "../components/Spinner/Spinner";
+import Locations from "../components/Locations/Locations";
 
 const Contact = () => {
   const contactDetails = [
@@ -46,7 +45,7 @@ const Contact = () => {
   }, [dispatch]);
 
   const locations = useSelector(state => state.locations);
-  const lang = "en";
+  // const lang = "en";
 
   if (locations.loading && locations.locations === null)
     return (
@@ -182,55 +181,7 @@ const Contact = () => {
             pageDescription='New to Fastshift and got questions? Hopefully we can answer them below!'>
             <FAQ className='contactFAQ' />
           </ContactLayout>
-          <ContactLayout
-            pageTitle={locations.locations.locations[`heading_${lang}`]}
-            pageDescription={removeHtmlTags(
-              locations.locations.locations[`description_${lang}`]
-            )}
-            detailsChildren={
-              <>
-                <div className='contactDetail'>
-                  <div className='contactDetailIcon'>
-                    <Img src={LOCATION} alt='Locations' />
-                  </div>
-                  <div className='contactDetailInfo'>
-                    <p className='contactDetailInfoDescription'>Address</p>
-                    <p className='contactDetailInfoTitle'>
-                      {locations.locations.locations[`address_1_${lang}`]}
-                    </p>
-                    <button className='addressViewMapBtn'>View Map</button>
-                  </div>
-                </div>
-                <div className='contactDetail'>
-                  <div className='contactDetailIcon'>
-                    <Img src={LOCATION} alt='Locations' />
-                  </div>
-                  <div className='contactDetailInfo'>
-                    <p className='contactDetailInfoDescription'>Address</p>
-                    <p className='contactDetailInfoTitle'>
-                      {locations.locations.locations[`address_2_${lang}`]}
-                    </p>
-                    <button className='addressViewMapBtn'>View Map</button>
-                  </div>
-                </div>
-                {/* {addresses.map(detail => (
-              <div className='contactDetail' key={detail.id}>
-                <div className='contactDetailIcon'>
-                  <Img src={detail.icon} alt={detail.title} />
-                </div>
-                <div className='contactDetailInfo'>
-                  <p className='contactDetailInfoDescription'>{detail.title}</p>
-                  <p className='contactDetailInfoTitle'>{detail.description}</p>
-                  <button className='addressViewMapBtn'>View Map</button>
-                </div>
-              </div>
-            ))} */}
-              </>
-            }>
-            <div className='contactMap'>
-              <Map />
-            </div>
-          </ContactLayout>
+          <Locations locations={locations.locations?.locations} />
           <Footer />
         </>
       )}

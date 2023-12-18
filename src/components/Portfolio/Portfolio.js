@@ -62,7 +62,7 @@ const Portfolio = ({ portfolio_main }) => {
         title={portfolio_main[`heading_${lang}`]}
         desc={removeHtmlTags(portfolio_main[`description_${lang}`])}
         btnLink={true}
-        to='/portfolio'
+        to={`/${portfolio_main.link}`}
         btnStyle={{
           border: "1px solid rgba(255, 255, 255, 0.40)",
           borderRadius: "8px",

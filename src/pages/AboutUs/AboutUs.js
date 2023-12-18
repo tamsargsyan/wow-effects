@@ -36,7 +36,7 @@ const AboutUs = () => {
   const partners = useSelector(state => state.partners);
   const about = useSelector(state => state.about);
   const reviews = useSelector(state => state.reviews);
-  console.log(about);
+
   if (
     partners.partners === null &&
     about.about === null &&

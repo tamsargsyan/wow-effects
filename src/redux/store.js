@@ -6,6 +6,7 @@ import homeReducer from "../redux/reducers/homeReducer";
 import faqReducer from "./reducers/faqReducer";
 import locationsReducer from "./reducers/locationsReducer";
 import aboutUsReducer from "./reducers/aboutUsReducer";
+import portfolioReducer from "./reducers/portfolioReducer";
 
 const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
     faq: faqReducer,
     locations: locationsReducer,
     about: aboutUsReducer,
+    portfolio: portfolioReducer,
   },
 });
 

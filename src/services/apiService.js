@@ -17,7 +17,11 @@ const apiService = {
     try {
       setStateCallback({ loading: true, error: null, data: null });
 
-      const response = await axios.post(`${BASE_URL}/${endpoint}`, data);
+      const response = await axios.post(`${BASE_URL}/${endpoint}`, data, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       setStateCallback({ loading: false, error: null, data: response.data });
     } catch (error) {

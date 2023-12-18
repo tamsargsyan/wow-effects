@@ -44,6 +44,8 @@ const Auth = ({ auth }) => {
     );
   };
 
+  console.log(responseData);
+
   return (
     <motion.div initial={initial} animate={animate} className='authContainer'>
       {loading && (

@@ -2,7 +2,7 @@ import Footer from "../../components/Footer/Footer";
 import { motion } from "framer-motion";
 import PagesTitle from "../../components/Title/PagesTitle";
 import Button from "../../components/Button/Button";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import ARROW from "../../assets/icons/arrow-down-white.svg";
 import Img from "../../components/Img";
 import IMG_1 from "../../assets/ui-fake-images/portfolio-work-1.svg";
@@ -13,6 +13,14 @@ import IMG_5 from "../../assets/ui-fake-images/portfolio-work-5.svg";
 import "./style.css";
 import SecondButton from "../../components/SecondButton/SecondButton";
 import { animate, initial } from "../../utils/transition";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchPortfolio,
+  fetchWorkCategories,
+} from "../../redux/actions/portfolioActions";
+import Spinner from "../../components/Spinner/Spinner";
+import { removeHtmlTags } from "../../Helpers/removeHtmlTags";
+import { STORAGE_URL } from "../../services/apiService";
 
 export const filterStatus = [
   {
@@ -97,6 +105,7 @@ export const portfolios = [
 ];
 
 const PortfolioPage = () => {
+  const lang = "en";
   const [showMenu, setShowMenu] = useState(false);
   const [selectedItem, setSelectedItem] = useState("Trending");
 
@@ -124,88 +133,118 @@ const PortfolioPage = () => {
     },
   ];
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchPortfolio());
+    dispatch(fetchWorkCategories());
+  }, [dispatch]);
+
+  const portfolio = useSelector(state => state.portfolio);
+  const workCategories = useSelector(state => state.portfolio.workCategories);
+  console.log(workCategories);
+
+  if (portfolio.portfolio === null && workCategories === null)
+    return (
+      <div className='spinnerContainer'>
+        <Spinner />
+      </div>
+    );
+
   return (
     <motion.div
       initial={initial}
       animate={animate}
       className='portfolioPageContainer'>
-      <PagesTitle
-        title='our works'
-        description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s"
-        style={{
-          flexDirection: "column",
-          gap: "12px",
-          alignItems: "center",
-          textAlign: "center",
-        }}
-      />
-      <div className='filterPanel container'>
-        <div className='filterBtns'>
-          {filterBtns.map(btn => (
-            <Fragment key={btn.id}>
-              <Button
-                className='filterBtn'
-                text={btn.name}
-                link={true}
-                style={{
-                  background: false
-                    ? "var(--main-color-pink)"
-                    : "rgba(255, 255, 255, 0.05)",
-                  color: false
-                    ? "var(--secondary-color-white)"
-                    : "rgba(255, 255, 255, 0.60)",
-                }}
-              />
-            </Fragment>
-          ))}
-        </div>
-        <div className='filterDropHolder' onClick={handleDropdownClick}>
-          <div className='filterDropdown'>
-            <p>{selectedItem}</p>
-            <Img src={ARROW} alt='Arrow' />
-          </div>
-          <ul className={`${showMenu && "showMenu"} filterMenu`}>
-            {filterStatus.map(st => (
-              <li key={st.id} onClick={() => handleMenuItemClick(st.name)}>
-                {st.name}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-      <div className='container' style={{ marginBottom: "200px" }}>
-        <div className='portfolioHolderContainer'>
-          {portfolios.map(p => (
-            <div
-              className='portfolioCard'
-              style={{ backgroundImage: `url(${p.img})` }}
-              key={p.id}>
-              <div className='portfolioCardInfo'>
-                <div className='portfolioDetails'>
-                  <p className='portfolioDetailsTitle'>{p.name}</p>
-                  <p className='portfolioDetailsDescription'>{p.description}</p>
-                </div>
-                <SecondButton
-                  className='moreBtnLarge portfolioWorkMoreBtn'
-                  to={`/portfolio/${p.slug}`}
-                />
-              </div>
+      {portfolio.portfolio && workCategories && (
+        <>
+          <PagesTitle
+            title={portfolio.portfolio.portfolio_main[`heading_${lang}`]}
+            description={removeHtmlTags(
+              portfolio.portfolio.portfolio_main[`description_${lang}`]
+            )}
+            style={{
+              flexDirection: "column",
+              gap: "12px",
+              alignItems: "center",
+              textAlign: "center",
+            }}
+          />
+          <div className='filterPanel container'>
+            <div className='filterBtns'>
+              {workCategories.work_categories.map(btn => (
+                <Fragment key={btn.id}>
+                  <Button
+                    className='filterBtn'
+                    text={btn.name}
+                    link={true}
+                    style={{
+                      background: false
+                        ? "var(--main-color-pink)"
+                        : "rgba(255, 255, 255, 0.05)",
+                      color: false
+                        ? "var(--secondary-color-white)"
+                        : "rgba(255, 255, 255, 0.60)",
+                    }}
+                  />
+                </Fragment>
+              ))}
             </div>
-          ))}
-        </div>
-        <Button
-          className='seeMoreBtn'
-          text='See More'
-          link={false}
-          style={{
-            background: "rgba(255, 255, 255, 0.05)",
-            color: "rgba(255, 255, 255, 0.60)",
-            marginTop: "48px",
-            width: "100%",
-          }}
-        />
-      </div>
-      <Footer />
+            <div className='filterDropHolder' onClick={handleDropdownClick}>
+              <div className='filterDropdown'>
+                <p>{selectedItem}</p>
+                <Img src={ARROW} alt='Arrow' />
+              </div>
+              <ul className={`${showMenu && "showMenu"} filterMenu`}>
+                {filterStatus.map(st => (
+                  <li key={st.id} onClick={() => handleMenuItemClick(st.name)}>
+                    {st.name}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className='container' style={{ marginBottom: "200px" }}>
+            <div className='portfolioHolderContainer'>
+              {portfolio.portfolio.portfolio_main.works.map(p => (
+                <div
+                  className='portfolioCard'
+                  style={{
+                    backgroundImage: `url(${STORAGE_URL}/${p.image})`,
+                  }}
+                  key={p.id}>
+                  <div className='portfolioCardInfo'>
+                    <div className='portfolioDetails'>
+                      <p className='portfolioDetailsTitle'>
+                        {p[`title_${lang}`]}
+                      </p>
+                      <p className='portfolioDetailsDescription'>
+                        {removeHtmlTags(p[`description_${lang}`])}
+                      </p>
+                    </div>
+                    <SecondButton
+                      className='moreBtnLarge portfolioWorkMoreBtn'
+                      to={`/portfolio/${p.slug}`}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+            <Button
+              className='seeMoreBtn'
+              text='See More'
+              link={false}
+              style={{
+                background: "rgba(255, 255, 255, 0.05)",
+                color: "rgba(255, 255, 255, 0.60)",
+                marginTop: "48px",
+                width: "100%",
+              }}
+            />
+          </div>
+          <Footer />
+        </>
+      )}
     </motion.div>
   );
 };

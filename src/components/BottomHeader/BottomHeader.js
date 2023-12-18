@@ -91,6 +91,9 @@ const BottomHeader = () => {
 
   const dispatch = useDispatch();
   const basketItems = useSelector(state => state.basket.items);
+  const favoriteProjects = JSON.parse(
+    localStorage.getItem("favoriteProjects") || "[]"
+  );
 
   return (
     <div
@@ -136,6 +139,9 @@ const BottomHeader = () => {
         <div className='bottomHeaderSignIn'>
           <div className='quickPick'>
             <button className='quickPickFavorites'>
+              <div className='quickPickBasketQuantity'>
+                {favoriteProjects.length}
+              </div>
               <Img src={HEART} alt='Heart' />
             </button>
             <button

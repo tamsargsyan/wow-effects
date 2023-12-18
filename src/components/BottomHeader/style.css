@@ -27,6 +27,9 @@
   align-items: center;
   gap: 10px;
 }
+.quickPickFavorites {
+  position: relative;
+}
 .bottomHeaderMenu {
   display: flex;
   align-items: center;

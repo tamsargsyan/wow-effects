@@ -61,3 +61,10 @@ body.no-scroll {
   font-family: Poppins-600;
   font-size: 24px;
 }
+@media screen and (max-width: 900px) {
+  .modal {
+    padding: 24px 16px;
+    width: 100%;
+    min-width: 100%;
+  }
+}

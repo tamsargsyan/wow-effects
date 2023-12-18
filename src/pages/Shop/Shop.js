@@ -18,6 +18,9 @@ import Button from "../../components/Button/Button";
 import Footer from "../../components/Footer/Footer";
 import { useDispatch } from "react-redux";
 import { addToBasket } from "../../redux/actions/basketActions";
+import { useWindowSize } from "../../hooks/useWindowSize";
+import FILTER from "../../assets/icons/filter-white.svg";
+import Modal from "../../components/Modal/Modal";
 
 const Shop = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -33,12 +36,14 @@ const Shop = () => {
   };
 
   const dispatch = useDispatch();
+  const { width } = useWindowSize();
+  const [openFilters, setOpenFilters] = useState(false);
 
   return (
     <motion.div initial={initial} animate={animate} className='shopContainer'>
       <PagesTitle title='Our Shop' />
       <div className='shopmart container'>
-        <div className='filteringSection'>
+        <div className='filteringSection filteringSectionDesktop'>
           <p className='filteringSectionTitle'>Filters</p>
           <Filter title='Categories'>
             {categories.map((ctg, i) => (
@@ -96,25 +101,35 @@ const Shop = () => {
               <input type='text' placeholder='Search' />
               <Img src={SEARCH} alt='Search' />
             </div>
-            <div className='filterDropHolder' onClick={handleDropdownClick}>
-              <div className='filterDropdown'>
-                <p>{selectedItem}</p>
-                <Img src={ARROW} alt='Arrow' />
+            {width > 900 ? (
+              <div className='filterDropHolder' onClick={handleDropdownClick}>
+                <div className='filterDropdown'>
+                  <p>{selectedItem}</p>
+                  <Img src={ARROW} alt='Arrow' />
+                </div>
+                <ul className={`${showMenu && "showMenu"} filterMenu`}>
+                  {filterStatus.map(st => (
+                    <li
+                      key={st.id}
+                      onClick={() => handleMenuItemClick(st.name)}>
+                      {st.name}
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <ul className={`${showMenu && "showMenu"} filterMenu`}>
-                {filterStatus.map(st => (
-                  <li key={st.id} onClick={() => handleMenuItemClick(st.name)}>
-                    {st.name}
-                  </li>
-                ))}
-              </ul>
-            </div>
+            ) : (
+              <button
+                className='mobileFilterBtn'
+                onClick={() => setOpenFilters(true)}>
+                <Img src={FILTER} alt='Filter' />
+              </button>
+            )}
           </div>
           <div className='productShowcase'>
             {orders.map((order, i) => (
               <Fragment key={i}>
                 <Product
-                  name={order.name}
+                  name={order.title}
                   price={order.price}
                   // pending={order.pending}
                   onBtnClick={() => dispatch(addToBasket(order))}
@@ -138,6 +153,80 @@ const Shop = () => {
         </div>
       </div>
       <Footer />
+      {width < 900 && (
+        <Modal
+          title='Filters'
+          open={openFilters}
+          onClose={() => setOpenFilters(false)}>
+          <div className='filteringSection'>
+            <div className='filterDropHolder' onClick={handleDropdownClick}>
+              <div className='filterDropdown'>
+                <p>{selectedItem}</p>
+                <Img src={ARROW} alt='Arrow' />
+              </div>
+              <ul className={`${showMenu && "showMenu"} filterMenu`}>
+                {filterStatus.map(st => (
+                  <li key={st.id} onClick={() => handleMenuItemClick(st.name)}>
+                    {st.name}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <p className='filteringSectionTitle'>Filters</p>
+            <Filter title='Categories'>
+              {categories.map((ctg, i) => (
+                <Link
+                  className='filteringOption filteringOptionCategory'
+                  key={i}>
+                  <p>{ctg.title}</p>
+                </Link>
+              ))}
+            </Filter>
+            <div className='filteringSectionDividor'></div>
+            <Filter title='Type'>
+              {type.map((tp, i) => (
+                // <Link className='filteringOption' key={i}>
+                <Fragment key={i}>
+                  <Checkbox text={tp.title} />
+                </Fragment>
+                // </Link>
+              ))}
+            </Filter>
+            <div className='filteringSectionDividor'></div>
+            <Filter title='Material'>
+              {material.map((mat, i) => (
+                // <Link className='filteringOption filteringOptionCategory' key={i}>
+                //   <p>{ctg.title}</p>
+                // </Link>
+                <Fragment key={i}>
+                  <Checkbox text={mat.title} />
+                </Fragment>
+              ))}
+            </Filter>
+            <div className='filteringSectionDividor'></div>
+            <Filter title='Price'>
+              {/* <RangeSlider /> */}
+              <Slider
+                range
+                defaultValue={[20, 50]}
+                style={{ color: "#AF4B85" }}
+                track={{ color: "#AF4B85" }}
+              />
+            </Filter>
+            <div className='filteringSectionDividor'></div>
+            <Filter title='Color'>
+              {colors.map(({ color }, i) => (
+                <Link className='filteringOption' key={i}>
+                  <div
+                    className='filteringOptionColor'
+                    style={{ background: color }}></div>
+                </Link>
+              ))}
+            </Filter>
+            <div className='filteringSectionDividor'></div>
+          </div>
+        </Modal>
+      )}
     </motion.div>
   );
 };

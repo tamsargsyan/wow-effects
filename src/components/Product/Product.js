@@ -17,9 +17,11 @@ const Product = ({ name, price, pending, onBtnClick, btnText, img }) => {
         <SaveButton />
       </div>
       <div className='productDetails'>
-        <div className={`${pending} productPending`}>
-          <p className='productPendingTitle'>{checkPending()}</p>
-        </div>
+        {pending && (
+          <div className={`${pending} productPending`}>
+            <p className='productPendingTitle'>{checkPending()}</p>
+          </div>
+        )}
         <div className='productInfo'>
           <div className='productGuide'>
             <p className='productGuideTitle'>{name}</p>

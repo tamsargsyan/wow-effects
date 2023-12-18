@@ -1,6 +1,5 @@
 import "./App.css";
 import Layout from "./components/Layout";
-import AboutUs from "./pages/AboutUs";
 import Home from "./pages/Home";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
@@ -26,6 +25,7 @@ import PageNotFound from "./pages/PageNotFound/PageNotFound";
 import Career from "./pages/Career/Career";
 import Position from "./pages/Position/Position";
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
+import AboutUs from "./pages/AboutUs/AboutUs";
 
 const App = () => {
   const location = useLocation();

@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import WOW_LOGO from "../../assets/logo/wow-logo.svg";
 import "./style.css";
 import Button from "../Button/Button";

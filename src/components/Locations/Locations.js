@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import { removeHtmlTags } from "../../Helpers/removeHtmlTags";
 import ContactLayout from "../ContactLayout/ContactLayout";
 import Img from "../Img";

@@ -34,8 +34,8 @@ const Auth = ({ auth }) => {
   const handleRegister = async values => {
     await apiService.post(
       "register",
-      {},
       values,
+      {},
       ({ loading, error, data }) => {
         setLoading(loading);
         setError(error);

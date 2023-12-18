@@ -5,9 +5,9 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 70px;
-  padding-bottom: 50px;
+  padding-top: 200px;
   position: relative;
-  padding-bottom: 200px;
+  /* padding-bottom: 200px; */
 }
 .meetUsMembers {
   display: flex;

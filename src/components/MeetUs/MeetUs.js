@@ -1,46 +1,31 @@
 import "./style.css";
 import Title from "../Title/Title";
-import MEMBER_1 from "../../assets/ui-fake-images/about-company-1.jpg";
-import MEMBER_2 from "../../assets/ui-fake-images/meet-us-1.jpg";
+import { removeHtmlTags } from "../../Helpers/removeHtmlTags";
+import { STORAGE_URL } from "../../services/apiService";
 
-const MeetUs = () => {
-  const members = [
-    {
-      id: 1,
-      name: "Name",
-      last_name: "Surname",
-      position: "Position",
-      img: MEMBER_1,
-    },
-    {
-      id: 2,
-      name: "Name",
-      last_name: "Surname",
-      position: "Position",
-      img: MEMBER_2,
-    },
-  ];
+const MeetUs = ({ meet_us }) => {
+  const lang = "en";
 
   return (
     <div className='meetUsContainer container'>
       <div className='meetUsInfo'>
-        <Title title='Meet us' />
+        <Title title={meet_us[`title_${lang}`]} />
         <p className='meetUsDesc'>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s
+          {removeHtmlTags(meet_us[`description_${lang}`])}
         </p>
       </div>
       <div className='meetUsMembers'>
-        {members.map(member => (
+        {meet_us.team_members.map(member => (
           <div className='meetUsMember' key={member.id}>
             <div
               className='meetUsMemberImg'
-              style={{ backgroundImage: `url(${member.img})` }}></div>
+              style={{
+                backgroundImage: `url(${STORAGE_URL}/${member.image})`,
+              }}></div>
             <p className='meetUsMemberName'>
-              {member.name} {member.last_name}
+              {member[`name_${lang}`]} {member[`surname_${lang}`]}
             </p>
-            <p className='meetUsMemberPosition'>{member.position}</p>
+            <p className='meetUsMemberPosition'>{member[`position_${lang}`]}</p>
           </div>
         ))}
       </div>

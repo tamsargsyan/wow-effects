@@ -5,7 +5,7 @@
   align-items: center;
   justify-content: center;
   gap: 70px;
-  padding-bottom: 50px;
+  /* padding-bottom: 150px; */
   position: relative;
 }
 .aboutCompanyBG {
@@ -43,6 +43,30 @@
 .aboutCompanyReadMoreBtn {
   padding: 16px 32px;
   font-size: 18px;
+}
+.aboutCountingNumbers {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.aboutCountingNumber1,
+.aboutCountingNumber2 {
+  display: flex;
+  gap: 90px;
+}
+.customerSavingsTitle {
+  color: #af4b85;
+  font-family: Poppins-700;
+  font-size: 32px;
+}
+.customerSavingsDescription {
+  color: #fff;
+  font-size: 16px;
+}
+.customerSavings {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 @media screen and (max-width: 1600px) {
   .aboutCompanyDesc {

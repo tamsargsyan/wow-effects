@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import HEART from "../../assets/icons/heart-without-bg.svg";
 import BASKET from "../../assets/icons/basket-without-bg.svg";
 import Img from "../Img";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { openBasketModal } from "../../redux/actions/basketActions";
 
 const BottomHeader = () => {
@@ -89,6 +89,7 @@ const BottomHeader = () => {
   }, [prevScrollPos, visible]);
 
   const dispatch = useDispatch();
+  const basketItems = useSelector(state => state.basket.items);
 
   return (
     <div
@@ -138,7 +139,12 @@ const BottomHeader = () => {
             </button>
             <button
               className='quickPickBasket'
-              onClick={() => dispatch(openBasketModal())}>
+              onClick={() =>
+                basketItems.length > 0 && dispatch(openBasketModal())
+              }>
+              <div className='quickPickBasketQuantity'>
+                {basketItems.length}
+              </div>
               <Img src={BASKET} alt='Basket' />
             </button>
           </div>

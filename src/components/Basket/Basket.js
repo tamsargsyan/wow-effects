@@ -26,6 +26,10 @@ const Basket = () => {
 
   const basketItems = useSelector(state => state.basket.items);
 
+  useEffect(() => {
+    basketItems.length === 0 && dispatch(closeBasketModal());
+  }, [basketItems, dispatch]);
+
   return (
     <AnimatePresence>
       {basketModal && (

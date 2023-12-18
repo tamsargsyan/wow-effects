@@ -10,12 +10,10 @@ import "./style.css";
 import { Link } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import Title from "../../components/Title/Title";
-import { portfolios } from "../Portfolio/PortfolioPage";
-import SecondButton from "../../components/SecondButton/SecondButton";
 import Slider from "../../components/Slider/Slider";
 import Footer from "../../components/Footer/Footer";
 import SingleBlogBox from "../../components/SingleBlogBox/SingleBlogBox";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useWindowSize } from "../../hooks/useWindowSize";
 
 const Article = () => {
@@ -104,7 +102,7 @@ const Article = () => {
     },
   };
 
-  const lang = "en";
+  // const lang = "en";
 
   const { width } = useWindowSize();
   const [showArrowBtns, setShowArrowBtns] = useState(false);

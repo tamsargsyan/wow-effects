@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import ARROW_LEFT from "../../assets/icons/arrow-left-white.svg";
 import ARROW_RIGHT from "../../assets/icons/arrow-right-white.svg";
 import "./style.css";

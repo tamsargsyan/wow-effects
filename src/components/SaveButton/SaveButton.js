@@ -1,10 +1,14 @@
 import HEART from "../../assets/icons/heart-gray.svg";
+import HEART_FILL from "../../assets/icons/heart-pink.svg";
 import "./style.css";
 
-const SaveButton = () => {
+const SaveButton = ({ onClick, isSaved }) => {
   return (
-    <button className='productSaveBtn'>
-      <img src={HEART} alt='Heart' />
+    <button
+      className={`${isSaved && "productSaveBtnTrue"} productSaveBtn`}
+      onClick={onClick}>
+      <img src={HEART} alt='Heart' className='notSavedImg' />
+      <img src={HEART_FILL} alt='Heart Filled' className='savedImg' />
     </button>
   );
 };

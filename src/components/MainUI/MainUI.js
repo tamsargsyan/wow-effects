@@ -1,5 +1,3 @@
-import HOUSE_DESIGN from "../../assets/ui-fake-images/house-design-furnishing-1.svg";
-import GO_SHOPPING from "../../assets/ui-fake-images/go-shopping-1.svg";
 import SEARCH from "../../assets/icons/search-pink.svg";
 import ARROW_LEFT from "../../assets/icons/arrow-left-white.svg";
 import ARROW_RIGHT from "../../assets/icons/arrow-right-white.svg";

@@ -11,7 +11,7 @@ import FURNITURE_8 from "../../assets/ui-fake-images/furniture-4.jpg";
 import "./style.css";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import { removeHtmlTags } from "../../Helpers/removeHtmlTags";
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import Product from "../../components/Product/Product";
 import { useDispatch } from "react-redux";
 import { addToBasket } from "../../redux/actions/basketActions";
@@ -117,6 +117,23 @@ const FurnitureInfos = ({ product_suggestions }) => {
   const dispatch = useDispatch();
   const lang = "en";
 
+  const [favoriteProjects, setFavoriteProjects] = useState(
+    JSON.parse(localStorage.getItem("favoriteProjects") || "[]")
+  );
+  const heartit = product_id => {
+    const index = favoriteProjects.indexOf(product_id);
+
+    if (index !== -1) {
+      favoriteProjects.splice(index, 1);
+    } else {
+      favoriteProjects.push(product_id);
+    }
+    localStorage.setItem("favoriteProjects", JSON.stringify(favoriteProjects));
+    setFavoriteProjects(
+      JSON.parse(localStorage.getItem("favoriteProjects") || "[]")
+    );
+  };
+
   return (
     <div className='furnitureContainer container'>
       {product_suggestions.map((fur, i) => (
@@ -145,8 +162,10 @@ const FurnitureInfos = ({ product_suggestions }) => {
                   // pending={order.pending}
                   // onBtnClick={() => setViewOrder(true)}
                   onBtnClick={() => dispatch(addToBasket(f))}
+                  heartit={() => heartit(f.id)}
                   btnText='Add to cart'
                   img={f.img}
+                  id={f.id}
                 />
               </Fragment>
               // <div className='furniture' key={i}>

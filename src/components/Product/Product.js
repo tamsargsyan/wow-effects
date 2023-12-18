@@ -2,7 +2,16 @@ import "./style.css";
 import Button from "../Button/Button";
 import SaveButton from "../SaveButton/SaveButton";
 
-const Product = ({ name, price, pending, onBtnClick, btnText, img }) => {
+const Product = ({
+  name,
+  price,
+  pending,
+  onBtnClick,
+  btnText,
+  img,
+  heartit,
+  id,
+}) => {
   const checkPending = () => {
     let result = "";
     if (pending === "in_progress") return (result = "In Progress");
@@ -10,11 +19,14 @@ const Product = ({ name, price, pending, onBtnClick, btnText, img }) => {
 
     return result;
   };
+  const favoriteProjects = JSON.parse(
+    localStorage.getItem("favoriteProjects") || "[]"
+  );
 
   return (
     <div className='productWrapper'>
       <div className='productImg' style={{ backgroundImage: `url(${img})` }}>
-        <SaveButton />
+        <SaveButton onClick={heartit} isSaved={favoriteProjects.includes(id)} />
       </div>
       <div className='productDetails'>
         {pending && (

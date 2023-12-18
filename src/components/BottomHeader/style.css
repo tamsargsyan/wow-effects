@@ -112,6 +112,23 @@
 .mobileMenu {
   display: none;
 }
+.quickPickBasket {
+  position: relative;
+}
+.quickPickBasketQuantity {
+  background: var(--main-color-pink);
+  color: #fff;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  font-size: 10px;
+}
 @media screen and (max-width: 1750px) {
   .bottomHeaderMenu a,
   .bottomHeaderShopBtn {
@@ -151,15 +168,19 @@
   .bottomHeader2 {
     gap: 40px;
   }
-  .bottomHeaderRegisterBtn, .bottomHeaderSignInBtn {
+  .bottomHeaderRegisterBtn,
+  .bottomHeaderSignInBtn {
     padding: 12px 25px;
   }
   .bottomHeaderMenu {
     gap: 27px;
   }
+  .quickPick {
+    gap: 15px;
+  }
 }
 @media screen and (max-width: 1400px) {
-   .bottomHeaderMenu a,
+  .bottomHeaderMenu a,
   .bottomHeaderShopBtn {
     font-size: 10px;
   }
@@ -177,7 +198,8 @@
   .bottomHeader2 {
     gap: 30px;
   }
-  .bottomHeaderRegisterBtn, .bottomHeaderSignInBtn {
+  .bottomHeaderRegisterBtn,
+  .bottomHeaderSignInBtn {
     padding: 12px 25px;
   }
   .bottomHeaderMenu {

@@ -26,6 +26,8 @@ import Career from "./pages/Career/Career";
 import Position from "./pages/Position/Position";
 import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
 import AboutUs from "./pages/AboutUs/AboutUs";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "./redux/actions/authActions";
 
 const App = () => {
   const location = useLocation();
@@ -36,6 +38,19 @@ const App = () => {
       behavior: "smooth",
     });
   }, [location.pathname]);
+
+  const { isAuthenticated } = useSelector(state => state.auth);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (
+      localStorage.getItem("token") &&
+      localStorage.getItem("user") &&
+      !isAuthenticated
+    ) {
+      dispatch(login());
+    }
+  }, [dispatch, isAuthenticated]);
 
   return (
     <AnimatePresence mode='wait'>

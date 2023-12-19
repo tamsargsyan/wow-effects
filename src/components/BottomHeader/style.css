@@ -132,6 +132,18 @@
   right: -10px;
   font-size: 10px;
 }
+.navbarProfilePicContainer {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+.navbarProfilePicContainer img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
 @media screen and (max-width: 1750px) {
   .bottomHeaderMenu a,
   .bottomHeaderShopBtn {
@@ -180,6 +192,10 @@
   }
   .quickPick {
     gap: 15px;
+  }
+  .navbarProfilePicContainer {
+    width: 35px;
+    height: 35px;
   }
 }
 @media screen and (max-width: 1400px) {

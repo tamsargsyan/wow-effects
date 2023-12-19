@@ -74,10 +74,14 @@ const Portfolio = ({ portfolio_main }) => {
         }}
       />
       <div className='portfolioWrapper'>
-        {works.map(p => (
+        {works.map((p, i) => (
           <Fragment key={p.id}>
             <PortfolioBox
-              className={p.className}
+              className={`${i === 0 && "portfolioHeader1"} ${
+                i === 1 && "portfolioContent1"
+              } ${i === 2 && "portfolioSidebar"} ${
+                i === 3 && "portfolioHeader"
+              } ${i === 4 && "portfolioContent"}`}
               img={`${STORAGE_URL}/${p.image}`}
               name={p[`title_${lang}`]}
               description={removeHtmlTags(p[`description_${lang}`])}

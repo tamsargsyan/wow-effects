@@ -11,6 +11,7 @@ import BASKET from "../../assets/icons/basket-without-bg.svg";
 import Img from "../Img";
 import { useDispatch, useSelector } from "react-redux";
 import { openBasketModal } from "../../redux/actions/basketActions";
+import PERSON from "../../assets/person-images/1.jpg";
 
 const BottomHeader = () => {
   const menu = [
@@ -95,6 +96,8 @@ const BottomHeader = () => {
     localStorage.getItem("favoriteProjects") || "[]"
   );
 
+  const { isAuthenticated } = useSelector(state => state.auth);
+
   return (
     <div
       className={`${
@@ -155,32 +158,42 @@ const BottomHeader = () => {
               <Img src={BASKET} alt='Basket' />
             </button>
           </div>
-          <Button
-            link={true}
-            to='sign-in'
-            text='Sign In'
-            style={{
-              backgroundColor: "var(--main-bg-color-black)",
-              border: "none",
-              fontFamily: "Poppins-600",
-              color: "var(--secondary-color-white)",
-              borderRadius: "var(--main-border-radius)",
-            }}
-            className='bottomHeaderSignInBtn'
-          />
-          <Button
-            link={true}
-            to='sign-up'
-            text='Register'
-            style={{
-              backgroundColor: "var(--main-color-pink)",
-              border: "none",
-              fontFamily: "Poppins-600",
-              borderRadius: "var(--main-border-radius)",
-              color: "var(--secondary-color-white)",
-            }}
-            className='bottomHeaderRegisterBtn'
-          />
+          {isAuthenticated ? (
+            <NavLink
+              to='account/control-panel'
+              className='navbarProfilePicContainer'>
+              <Img src={PERSON} alt='Profile Pic' />
+            </NavLink>
+          ) : (
+            <>
+              <Button
+                link={true}
+                to='sign-in'
+                text='Sign In'
+                style={{
+                  backgroundColor: "var(--main-bg-color-black)",
+                  border: "none",
+                  fontFamily: "Poppins-600",
+                  color: "var(--secondary-color-white)",
+                  borderRadius: "var(--main-border-radius)",
+                }}
+                className='bottomHeaderSignInBtn'
+              />
+              <Button
+                link={true}
+                to='sign-up'
+                text='Register'
+                style={{
+                  backgroundColor: "var(--main-color-pink)",
+                  border: "none",
+                  fontFamily: "Poppins-600",
+                  borderRadius: "var(--main-border-radius)",
+                  color: "var(--secondary-color-white)",
+                }}
+                className='bottomHeaderRegisterBtn'
+              />
+            </>
+          )}
         </div>
         <nav role='navigation' className='mobileMenu'>
           <div id='menuToggle'>

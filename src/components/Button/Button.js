@@ -12,6 +12,7 @@ const Button = ({
   alt,
   onClick,
   target,
+  disabled,
 }) => {
   if (link)
     return (
@@ -26,6 +27,7 @@ const Button = ({
     );
   return (
     <button
+      disabled={disabled}
       type={btnType}
       style={style}
       className={`${className} mainBtn`}

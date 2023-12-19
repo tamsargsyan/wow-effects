@@ -13,6 +13,7 @@ import { signUpSchema } from "../../utils/validationSchema";
 import { animate, initial } from "../../utils/transition";
 import apiService from "../../services/apiService";
 import Spinner from "../../components/Spinner/Spinner";
+import Modal from "../../components/Modal/Modal";
 
 const Auth = ({ auth }) => {
   const [showPasswords, setShowPasswords] = useState({
@@ -32,6 +33,9 @@ const Auth = ({ auth }) => {
   const [responseData, setResponseData] = useState(null);
 
   const handleRegister = async values => {
+    setLoading(true);
+    setError(null);
+
     await apiService.post(
       "register",
       values,
@@ -39,20 +43,17 @@ const Auth = ({ auth }) => {
       ({ loading, error, data }) => {
         setLoading(loading);
         setError(error);
+        if (!error && data && data.token && data.user) {
+          localStorage.setItem("token", data.token);
+          localStorage.setItem("user", JSON.stringify(data.user));
+        }
         setResponseData(data);
       }
     );
   };
 
-  console.log(responseData);
-
   return (
     <motion.div initial={initial} animate={animate} className='authContainer'>
-      {loading && (
-        <div className='spinnerContainer'>
-          <Spinner />
-        </div>
-      )}
       <div className='authFormContainer container'>
         <NavLink to='/' className='authLogo'>
           <Img src={LOGO} alt='Wow Logo' className='authLogoImg' />
@@ -216,7 +217,9 @@ const Auth = ({ auth }) => {
                 <Button
                   btnType='submit'
                   link={false}
-                  text='Sign Up'
+                  text={
+                    loading ? <Spinner color='#fff' size={18} /> : "Sign Up"
+                  }
                   style={{
                     backgroundColor: "var(--main-color-pink)",
                     border: "none",
@@ -260,6 +263,20 @@ const Auth = ({ auth }) => {
       <div
         className='authSecondPart'
         style={{ backgroundImage: `url(${IMG_1})` }}></div>
+      <Modal
+        title=''
+        open={error?.response?.data}
+        onClose={() => setError(null)}>
+        <p className='authResponseMessage'>
+          {error?.response?.data && JSON.parse(error?.response?.data).email[0]}
+        </p>
+      </Modal>
+      {/* <Modal
+        title=''
+        open={error?.response?.data}
+        onClose={() => setError(null)}>
+        <p className='authResponseMessage'>{error?.response?.data}</p>
+      </Modal> */}
     </motion.div>
   );
 };

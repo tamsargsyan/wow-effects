@@ -5,7 +5,7 @@ import Img from "../../components/Img";
 import Button from "../../components/Button/Button";
 import GMAIL from "../../assets/icons/gmail.svg";
 import FACEBOOK from "../../assets/icons/facebook.svg";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./style.css";
 import { useState } from "react";
 import PasswordRecovery from "./PasswordRecovery";
@@ -13,6 +13,11 @@ import { motion } from "framer-motion";
 import { signInSchema } from "../../utils/validationSchema";
 import { animate, initial } from "../../utils/transition";
 import Checkbox from "../../components/Checkbox/Checkbox";
+import apiService from "../../services/apiService";
+import Spinner from "../../components/Spinner/Spinner";
+import Modal from "../../components/Modal/Modal";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/actions/authActions";
 
 const Auth = ({ auth }) => {
   const [showPassword, setShowPassword] = useState(false);
@@ -22,6 +27,30 @@ const Auth = ({ auth }) => {
   };
 
   const [passwordRecovery, setPasswordRecovery] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [responseData, setResponseData] = useState(null);
+  const [hasNavigated, setHasNavigated] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleSignIn = async values => {
+    setLoading(true);
+    setError(null);
+
+    await apiService.post("login", values, {}, ({ loading, error, data }) => {
+      setLoading(loading);
+      setError(error);
+      if (!error && data && data.access_token && data.user && !hasNavigated) {
+        localStorage.setItem("token", data.access_token);
+        localStorage.setItem("user", JSON.stringify(data.user));
+        setHasNavigated(true);
+        !hasNavigated && navigate(`/account/control-panel`);
+        dispatch(login());
+      }
+      setResponseData(data);
+    });
+  };
 
   return (
     <motion.div initial={initial} animate={animate} className='authContainer'>
@@ -59,6 +88,7 @@ const Auth = ({ auth }) => {
               onSubmit={(values, actions) => {
                 console.log(values);
                 actions.setSubmitting(false);
+                handleSignIn(values);
               }}
               validationSchema={signInSchema}>
               {() => (
@@ -145,7 +175,10 @@ const Auth = ({ auth }) => {
                   <Button
                     btnType='submit'
                     link={false}
-                    text='Sign In'
+                    text={
+                      loading ? <Spinner color='#fff' size={18} /> : "Sign In"
+                    }
+                    disabled={loading}
                     style={{
                       backgroundColor: "var(--main-color-pink)",
                       border: "none",
@@ -191,6 +224,12 @@ const Auth = ({ auth }) => {
       <div
         className='authSecondPart'
         style={{ backgroundImage: `url(${IMG_1})` }}></div>
+      <Modal
+        title=''
+        open={error?.response?.data}
+        onClose={() => setError(null)}>
+        <p className='authResponseMessage'>{error?.response?.data.error}</p>
+      </Modal>
     </motion.div>
   );
 };

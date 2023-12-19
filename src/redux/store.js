@@ -7,6 +7,7 @@ import faqReducer from "./reducers/faqReducer";
 import locationsReducer from "./reducers/locationsReducer";
 import aboutUsReducer from "./reducers/aboutUsReducer";
 import portfolioReducer from "./reducers/portfolioReducer";
+import authReducer from "./reducers/authReducer";
 
 const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
     locations: locationsReducer,
     about: aboutUsReducer,
     portfolio: portfolioReducer,
+    auth: authReducer,
   },
 });
 

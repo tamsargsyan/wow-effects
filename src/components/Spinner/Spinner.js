@@ -1,13 +1,13 @@
 import { LoadingOutlined } from "@ant-design/icons";
 import { Spin } from "antd";
 
-const Spinner = () => (
+const Spinner = ({ color, size }) => (
   <Spin
     indicator={
       <LoadingOutlined
         style={{
-          fontSize: 36,
-          color: `var(--main-color-pink)`,
+          fontSize: size || 36,
+          color: color || "var(--main-color-pink)",
         }}
         spin
       />

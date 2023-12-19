@@ -50,7 +50,6 @@ const Contact = () => {
   const locations = useSelector(state => state.locations);
   const contacts = useSelector(state => state.contacts);
   const lang = "en";
-  console.log(contacts);
 
   if (
     locations.loading &&

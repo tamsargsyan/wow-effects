@@ -142,7 +142,6 @@ const PortfolioPage = () => {
 
   const portfolio = useSelector(state => state.portfolio);
   const workCategories = useSelector(state => state.portfolio.workCategories);
-  console.log(workCategories);
 
   if (portfolio.portfolio === null && workCategories === null)
     return (

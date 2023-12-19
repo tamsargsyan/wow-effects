@@ -9,6 +9,7 @@ import aboutUsReducer from "./reducers/aboutUsReducer";
 import portfolioReducer from "./reducers/portfolioReducer";
 import authReducer from "./reducers/authReducer";
 import contactsReducer from "./reducers/contactsReducer";
+import blogMainReducer from "./reducers/blogMainReducer";
 
 const store = configureStore({
   reducer: {
@@ -22,6 +23,7 @@ const store = configureStore({
     portfolio: portfolioReducer,
     auth: authReducer,
     contacts: contactsReducer,
+    blogMain: blogMainReducer,
   },
 });
 

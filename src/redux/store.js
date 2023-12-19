@@ -8,6 +8,7 @@ import locationsReducer from "./reducers/locationsReducer";
 import aboutUsReducer from "./reducers/aboutUsReducer";
 import portfolioReducer from "./reducers/portfolioReducer";
 import authReducer from "./reducers/authReducer";
+import contactsReducer from "./reducers/contactsReducer";
 
 const store = configureStore({
   reducer: {
@@ -20,6 +21,7 @@ const store = configureStore({
     about: aboutUsReducer,
     portfolio: portfolioReducer,
     auth: authReducer,
+    contacts: contactsReducer,
   },
 });
 

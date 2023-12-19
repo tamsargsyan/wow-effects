@@ -13,8 +13,10 @@ import Footer from "../components/Footer/Footer";
 import { animate, initial } from "../utils/transition";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLocations } from "../redux/actions/locationsActions";
+import { fetchContacts } from "../redux/actions/contactsActions";
 import Spinner from "../components/Spinner/Spinner";
 import Locations from "../components/Locations/Locations";
+import { removeHtmlTags } from "../Helpers/removeHtmlTags";
 
 const Contact = () => {
   const contactDetails = [
@@ -42,12 +44,20 @@ const Contact = () => {
 
   useEffect(() => {
     dispatch(fetchLocations());
+    dispatch(fetchContacts());
   }, [dispatch]);
 
   const locations = useSelector(state => state.locations);
-  // const lang = "en";
+  const contacts = useSelector(state => state.contacts);
+  const lang = "en";
+  console.log(contacts);
 
-  if (locations.loading && locations.locations === null)
+  if (
+    locations.loading &&
+    locations.locations === null &&
+    contacts.loading &&
+    contacts.contacts === null
+  )
     return (
       <div className='spinnerContainer'>
         <Spinner />
@@ -60,14 +70,16 @@ const Contact = () => {
       animate={animate}
       className='contactContainer'
       style={{ paddingTop: "80px" }}>
-      {locations.locations?.locations && (
+      {locations.locations?.locations && contacts.contacts && (
         <>
           <ContactLayout
-            pageTitle='Contact us'
-            pageDescription='Lorem ipsum dolor sit amet, consectetur adipiscing elit.'
+            pageTitle={contacts.contacts.contacts_main[`heading_${lang}`]}
+            pageDescription={removeHtmlTags(
+              contacts.contacts.contacts_main[`description_${lang}`]
+            )}
             detailsChildren={
               <>
-                {contactDetails.map(detail => (
+                {/* {contactDetails.map(detail => (
                   <div className='contactDetail' key={detail.id}>
                     <div className='contactDetailIcon'>
                       <Img src={detail.icon} alt={detail.title} />
@@ -79,7 +91,40 @@ const Contact = () => {
                       </p>
                     </div>
                   </div>
-                ))}
+                ))} */}
+                <div className='contactDetail'>
+                  <div className='contactDetailIcon'>
+                    <Img src={LOCATION} alt='Locations' />
+                  </div>
+                  <div className='contactDetailInfo'>
+                    <p className='contactDetailInfoTitle'>Address</p>
+                    <p className='contactDetailInfoDescription'>
+                      {contacts.contacts.contacts_main[`address_${lang}`]}
+                    </p>
+                  </div>
+                </div>
+                <div className='contactDetail'>
+                  <div className='contactDetailIcon'>
+                    <Img src={EMAIL} alt='Email' />
+                  </div>
+                  <div className='contactDetailInfo'>
+                    <p className='contactDetailInfoTitle'>Email</p>
+                    <p className='contactDetailInfoDescription'>
+                      {contacts.contacts.contacts_main.email}
+                    </p>
+                  </div>
+                </div>
+                <div className='contactDetail'>
+                  <div className='contactDetailIcon'>
+                    <Img src={TELEPHONE} alt='Telephone' />
+                  </div>
+                  <div className='contactDetailInfo'>
+                    <p className='contactDetailInfoTitle'>Phone Number</p>
+                    <p className='contactDetailInfoDescription'>
+                      {contacts.contacts.contacts_main.phone}
+                    </p>
+                  </div>
+                </div>
               </>
             }>
             <Formik

@@ -28,6 +28,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy/PrivacyPolicy";
 import AboutUs from "./pages/AboutUs/AboutUs";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "./redux/actions/authActions";
+import ResetPassword from "./pages/Auth/ResetPassword";
 
 const App = () => {
   const location = useLocation();
@@ -60,6 +61,7 @@ const App = () => {
           <Route path='/about-us' element={<AboutUs />} />
           <Route path='/sign-in' element={<SignInAuth auth='sign-in' />} />
           <Route path='/sign-up' element={<SignUpAuth auth='sign-up' />} />
+          <Route path='/passwordReset' element={<ResetPassword />} />
           <Route path='/contact-us' element={<Contact />} />
           <Route path='/portfolio' element={<PortfolioPage />} />
           <Route

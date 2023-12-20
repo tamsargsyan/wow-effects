@@ -8,6 +8,7 @@ import Img from "../../components/Img";
 import { useState } from "react";
 import EMAIL from "../../assets/icons/sms-bg-white.svg";
 import apiService from "../../services/apiService";
+import Spinner from "../../components/Spinner/Spinner";
 
 const PasswordRecovery = ({ setPasswordRecovery }) => {
   const [resetPass, setResetPass] = useState(false);
@@ -23,7 +24,7 @@ const PasswordRecovery = ({ setPasswordRecovery }) => {
     setError(null);
 
     await apiService.post(
-      "password",
+      "password/email",
       values,
       {},
       ({ loading, error, data }) => {
@@ -34,6 +35,8 @@ const PasswordRecovery = ({ setPasswordRecovery }) => {
       }
     );
   };
+
+  console.log(responseData);
 
   return (
     <motion.div
@@ -52,7 +55,7 @@ const PasswordRecovery = ({ setPasswordRecovery }) => {
         <Img src={ARROW_LEFT} alt='Arrow Left' />
         Back
       </button>
-      {resetPass ? (
+      {responseData?.message === "We have emailed your password reset link!" ? (
         <motion.div
           initial={{
             opacity: 0,
@@ -90,7 +93,7 @@ const PasswordRecovery = ({ setPasswordRecovery }) => {
             onSubmit={(values, actions) => {
               console.log(values);
               actions.setSubmitting(false);
-              setResetPass(true);
+              // setResetPass(true);
               handleResetPassword(values);
             }}
             validationSchema={passwordRecoverySchema}>
@@ -114,7 +117,14 @@ const PasswordRecovery = ({ setPasswordRecovery }) => {
                 <Button
                   btnType='submit'
                   link={false}
-                  text='Reset Password'
+                  text={
+                    loading ? (
+                      <Spinner color='#fff' size={18} />
+                    ) : (
+                      "Reset Password"
+                    )
+                  }
+                  disabled={loading}
                   style={{
                     width: "100%",
                     backgroundColor: "var(--main-color-pink)",

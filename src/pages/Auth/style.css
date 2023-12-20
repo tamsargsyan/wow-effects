@@ -10,7 +10,7 @@
   padding-top: 70px;
   padding-bottom: 70px;
   width: 50%;
-  max-height: 100vh;
+  height: 100vh;
   overflow-y: auto;
 }
 .authSecondPart {
@@ -137,6 +137,11 @@
 .authResponseMessage {
   text-align: center;
   margin: 30px auto;
+}
+.authLogo {
+  height: fit-content;
+  width: fit-content;
+  display: block;
 }
 @media screen and (max-width: 1600px) {
   .authLogo img {

@@ -85,7 +85,7 @@ const Portfolio = ({ portfolio_main }) => {
               img={`${STORAGE_URL}/${p.image}`}
               name={p[`title_${lang}`]}
               description={removeHtmlTags(p[`description_${lang}`])}
-              to={p.link}
+              to={`/portfolio/${p.id}`}
             />
           </Fragment>
         ))}

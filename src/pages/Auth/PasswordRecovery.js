@@ -36,8 +36,6 @@ const PasswordRecovery = ({ setPasswordRecovery }) => {
     );
   };
 
-  console.log(responseData);
-
   return (
     <motion.div
       initial={{

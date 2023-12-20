@@ -13,8 +13,9 @@ import { useWindowSize } from "../../hooks/useWindowSize";
 import { removeHtmlTags } from "../../Helpers/removeHtmlTags";
 import { Fragment, useState } from "react";
 import Product from "../../components/Product/Product";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToBasket } from "../../redux/actions/basketActions";
+import apiService, { STORAGE_URL } from "../../services/apiService";
 
 const FurnitureInfos = ({ product_suggestions }) => {
   const furnitures = [
@@ -120,19 +121,60 @@ const FurnitureInfos = ({ product_suggestions }) => {
   const [favoriteProjects, setFavoriteProjects] = useState(
     JSON.parse(localStorage.getItem("favoriteProjects") || "[]")
   );
-  const heartit = product_id => {
-    const index = favoriteProjects.indexOf(product_id);
+  const { isAuthenticated } = useSelector(state => state.auth);
+  const user = JSON.parse(localStorage.getItem("user"));
+  const token = localStorage.getItem("token");
 
-    if (index !== -1) {
-      favoriteProjects.splice(index, 1);
-    } else {
-      favoriteProjects.push(product_id);
-    }
-    localStorage.setItem("favoriteProjects", JSON.stringify(favoriteProjects));
-    setFavoriteProjects(
-      JSON.parse(localStorage.getItem("favoriteProjects") || "[]")
+  const [addToFavoritesLoading, setAddToFavoritesLoading] = useState(false);
+  const [addToFavoritesError, setAddToFavoritesError] = useState(null);
+  const [addToFavoritesResponseData, setAddToFavoritesResponseData] =
+    useState(null);
+
+  const addToFavorites = async values => {
+    setAddToFavoritesLoading(true);
+    setAddToFavoritesError(null);
+
+    await apiService.post(
+      "addToFavorites",
+      values,
+      {
+        Authorization: `Bearer ${token}`,
+      },
+      ({ loading, error, data }) => {
+        setAddToFavoritesLoading(loading);
+        setAddToFavoritesError(error);
+
+        setAddToFavoritesResponseData(data);
+      }
     );
   };
+  console.log(addToFavoritesResponseData);
+
+  const heartit = product_id => {
+    if (isAuthenticated) {
+      addToFavorites({
+        user_id: user.id,
+        product_id,
+      });
+    } else {
+      const index = favoriteProjects.indexOf(product_id);
+
+      if (index !== -1) {
+        favoriteProjects.splice(index, 1);
+      } else {
+        favoriteProjects.push(product_id);
+      }
+      localStorage.setItem(
+        "favoriteProjects",
+        JSON.stringify(favoriteProjects)
+      );
+      setFavoriteProjects(
+        JSON.parse(localStorage.getItem("favoriteProjects") || "[]")
+      );
+    }
+  };
+
+  console.log(product_suggestions);
 
   return (
     <div className='furnitureContainer container'>
@@ -154,17 +196,17 @@ const FurnitureInfos = ({ product_suggestions }) => {
             to={fur.link}
           />
           <div className='furnituresWrapper'>
-            {furnitures[0].furnitures.map((f, i) => (
+            {fur.products?.map((f, i) => (
               <Fragment key={i}>
                 <Product
-                  name={f.name}
+                  name={f[`title_${lang}`]}
                   price={f.price}
                   // pending={order.pending}
                   // onBtnClick={() => setViewOrder(true)}
                   onBtnClick={() => dispatch(addToBasket(f))}
                   heartit={() => heartit(f.id)}
                   btnText='Add to cart'
-                  img={f.img}
+                  img={`${STORAGE_URL}/${f.image}`}
                   id={f.id}
                 />
               </Fragment>

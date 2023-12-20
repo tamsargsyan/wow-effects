@@ -86,7 +86,6 @@ const Auth = ({ auth }) => {
                 password: "",
               }}
               onSubmit={(values, actions) => {
-                console.log(values);
                 actions.setSubmitting(false);
                 handleSignIn(values);
               }}

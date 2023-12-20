@@ -4,13 +4,22 @@ import QauntityField from "../QauntityField/QauntityField";
 import DELETE from "../../assets/icons/delete-white.svg";
 import "./style.css";
 
-const CardProduct = ({ title, description, img, onRemove, className }) => {
+const CardProduct = ({
+  title,
+  description,
+  img,
+  onRemove,
+  className,
+  quantity,
+  price,
+  id,
+}) => {
   return (
     <div className={`${className} cardProductContainer`}>
       <div className='firstSecondThird'>
         <div className='firstSecond'>
           <div className='first'>
-            <Checkbox />
+            <Checkbox uniqueId={title + id} />
           </div>
           <div className='second'>
             <Img src={img} alt='Chair' />
@@ -22,20 +31,20 @@ const CardProduct = ({ title, description, img, onRemove, className }) => {
             <p className='cardProductDescription'>{description}</p>
           </div>
           <div className='btns'>
-            <QauntityField />
+            <QauntityField quantity={quantity} id={id} />
             {className !== "checkoutCardProductContainer" ? (
               <button className='cardProductDeleteBtn' onClick={onRemove}>
                 <Img src={DELETE} alt='Delete' />
               </button>
             ) : (
-              <p className='cardProductPrice'>$140</p>
+              <p className='cardProductPrice'>${quantity * price}</p>
             )}
           </div>
         </div>
       </div>
       <div className='forth'>
         {className !== "checkoutCardProductContainer" ? (
-          <p className='cardProductPrice'>$140</p>
+          <p className='cardProductPrice'>${quantity * price}</p>
         ) : (
           <button className='cardProductDeleteBtn' onClick={onRemove}>
             <Img src={DELETE} alt='Delete' />

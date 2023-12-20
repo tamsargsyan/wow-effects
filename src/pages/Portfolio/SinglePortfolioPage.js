@@ -85,7 +85,6 @@ const SinglePortfolioPage = () => {
   }, [dispatch]);
 
   const work = useSelector(state => state.work);
-  console.log(work);
 
   if (work.work === null && work.loading)
     return (

@@ -14,6 +14,7 @@ import shopReducer from "./reducers/shopReducer";
 import blogReducer from "./reducers/blogReducer";
 import postReducer from "./reducers/postReducer";
 import workReducer from "./reducers/workReducer";
+import productsHomeReducer from "./reducers/productsHomeReducer";
 
 const store = configureStore({
   reducer: {
@@ -32,6 +33,7 @@ const store = configureStore({
     blog: blogReducer,
     post: postReducer,
     work: workReducer,
+    productsHome: productsHomeReducer,
   },
 });
 

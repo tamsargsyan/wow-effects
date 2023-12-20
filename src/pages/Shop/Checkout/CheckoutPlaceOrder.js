@@ -4,8 +4,12 @@ import Button from "../../../components/Button/Button";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { contactSchema } from "../../../utils/validationSchema";
 import Checkbox from "../../../components/Checkbox/Checkbox";
+import { useSelector } from "react-redux";
 
 const CheckoutPlaceOrder = () => {
+  const basketTotalPrice = useSelector(state => state.basket.totalItemsPrice);
+  const delivery = 10;
+
   return (
     <CheckoutLayout>
       <div className='checkoutPlaceOrderContainer container'>
@@ -203,20 +207,25 @@ const CheckoutPlaceOrder = () => {
           <div className='orderSubtotalContainer'>
             <div className='subtotal'>
               <p className='subtotalTitle'>Subtotal</p>
-              <p className='subtotalDescription'>$560</p>
+              <p className='subtotalDescription'>${basketTotalPrice}</p>
             </div>
             <div className='subtotal'>
               <p className='subtotalTitle'>Delivery</p>
-              <p className='subtotalDescription'>$10</p>
+              <p className='subtotalDescription'>${delivery}</p>
             </div>
           </div>
           <div className='orderSummaryLine'></div>
           <div className='totalContainer'>
             <p className='subtotalTitle'>Total</p>
-            <p className='subtotalDescription'>$560</p>
+            <p className='subtotalDescription'>
+              ${basketTotalPrice + delivery}
+            </p>
           </div>
           <div className='orderSummaryLine'></div>
-          <Checkbox text='I have read and accept the terms and conditions of the site *' />
+          <Checkbox
+            text='I have read and accept <span>the terms and conditions</span> of the site *'
+            uniqueId={"termsCheckbox"}
+          />
           <Button
             text='Checkout'
             // icon={PLUS}

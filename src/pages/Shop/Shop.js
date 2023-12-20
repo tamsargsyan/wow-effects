@@ -46,18 +46,58 @@ const Shop = () => {
   const [favoriteProjects, setFavoriteProjects] = useState(
     JSON.parse(localStorage.getItem("favoriteProjects") || "[]")
   );
-  const heartit = product_id => {
-    const index = favoriteProjects.indexOf(product_id);
+  const { isAuthenticated } = useSelector(state => state.auth);
+  const user = JSON.parse(localStorage.getItem("user"));
+  const token = localStorage.getItem("token");
 
-    if (index !== -1) {
-      favoriteProjects.splice(index, 1);
-    } else {
-      favoriteProjects.push(product_id);
-    }
-    localStorage.setItem("favoriteProjects", JSON.stringify(favoriteProjects));
-    setFavoriteProjects(
-      JSON.parse(localStorage.getItem("favoriteProjects") || "[]")
+  const [addToFavoritesLoading, setAddToFavoritesLoading] = useState(false);
+  const [addToFavoritesError, setAddToFavoritesError] = useState(null);
+  const [addToFavoritesResponseData, setAddToFavoritesResponseData] =
+    useState(null);
+
+  const addToFavorites = async values => {
+    setAddToFavoritesLoading(true);
+    setAddToFavoritesError(null);
+
+    await apiService.post(
+      "addToFavorites",
+      values,
+      {
+        Authorization: `Bearer ${token}`,
+      },
+      ({ loading, error, data }) => {
+        setAddToFavoritesLoading(loading);
+        setAddToFavoritesError(error);
+
+        setAddToFavoritesResponseData(data);
+      }
     );
+  };
+
+  console.log(addToFavoritesResponseData);
+
+  const heartit = product_id => {
+    if (isAuthenticated) {
+      addToFavorites({
+        user_id: user.id,
+        product_id,
+      });
+    } else {
+      const index = favoriteProjects.indexOf(product_id);
+
+      if (index !== -1) {
+        favoriteProjects.splice(index, 1);
+      } else {
+        favoriteProjects.push(product_id);
+      }
+      localStorage.setItem(
+        "favoriteProjects",
+        JSON.stringify(favoriteProjects)
+      );
+      setFavoriteProjects(
+        JSON.parse(localStorage.getItem("favoriteProjects") || "[]")
+      );
+    }
   };
 
   useEffect(() => {
@@ -93,9 +133,6 @@ const Shop = () => {
   const addToCart = async values => {
     setLoading(true);
     setError(null);
-
-    const token = localStorage.getItem("token");
-
     await apiService.post(
       "addToCart",
       values,
@@ -134,9 +171,6 @@ const Shop = () => {
   useEffect(() => {
     body && productFilter(body);
   }, [body]);
-
-  const user = JSON.parse(localStorage.getItem("user"));
-  const { isAuthenticated } = useSelector(state => state.auth);
 
   if (shop.shop === null && shop.loading)
     return (

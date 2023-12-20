@@ -137,8 +137,6 @@ const PortfolioPage = () => {
   const [showMenu, setShowMenu] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
 
-  console.log(workCategories);
-
   useEffect(() => {
     workTypes && setSelectedItem(workTypes.work_types[0]);
   }, workTypes);

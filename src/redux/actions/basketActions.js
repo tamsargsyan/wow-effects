@@ -18,7 +18,16 @@ export const removeFromBasket = itemId => ({
   payload: itemId,
 });
 
-export const updateQuantity = (itemId, newQuantity) => ({
-  type: actionTypes.UPDATE_QUANTITY,
-  payload: { itemId, newQuantity },
+export const increaseQuantity = itemId => ({
+  type: actionTypes.INCREASE_QUANTITY,
+  payload: itemId,
 });
+export const decreaseQuantity = itemId => ({
+  type: actionTypes.DECREASE_QUANTITY,
+  payload: itemId,
+});
+export const calculateBasketTotalPrice = () => {
+  return {
+    type: actionTypes.BASKET_TOTAL_PRICE,
+  };
+};

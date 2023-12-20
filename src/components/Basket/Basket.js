@@ -9,11 +9,15 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
 import { animate, initial } from "../../utils/transition";
 import {
+  calculateBasketTotalPrice,
   closeBasketModal,
   removeFromBasket,
 } from "../../redux/actions/basketActions";
+import { STORAGE_URL } from "../../services/apiService";
+import { removeHtmlTags } from "../../Helpers/removeHtmlTags";
 
 const Basket = () => {
+  const lang = "en";
   const dispatch = useDispatch();
   const basketModal = useSelector(state => state.basket.basketModal);
 
@@ -25,10 +29,15 @@ const Basket = () => {
   }, [basketModal]);
 
   const basketItems = useSelector(state => state.basket.items);
+  const basketTotalPrice = useSelector(state => state.basket.totalItemsPrice);
 
   useEffect(() => {
     basketItems.length === 0 && dispatch(closeBasketModal());
   }, [basketItems, dispatch]);
+
+  useEffect(() => {
+    basketItems && dispatch(calculateBasketTotalPrice());
+  }, [basketItems]);
 
   return (
     <AnimatePresence>
@@ -55,22 +64,24 @@ const Basket = () => {
               </button>
             </div>
             <div className='basketBody'>
-              <Checkbox text='Select all' />
+              <Checkbox text='Select all' uniqueId={`basket_selectAll`} />
               <div className='basketProducts'>
                 {basketItems.map((item, i) => (
                   <Fragment key={i}>
                     <CardProduct
-                      title={item.title}
-                      description={item.description}
-                      img={item.img}
+                      title={item[`title_${lang}`]}
+                      description={removeHtmlTags(item[`description_${lang}`])}
+                      img={`${STORAGE_URL}/${item.image}`}
                       id={item.id}
                       onRemove={() => dispatch(removeFromBasket(item.id))}
+                      quantity={item.quantity}
+                      price={+item.price}
                     />
                   </Fragment>
                 ))}
               </div>
               <div className='basketSubtotalPriceContainer'>
-                <p className='basketSubtotalPrice'>$560</p>
+                <p className='basketSubtotalPrice'>${basketTotalPrice}</p>
               </div>
             </div>
             <div className='basketContinueCheckoutBtn'>

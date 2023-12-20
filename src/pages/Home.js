@@ -22,6 +22,7 @@ import Spinner from "../components/Spinner/Spinner";
 import { fetchFAQ } from "../redux/actions/faqActions";
 import Locations from "../components/Locations/Locations";
 import { fetchLocations } from "../redux/actions/locationsActions";
+import { fetchProductsHome } from "../redux/actions/productsHomeActions";
 
 const Home = () => {
   const lang = "en";
@@ -34,6 +35,7 @@ const Home = () => {
     dispatch(fetchHome());
     dispatch(fetchFAQ());
     dispatch(fetchLocations());
+    dispatch(fetchProductsHome());
   }, [dispatch]);
 
   const home = useSelector(state => state.home);
@@ -41,6 +43,7 @@ const Home = () => {
   const partners = useSelector(state => state.partners);
   const faq = useSelector(state => state.faq);
   const locations = useSelector(state => state.locations);
+  const productsHome = useSelector(state => state.productsHome);
 
   if (
     home.loading &&
@@ -51,7 +54,8 @@ const Home = () => {
     partners.partners === null &&
     faq.loading &&
     faq.faq === null &&
-    locations.locations === null
+    locations.locations === null &&
+    productsHome.productsHome === null
   )
     return (
       <div className='spinnerContainer'>
@@ -65,7 +69,8 @@ const Home = () => {
         reviews.reviews &&
         partners.partners &&
         faq.faq &&
-        locations.locations?.locations && (
+        locations.locations?.locations &&
+        productsHome.productsHome && (
           <>
             <MainUI
               go_shopping={home.home.go_shopping}
@@ -100,7 +105,7 @@ const Home = () => {
             <Reviews reviews={reviews.reviews} />
             <Partners partners={partners.partners} />
             <FurnitureInfos
-              product_suggestions={home.home.product_suggestions}
+              product_suggestions={productsHome.productsHome.products_in_home}
             />
             <Blog />
             <FAQ title='faq' className='mainFAQ' data={faq.faq} />

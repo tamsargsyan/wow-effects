@@ -5,7 +5,7 @@ import Img from "../../components/Img";
 import Button from "../../components/Button/Button";
 import GMAIL from "../../assets/icons/gmail.svg";
 import FACEBOOK from "../../assets/icons/facebook.svg";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "./style.css";
 import { useState } from "react";
 import { motion } from "framer-motion";
@@ -14,6 +14,8 @@ import { animate, initial } from "../../utils/transition";
 import apiService from "../../services/apiService";
 import Spinner from "../../components/Spinner/Spinner";
 import Modal from "../../components/Modal/Modal";
+import { useDispatch } from "react-redux";
+import { login } from "../../redux/actions/authActions";
 
 const Auth = ({ auth }) => {
   const [showPasswords, setShowPasswords] = useState({
@@ -31,6 +33,9 @@ const Auth = ({ auth }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [responseData, setResponseData] = useState(null);
+  const [hasNavigated, setHasNavigated] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleRegister = async values => {
     setLoading(true);
@@ -43,9 +48,12 @@ const Auth = ({ auth }) => {
       ({ loading, error, data }) => {
         setLoading(loading);
         setError(error);
-        if (!error && data && data.token && data.user) {
+        if (!error && data && data.token && data.user && !hasNavigated) {
           localStorage.setItem("token", data.token);
           localStorage.setItem("user", JSON.stringify(data.user));
+          setHasNavigated(true);
+          !hasNavigated && navigate(`/account/control-panel`);
+          dispatch(login());
         }
         setResponseData(data);
       }
@@ -84,7 +92,6 @@ const Auth = ({ auth }) => {
               password_confirmation: "",
             }}
             onSubmit={(values, actions) => {
-              console.log(values);
               handleRegister(values);
               actions.setSubmitting(false);
             }}

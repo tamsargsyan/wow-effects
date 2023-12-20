@@ -140,8 +140,6 @@ const ResetPassword = () => {
               password_confirmation: "",
             }}
             onSubmit={(values, actions) => {
-              // console.log(values);
-              // actions.setSubmitting(false);
               checkCodeResponseData.message === "The code is valid" &&
                 handleResetPass(values);
             }}

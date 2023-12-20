@@ -15,9 +15,8 @@ const Checkbox = ({ text, className, uniqueId }) => {
         <label
           className='checkboxTitle'
           // for="check-23"
-          htmlFor={uniqueId}>
-          {text}
-        </label>
+          htmlFor={uniqueId}
+          dangerouslySetInnerHTML={{ __html: text }}></label>
       )}
     </div>
   );

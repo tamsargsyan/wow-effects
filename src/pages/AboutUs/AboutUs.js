@@ -22,10 +22,11 @@ import { fetchReviews } from "../../redux/actions/reviewsActions";
 import Blog from "../../components/Blog/Blog";
 import Button from "../../components/Button/Button";
 import "./style.css";
+import Cookies from "js-cookie";
 
 const AboutUs = () => {
   const dispatch = useDispatch();
-  const lang = "en";
+  const lang = Cookies.get("i18next") || "en";
 
   useEffect(() => {
     dispatch(fetchPartners());

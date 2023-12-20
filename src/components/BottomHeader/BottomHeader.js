@@ -12,8 +12,11 @@ import Img from "../Img";
 import { useDispatch, useSelector } from "react-redux";
 import { openBasketModal } from "../../redux/actions/basketActions";
 import PERSON from "../../assets/person-images/1.jpg";
+import Cookies from "js-cookie";
 
 const BottomHeader = () => {
+  const lang = Cookies.get("i18next");
+
   const menu = [
     {
       id: 1,
@@ -104,7 +107,7 @@ const BottomHeader = () => {
         visible ? "bottomHeaderContainerVisible" : "bottomHeaderContainerHidden"
       } bottomHeaderContainer container`}>
       <div className='bottomHeaderLogo'>
-        <NavLink to='/'>
+        <NavLink to={`/${lang}/`}>
           <img src={WOW_LOGO} alt='Wow logo' />
         </NavLink>
       </div>
@@ -120,7 +123,7 @@ const BottomHeader = () => {
                 trigger={["click"]}>
                 <NavLink
                   // onClick={e => e.preventDefault()}
-                  to={m.to}
+                  to={`/${lang}${m.to}`}
                   className='bottomHeaderShopBtn'>
                   <Space>
                     {m.name}
@@ -133,7 +136,7 @@ const BottomHeader = () => {
                 </NavLink>
               </Dropdown>
             ) : (
-              <NavLink to={m.to} key={m.id}>
+              <NavLink to={`/${lang}${m.to}`} key={m.id}>
                 {m.name}
               </NavLink>
             );
@@ -212,7 +215,7 @@ const BottomHeader = () => {
                     trigger={["click"]}>
                     <NavLink
                       // onClick={e => e.preventDefault()}
-                      to={m.to}
+                      to={`/${lang}${m.to}`}
                       className='bottomHeaderShopBtnMobile'>
                       <Space>
                         {m.name}
@@ -225,7 +228,9 @@ const BottomHeader = () => {
                     </NavLink>
                   </Dropdown>
                 ) : (
-                  <NavLink key={m.id}>{m.name}</NavLink>
+                  <NavLink key={m.id} to={`/${lang}${m.to}`}>
+                    {m.name}
+                  </NavLink>
                 );
               })}
             </ul>

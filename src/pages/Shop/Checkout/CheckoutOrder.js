@@ -16,9 +16,10 @@ import Button from "../../../components/Button/Button";
 import { useWindowSize } from "../../../hooks/useWindowSize";
 import { STORAGE_URL } from "../../../services/apiService";
 import { removeHtmlTags } from "../../../Helpers/removeHtmlTags";
+import Cookies from "js-cookie";
 
 const CheckoutOrder = () => {
-  const lang = "en";
+  const lang = Cookies.get("i18next") || "en";
   const basketItems = useSelector(state => state.basket.items);
   const dispatch = useDispatch();
   const { width } = useWindowSize();

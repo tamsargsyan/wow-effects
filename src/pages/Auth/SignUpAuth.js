@@ -16,8 +16,10 @@ import Spinner from "../../components/Spinner/Spinner";
 import Modal from "../../components/Modal/Modal";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/actions/authActions";
+import Cookies from "js-cookie";
 
 const Auth = ({ auth }) => {
+  const lang = Cookies.get("i18next");
   const [showPasswords, setShowPasswords] = useState({
     password1: false,
     password2: false,
@@ -52,7 +54,7 @@ const Auth = ({ auth }) => {
           localStorage.setItem("token", data.token);
           localStorage.setItem("user", JSON.stringify(data.user));
           setHasNavigated(true);
-          !hasNavigated && navigate(`/account/control-panel`);
+          !hasNavigated && navigate(`/${lang}/account/control-panel`);
           dispatch(login());
         }
         setResponseData(data);
@@ -63,7 +65,7 @@ const Auth = ({ auth }) => {
   return (
     <motion.div initial={initial} animate={animate} className='authContainer'>
       <div className='authFormContainer container'>
-        <NavLink to='/' className='authLogo'>
+        <NavLink to={`/${lang}/`} className='authLogo'>
           <Img src={LOGO} alt='Wow Logo' className='authLogoImg' />
         </NavLink>
         <motion.div

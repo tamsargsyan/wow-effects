@@ -20,32 +20,33 @@ import { fetchPost } from "../../redux/actions/postActions";
 import Spinner from "../../components/Spinner/Spinner";
 import { STORAGE_URL } from "../../services/apiService";
 import { removeHtmlTags } from "../../Helpers/removeHtmlTags";
+import Cookies from "js-cookie";
 
 const Article = () => {
-  const medias = [
-    {
-      id: 1,
-      name: "Link",
-      icon: LINK,
-    },
-    {
-      id: 2,
-      name: "Linked In",
-      icon: LINKEDIN,
-    },
-    {
-      id: 3,
-      name: "Twitter",
-      icon: TWITTER,
-    },
-    {
-      id: 4,
-      name: "Facebook",
-      icon: FACEBOOK,
-    },
-  ];
+  // const medias = [
+  //   {
+  //     id: 1,
+  //     name: "Link",
+  //     icon: LINK,
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Linked In",
+  //     icon: LINKEDIN,
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Twitter",
+  //     icon: TWITTER,
+  //   },
+  //   {
+  //     id: 4,
+  //     name: "Facebook",
+  //     icon: FACEBOOK,
+  //   },
+  // ];
 
-  const lang = "en";
+  const lang = Cookies.get("i18next") || "en";
 
   const { width } = useWindowSize();
   const [showArrowBtns, setShowArrowBtns] = useState(false);
@@ -225,10 +226,10 @@ const Article = () => {
                       gap: "32px",
                     }}
                     name={blog[`title_${lang}`]}
-                    description={blog[`description_${lang}`]}
+                    description={removeHtmlTags(blog[`description_${lang}`])}
                     btnText='Interior Design'
                     img={`${STORAGE_URL}/${blog.image}`}
-                    to={`/blog/${blog.id}`}
+                    to={`/${lang}/blog/${blog.id}`}
                   />
                 </div>
               ))}

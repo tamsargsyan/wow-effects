@@ -29,8 +29,10 @@ import Modal from "../../components/Modal/Modal";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/actions/authActions";
 import ARROW_LEFT from "../../assets/icons/arrow-left-pink.svg";
+import Cookies from "js-cookie";
 
 const ResetPassword = () => {
+  const lang = Cookies.get("i18next");
   const [resetPass, setResetPass] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -108,7 +110,7 @@ const ResetPassword = () => {
   return (
     <motion.div initial={initial} animate={animate} className='authContainer'>
       <div className='authFormContainer container'>
-        <NavLink to='/' className='authLogo'>
+        <NavLink to={`/${lang}/`} className='authLogo'>
           <Img src={LOGO} alt='Wow Logo' className='authLogoImg' />
         </NavLink>
         <motion.div
@@ -288,7 +290,8 @@ const ResetPassword = () => {
         onClose={() => {
           setResetPassResponseData(null);
           resetPassResponseData.message ===
-            "password has been successfully reset" && navigate("/sign-in");
+            "password has been successfully reset" &&
+            navigate(`/${lang}/sign-in`);
         }}>
         <p className='authResponseMessage'>{resetPassResponseData?.message}</p>
       </Modal>

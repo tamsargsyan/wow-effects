@@ -23,9 +23,10 @@ import { fetchFAQ } from "../redux/actions/faqActions";
 import Locations from "../components/Locations/Locations";
 import { fetchLocations } from "../redux/actions/locationsActions";
 import { fetchProductsHome } from "../redux/actions/productsHomeActions";
+import Cookies from "js-cookie";
 
 const Home = () => {
-  const lang = "en";
+  const lang = Cookies.get("i18next") || "en";
 
   const dispatch = useDispatch();
 

@@ -17,6 +17,7 @@ import { fetchContacts } from "../redux/actions/contactsActions";
 import Spinner from "../components/Spinner/Spinner";
 import Locations from "../components/Locations/Locations";
 import { removeHtmlTags } from "../Helpers/removeHtmlTags";
+import Cookies from "js-cookie";
 
 const Contact = () => {
   const contactDetails = [
@@ -49,7 +50,7 @@ const Contact = () => {
 
   const locations = useSelector(state => state.locations);
   const contacts = useSelector(state => state.contacts);
-  const lang = "en";
+  const lang = Cookies.get("i18next") || "en";
 
   if (
     locations.loading &&

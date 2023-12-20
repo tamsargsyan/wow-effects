@@ -10,11 +10,12 @@ import Img from "../Img";
 import { STORAGE_URL } from "../../services/apiService";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Cookies from "js-cookie";
 
 const MainUI = ({ go_shopping, slides }) => {
   const { width } = useWindowSize();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const lang = "en";
+  const lang = Cookies.get("i18next") || "en";
 
   return (
     <div className='mainUiContainer container'>

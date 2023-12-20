@@ -4,9 +4,10 @@ import Review from "./Review";
 import Slider from "../Slider/Slider";
 import { useEffect, useState } from "react";
 import { useWindowSize } from "../../hooks/useWindowSize";
+import Cookies from "js-cookie";
 
 const Reviews = ({ reviews }) => {
-  const lang = "en";
+  const lang = Cookies.get("i18next") || "en";
   const [showArrowBtns, setShowArrowBtns] = useState(false);
   const { width } = useWindowSize();
 

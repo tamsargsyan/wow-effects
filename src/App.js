@@ -29,6 +29,7 @@ import AboutUs from "./pages/AboutUs/AboutUs";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "./redux/actions/authActions";
 import ResetPassword from "./pages/Auth/ResetPassword";
+import Cookies from "js-cookie";
 
 const App = () => {
   const location = useLocation();
@@ -53,39 +54,53 @@ const App = () => {
     }
   }, [dispatch, isAuthenticated]);
 
+  const lang = Cookies.get("i18next") || "en";
+
   return (
     <AnimatePresence mode='wait'>
       <Routes>
-        <Route path='/' element={<Layout />}>
+        <Route path={`/${lang}/`} element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path='/about-us' element={<AboutUs />} />
-          <Route path='/sign-in' element={<SignInAuth auth='sign-in' />} />
-          <Route path='/sign-up' element={<SignUpAuth auth='sign-up' />} />
-          <Route path='/passwordReset' element={<ResetPassword />} />
-          <Route path='/contact-us' element={<Contact />} />
-          <Route path='/portfolio' element={<PortfolioPage />} />
+          <Route path={`/${lang}/about-us`} element={<AboutUs />} />
           <Route
-            path='/portfolio/:portfolioName'
+            path={`/${lang}/sign-in`}
+            element={<SignInAuth auth='sign-in' />}
+          />
+          <Route
+            path={`/${lang}/sign-up`}
+            element={<SignUpAuth auth='sign-up' />}
+          />
+          <Route path={`/${lang}/passwordReset`} element={<ResetPassword />} />
+          <Route path={`/${lang}/contact-us`} element={<Contact />} />
+          <Route path={`/${lang}/portfolio`} element={<PortfolioPage />} />
+          <Route
+            path={`/${lang}/portfolio/:portfolioName`}
             element={<SinglePortfolioPage />}
           />
-          <Route path='/blog' element={<BlogPage />} />
-          <Route path='/blog/:blogName' element={<Article />} />
-          <Route path='/interior-design' element={<InteriorDesign />} />
-          <Route path='/customcraft' element={<CustomCraft />} />
-          <Route path='/career' element={<Career />} />
-          <Route path='/career/:position' element={<Position />} />
-          <Route path='/privacy-policy' element={<PrivacyPolicy />} />
-          <Route path='/shop' element={<Shop />} />
-          <Route path='/shop/:productName' element={<SingleShop />} />
-          <Route path='/checkout/order' element={<CheckoutOrder />} />
+          <Route path={`/${lang}/blog`} element={<BlogPage />} />
+          <Route path={`/${lang}/blog/:blogName`} element={<Article />} />
           <Route
-            path='/checkout/place-order'
+            path={`/${lang}/interior-design`}
+            element={<InteriorDesign />}
+          />
+          <Route path={`/${lang}/customcraft`} element={<CustomCraft />} />
+          <Route path={`/${lang}/career`} element={<Career />} />
+          <Route path={`/${lang}/career/:position`} element={<Position />} />
+          <Route path={`/${lang}/privacy-policy`} element={<PrivacyPolicy />} />
+          <Route path={`/${lang}/shop`} element={<Shop />} />
+          <Route path={`/${lang}/shop/:productName`} element={<SingleShop />} />
+          <Route path={`/${lang}/checkout/order`} element={<CheckoutOrder />} />
+          <Route
+            path={`/${lang}/checkout/place-order`}
             element={<CheckoutPlaceOrder />}
           />
-          <Route path='/account/control-panel' element={<ControlPanel />} />
-          <Route path='/account/settings' element={<Settings />} />
-          <Route path='/account/address' element={<Address />} />
-          <Route path='/account/orders' element={<Orders />} />
+          <Route
+            path={`/${lang}/account/control-panel`}
+            element={<ControlPanel />}
+          />
+          <Route path={`/${lang}/account/settings`} element={<Settings />} />
+          <Route path={`/${lang}/account/address`} element={<Address />} />
+          <Route path={`/${lang}/account/orders`} element={<Orders />} />
           <Route path='*' element={<PageNotFound />} />
         </Route>
       </Routes>

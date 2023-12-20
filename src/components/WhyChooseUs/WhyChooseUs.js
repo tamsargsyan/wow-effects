@@ -7,6 +7,7 @@ import ReasonBox from "./ReasonBox";
 import "./style.css";
 import { STORAGE_URL } from "../../services/apiService";
 import { removeHtmlTags } from "../../Helpers/removeHtmlTags";
+import Cookies from "js-cookie";
 
 const WhyChooseUs = ({ why_choose_us }) => {
   // const reasons = [
@@ -40,7 +41,7 @@ const WhyChooseUs = ({ why_choose_us }) => {
   //   },
   // ];
 
-  const lang = "en";
+  const lang = Cookies.get("i18next") || "en";
 
   return (
     <div className='whyChooseUsContainer container'>

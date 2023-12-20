@@ -10,9 +10,10 @@ import { fetchBlog } from "../../redux/actions/blogActions";
 import Spinner from "../../components/Spinner/Spinner";
 import { removeHtmlTags } from "../../Helpers/removeHtmlTags";
 import { STORAGE_URL } from "../../services/apiService";
+import Cookies from "js-cookie";
 
 const BlogPage = () => {
-  const lang = "en";
+  const lang = Cookies.get("i18next") || "en";
   const dispatch = useDispatch();
 
   useEffect(() => {

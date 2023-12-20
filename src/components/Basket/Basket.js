@@ -15,9 +15,10 @@ import {
 } from "../../redux/actions/basketActions";
 import { STORAGE_URL } from "../../services/apiService";
 import { removeHtmlTags } from "../../Helpers/removeHtmlTags";
+import Cookies from "js-cookie";
 
 const Basket = () => {
-  const lang = "en";
+  const lang = Cookies.get("i18next") || "en";
   const dispatch = useDispatch();
   const basketModal = useSelector(state => state.basket.basketModal);
 

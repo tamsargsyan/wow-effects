@@ -6,9 +6,10 @@ import Img from "../Img";
 import { STORAGE_URL } from "../../services/apiService";
 import { useEffect, useState } from "react";
 import { useWindowSize } from "../../hooks/useWindowSize";
+import Cookies from "js-cookie";
 
 const Partners = ({ partners }) => {
-  const lang = "en";
+  const lang = Cookies.get("i18next") || "en";
   const [showArrowBtns, setShowArrowBtns] = useState(false);
   const { width } = useWindowSize();
 

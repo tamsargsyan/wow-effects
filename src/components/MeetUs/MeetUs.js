@@ -2,9 +2,10 @@ import "./style.css";
 import Title from "../Title/Title";
 import { removeHtmlTags } from "../../Helpers/removeHtmlTags";
 import { STORAGE_URL } from "../../services/apiService";
+import Cookies from "js-cookie";
 
 const MeetUs = ({ meet_us }) => {
-  const lang = "en";
+  const lang = Cookies.get("i18next") || "en";
 
   return (
     <div className='meetUsContainer container'>

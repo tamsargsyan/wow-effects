@@ -11,6 +11,7 @@ import PortfolioBox from "./PortfolioBox";
 import "./style.css";
 import { removeHtmlTags } from "../../Helpers/removeHtmlTags";
 import { STORAGE_URL } from "../../services/apiService";
+import Cookies from "js-cookie";
 
 const Portfolio = ({ portfolio_main }) => {
   const works = portfolio_main.works;
@@ -54,7 +55,7 @@ const Portfolio = ({ portfolio_main }) => {
   // ];
 
   const { width } = useWindowSize();
-  const lang = "en";
+  const lang = Cookies.get("i18next") || "en";
 
   return (
     <div className='portfolioContainer container'>

@@ -9,8 +9,10 @@ import { useState } from "react";
 import EMAIL from "../../assets/icons/sms-bg-white.svg";
 import apiService from "../../services/apiService";
 import Spinner from "../../components/Spinner/Spinner";
+import Cookies from "js-cookie";
 
 const PasswordRecovery = ({ setPasswordRecovery }) => {
+  const lang = Cookies.get("i18next");
   const [resetPass, setResetPass] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -25,7 +27,10 @@ const PasswordRecovery = ({ setPasswordRecovery }) => {
 
     await apiService.post(
       "password/email",
-      values,
+      {
+        ...values,
+        lang,
+      },
       {},
       ({ loading, error, data }) => {
         setLoading(loading);

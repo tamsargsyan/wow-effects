@@ -16,6 +16,7 @@ import Product from "../../components/Product/Product";
 import { useDispatch, useSelector } from "react-redux";
 import { addToBasket } from "../../redux/actions/basketActions";
 import apiService, { STORAGE_URL } from "../../services/apiService";
+import Cookies from "js-cookie";
 
 const FurnitureInfos = ({ product_suggestions }) => {
   const furnitures = [
@@ -116,7 +117,7 @@ const FurnitureInfos = ({ product_suggestions }) => {
 
   const { width } = useWindowSize();
   const dispatch = useDispatch();
-  const lang = "en";
+  const lang = Cookies.get("i18next") || "en";
 
   const [favoriteProjects, setFavoriteProjects] = useState(
     JSON.parse(localStorage.getItem("favoriteProjects") || "[]")

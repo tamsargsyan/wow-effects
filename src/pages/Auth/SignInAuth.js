@@ -18,8 +18,10 @@ import Spinner from "../../components/Spinner/Spinner";
 import Modal from "../../components/Modal/Modal";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/actions/authActions";
+import Cookies from "js-cookie";
 
 const Auth = ({ auth }) => {
+  const lang = Cookies.get("i18next");
   const [showPassword, setShowPassword] = useState(false);
 
   const toggleEye = () => {
@@ -45,7 +47,7 @@ const Auth = ({ auth }) => {
         localStorage.setItem("token", data.access_token);
         localStorage.setItem("user", JSON.stringify(data.user));
         setHasNavigated(true);
-        !hasNavigated && navigate(`/account/control-panel`);
+        !hasNavigated && navigate(`/${lang}/account/control-panel`);
         dispatch(login());
       }
       setResponseData(data);
@@ -55,7 +57,7 @@ const Auth = ({ auth }) => {
   return (
     <motion.div initial={initial} animate={animate} className='authContainer'>
       <div className='authFormContainer container'>
-        <NavLink to='/' className='authLogo'>
+        <NavLink to={`/${lang}/`} className='authLogo'>
           <Img src={LOGO} alt='Wow Logo' className='authLogoImg' />
         </NavLink>
         {passwordRecovery ? (
@@ -193,12 +195,13 @@ const Auth = ({ auth }) => {
             <div className='authCredentials'>
               {auth === "sign-up" ? (
                 <p className='authCredentialsGreetings'>
-                  Have an account? <NavLink to='/sign-in'>Log In</NavLink>
+                  Have an account?{" "}
+                  <NavLink to={`/${lang}/sign-in`}>Log In</NavLink>
                 </p>
               ) : (
                 <p className='authCredentialsGreetings'>
                   Don’t have an account?{" "}
-                  <NavLink to='/sign-up'>Register</NavLink>
+                  <NavLink to={`/${lang}/sign-up`}>Register</NavLink>
                 </p>
               )}
               <div className='authCredentialsOr'>

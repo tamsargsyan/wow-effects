@@ -24,9 +24,10 @@ import Modal from "../../components/Modal/Modal";
 import { fetchShop } from "../../redux/actions/shopActions";
 import Spinner from "../../components/Spinner/Spinner";
 import apiService, { STORAGE_URL } from "../../services/apiService";
+import Cookies from "js-cookie";
 
 const Shop = () => {
-  const lang = "en";
+  const lang = Cookies.get("i18next") || "en";
   const [showMenu, setShowMenu] = useState(false);
   const [selectedItem, setSelectedItem] = useState("Sort by");
 

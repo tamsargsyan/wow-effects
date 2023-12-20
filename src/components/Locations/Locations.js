@@ -4,9 +4,10 @@ import Img from "../Img";
 import Map from "../Map";
 import LOCATION from "../../assets/icons/location-white.svg";
 import { useState } from "react";
+import Cookies from "js-cookie";
 
 const Locations = ({ locations }) => {
-  const lang = "en";
+  const lang = Cookies.get("i18next") || "en";
 
   const fixingCoords = coords => coords.map(coord => Number(coord));
   const [addresTitle, setAddressTitle] = useState(

@@ -17,6 +17,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   fetchPortfolio,
   fetchWorkCategories,
+  fetchWorkTypes,
 } from "../../redux/actions/portfolioActions";
 import Spinner from "../../components/Spinner/Spinner";
 import { removeHtmlTags } from "../../Helpers/removeHtmlTags";
@@ -106,18 +107,6 @@ export const portfolios = [
 
 const PortfolioPage = () => {
   const lang = "en";
-  const [showMenu, setShowMenu] = useState(false);
-  const [selectedItem, setSelectedItem] = useState("Trending");
-
-  const handleDropdownClick = () => {
-    setShowMenu(!showMenu);
-  };
-
-  const handleMenuItemClick = item => {
-    setSelectedItem(item);
-    setShowMenu(false);
-  };
-
   const filterBtns = [
     {
       id: 1,
@@ -138,12 +127,37 @@ const PortfolioPage = () => {
   useEffect(() => {
     dispatch(fetchPortfolio());
     dispatch(fetchWorkCategories());
+    dispatch(fetchWorkTypes());
   }, [dispatch]);
 
   const portfolio = useSelector(state => state.portfolio);
   const workCategories = useSelector(state => state.portfolio.workCategories);
+  const workTypes = useSelector(state => state.portfolio.workTypes);
 
-  if (portfolio.portfolio === null && workCategories === null)
+  const [showMenu, setShowMenu] = useState(false);
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  console.log(workCategories);
+
+  useEffect(() => {
+    workTypes && setSelectedItem(workTypes.work_types[0]);
+  }, workTypes);
+
+  const handleDropdownClick = () => {
+    setShowMenu(!showMenu);
+  };
+
+  const handleMenuItemClick = item => {
+    setSelectedItem(item);
+    setShowMenu(false);
+  };
+
+  if (
+    portfolio.portfolio === null &&
+    workCategories === null &&
+    workTypes === null &&
+    selectedItem === null
+  )
     return (
       <div className='spinnerContainer'>
         <Spinner />
@@ -155,7 +169,7 @@ const PortfolioPage = () => {
       initial={initial}
       animate={animate}
       className='portfolioPageContainer'>
-      {portfolio.portfolio && workCategories && (
+      {portfolio.portfolio && workCategories && workTypes && selectedItem && (
         <>
           <PagesTitle
             title={portfolio.portfolio.portfolio_main[`heading_${lang}`]}
@@ -175,7 +189,7 @@ const PortfolioPage = () => {
                 <Fragment key={btn.id}>
                   <Button
                     className='filterBtn'
-                    text={btn.name}
+                    text={btn[`title_${lang}`]}
                     link={true}
                     style={{
                       background: false
@@ -191,13 +205,13 @@ const PortfolioPage = () => {
             </div>
             <div className='filterDropHolder' onClick={handleDropdownClick}>
               <div className='filterDropdown'>
-                <p>{selectedItem}</p>
+                <p>{selectedItem[`title_${lang}`]}</p>
                 <Img src={ARROW} alt='Arrow' />
               </div>
               <ul className={`${showMenu && "showMenu"} filterMenu`}>
-                {filterStatus.map(st => (
-                  <li key={st.id} onClick={() => handleMenuItemClick(st.name)}>
-                    {st.name}
+                {workTypes.work_types.map(st => (
+                  <li key={st.id} onClick={() => handleMenuItemClick(st)}>
+                    {st[`title_${lang}`]}
                   </li>
                 ))}
               </ul>
@@ -223,13 +237,13 @@ const PortfolioPage = () => {
                     </div>
                     <SecondButton
                       className='moreBtnLarge portfolioWorkMoreBtn'
-                      to={`/portfolio/${p.slug}`}
+                      to={`/portfolio/${p.id}`}
                     />
                   </div>
                 </div>
               ))}
             </div>
-            <Button
+            {/* <Button
               className='seeMoreBtn'
               text='See More'
               link={false}
@@ -239,7 +253,7 @@ const PortfolioPage = () => {
                 marginTop: "48px",
                 width: "100%",
               }}
-            />
+            /> */}
           </div>
           <Footer />
         </>

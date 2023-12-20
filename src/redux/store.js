@@ -10,6 +10,10 @@ import portfolioReducer from "./reducers/portfolioReducer";
 import authReducer from "./reducers/authReducer";
 import contactsReducer from "./reducers/contactsReducer";
 import blogMainReducer from "./reducers/blogMainReducer";
+import shopReducer from "./reducers/shopReducer";
+import blogReducer from "./reducers/blogReducer";
+import postReducer from "./reducers/postReducer";
+import workReducer from "./reducers/workReducer";
 
 const store = configureStore({
   reducer: {
@@ -24,6 +28,10 @@ const store = configureStore({
     auth: authReducer,
     contacts: contactsReducer,
     blogMain: blogMainReducer,
+    shop: shopReducer,
+    blog: blogReducer,
+    post: postReducer,
+    work: workReducer,
   },
 });
 

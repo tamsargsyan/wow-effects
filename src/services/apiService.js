@@ -20,6 +20,7 @@ const apiService = {
       const response = await axios.post(`${BASE_URL}/${endpoint}`, data, {
         headers: {
           "Content-Type": "multipart/form-data",
+          ...headers,
         },
       });
 

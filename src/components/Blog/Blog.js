@@ -40,7 +40,7 @@ const Blog = () => {
                   <p className='blogDesc'>
                     {removeHtmlTags(blog[`description_${lang}`])}
                   </p>
-                  <NavLink className='blogReadMore'>
+                  <NavLink className='blogReadMore' to={`/blog/${blog.id}`}>
                     <p>Read more</p>
                     <img src={ARROW} alt='Arrow' />
                   </NavLink>

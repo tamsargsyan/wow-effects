@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import "./singlePortfolio.css";
 import { motion } from "framer-motion";
 import ABOUT_US_PAGE_1 from "../../assets/ui-fake-images/about-us-page-1.jpg";
@@ -13,9 +13,16 @@ import Title from "../../components/Title/Title";
 import { animate, initial } from "../../utils/transition";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchWork } from "../../redux/actions/workActions";
+import Spinner from "../../components/Spinner/Spinner";
+import { STORAGE_URL } from "../../services/apiService";
+import { removeHtmlTags } from "../../Helpers/removeHtmlTags";
+import Img from "../../components/Img";
 
 const SinglePortfolioPage = () => {
   const { portfolioName } = useParams();
+  const lang = "en";
   const portfolio = {
     id: 1,
     img: ABOUT_US_PAGE_1,
@@ -71,89 +78,139 @@ const SinglePortfolioPage = () => {
     }
   }, [width]);
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchWork(portfolioName));
+  }, [dispatch]);
+
+  const work = useSelector(state => state.work);
+  console.log(work);
+
+  if (work.work === null && work.loading)
+    return (
+      <div className='spinnerContainer'>
+        <Spinner />
+      </div>
+    );
+
   return (
     <motion.div initial={initial} animate={animate}>
-      <div
-        className='portfolioOverviewContainer'
-        style={{ backgroundImage: `url(${portfolio.img})` }}>
-        <div className='portfolioOverviewBackdrop'></div>
-        <div className='portfolioOverview container'>
-          <div className='portfolioSummary'>
-            <p className='portfolioSummaryTitle'>{portfolio.name}</p>
-            <p className='portfolioSummaryDescription'>
-              {portfolio.description}
-            </p>
-          </div>
-          <div className='portfolioSpecs'>
-            <div className='portolioSpecsClient portfolioSpecsItem'>
-              <p className='portfolioSpecsTitle'>Client</p>
-              <p className='portfolioSpecsDescription'>{portfolio.client}</p>
-            </div>
-            <div className='portolioSpecsDate portfolioSpecsItem'>
-              <p className='portfolioSpecsTitle'>Date</p>
-              <p className='portfolioSpecsDescription'>{portfolio.date}</p>
-            </div>
-            <div className='portolioSpecsRole portfolioSpecsItem'>
-              <p className='portfolioSpecsTitle'>Role</p>
-              <p className='portfolioSpecsDescription'>{portfolio.role}</p>
-            </div>
-            <div className='portolioSpecsWebsite portfolioSpecsItem'>
-              <p className='portfolioSpecsTitle'>Website</p>
-              <p className='portfolioSpecsDescription'>{portfolio.website}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className='portfolioAchievements'>
-        {portfolioAchievements.map((achievement, i) => (
+      {work.work && (
+        <>
           <div
-            className='portfolioAchievementItem'
-            key={i + achievement.title}
+            className='portfolioOverviewContainer'
             style={{
-              flexDirection: i % 2 === 0 ? "row" : "row-reverse",
+              backgroundImage: `url(${STORAGE_URL}/${work.work.work.image})`,
             }}>
-            <div className='portfolioAchievementItemInfo'>
-              <p className='portfolioAchievementItemTitle'>
-                {achievement.title}
-              </p>
-              <div
-                className='portfolioAchievementItemDescription'
-                dangerouslySetInnerHTML={{ __html: achievement.description }}
-              />
-            </div>
-            <div className='portfolioAchievementImages'>
-              {achievement.imgs.map((img, i) => (
-                <img src={img} alt='Achievement' key={i} />
-              ))}
-            </div>
-          </div>
-        ))}
-      </div>
-      <div className='portfolioSliderContainer container'>
-        <Title title='Related Projects' />
-        <Slider className='portfolioSlider' showArrowBtns={showArrowBtns}>
-          {portfolios.map(prt => (
-            <div
-              className='portfolioCard singlePortfolioCard'
-              style={{ backgroundImage: `url(${prt.img})` }}
-              key={prt.id}>
-              <div className='portfolioCardInfo'>
-                <div className='portfolioDetails'>
-                  <p className='portfolioDetailsTitle'>{prt.name}</p>
-                  <p className='portfolioDetailsDescription'>
-                    {prt.description}
+            <div className='portfolioOverviewBackdrop'></div>
+            <div className='portfolioOverview container'>
+              <div className='portfolioSummary'>
+                <p className='portfolioSummaryTitle'>
+                  {work.work.work[`title_${lang}`]}
+                </p>
+                <p className='portfolioSummaryDescription'>
+                  {removeHtmlTags(work.work.work[`description_${lang}`])}
+                </p>
+              </div>
+              <div className='portfolioSpecs'>
+                <div className='portolioSpecsClient portfolioSpecsItem'>
+                  <p className='portfolioSpecsTitle'>Client</p>
+                  <p className='portfolioSpecsDescription'>
+                    {work.work.work[`client_${lang}`]}
                   </p>
                 </div>
-                <SecondButton
-                  className='moreBtnLarge portfolioWorkMoreBtn'
-                  to={`/portfolio/${prt.slug}`}
-                />
+                <div className='portolioSpecsDate portfolioSpecsItem'>
+                  <p className='portfolioSpecsTitle'>Date</p>
+                  <p className='portfolioSpecsDescription'>
+                    {work.work.work.date}
+                  </p>
+                </div>
+                <div className='portolioSpecsRole portfolioSpecsItem'>
+                  <p className='portfolioSpecsTitle'>Role</p>
+                  <p className='portfolioSpecsDescription'>
+                    {work.work.work[`role_${lang}`]}
+                  </p>
+                </div>
+                <div className='portolioSpecsWebsite portfolioSpecsItem'>
+                  <p className='portfolioSpecsTitle'>Website</p>
+                  <p className='portfolioSpecsDescription'>
+                    <Link to='/websiteLink'>{work.work.work.website}</Link>
+                  </p>
+                </div>
               </div>
             </div>
-          ))}
-        </Slider>
-      </div>
-      <Footer />
+          </div>
+          <div className='portfolioAchievements'>
+            {work.work.work.work_parts.map((achievement, i) => (
+              <div
+                className='portfolioAchievementItem'
+                key={i}
+                style={{
+                  flexDirection: i % 2 === 0 ? "row" : "row-reverse",
+                }}>
+                <div className='portfolioAchievementItemInfo'>
+                  <p className='portfolioAchievementItemTitle'>
+                    {achievement[`title_${lang}`]}
+                  </p>
+                  <div
+                    className='portfolioAchievementItemDescription'
+                    dangerouslySetInnerHTML={{
+                      __html: achievement[`description_${lang}`],
+                    }}
+                  />
+                </div>
+                <div className='portfolioAchievementImages'>
+                  {/* {achievement.imgs.map((img, i) => (
+                    <img src={img} alt='Achievement' key={i} />
+                  ))} */}
+                  <Img
+                    src={`${STORAGE_URL}/${achievement.image_1}`}
+                    alt='Portfolio'
+                  />
+                  <Img
+                    src={`${STORAGE_URL}/${achievement.image_2}`}
+                    alt='Portfolio'
+                  />
+                  <Img
+                    src={`${STORAGE_URL}/${achievement.image_3}`}
+                    alt='Portfolio'
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className='portfolioSliderContainer container'>
+            <Title title='Related Projects' />
+            <Slider className='portfolioSlider' showArrowBtns={showArrowBtns}>
+              {work.work.related_projects.map(prt => (
+                <div
+                  className='portfolioCard singlePortfolioCard'
+                  style={{
+                    backgroundImage: `url(${STORAGE_URL}/${prt.image})`,
+                  }}
+                  key={prt.id}>
+                  <div className='portfolioCardInfo'>
+                    <div className='portfolioDetails'>
+                      <p className='portfolioDetailsTitle'>
+                        {prt[`title_${lang}`]}
+                      </p>
+                      <p className='portfolioDetailsDescription'>
+                        {removeHtmlTags(prt[`description_${lang}`])}
+                      </p>
+                    </div>
+                    <SecondButton
+                      className='moreBtnLarge portfolioWorkMoreBtn'
+                      to={`/portfolio/${prt.id}`}
+                    />
+                  </div>
+                </div>
+              ))}
+            </Slider>
+          </div>
+          <Footer />
+        </>
+      )}
     </motion.div>
   );
 };

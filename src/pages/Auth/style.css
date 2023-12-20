@@ -77,7 +77,15 @@
 .authCredentialsGreetings {
   font-size: 16px;
 }
+.authCredentialsGreetings button {
+  background: transparent;
+  border: none;
+  color: var(--main-color-pink);
+  font-size: 16px;
+}
 .authCredentialsGreetings a {
+  background: transparent;
+  border: none;
   color: var(--main-color-pink);
   font-family: Poppins-700;
   text-decoration: none;

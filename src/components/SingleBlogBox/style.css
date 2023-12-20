@@ -13,6 +13,10 @@
 }
 .singleBlogBoxImg {
   border-radius: 12px;
+  height: 200px;
+}
+.overviewLargeBlogContainer .singleBlogBoxImg {
+  height: 500px;
 }
 .singleBlogBoxImg img {
   border-radius: inherit;

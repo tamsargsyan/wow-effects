@@ -7,6 +7,9 @@ const initialState = {
   workCategories: null,
   workCategoriesLoading: false,
   workCategoriesError: null,
+  workTypes: null,
+  workTypesLoading: false,
+  workTypesError: null,
 };
 
 const portfolioReducer = (state = initialState, action) => {
@@ -41,7 +44,7 @@ const portfolioReducer = (state = initialState, action) => {
     case actionTypes.FETCH_WORK_CATEGORIES_SUCCESS:
       return {
         ...state,
-        loading: false,
+        workCategoriesLoading: false,
         workCategories: action.payload,
       };
     case actionTypes.FETCH_WORK_CATEGORIES_ERROR:
@@ -49,6 +52,27 @@ const portfolioReducer = (state = initialState, action) => {
         ...state,
         workCategoriesLoading: false,
         workCategoriesError: action.payload,
+      };
+
+    //work types
+
+    case actionTypes.FETCH_WORK_TYPES_LOADING:
+      return {
+        ...state,
+        workTypesLoading: true,
+        workTypesError: null,
+      };
+    case actionTypes.FETCH_WORK_TYPES_SUCCESS:
+      return {
+        ...state,
+        workTypesLoading: false,
+        workTypes: action.payload,
+      };
+    case actionTypes.FETCH_WORK_TYPES_ERROR:
+      return {
+        ...state,
+        workTypesLoading: false,
+        workTypesError: action.payload,
       };
     default:
       return state;

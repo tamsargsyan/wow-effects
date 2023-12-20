@@ -59,6 +59,10 @@
 .portfolioSpecsDescription {
   font-size: 16px;
 }
+.portfolioSpecsDescription a {
+  text-decoration: none;
+  color: #fff;
+}
 .portfolioOverviewBackdrop {
   position: absolute;
   width: 100%;

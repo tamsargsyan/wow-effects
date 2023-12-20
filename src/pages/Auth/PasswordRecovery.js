@@ -6,11 +6,34 @@ import Button from "../../components/Button/Button";
 import { motion } from "framer-motion";
 import Img from "../../components/Img";
 import { useState } from "react";
-import EMAIL from "../../assets/icons/sms-pink.svg";
-import { NavLink } from "react-router-dom";
+import EMAIL from "../../assets/icons/sms-bg-white.svg";
+import apiService from "../../services/apiService";
 
 const PasswordRecovery = ({ setPasswordRecovery }) => {
   const [resetPass, setResetPass] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [responseData, setResponseData] = useState(null);
+  const [hasNavigated, setHasNavigated] = useState(false);
+  // const navigate = useNavigate();
+  // const dispatch = useDispatch();
+
+  const handleResetPassword = async values => {
+    setLoading(true);
+    setError(null);
+
+    await apiService.post(
+      "password",
+      values,
+      {},
+      ({ loading, error, data }) => {
+        setLoading(loading);
+        setError(error);
+
+        setResponseData(data);
+      }
+    );
+  };
 
   return (
     <motion.div
@@ -49,8 +72,7 @@ const PasswordRecovery = ({ setPasswordRecovery }) => {
             </div>
           </div>
           <p className='authCredentialsGreetings'>
-            Didn’t receive a mail?{" "}
-            <NavLink to='/sign-up'>Click to resend</NavLink>
+            Didn’t receive a mail? <button>Click to resend</button>
           </p>
         </motion.div>
       ) : (
@@ -69,6 +91,7 @@ const PasswordRecovery = ({ setPasswordRecovery }) => {
               console.log(values);
               actions.setSubmitting(false);
               setResetPass(true);
+              handleResetPassword(values);
             }}
             validationSchema={passwordRecoverySchema}>
             {() => (

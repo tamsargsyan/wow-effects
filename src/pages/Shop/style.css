@@ -58,6 +58,13 @@
   flex-wrap: wrap;
   margin-top: 32px;
 }
+.productShowcaseContainerLoading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 50px;
+}
 @media screen and (max-width: 1600px) {
   .productShowcase .productGuidePrice {
     font-size: 20px;

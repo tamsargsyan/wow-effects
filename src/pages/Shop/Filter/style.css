@@ -31,8 +31,10 @@
   text-decoration: none;
   opacity: 0.7;
   font-size: 16px;
+  white-space: nowrap;
+  transition: 0.3s ease;
 }
-.filteringOptionCategory:first-child p {
+.filteringOptionCategoryActive p {
   color: #af4b85;
   opacity: 1;
   font-family: Poppins-700;

@@ -56,3 +56,31 @@ export const fetchWorkCategories = () => {
       });
   };
 };
+
+export const fetchWorkTypesStart = () => ({
+  type: actionTypes.FETCH_WORK_TYPES_LOADING,
+});
+
+export const fetchWorkTypesSuccess = data => ({
+  type: actionTypes.FETCH_WORK_TYPES_SUCCESS,
+  payload: data,
+});
+
+export const fetchWorkTypesFailure = error => ({
+  type: actionTypes.FETCH_WORK_TYPES_ERROR,
+  payload: error,
+});
+
+export const fetchWorkTypes = () => {
+  return dispatch => {
+    dispatch(fetchWorkTypesStart());
+    apiService
+      .get("workTypes")
+      .then(data => {
+        dispatch(fetchWorkTypesSuccess(data));
+      })
+      .catch(error => {
+        dispatch(fetchWorkTypesFailure(error));
+      });
+  };
+};

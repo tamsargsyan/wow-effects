@@ -1,5 +1,4 @@
 import Img from "../Img";
-import IMG from "../../assets/ui-fake-images/blog-1.jpg";
 import ARROW from "../../assets/icons/arrow-right-white.svg";
 import "./style.css";
 import Button from "../Button/Button";
@@ -12,13 +11,15 @@ const SingleBlogBox = ({
   name,
   description,
   btnText,
+  img,
+  to,
 }) => {
   return (
     <div
       className={`singleBlogBoxContainer_${size} ${className} singleBlogBoxContainer`}
       style={style}>
       <div className='singleBlogBoxImg'>
-        <Img src={IMG} alt='Blog' />
+        <Img src={img} alt='Blog' />
       </div>
       <div className='singleBlogBoxInfoContainer'>
         <div className='singleBlogBoxBtn'>
@@ -29,7 +30,7 @@ const SingleBlogBox = ({
           <p className='singleBlogBoxDescription'>{description}</p>
         </div>
         <div className='singleBlogBoxLink'>
-          <Link>
+          <Link to={to}>
             Read More
             <Img src={ARROW} alt='Arrow' />
           </Link>

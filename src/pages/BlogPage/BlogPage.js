@@ -1,157 +1,146 @@
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import SingleBlogBox from "../../components/SingleBlogBox/SingleBlogBox";
 import "./style.css";
 import Footer from "../../components/Footer/Footer";
 import { animate, initial } from "../../utils/transition";
 import { motion } from "framer-motion";
 import Button from "../../components/Button/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchBlog } from "../../redux/actions/blogActions";
+import Spinner from "../../components/Spinner/Spinner";
+import { removeHtmlTags } from "../../Helpers/removeHtmlTags";
+import { STORAGE_URL } from "../../services/apiService";
 
 const BlogPage = () => {
-  const blogs = {
-    blog_main: {
-      heading_en: "hvb hbx12",
-      heading_ru: "vfdsgvbd",
-      heading_am: "fdgfdg",
-      description_en: "<p>sfvc</p>",
-      description_ru: "<p>bg vn&nbsp;</p>",
-      description_am: "<p>bgfb</p>",
-      posts: [
-        {
-          id: 6,
-          image: "/images/posts/20231213111624post.jpeg",
-          title_en: "test1234",
-          title_ru: "test",
-          title_am: "test1234",
-          description_en: "<p>test</p>",
-          description_ru: "<p>test</p>",
-          description_am: "<p>test</p>",
-        },
-        {
-          id: 10,
-          image: "/images/posts/20231213111642post.png",
-          title_en: "dgfdg",
-          title_ru: "dfhbgfj",
-          title_am: "dgfdg",
-          description_en: "<p>fhgfhg</p>",
-          description_ru: "<p>dgfhgfjh</p>",
-          description_am: "<p>dfhgfjh</p>",
-        },
-        {
-          id: 11,
-          image: "/images/posts/20231213111700post.png",
-          title_en: "sdfgf",
-          title_ru: "dhgfhng",
-          title_am: "sdfgf",
-          description_en: "<p>fhhgf</p>",
-          description_ru: "<p>fdgfdg</p>",
-          description_am: "<p>dfgfhgf</p>",
-        },
-      ],
-    },
-  };
-
   const lang = "en";
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchBlog());
+  }, [dispatch]);
+
+  const blog = useSelector(state => state.blog);
+
+  if (blog.blog === null && blog.loading)
+    return (
+      <div className='spinnerContainer'>
+        <Spinner />
+      </div>
+    );
 
   return (
     <motion.div initial={initial} animate={animate}>
-      <div className='blogPageContainer'>
-        <div className='blogPageOverviewContainer'>
-          <div className='overviewLargeBlogContainer'>
-            <SingleBlogBox
-              className='overviewLargeBlog'
-              size='large'
-              style={{
-                flexDirection: "column",
-                gap: "32px",
-              }}
-              name='Blog title heading will go here'
-              description='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum...'
-              btnText='Custom furniture production'
-            />
-          </div>
-          <div className='overviewSmallBlogs'>
-            {blogs.blog_main.posts.slice(0, 3).map((post, i) => (
-              <Fragment key={i}>
+      {blog.blog && (
+        <>
+          <div className='blogPageContainer'>
+            <div className='blogPageOverviewContainer'>
+              <div className='overviewLargeBlogContainer'>
                 <SingleBlogBox
-                  className='overviewSmallBlog'
-                  size='small'
-                  style={{
-                    flexDirection: "row",
-                    gap: "16px",
-                  }}
-                  name={post[`title_${lang}`]}
-                  // description={removeHtmlTags(post[`description_${lang}`])}
-                  description='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum...'
-                  btnText='Interior Design'
-                />
-              </Fragment>
-            ))}
-          </div>
-        </div>
-        <div className='blogPageSections'>
-          <p className='blogPageSectionTitle'>Latest blog posts</p>
-          <div className='blogPageSectionBlogs'>
-            {blogs.blog_main.posts.map((blog, i) => (
-              <Fragment key={i}>
-                <SingleBlogBox
-                  className='blogSectionBlog'
-                  size='small'
+                  className='overviewLargeBlog'
+                  size='large'
                   style={{
                     flexDirection: "column",
                     gap: "32px",
                   }}
-                  name='Blog title heading will go here'
-                  description='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum...'
+                  name={blog.blog.posts_in_blog[0][`title_${lang}`]}
+                  description={removeHtmlTags(
+                    blog.blog.posts_in_blog[0][`description_${lang}`]
+                  )}
+                  img={`${STORAGE_URL}/${blog.blog.posts_in_blog[0].image}`}
                   btnText='Custom furniture production'
+                  to={`/blog/${blog.blog.posts_in_blog[0].id}`}
                 />
-              </Fragment>
-            ))}
-            <Button
-              className='seeMoreBtn'
-              text='See More'
-              link={false}
-              style={{
-                background: "rgba(255, 255, 255, 0.05)",
-                color: "rgba(255, 255, 255, 0.60)",
-                marginTop: "48px",
-                width: "100%",
-              }}
-            />
-          </div>
-        </div>
-        <div className='blogPageSections'>
-          <p className='blogPageSectionTitle'>Category name</p>
-          <div className='blogPageSectionBlogs'>
-            {blogs.blog_main.posts.map((blog, i) => (
-              <Fragment key={i}>
-                <SingleBlogBox
-                  className='blogSectionBlog'
-                  size='small'
+              </div>
+              <div className='overviewSmallBlogs'>
+                {blog.blog.posts_in_blog.slice(0, 3).map((blog, i) => (
+                  <Fragment key={i}>
+                    <SingleBlogBox
+                      className='overviewSmallBlog'
+                      size='small'
+                      style={{
+                        flexDirection: "row",
+                        gap: "16px",
+                      }}
+                      name={blog[`title_${lang}`]}
+                      description={removeHtmlTags(blog[`description_${lang}`])}
+                      img={`${STORAGE_URL}/${blog.image}`}
+                      btnText='Interior Design'
+                      to={`/blog/${blog.id}`}
+                    />
+                  </Fragment>
+                ))}
+              </div>
+            </div>
+            <div className='blogPageSections'>
+              <p className='blogPageSectionTitle'>Latest blog posts</p>
+              <div className='blogPageSectionBlogs'>
+                {blog.blog.latest_posts.map((blog, i) => (
+                  <Fragment key={i}>
+                    <SingleBlogBox
+                      className='blogSectionBlog'
+                      size='small'
+                      style={{
+                        flexDirection: "column",
+                        gap: "32px",
+                      }}
+                      name={blog[`title_${lang}`]}
+                      description={removeHtmlTags(blog[`description_${lang}`])}
+                      img={`${STORAGE_URL}/${blog.image}`}
+                      btnText='Custom furniture production'
+                      to={`/blog/${blog.id}`}
+                    />
+                  </Fragment>
+                ))}
+                {/* <Button
+                  className='seeMoreBtn'
+                  text='See More'
+                  link={false}
                   style={{
-                    flexDirection: "column",
-                    gap: "32px",
+                    background: "rgba(255, 255, 255, 0.05)",
+                    color: "rgba(255, 255, 255, 0.60)",
+                    marginTop: "48px",
+                    width: "100%",
                   }}
-                  name='Blog title heading will go here'
-                  description='Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum...'
-                  btnText='Custom furniture production'
-                />
-              </Fragment>
-            ))}
-            <Button
-              className='seeMoreBtn'
-              text='See More'
-              link={false}
-              style={{
-                background: "rgba(255, 255, 255, 0.05)",
-                color: "rgba(255, 255, 255, 0.60)",
-                marginTop: "48px",
-                width: "100%",
-              }}
-            />
+                /> */}
+              </div>
+            </div>
+            <div className='blogPageSections'>
+              <p className='blogPageSectionTitle'>Category name</p>
+              <div className='blogPageSectionBlogs'>
+                {blog.blog.post_categories_with_posts.map((blog, i) => (
+                  <Fragment key={i}>
+                    <SingleBlogBox
+                      className='blogSectionBlog'
+                      size='small'
+                      style={{
+                        flexDirection: "column",
+                        gap: "32px",
+                      }}
+                      name={blog[`title_${lang}`]}
+                      description={removeHtmlTags(blog[`description_${lang}`])}
+                      img={`${STORAGE_URL}/${blog.image}`}
+                      btnText='Custom furniture production'
+                      to={`/blog/${blog.id}`}
+                    />
+                  </Fragment>
+                ))}
+                {/* <Button
+                  className='seeMoreBtn'
+                  text='See More'
+                  link={false}
+                  style={{
+                    background: "rgba(255, 255, 255, 0.05)",
+                    color: "rgba(255, 255, 255, 0.60)",
+                    marginTop: "48px",
+                    width: "100%",
+                  }}
+                /> */}
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-      <Footer />
+          <Footer />
+        </>
+      )}
     </motion.div>
   );
 };

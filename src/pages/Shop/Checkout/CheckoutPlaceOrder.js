@@ -2,11 +2,14 @@ import CheckoutLayout from "./CheckoutLayout";
 import "./style.css";
 import Button from "../../../components/Button/Button";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { contactSchema } from "../../../utils/validationSchema";
+import ValidationSchema from "../../../utils/ValidationSchema";
 import Checkbox from "../../../components/Checkbox/Checkbox";
 import { useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 const CheckoutPlaceOrder = () => {
+  const { t } = useTranslation();
+  const { contactSchema } = ValidationSchema();
   const basketTotalPrice = useSelector(state => state.basket.totalItemsPrice);
   const delivery = 10;
 
@@ -30,7 +33,7 @@ const CheckoutPlaceOrder = () => {
               {() => (
                 <Form className='checkoutPlaceOrderForm1'>
                   <p className='checkoutPlaceOrderTitle'>
-                    Personal information
+                    {t("personal_info")}
                   </p>
                   <div className='checkoutPlaceOrderFormGroupContainer'>
                     <div className='checkoutPlaceOrderFormGroup'>

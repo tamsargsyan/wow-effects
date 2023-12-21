@@ -13,7 +13,7 @@ import Spinner from "../../components/Spinner/Spinner";
 import COMPASS from "../../assets/icons/map-locations-compass-white.svg";
 import Button from "../../components/Button/Button";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { contactSchema } from "../../utils/validationSchema";
+import ValidationSchema from "../../utils/ValidationSchema";
 import UPLOAD from "../../assets/icons/upload-white.svg";
 
 const InteriorDesign = () => {
@@ -68,6 +68,7 @@ const InteriorDesign = () => {
   }, [dispatch]);
 
   const home = useSelector(state => state.home);
+  const { contactSchema } = ValidationSchema();
 
   if (home.loading && home.home === null)
     return (

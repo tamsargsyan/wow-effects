@@ -16,11 +16,7 @@ import "./style.css";
 import { useEffect, useState } from "react";
 import PasswordRecovery from "./PasswordRecovery";
 import { motion } from "framer-motion";
-import {
-  passwordRecoverySchema,
-  resetPassSchema,
-  signInSchema,
-} from "../../utils/validationSchema";
+import ValidationSchema from "../../utils/ValidationSchema";
 import { animate, initial } from "../../utils/transition";
 import Checkbox from "../../components/Checkbox/Checkbox";
 import apiService from "../../services/apiService";
@@ -108,6 +104,7 @@ const ResetPassword = () => {
   const [searchParams] = useSearchParams();
   const code = searchParams.get("code");
   const navigate = useNavigate();
+  const { resetPassSchema } = ValidationSchema();
 
   return (
     <motion.div initial={initial} animate={animate} className='authContainer'>

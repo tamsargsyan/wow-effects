@@ -11,8 +11,10 @@ import Spinner from "../../components/Spinner/Spinner";
 import { removeHtmlTags } from "../../Helpers/removeHtmlTags";
 import { STORAGE_URL } from "../../services/apiService";
 import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
 
 const BlogPage = () => {
+  const { t } = useTranslation();
   const lang = Cookies.get("i18next") || "en";
   const dispatch = useDispatch();
 
@@ -73,7 +75,7 @@ const BlogPage = () => {
               </div>
             </div>
             <div className='blogPageSections'>
-              <p className='blogPageSectionTitle'>Latest blog posts</p>
+              <p className='blogPageSectionTitle'>{t("latest_blog")}</p>
               <div className='blogPageSectionBlogs'>
                 {blog.blog.latest_posts.map((blog, i) => (
                   <Fragment key={i}>
@@ -106,7 +108,7 @@ const BlogPage = () => {
               </div>
             </div>
             <div className='blogPageSections'>
-              <p className='blogPageSectionTitle'>Category name</p>
+              <p className='blogPageSectionTitle'>{t("category_name")}</p>
               <div className='blogPageSectionBlogs'>
                 {blog.blog.post_categories_with_posts.map((blog, i) => (
                   <Fragment key={i}>

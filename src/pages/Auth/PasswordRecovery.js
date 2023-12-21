@@ -1,7 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import ARROW_LEFT from "../../assets/icons/arrow-left-pink.svg";
 import "./passwordRecovery.css";
-import { passwordRecoverySchema } from "../../utils/validationSchema";
+import ValidationSchema from "../../utils/ValidationSchema";
 import Button from "../../components/Button/Button";
 import { motion } from "framer-motion";
 import Img from "../../components/Img";
@@ -42,6 +42,8 @@ const PasswordRecovery = ({ setPasswordRecovery }) => {
       }
     );
   };
+
+  const { passwordRecoverySchema } = ValidationSchema();
 
   return (
     <motion.div
@@ -105,7 +107,7 @@ const PasswordRecovery = ({ setPasswordRecovery }) => {
             {() => (
               <Form className='authForm'>
                 <div className='authFormGroup'>
-                  <label htmlFor='email'>Email address</label>
+                  <label htmlFor='email'>{t("email_address")}</label>
                   <div className='authFormGroupInput'>
                     <Field
                       type='email'

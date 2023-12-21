@@ -9,7 +9,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import "./style.css";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { signUpSchema } from "../../utils/validationSchema";
+import ValidationSchema from "../../utils/ValidationSchema";
 import { animate, initial } from "../../utils/transition";
 import apiService from "../../services/apiService";
 import Spinner from "../../components/Spinner/Spinner";
@@ -17,9 +17,11 @@ import Modal from "../../components/Modal/Modal";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/actions/authActions";
 import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
 
 const Auth = ({ auth }) => {
-  const lang = Cookies.get("i18next");
+  const { t } = useTranslation();
+  const lang = Cookies.get("i18next") || "en";
   const [showPasswords, setShowPasswords] = useState({
     password1: false,
     password2: false,
@@ -62,6 +64,8 @@ const Auth = ({ auth }) => {
     );
   };
 
+  const { signUpSchema } = ValidationSchema();
+
   return (
     <motion.div initial={initial} animate={animate} className='authContainer'>
       <div className='authFormContainer container'>
@@ -80,8 +84,8 @@ const Auth = ({ auth }) => {
           <div className='authGreeting'>
             <p className='authGreetingTitle'>
               {auth === "sign-up"
-                ? "Hey, register to our website"
-                : "Hey, sign in to your account "}
+                ? t("sign_up_greeting1")
+                : t("sign_in_greeting1")}
             </p>
             <p className='authGreetingDescription'>
               Welcome to Wow transforming furniture
@@ -101,7 +105,7 @@ const Auth = ({ auth }) => {
             {() => (
               <Form className='authForm'>
                 <div className='authFormGroup'>
-                  <label htmlFor='email'>Email address</label>
+                  <label htmlFor='email'>{t("email_address")}</label>
                   <div className='authFormGroupInput'>
                     <Field
                       type='email'

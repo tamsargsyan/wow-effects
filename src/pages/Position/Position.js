@@ -3,7 +3,7 @@ import "./style.css";
 import Img from "../../components/Img";
 import Button from "../../components/Button/Button";
 import UPLOAD from "../../assets/icons/upload-white.svg";
-import { contactSchema } from "../../utils/validationSchema";
+import ValidationSchema from "../../utils/ValidationSchema";
 import Footer from "../../components/Footer/Footer";
 import ARROW from "../../assets/icons/arrow-left-pink.svg";
 import LOCATION from "../../assets/icons/location-white.svg";
@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 
 const Position = () => {
   const { t } = useTranslation();
+  const { contactSchema } = ValidationSchema();
 
   return (
     <div>

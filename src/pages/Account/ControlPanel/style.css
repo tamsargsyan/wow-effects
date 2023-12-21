@@ -62,6 +62,16 @@
   color: #888;
   font-size: 16px;
 }
+.controlPanelDescriptionLink {
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.3s ease;
+}
+.controlPanelDescriptionLink:hover{
+  gap: 15px;
+}
 .controlPanelDescription span {
   color: var(--secondary-color-white);
 }

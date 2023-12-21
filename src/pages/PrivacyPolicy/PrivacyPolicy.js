@@ -2,8 +2,10 @@ import { Fragment, useState } from "react";
 import Button from "../../components/Button/Button";
 import Footer from "../../components/Footer/Footer";
 import "./style.css";
+import { useTranslation } from "react-i18next";
 
 const PrivacyPolicy = () => {
+  const { t } = useTranslation();
   const contents = [
     {
       id: 1,
@@ -29,7 +31,7 @@ const PrivacyPolicy = () => {
     <div>
       <div className='privacyPolicyContainer'>
         <div className='privacyPolicyTitleContainer'>
-          <p className='privacyPolicyTitle'>Privacy Policy</p>
+          <p className='privacyPolicyTitle'>{t("privacy_policy")}</p>
           <p className='privacyPolicyDescription'>
             Effective date: April 3, 2023
           </p>

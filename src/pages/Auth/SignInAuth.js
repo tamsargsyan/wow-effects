@@ -10,7 +10,7 @@ import "./style.css";
 import { useState } from "react";
 import PasswordRecovery from "./PasswordRecovery";
 import { motion } from "framer-motion";
-import { signInSchema } from "../../utils/validationSchema";
+import ValidationSchema from "../../utils/ValidationSchema";
 import { animate, initial } from "../../utils/transition";
 import Checkbox from "../../components/Checkbox/Checkbox";
 import apiService from "../../services/apiService";
@@ -19,9 +19,11 @@ import Modal from "../../components/Modal/Modal";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/actions/authActions";
 import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
 
 const Auth = ({ auth }) => {
-  const lang = Cookies.get("i18next");
+  const { t } = useTranslation();
+  const lang = Cookies.get("i18next") || "en";
   const [showPassword, setShowPassword] = useState(false);
 
   const toggleEye = () => {
@@ -54,6 +56,8 @@ const Auth = ({ auth }) => {
     });
   };
 
+  const { signInSchema } = ValidationSchema();
+
   return (
     <motion.div initial={initial} animate={animate} className='authContainer'>
       <div className='authFormContainer container'>
@@ -75,11 +79,11 @@ const Auth = ({ auth }) => {
             <div className='authGreeting'>
               <p className='authGreetingTitle'>
                 {auth === "sign-up"
-                  ? "Hey, register to our website"
-                  : "Hey, sign in to your account "}
+                  ? t("sign_up_greeting1")
+                  : t("sign_in_greeting1")}
               </p>
               <p className='authGreetingDescription'>
-                Welcome to Wow transforming furniture
+                {t("sign_in_greeting2")}
               </p>
             </div>
             <Formik
@@ -95,12 +99,12 @@ const Auth = ({ auth }) => {
               {() => (
                 <Form className='authForm'>
                   <div className='authFormGroup'>
-                    <label htmlFor='email'>Email address</label>
+                    <label htmlFor='email'>{t("email_address")}</label>
                     <div className='authFormGroupInput'>
                       <Field
                         type='email'
                         name='email'
-                        placeholder='Enter your email address'
+                        placeholder={t("placeholder.enter_your_email_address")}
                       />
                     </div>
                     <ErrorMessage
@@ -110,12 +114,12 @@ const Auth = ({ auth }) => {
                     />
                   </div>
                   <div className='authFormGroup'>
-                    <label htmlFor='password'>Password</label>
+                    <label htmlFor='password'>{t("password")}</label>
                     <div className='authFormGroupInput'>
                       <Field
                         type={showPassword ? "text" : "password"}
                         name='password'
-                        placeholder='Enter your password'
+                        placeholder={t("placeholder.enter_your_password")}
                       />
                       <div
                         className={`eyeContainer ${
@@ -164,20 +168,27 @@ const Auth = ({ auth }) => {
                   </div>
                   <div className='authHub'>
                     <Checkbox
-                      text='Remember me'
+                      text={t("remember_me")}
+                      uniqueId='remember_me'
                       className='rememberMeHandlerTitle'
                     />
                     <div
                       className='passwordRecovery'
                       onClick={() => setPasswordRecovery(true)}>
-                      <p className='passwordRecoveryTitle'>Forget password?</p>
+                      <p className='passwordRecoveryTitle'>
+                        {t("forget_password")}
+                      </p>
                     </div>
                   </div>
                   <Button
                     btnType='submit'
                     link={false}
                     text={
-                      loading ? <Spinner color='#fff' size={18} /> : "Sign In"
+                      loading ? (
+                        <Spinner color='#fff' size={18} />
+                      ) : (
+                        t("bottomHeader.sign-in")
+                      )
                     }
                     disabled={loading}
                     style={{
@@ -201,13 +212,15 @@ const Auth = ({ auth }) => {
                 </p>
               ) : (
                 <p className='authCredentialsGreetings'>
-                  Don’t have an account?{" "}
-                  <NavLink to={`/${lang}/sign-up`}>Register</NavLink>
+                  {t("dont_you_have_account")}{" "}
+                  <NavLink to={`/${lang}/sign-up`}>
+                    {t("bottomHeader.register")}
+                  </NavLink>
                 </p>
               )}
               <div className='authCredentialsOr'>
                 <div className='authCredentialsLine1'></div>
-                <p>Or</p>
+                <p>{t("or")}</p>
                 <div className='authCredentialsLine2'></div>
               </div>
               <div className='authCredentialsBtns'>

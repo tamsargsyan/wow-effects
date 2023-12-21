@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { motion } from "framer-motion";
 import ContactLayout from "../components/ContactLayout/ContactLayout";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { contactSchema } from "../utils/validationSchema";
+import ValidationSchema from "../utils/ValidationSchema";
 import LOCATION from "../assets/icons/location-white.svg";
 import EMAIL from "../assets/icons/sms-white.svg";
 import TELEPHONE from "../assets/icons/telephone-ring-white.svg";
@@ -32,6 +32,8 @@ const Contact = () => {
   const locations = useSelector(state => state.locations);
   const contacts = useSelector(state => state.contacts);
   const lang = Cookies.get("i18next") || "en";
+
+  const { contactSchema } = ValidationSchema();
 
   if (
     locations.loading &&
@@ -78,7 +80,7 @@ const Contact = () => {
                     <Img src={LOCATION} alt='Locations' />
                   </div>
                   <div className='contactDetailInfo'>
-                    <p className='contactDetailInfoTitle'>Address</p>
+                    <p className='contactDetailInfoTitle'>{t("address")}</p>
                     <p className='contactDetailInfoDescription'>
                       {contacts.contacts.contacts_main[`address_${lang}`]}
                     </p>
@@ -89,7 +91,7 @@ const Contact = () => {
                     <Img src={EMAIL} alt='Email' />
                   </div>
                   <div className='contactDetailInfo'>
-                    <p className='contactDetailInfoTitle'>Email</p>
+                    <p className='contactDetailInfoTitle'>{t("email")}</p>
                     <p className='contactDetailInfoDescription'>
                       {contacts.contacts.contacts_main.email}
                     </p>
@@ -100,7 +102,9 @@ const Contact = () => {
                     <Img src={TELEPHONE} alt='Telephone' />
                   </div>
                   <div className='contactDetailInfo'>
-                    <p className='contactDetailInfoTitle'>Phone Number</p>
+                    <p className='contactDetailInfoTitle'>
+                      {t("phone_number")}
+                    </p>
                     <p className='contactDetailInfoDescription'>
                       {contacts.contacts.contacts_main.phone}
                     </p>
@@ -123,12 +127,12 @@ const Contact = () => {
               {() => (
                 <Form className='contactForm'>
                   <div className='contactFormGroup'>
-                    <label htmlFor='full_name'>Full Name</label>
+                    <label htmlFor='full_name'>{t("full_name")}</label>
                     <div className='contactFormGroupInput'>
                       <Field
                         type='text'
                         name='full_name'
-                        placeholder='Enter your full name'
+                        placeholder={t("placeholder.enter_your_full_name")}
                       />
                     </div>
                     <ErrorMessage
@@ -139,12 +143,14 @@ const Contact = () => {
                   </div>
                   <div className='contactFormGroup2ndLayout'>
                     <div className='contactFormGroup'>
-                      <label htmlFor='email'>Email Address</label>
+                      <label htmlFor='email'>{t("email_address")}</label>
                       <div className='contactFormGroupInput'>
                         <Field
                           type='email'
                           name='email'
-                          placeholder='Enter your email address'
+                          placeholder={t(
+                            "placeholder.enter_your_email_address"
+                          )}
                         />
                       </div>
                       <ErrorMessage
@@ -154,12 +160,12 @@ const Contact = () => {
                       />
                     </div>
                     <div className='contactFormGroup'>
-                      <label htmlFor='phone'>Phone Number</label>
+                      <label htmlFor='phone'>{t("phone_number")}</label>
                       <div className='contactFormGroupInput'>
                         <Field
                           type='text'
                           name='phone'
-                          placeholder='Enter your phone number'
+                          placeholder={t("placeholder.enter_your_phone_number")}
                         />
                       </div>
                       <ErrorMessage
@@ -170,12 +176,12 @@ const Contact = () => {
                     </div>
                   </div>
                   <div className='contactFormGroup'>
-                    <label htmlFor='message'>Message</label>
+                    <label htmlFor='message'>{t("message")}</label>
                     <div className='contactFormGroupInput'>
                       <Field
                         type='text'
                         name='message'
-                        placeholder='Enter your message'
+                        placeholder={t("placeholder.enter_your_your_message")}
                       />
                     </div>
                     <ErrorMessage

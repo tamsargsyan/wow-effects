@@ -47,7 +47,6 @@ const FurnitureInfos = ({ product_suggestions }) => {
       }
     );
   };
-  console.log(addToFavoritesResponseData);
 
   const heartit = product_id => {
     if (isAuthenticated) {

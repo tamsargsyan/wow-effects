@@ -119,7 +119,7 @@ const Footer = ({ slider }) => {
           <div className='footerSubscribe'>
             <p className='footerTitle'>{t("subscribe")}</p>
             <div className='footerItems'>
-              <input type='email' placeholder='E-mail address' />
+              <input type='email' placeholder={t("email_address")} />
               <Button
                 className='footerSendBtn'
                 text={t("send")}
@@ -137,12 +137,12 @@ const Footer = ({ slider }) => {
         <div className='footerBottom'>
           <div className='footerPrivacyWrapper'>
             <NavLink to={`/${lang}/privacy-policy`} className='footerPrivacy'>
-              Privacy Policy
+              {t("privacy_policy")}
             </NavLink>
-            <NavLink className='footerTerms'>Terms of Service</NavLink>
+            <NavLink className='footerTerms'>{t("terms_of_services")}</NavLink>
           </div>
           <div className='footerCopyRight'>
-            <p>© 2023 , All Rights Reserved</p>
+            <p>© 2023 , {t("all_rights_reserved")}</p>
           </div>
         </div>
       </div>

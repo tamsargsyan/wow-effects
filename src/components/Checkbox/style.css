@@ -58,7 +58,7 @@
 
 .checkbox-wrapper-23 input + label svg path {
   fill: none;
-  stroke: rgba(255, 255, 255, 0.1);
+  stroke: var(--main-color-pink);
   stroke-width: 4px;
   stroke-linecap: round;
   stroke-linejoin: round;

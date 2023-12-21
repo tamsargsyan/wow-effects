@@ -24,9 +24,11 @@ import Locations from "../components/Locations/Locations";
 import { fetchLocations } from "../redux/actions/locationsActions";
 import { fetchProductsHome } from "../redux/actions/productsHomeActions";
 import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
   const lang = Cookies.get("i18next") || "en";
+  const { t } = useTranslation();
 
   const dispatch = useDispatch();
 
@@ -86,7 +88,7 @@ const Home = () => {
                 <Button
                   link={true}
                   to={`/${home.home.about_section.link}`}
-                  text='Read More'
+                  text={t("read-more")}
                   className='aboutCompanyReadMoreBtn'
                   style={{
                     fontFamily: "Poppins-600",
@@ -109,7 +111,7 @@ const Home = () => {
               product_suggestions={productsHome.productsHome.products_in_home}
             />
             <Blog />
-            <FAQ title='faq' className='mainFAQ' data={faq.faq} />
+            <FAQ title={t("faq")} className='mainFAQ' data={faq.faq} />
             <Locations locations={locations.locations?.locations} />
             <Footer slider={false} />
           </>

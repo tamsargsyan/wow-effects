@@ -18,9 +18,11 @@ import QauntityField from "../../../components/QauntityField/QauntityField";
 import { useDispatch } from "react-redux";
 import { addToBasket } from "../../../redux/actions/basketActions";
 import { useWindowSize } from "../../../hooks/useWindowSize";
+import { useTranslation } from "react-i18next";
 import "./style.css";
 
 const SingleShop = () => {
+  const { t } = useTranslation();
   const imgs = [IMG_1, IMG_2, IMG_3, IMG_1];
   const dispatch = useDispatch();
   const { width } = useWindowSize();
@@ -108,7 +110,7 @@ const SingleShop = () => {
               </div>
               <div className='btns'>
                 <Button
-                  text='Add to cart'
+                  text={t("add-to-cart")}
                   // icon={PLUS}
                   // alt='Plus'
                   className='addToCartBtn'
@@ -148,7 +150,7 @@ const SingleShop = () => {
                 price={order.price}
                 // pending={order.pending}
                 // onBtnClick={() => setViewOrder(true)}
-                btnText='Add to cart'
+                btnText={t("add-to-cart")}
               />
             </div>
           ))}

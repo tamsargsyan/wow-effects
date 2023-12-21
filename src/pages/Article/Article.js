@@ -21,8 +21,10 @@ import Spinner from "../../components/Spinner/Spinner";
 import { STORAGE_URL } from "../../services/apiService";
 import { removeHtmlTags } from "../../Helpers/removeHtmlTags";
 import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
 
 const Article = () => {
+  const { t } = useTranslation();
   // const medias = [
   //   {
   //     id: 1,
@@ -89,11 +91,11 @@ const Article = () => {
         <>
           <div className='articleContainer'>
             <div className='articleBackBtnContainer'>
-              <Link to='/blog' className='articleBackBtn'>
+              <Link to={`/${lang}/blog`} className='articleBackBtn'>
                 <div>
                   <Img src={ARROW} alt='Arrow' />
                 </div>
-                Back
+                {t("back")}
               </Link>
             </div>
             {width < 600 && (

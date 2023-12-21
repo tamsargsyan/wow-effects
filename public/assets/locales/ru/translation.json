@@ -1,0 +1,34 @@
+{
+  "topHeader": {
+    "order-call": "Заказать звонок"
+  },
+  "bottomHeader": {
+    "customcraft": "Производство мебели на заказ",
+    "interior-design": "Дизайн интерьера",
+    "shop": "Магазин",
+    "about-us": "О нас",
+    "blog": "Блог",
+    "portfolio": "Портфолио",
+    "contact-us": "Связаться с нами",
+    "career": "Карьера",
+    "sign-in": "Войти",
+    "register": "Регистр"
+  },
+  "search-any-product": "Ищите любой товар",
+  "placeholder": {
+    "search": "Поиск"
+  },
+  "read-more": "Читать далее",
+  "view-more": "Посмотреть больше",
+  "our-partners": "НАШИ ПАРТНЕРЫ",
+  "add-to-cart": "Добавить в корзину",
+  "faq": "Часто задаваемые вопросы",
+  "address": "Адрес",
+  "view-map": "Посмотреть карту",
+  "services": "Услуги",
+  "helpful-links": "Полезные ссылки",
+  "subscribe": "ПОДПИШИТЕСЬ НА НАШИ РАССЫЛКИ",
+  "send": "Отправлять",
+  "send-message": "Отправить сообщение",
+  "back": "Назад"
+}

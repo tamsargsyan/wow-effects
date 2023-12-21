@@ -18,29 +18,10 @@ import Spinner from "../components/Spinner/Spinner";
 import Locations from "../components/Locations/Locations";
 import { removeHtmlTags } from "../Helpers/removeHtmlTags";
 import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
 
 const Contact = () => {
-  const contactDetails = [
-    {
-      id: 1,
-      icon: LOCATION,
-      title: "Address",
-      description: "Address name",
-    },
-    {
-      id: 2,
-      icon: EMAIL,
-      title: "Email",
-      description: "email@gamail.com",
-    },
-    {
-      id: 3,
-      icon: TELEPHONE,
-      title: "Phone Number",
-      description: "+374 00 000 000",
-    },
-  ];
-
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -206,7 +187,7 @@ const Contact = () => {
                   <Button
                     btnType='submit'
                     link={false}
-                    text='Send Message'
+                    text={t("send-message")}
                     style={{
                       backgroundColor: "var(--main-color-pink)",
                       border: "none",

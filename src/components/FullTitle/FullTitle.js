@@ -1,6 +1,7 @@
 import Title from "../Title/Title";
 import Button from "../Button/Button";
 import "./style.css";
+import { useTranslation } from "react-i18next";
 
 const FullTitle = ({
   btnStyle,
@@ -11,6 +12,8 @@ const FullTitle = ({
   withoutBtn,
   to,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div
       className={`${className} ${
@@ -25,7 +28,12 @@ const FullTitle = ({
       </div>
       {!withoutBtn && (
         <div className='fullTitleBtn'>
-          <Button text='View More' style={btnStyle} link={btnLink} to={to} />
+          <Button
+            text={t("view-more")}
+            style={btnStyle}
+            link={btnLink}
+            to={to}
+          />
         </div>
       )}
     </div>

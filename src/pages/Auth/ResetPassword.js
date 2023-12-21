@@ -30,9 +30,11 @@ import { useDispatch } from "react-redux";
 import { login } from "../../redux/actions/authActions";
 import ARROW_LEFT from "../../assets/icons/arrow-left-pink.svg";
 import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
 
 const ResetPassword = () => {
-  const lang = Cookies.get("i18next");
+  const { t } = useTranslation();
+  const lang = Cookies.get("i18next") || "en";
   const [resetPass, setResetPass] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -128,7 +130,7 @@ const ResetPassword = () => {
             // onClick={() => setPasswordRecovery(false)}
           >
             <Img src={ARROW_LEFT} alt='Arrow Left' />
-            Back
+            {t("back")}
           </button>
           <div className='passwordRecoveryGreeting'>
             <p className='authGreetingTitle'>Set new password</p>

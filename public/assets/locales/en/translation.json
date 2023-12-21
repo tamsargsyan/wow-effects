@@ -1,0 +1,34 @@
+{
+  "topHeader": {
+    "order-call": "Order a call"
+  },
+  "bottomHeader": {
+    "customcraft": "Custom furniture production",
+    "interior-design": "Interior Design",
+    "shop": "Shop",
+    "about-us": "About Us",
+    "blog": "Blog",
+    "portfolio": "Portfolio",
+    "contact-us": "Contact Us",
+    "career": "Career",
+    "sign-in": "Sign In",
+    "register": "Register"
+  },
+  "search-any-product": "Search for any product",
+  "placeholder": {
+    "search": "Search"
+  },
+  "read-more": "Read More",
+  "view-more": "View More",
+  "our-partners": "OUR PARTNERS",
+  "add-to-cart": "Add to cart",
+  "faq": "FAQ",
+  "address": "Address",
+  "view-map": "View Map",
+  "services": "Services",
+  "helpful-links": "Helpful Links",
+  "subscribe": "SUBSCRIBE TO OUR NEWSLETTERS",
+  "send": "Send",
+  "send-message": "Send Message",
+  "back": "Back"
+}

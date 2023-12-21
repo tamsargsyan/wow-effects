@@ -10,9 +10,11 @@ import EMAIL from "../../assets/icons/sms-bg-white.svg";
 import apiService from "../../services/apiService";
 import Spinner from "../../components/Spinner/Spinner";
 import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
 
 const PasswordRecovery = ({ setPasswordRecovery }) => {
-  const lang = Cookies.get("i18next");
+  const { t } = useTranslation();
+  const lang = Cookies.get("i18next") || "en";
   const [resetPass, setResetPass] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -56,7 +58,7 @@ const PasswordRecovery = ({ setPasswordRecovery }) => {
         className='passwordRecoveryBackBtn'
         onClick={() => setPasswordRecovery(false)}>
         <Img src={ARROW_LEFT} alt='Arrow Left' />
-        Back
+        {t("back")}
       </button>
       {responseData?.message === "We have emailed your password reset link!" ? (
         <motion.div

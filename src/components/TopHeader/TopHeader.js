@@ -14,6 +14,7 @@ import i18next from "i18next";
 
 export const TopHeader = () => {
   const socialMedias = [INSTAGRAM, YOUTUBE, FACEBOOK, TWITTER];
+  const { t } = useTranslation();
   const langs = [
     {
       id: 1,
@@ -75,7 +76,6 @@ export const TopHeader = () => {
   const differentLang = langs.find(
     item1 => !copyLangs.some(item2 => item1.id === item2.id)
   );
-  const { t } = useTranslation();
 
   return (
     <div className='topHeaderContainer container'>
@@ -96,7 +96,7 @@ export const TopHeader = () => {
       <div className='topHeader2'>
         <button className='topHeaderOrderCallBtn'>
           <img src={TELEPHONE_PINK} alt='Telephone' />
-          <span>Order a call</span>
+          <span>{t("topHeader.order-call")}</span>
         </button>
         <Dropdown
           menu={{
@@ -107,7 +107,7 @@ export const TopHeader = () => {
             onClick={e => e.preventDefault()}
             className='topHeaderLangsBtn'>
             <Space>
-              {differentLang.code}
+              {lang}
               <img
                 src={ARROW_DOWN}
                 alt='Arrow'

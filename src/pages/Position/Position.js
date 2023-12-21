@@ -8,8 +8,11 @@ import Footer from "../../components/Footer/Footer";
 import ARROW from "../../assets/icons/arrow-left-pink.svg";
 import LOCATION from "../../assets/icons/location-white.svg";
 import TIME from "../../assets/icons/time-white.svg";
+import { useTranslation } from "react-i18next";
 
 const Position = () => {
+  const { t } = useTranslation();
+
   return (
     <div>
       <div className='positionContainer container'>
@@ -19,7 +22,7 @@ const Position = () => {
               <div>
                 <Img src={ARROW} alt='Arrow' />
               </div>
-              Back
+              {t("back")}
             </button>
           </div>
           <div className='positionDescriptionTitle'>

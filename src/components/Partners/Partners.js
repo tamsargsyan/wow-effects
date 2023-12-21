@@ -7,8 +7,10 @@ import { STORAGE_URL } from "../../services/apiService";
 import { useEffect, useState } from "react";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
 
 const Partners = ({ partners }) => {
+  const { t } = useTranslation();
   const lang = Cookies.get("i18next") || "en";
   const [showArrowBtns, setShowArrowBtns] = useState(false);
   const { width } = useWindowSize();
@@ -30,7 +32,7 @@ const Partners = ({ partners }) => {
 
   return (
     <div className='partnersContainer container'>
-      <Title title='Our partners' />
+      <Title title={t("our-partners")} />
       <Slider className='partnersSlider' showArrowBtns={showArrowBtns}>
         {partners.partners.map(partner => (
           <div className='partnerWrapper' key={partner.id}>

@@ -17,8 +17,10 @@ import { useWindowSize } from "../../../hooks/useWindowSize";
 import { STORAGE_URL } from "../../../services/apiService";
 import { removeHtmlTags } from "../../../Helpers/removeHtmlTags";
 import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
 
 const CheckoutOrder = () => {
+  const { t } = useTranslation();
   const lang = Cookies.get("i18next") || "en";
   const basketItems = useSelector(state => state.basket.items);
   const dispatch = useDispatch();
@@ -104,7 +106,7 @@ const CheckoutOrder = () => {
             // icon={PLUS}
             // alt='Plus'
             link={true}
-            to='/checkout/place-order'
+            to={`/${lang}/checkout/place-order`}
             className='checkoutContinueBtn'
             style={{
               background: "var(--main-color-pink)",
@@ -129,7 +131,7 @@ const CheckoutOrder = () => {
                 price={order.price}
                 // pending={order.pending}
                 // onBtnClick={() => setViewOrder(true)}
-                btnText='Add to cart'
+                btnText={t("add-to-cart")}
               />
             </div>
           ))}

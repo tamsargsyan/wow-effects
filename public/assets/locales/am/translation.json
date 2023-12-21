@@ -1,0 +1,34 @@
+{
+  "topHeader": {
+    "order-call": "Պատվիրեք զանգ"
+  },
+  "bottomHeader": {
+    "customcraft": "Պատվերով կահույքի արտադրություն",
+    "interior-design": "Ինտերիերի դիզայն",
+    "shop": "Խանութ",
+    "about-us": "Մեր մասին",
+    "blog": "Բլոգ",
+    "portfolio": "Պորտֆոլիո",
+    "contact-us": "Կապ մեզ հետ",
+    "career": "Կարիերա",
+    "sign-in": "Մուտք",
+    "register": "Գրանցվել"
+  },
+  "search-any-product": "Որոնեք ցանկացած ապրանք",
+  "placeholder": {
+    "search": "Որոնում"
+  },
+  "read-more": "Կարդալ ավելին",
+  "view-more": "Դիտել ավելին",
+  "our-partners": "ՄԵՐ ԳՈՐԾԸՆԿԵՐՆԵՐԸ",
+  "add-to-cart": "Ավելացնել զամբյուղ",
+  "faq": "ՀՏՀ",
+  "address": "Հասցե",
+  "view-map": "Դիտել քարտեզը",
+  "services": "Ծառայություններ",
+  "helpful-links": "Օգտակար հղումներ",
+  "subscribe": "ԲԱԺԱՆՈՐԴԱԳՐՎԵՔ ՄԵՐ ԼՐԱՏՎԱԿԱՆՆԵՐԻՆ",
+  "send": "Ուղարկել",
+  "send-message": "Ուղարկել հաղորդագրություն",
+  "back": "Հետ"
+}

@@ -5,8 +5,10 @@ import Map from "../Map";
 import LOCATION from "../../assets/icons/location-white.svg";
 import { useState } from "react";
 import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
 
 const Locations = ({ locations }) => {
+  const { t } = useTranslation();
   const lang = Cookies.get("i18next") || "en";
 
   const fixingCoords = coords => coords.map(coord => Number(coord));
@@ -29,7 +31,7 @@ const Locations = ({ locations }) => {
               <Img src={LOCATION} alt='Locations' />
             </div>
             <div className='contactDetailInfo'>
-              <p className='contactDetailInfoDescription'>Address</p>
+              <p className='contactDetailInfoDescription'>{t("address")}</p>
               <p className='contactDetailInfoTitle'>
                 {locations[`address_1_${lang}`]}
               </p>
@@ -39,7 +41,7 @@ const Locations = ({ locations }) => {
                   setCoords(locations.address_1_coordinates.split(", "));
                   setAddressTitle(locations[`address_1_${lang}`]);
                 }}>
-                View Map
+                {t("view-map")}
               </button>
             </div>
           </div>
@@ -48,7 +50,7 @@ const Locations = ({ locations }) => {
               <Img src={LOCATION} alt='Locations' />
             </div>
             <div className='contactDetailInfo'>
-              <p className='contactDetailInfoDescription'>Address</p>
+              <p className='contactDetailInfoDescription'>{t("address")}</p>
               <p className='contactDetailInfoTitle'>
                 {locations[`address_2_${lang}`]}
               </p>
@@ -58,7 +60,7 @@ const Locations = ({ locations }) => {
                   setCoords(locations.address_2_coordinates.split(", "));
                   setAddressTitle(locations[`address_2_${lang}`]);
                 }}>
-                View Map
+                {t("view-map")}
               </button>
             </div>
           </div>

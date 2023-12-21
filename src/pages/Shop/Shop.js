@@ -25,8 +25,10 @@ import { fetchShop } from "../../redux/actions/shopActions";
 import Spinner from "../../components/Spinner/Spinner";
 import apiService, { STORAGE_URL } from "../../services/apiService";
 import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
 
 const Shop = () => {
+  const { t } = useTranslation();
   const lang = Cookies.get("i18next") || "en";
   const [showMenu, setShowMenu] = useState(false);
   const [selectedItem, setSelectedItem] = useState("Sort by");
@@ -74,8 +76,6 @@ const Shop = () => {
       }
     );
   };
-
-  console.log(addToFavoritesResponseData);
 
   const heartit = product_id => {
     if (isAuthenticated) {
@@ -317,7 +317,7 @@ const Shop = () => {
                               : dispatch(addToBasket(order));
                           }}
                           heartit={() => heartit(order.id)}
-                          btnText='Add to cart'
+                          btnText={t("add-to-cart")}
                           img={`${STORAGE_URL}/${order.image}`}
                           id={order.id}
                         />

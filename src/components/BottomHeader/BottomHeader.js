@@ -13,26 +13,28 @@ import { useDispatch, useSelector } from "react-redux";
 import { openBasketModal } from "../../redux/actions/basketActions";
 import PERSON from "../../assets/person-images/1.jpg";
 import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
 
 const BottomHeader = () => {
   const lang = Cookies.get("i18next");
+  const { t } = useTranslation();
 
   const menu = [
     {
       id: 1,
-      name: "Custom furniture production",
+      name: t("bottomHeader.customcraft"),
       to: "/customcraft",
       dropdown: null,
     },
     {
       id: 2,
-      name: "Interior Design",
+      name: t("bottomHeader.interior-design"),
       to: "/interior-design",
       dropdown: null,
     },
     {
       id: 3,
-      name: "Shop",
+      name: t("bottomHeader.shop"),
       to: "/shop",
       dropdown: null,
       // dropdown: [
@@ -52,25 +54,25 @@ const BottomHeader = () => {
     },
     {
       id: 4,
-      name: "About Us",
+      name: t("bottomHeader.about-us"),
       to: "/about-us",
       dropdown: null,
     },
     {
       id: 5,
-      name: "Blog",
+      name: t("bottomHeader.blog"),
       to: "/blog",
       dropdown: null,
     },
     {
       id: 6,
-      name: "Portfolio",
+      name: t("bottomHeader.portfolio"),
       to: "/portfolio",
       dropdown: null,
     },
     {
       id: 7,
-      name: "Contact Us",
+      name: t("bottomHeader.contact-us"),
       to: "/contact-us",
       dropdown: null,
     },
@@ -163,7 +165,7 @@ const BottomHeader = () => {
           </div>
           {isAuthenticated ? (
             <NavLink
-              to='account/control-panel'
+              to={`/${lang}/account/control-panel`}
               className='navbarProfilePicContainer'>
               <Img src={PERSON} alt='Profile Pic' />
             </NavLink>
@@ -171,8 +173,8 @@ const BottomHeader = () => {
             <>
               <Button
                 link={true}
-                to='sign-in'
-                text='Sign In'
+                to={`/${lang}/sign-in`}
+                text={t("bottomHeader.sign-in")}
                 style={{
                   backgroundColor: "var(--main-bg-color-black)",
                   border: "none",
@@ -184,8 +186,8 @@ const BottomHeader = () => {
               />
               <Button
                 link={true}
-                to='sign-up'
-                text='Register'
+                to={`/${lang}/sign-up`}
+                text={t("bottomHeader.register")}
                 style={{
                   backgroundColor: "var(--main-color-pink)",
                   border: "none",
@@ -239,7 +241,7 @@ const BottomHeader = () => {
         {width < 700 && (
           <>
             <div className='bottomHeaderLogoMobile'>
-              <NavLink>
+              <NavLink to={`/${lang}/`}>
                 <img src={WOW_LOGO} alt='Wow logo' />
               </NavLink>
             </div>

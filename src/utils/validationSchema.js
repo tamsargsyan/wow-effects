@@ -98,20 +98,20 @@ const ValidationSchema = () => {
   const newAddressSchema = yup.object().shape({
     country: yup
       .string()
-      .matches(/^[A-Za-z]+$/, t("validations.valid_name"))
-      .required(t("validations.name_required")),
+      // .matches(/^[A-Za-z]+$/, t("validations.valid_name"))
+      .required(t("validations.country_required")),
     city: yup
       .string()
-      .matches(/^[A-Za-z]+$/, t("validations.valid_name"))
-      .required(t("validations.name_required")),
+      // .matches(/^[A-Za-z]+$/, t("validations.valid_name"))
+      .required(t("validations.city_required")),
     address: yup
       .string()
-      .matches(/^[A-Za-z]+$/, t("validations.valid_name"))
-      .required(t("validations.name_required")),
+      // .matches(/^[A-Za-z]+$/, t("validations.valid_name"))
+      .required(t("validations.address_required")),
     zip_code: yup
       .string()
-      .matches(/^[A-Za-z]+$/, t("validations.valid_name"))
-      .required(t("validations.name_required")),
+      .matches(/^[0-9]+$/, t("validations.invalid_zip_code"))
+      .required(t("validations.zip_code_required")),
   });
 
   return {

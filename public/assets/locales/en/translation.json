@@ -118,6 +118,11 @@
     "name_required": "Name is a required field",
     "valid_name": "Name should only contain letters",
     "invalid_phone": "Phone number should contain only numbers",
-    "this_is_required": "This is a required field"
+    "this_is_required": "This is a required field",
+    "country_required": "Country is required",
+    "city_required": "City is required",
+    "address_required": "Address is required",
+    "zip_code_required": "Zip code is required",
+    "invalid_zip_code": "Zip code should only contain numbers"
   }
 }

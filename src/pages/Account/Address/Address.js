@@ -11,9 +11,14 @@ import { ErrorMessage, Field, Form, Formik } from "formik";
 import ValidationSchema from "../../../utils/ValidationSchema";
 import Checkbox from "../../../components/Checkbox/Checkbox";
 import { useTranslation } from "react-i18next";
+import apiService from "../../../services/apiService";
+import Spinner from "../../../components/Spinner/Spinner";
 
 const Address = () => {
   const { t } = useTranslation();
+  const user = JSON.parse(localStorage.getItem("user"));
+  const token = localStorage.getItem("token");
+
   const addresses = [
     {
       id: 1,
@@ -29,8 +34,32 @@ const Address = () => {
     },
   ];
 
-  const [addNewAddress, setAddNewAddress] = useState(false);
+  const [addNewAddressModal, setAddNewAddressModal] = useState(false);
   const { newAddressSchema } = ValidationSchema();
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [responseData, setResponseData] = useState(null);
+
+  const [isDefault, setIsDefault] = useState(false);
+
+  const addNewAddress = async values => {
+    setLoading(true);
+    setError(null);
+
+    await apiService.post(
+      `addUserAddress/${user.id}`,
+      values,
+      {
+        Authorization: `Bearer ${token}`,
+      },
+      ({ loading, error, data }) => {
+        setLoading(loading);
+        setError(error);
+        setResponseData(data);
+      }
+    );
+  };
 
   return (
     <AccountLayout>
@@ -51,7 +80,7 @@ const Address = () => {
               border: "none",
               color: "var(--secondary-color-white)",
             }}
-            onClick={() => setAddNewAddress(true)}
+            onClick={() => setAddNewAddressModal(true)}
           />
           <div className='adressesWrapper'>
             {addresses.map((address, i) => (
@@ -93,8 +122,8 @@ const Address = () => {
       </div>
       <Modal
         title={t("add_new_address")}
-        open={addNewAddress}
-        onClose={() => setAddNewAddress(false)}>
+        open={addNewAddressModal}
+        onClose={() => setAddNewAddressModal(false)}>
         <Formik
           initialValues={{
             country: "",
@@ -103,7 +132,13 @@ const Address = () => {
             zip_code: "",
           }}
           onSubmit={(values, actions) => {
-            console.log(values);
+            const result = {
+              ...values,
+              title: "test3",
+              is_default: isDefault,
+            };
+            console.log(result);
+            addNewAddress(result);
             actions.setSubmitting(false);
           }}
           validationSchema={newAddressSchema}>
@@ -180,9 +215,18 @@ const Address = () => {
               <Checkbox
                 text={t("make_address_default")}
                 uniqueId='make_address_default'
+                checked={isDefault}
+                onChange={e => setIsDefault(e.target.checked)}
               />
               <Button
-                text={t("add_address")}
+                text={
+                  loading ? (
+                    <Spinner color='#fff' size={18} />
+                  ) : (
+                    t("add_address")
+                  )
+                }
+                btnType='submit'
                 className='addAddressBtn'
                 style={{
                   background: "var(--main-color-pink)",

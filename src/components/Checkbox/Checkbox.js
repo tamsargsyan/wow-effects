@@ -1,10 +1,10 @@
 import "./style.css";
 
-const Checkbox = ({ text, className, uniqueId }) => {
+const Checkbox = ({ text, className, uniqueId, onChange }) => {
   return (
     <div className='checkboxContainer'>
       <div className='checkbox-wrapper-23'>
-        <input type='checkbox' id={uniqueId} />
+        <input type='checkbox' id={uniqueId} onChange={onChange} />
         <label htmlFor={uniqueId}>
           <svg viewBox='0,0,50,50'>
             <path d='M5 30 L 20 45 L 45 5'></path>

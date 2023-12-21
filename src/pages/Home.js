@@ -91,7 +91,8 @@ const Home = () => {
                   text={t("read-more")}
                   className='aboutCompanyReadMoreBtn'
                   style={{
-                    fontFamily: "Poppins-600",
+                    fontFamily: "Poppins-600, sans-serif",
+                    fontWeight: "600",
                     textDecoration: "none",
                     color: "var(--secondary-color-white)",
                     background: "var(--main-color-pink)",

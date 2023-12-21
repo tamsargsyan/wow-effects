@@ -22,7 +22,8 @@
   border: 1px solid rgba(136, 136, 136, 0.1);
   background: #fbfbfb;
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.04);
-  font-family: Poppins-600;
+  font-family: Poppins-600, sans-serif;
+  font-weight: 600;
   padding: 10px 16px;
   font-size: 16px;
 }

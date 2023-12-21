@@ -30,5 +30,19 @@
   "subscribe": "SUBSCRIBE TO OUR NEWSLETTERS",
   "send": "Send",
   "send-message": "Send Message",
-  "back": "Back"
+  "back": "Back",
+  "customer_savings": "Customer savings",
+  "hours_saved": "Hours saved",
+  "year_growth": "Year on year growth",
+  "downloads": "Downloads",
+  "why_choose_us": "WHY CHOOSE US",
+  "we_are_hiring": "We're hiring!",
+  "join_our_team": "Join our team",
+  "our_shop": "OUR SHOP",
+  "filters": "Filters",
+  "categories": "Categories",
+  "type": "Type",
+  "material": "Material",
+  "price": "Price",
+  "color": "Color"
 }

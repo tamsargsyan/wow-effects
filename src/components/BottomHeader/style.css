@@ -37,10 +37,14 @@
 }
 .bottomHeaderMenu a {
   color: var(--secondary-color-white);
-  font-family: Poppins-500;
+  font-family: Poppins-500, sans-serif;
+  font-weight: 500;
   text-decoration: none;
   opacity: 0.7;
   position: relative;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .bottomHeaderMenu a::after {
   content: "";
@@ -64,14 +68,16 @@
   border: none;
   outline: none;
   color: var(--secondary-color-white);
-  font-family: Poppins-500;
+  font-family: Poppins-500, sans-serif;
+  font-weight: 500;
 }
 .bottomHeaderShopBtn {
   opacity: 1 !important;
 }
 .bottomHeaderShopBtn .ant-space-item:first-child {
   opacity: 0.7;
-  font-family: Poppins-500;
+  font-family: Poppins-500, sans-serif;
+  font-weight: 500;
 }
 .bottomHeaderLogo a {
   width: 100%;
@@ -263,14 +269,16 @@
     user-select: none;
   }
   .bottomHeaderShopBtnMobile .ant-space-item {
-    font-family: Poppins-500;
+    font-family: Poppins-500, sans-serif;
+    font-weight: 500;
     color: var(--main-bg-color-black);
   }
   #menuToggle a {
     text-decoration: none;
     color: var(--main-bg-color-black);
     font-size: 18px;
-    font-family: Poppins-500;
+    font-family: Poppins-500, sans-serif;
+    font-weight: 500;
     opacity: 1;
   }
   #menuToggle input {

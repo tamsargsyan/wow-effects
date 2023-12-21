@@ -18,7 +18,8 @@
   border-radius: inherit;
 }
 .cardProductTitle {
-  font-family: Poppins-600;
+  font-family: Poppins-600, sans-serif;
+  font-weight: 600;
   margin-bottom: 4px;
   font-size: 18px;
 }
@@ -51,7 +52,8 @@
 .cardProductPrice {
   color: #fff;
   text-align: right;
-  font-family: Poppins-500;
+  font-family: Poppins-500, sans-serif;
+  font-weight: 500;
   font-size: 20px;
   margin-left: 50px;
 }

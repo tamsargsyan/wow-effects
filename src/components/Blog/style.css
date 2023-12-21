@@ -24,7 +24,8 @@
   margin-top: 24px;
 }
 .blogTitle {
-  font-family: Poppins-700;
+  font-family: Poppins-700, sans-serif;
+  font-weight: 700;
   text-transform: uppercase;
   font-size: 20px;
 }
@@ -46,7 +47,8 @@
   gap: 20px;
 }
 .blogReadMore p {
-  font-family: Poppins-500;
+  font-family: Poppins-500, sans-serif;
+  font-weight: 500;
   color: var(--secondary-color-white);;
   font-size: 18px;
 }

@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import PagesTitle from "../../components/Title/PagesTitle";
 import Filter from "./Filter/Filter";
 import Checkbox from "../../components/Checkbox/Checkbox";
-import { categories, colors, material, type } from "./data";
+import { colors } from "./data";
 import "./style.css";
 import { Slider } from "antd";
 import { Fragment, useEffect, useState } from "react";
@@ -184,11 +184,11 @@ const Shop = () => {
     <motion.div initial={initial} animate={animate} className='shopContainer'>
       {shop.shop && (
         <>
-          <PagesTitle title='Our Shop' />
+          <PagesTitle title={t("our_shop")} />
           <div className='shopmart container'>
             <div className='filteringSection filteringSectionDesktop'>
-              <p className='filteringSectionTitle'>Filters</p>
-              <Filter title='Categories'>
+              <p className='filteringSectionTitle'>{t("filters")}</p>
+              <Filter title={t("categories")}>
                 {shop.shop.product_categories.map((ctg, i) => {
                   return (
                     <Link
@@ -205,7 +205,7 @@ const Shop = () => {
                 })}
               </Filter>
               <div className='filteringSectionDividor'></div>
-              <Filter title='Type'>
+              <Filter title={t("type")}>
                 {shop.shop.product_types.map((tp, i) => (
                   // <Link className='filteringOption' key={i}>
                   <div
@@ -221,7 +221,7 @@ const Shop = () => {
                 ))}
               </Filter>
               <div className='filteringSectionDividor'></div>
-              <Filter title='Material'>
+              <Filter title={t("material")}>
                 {shop.shop.product_materials.map((mat, i) => (
                   // <Link className='filteringOption filteringOptionCategory' key={i}>
                   //   <p>{ctg.title}</p>
@@ -238,7 +238,7 @@ const Shop = () => {
                 ))}
               </Filter>
               <div className='filteringSectionDividor'></div>
-              <Filter title='Price'>
+              <Filter title={t("price")}>
                 {/* <RangeSlider /> */}
                 <Slider
                   range
@@ -248,7 +248,7 @@ const Shop = () => {
                 />
               </Filter>
               <div className='filteringSectionDividor'></div>
-              <Filter title='Color'>
+              <Filter title={t("color")}>
                 {colors.map(({ color }, i) => (
                   <Link className='filteringOption' key={i}>
                     <div
@@ -262,7 +262,7 @@ const Shop = () => {
             <div className='productShowcaseContainer'>
               <div className='searchPanelContainer'>
                 <div className='searchPanel'>
-                  <input type='text' placeholder='Search' />
+                  <input type='text' placeholder={t("placeholder.search")} />
                   <Img src={SEARCH} alt='Search' />
                 </div>
                 {width > 900 ? (
@@ -342,7 +342,7 @@ const Shop = () => {
           <Footer />
           {width < 900 && (
             <Modal
-              title='Filters'
+              title={t("filters")}
               open={openFilters}
               onClose={() => setOpenFilters(false)}>
               <div className='filteringSection'>
@@ -361,8 +361,8 @@ const Shop = () => {
                     ))}
                   </ul>
                 </div>
-                <p className='filteringSectionTitle'>Filters</p>
-                <Filter title='Categories'>
+                <p className='filteringSectionTitle'>{t("filters")}</p>
+                <Filter title={t("categories")}>
                   {shop.shop.product_categories.map((ctg, i) => (
                     <Link
                       className='filteringOption filteringOptionCategory'
@@ -372,7 +372,7 @@ const Shop = () => {
                   ))}
                 </Filter>
                 <div className='filteringSectionDividor'></div>
-                <Filter title='Type'>
+                <Filter title={t("type")}>
                   {shop.shop.product_types.map((tp, i) => (
                     // <Link className='filteringOption' key={i}>
                     <Fragment key={i}>
@@ -382,7 +382,7 @@ const Shop = () => {
                   ))}
                 </Filter>
                 <div className='filteringSectionDividor'></div>
-                <Filter title='Material'>
+                <Filter title={t("material")}>
                   {shop.shop.product_materials.map((mat, i) => (
                     // <Link className='filteringOption filteringOptionCategory' key={i}>
                     //   <p>{ctg.title}</p>
@@ -393,7 +393,7 @@ const Shop = () => {
                   ))}
                 </Filter>
                 <div className='filteringSectionDividor'></div>
-                <Filter title='Price'>
+                <Filter title={t("price")}>
                   {/* <RangeSlider /> */}
                   <Slider
                     range
@@ -403,7 +403,7 @@ const Shop = () => {
                   />
                 </Filter>
                 <div className='filteringSectionDividor'></div>
-                <Filter title='Color'>
+                <Filter title={t("color")}>
                   {colors.map(({ color }, i) => (
                     <Link className='filteringOption' key={i}>
                       <div

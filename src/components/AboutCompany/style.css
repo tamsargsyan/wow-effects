@@ -56,7 +56,8 @@
 }
 .customerSavingsTitle {
   color: #af4b85;
-  font-family: Poppins-700;
+  font-family: Poppins-700, sans-serif;
+  font-weight: 700;
   font-size: 32px;
 }
 .customerSavingsDescription {

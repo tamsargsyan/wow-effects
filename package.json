@@ -1,7 +1,7 @@
 {
   "name": "wow-effects",
   "version": "0.1.0",
-  "homepage": "https://woweffect.am/",
+  "homepage": "https://woweffect.am/en/",
   "private": true,
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",

@@ -9,8 +9,12 @@ import TIME from "../../assets/icons/time-white.svg";
 import Img from "../../components/Img";
 import ARROW from "../../assets/icons/arrow-down-white.svg";
 import { useWindowSize } from "../../hooks/useWindowSize";
+import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 const Career = () => {
+  const { t } = useTranslation();
+
   const filterBtns = [
     {
       id: 1,
@@ -139,8 +143,8 @@ const Career = () => {
               </div>
             )}
             <div className='search'>
-              <img src={SEARCH} alt='Search' />
-              <input placeholder='Search' />
+              <Img src={SEARCH} alt='Search' />
+              <input placeholder={t("placeholder.searcg")} />
             </div>
           </div>
           <div>

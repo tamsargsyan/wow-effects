@@ -272,7 +272,8 @@ const ResetPassword = () => {
                   style={{
                     backgroundColor: "var(--main-color-pink)",
                     border: "none",
-                    fontFamily: "Poppins-600",
+                    fontFamily: "Poppins-600, sans-serif",
+                    fontWeight: "600",
                     borderRadius: "var(--main-border-radius)",
                     color: "var(--secondary-color-white)",
                   }}

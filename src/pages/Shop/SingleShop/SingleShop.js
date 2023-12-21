@@ -105,7 +105,7 @@ const SingleShop = () => {
                 <p className='typeMaterialDescription'>Arm Chair</p>
               </div>
               <div className='materialContainer'>
-                <p className='typeMaterialTitle'>Material</p>
+                <p className='typeMaterialTitle'>{t("material")}</p>
                 <p className='typeMaterialDescription'>Fabric</p>
               </div>
               <div className='btns'>
@@ -120,7 +120,8 @@ const SingleShop = () => {
                     border: "none",
                     color: "var(--secondary-color-white)",
                     width: "fit-content",
-                    fontFamily: "Poppins-600",
+                    fontFamily: "Poppins-600, sans-serif",
+                    fontWeight: "600",
                   }}
                   onClick={() =>
                     dispatch(

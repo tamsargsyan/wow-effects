@@ -184,7 +184,8 @@ const Address = () => {
                   background: "var(--main-color-pink)",
                   color: "var(--secondary-color-white)",
                   border: "none",
-                  fontFamily: "Poppins-600",
+                  fontFamily: "Poppins-600, sans-serif",
+                  fontWeight: "600",
                 }}
               />
             </Form>

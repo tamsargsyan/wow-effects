@@ -81,14 +81,16 @@
   font-size: 18px;
 }
 .contactDetailInfoDescription {
-  font-family: Poppins-500;
+  font-family: Poppins-500, sans-serif;
+  font-weight: 500;
   font-size: 20px;
 }
 .contactFormGroup label {
   font-size: 14px;
 }
 .addressViewMapBtn {
-  font-family: Poppins-600;
+  font-family: Poppins-600, sans-serif;
+  font-weight: 600;
   background: transparent;
   color: var(--secondary-color-white);;
   outline: none;

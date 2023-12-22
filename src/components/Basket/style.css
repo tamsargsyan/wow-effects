@@ -25,7 +25,8 @@
   margin-bottom: 54px;
 }
 .basketHeaderTitle {
-  font-family: Poppins-600;
+  font-family: Poppins-600, sans-serif;
+  font-weight: 600;
   font-size: 24px;
 }
 .basketHeaderClose {
@@ -57,7 +58,8 @@
   padding: 12px 32px;
   border-radius: 8px;
   width: 100%;
-  font-family: Poppins-600;
+  font-family: Poppins-600, sans-serif;
+  font-weight: 600;
   font-size: 18px;
 }
 .basketBody {

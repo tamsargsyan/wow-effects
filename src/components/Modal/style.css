@@ -58,7 +58,8 @@ body.no-scroll {
   overflow: hidden;
 }
 .modalHeaderTitle {
-  font-family: Poppins-600;
+  font-family: Poppins-600, sans-serif;
+  font-weight: 600;
   font-size: 24px;
 }
 @media screen and (max-width: 900px) {

@@ -18,9 +18,11 @@ import QauntityField from "../../../components/QauntityField/QauntityField";
 import { useDispatch } from "react-redux";
 import { addToBasket } from "../../../redux/actions/basketActions";
 import { useWindowSize } from "../../../hooks/useWindowSize";
+import { useTranslation } from "react-i18next";
 import "./style.css";
 
 const SingleShop = () => {
+  const { t } = useTranslation();
   const imgs = [IMG_1, IMG_2, IMG_3, IMG_1];
   const dispatch = useDispatch();
   const { width } = useWindowSize();
@@ -103,12 +105,12 @@ const SingleShop = () => {
                 <p className='typeMaterialDescription'>Arm Chair</p>
               </div>
               <div className='materialContainer'>
-                <p className='typeMaterialTitle'>Material</p>
+                <p className='typeMaterialTitle'>{t("material")}</p>
                 <p className='typeMaterialDescription'>Fabric</p>
               </div>
               <div className='btns'>
                 <Button
-                  text='Add to cart'
+                  text={t("add-to-cart")}
                   // icon={PLUS}
                   // alt='Plus'
                   className='addToCartBtn'
@@ -118,7 +120,8 @@ const SingleShop = () => {
                     border: "none",
                     color: "var(--secondary-color-white)",
                     width: "fit-content",
-                    fontFamily: "Poppins-600",
+                    fontFamily: "Poppins-600, sans-serif",
+                    fontWeight: "600",
                   }}
                   onClick={() =>
                     dispatch(
@@ -148,7 +151,7 @@ const SingleShop = () => {
                 price={order.price}
                 // pending={order.pending}
                 // onBtnClick={() => setViewOrder(true)}
-                btnText='Add to cart'
+                btnText={t("add-to-cart")}
               />
             </div>
           ))}

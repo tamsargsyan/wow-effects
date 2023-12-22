@@ -29,7 +29,8 @@
   background: #101010;
   box-shadow: 0px 5px 16px 0px rgba(8, 15, 52, 0.06);
   color: var(--secondary-color-white);
-  font-family: Poppins-500;
+  font-family: Poppins-500, sans-serif;
+  font-weight: 500;
   transition: 650ms ease;
 }
 .accordion-link i {
@@ -222,6 +223,7 @@
 .detailsOverviewFAQ .accordion-link {
   color: #fff;
   font-feature-settings: "clig" off, "liga" off;
-  font-family: Poppins-500;
+  font-family: Poppins-500, sans-serif;
+  font-weight: 500;
   font-size: 24px;
 }

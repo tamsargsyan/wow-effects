@@ -7,9 +7,10 @@ import { removeHtmlTags } from "../../Helpers/removeHtmlTags";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBlogMain } from "../../redux/actions/blogMainActions";
+import Cookies from "js-cookie";
 
 const Blog = () => {
-  const lang = "en";
+  const lang = Cookies.get("i18next") || "en";
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -40,7 +41,9 @@ const Blog = () => {
                   <p className='blogDesc'>
                     {removeHtmlTags(blog[`description_${lang}`])}
                   </p>
-                  <NavLink className='blogReadMore' to={`/blog/${blog.id}`}>
+                  <NavLink
+                    className='blogReadMore'
+                    to={`/${lang}/blog/${blog.id}`}>
                     <p>Read more</p>
                     <img src={ARROW} alt='Arrow' />
                   </NavLink>

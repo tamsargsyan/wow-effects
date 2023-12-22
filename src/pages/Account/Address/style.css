@@ -38,7 +38,8 @@
   gap: 16px;
 }
 .addressTitle {
-  font-family: Poppins-500;
+  font-family: Poppins-500, sans-serif;
+  font-weight: 500;
   margin-bottom: 8px;
   font-size: 18px;
 }

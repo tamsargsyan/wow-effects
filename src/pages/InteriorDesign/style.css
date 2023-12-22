@@ -7,7 +7,8 @@
 }
 .interiorDesignWorkingTitle2 {
   color: #fff;
-  font-family: Poppins-700;
+  font-family: Poppins-700, sans-serif;
+  font-weight: 700;
   text-transform: uppercase;
   text-align: center;
   font-size: 40px;
@@ -46,7 +47,8 @@
 }
 .workingProcessMapTitle {
   color: #fff;
-  font-family: Poppins-600;
+  font-family: Poppins-600, sans-serif;
+  font-weight: 600;
   margin-bottom: 12px;
   font-size: 20px;
 }
@@ -78,13 +80,15 @@
   /* width: 25rem; */
 }
 .packageTitle {
-  font-family: Poppins-700;
+  font-family: Poppins-700, sans-serif;
+  font-weight: 700;
   font-size: 24px;
   margin-bottom: 24px;
 }
 .packagePrice {
   color: #af4b85;
-  font-family: Poppins-700;
+  font-family: Poppins-700, sans-serif;
+  font-weight: 700;
   font-size: 44px;
   margin-bottom: 24px;
 }
@@ -95,7 +99,8 @@
 }
 .packageBtn {
   color: #fff;
-  font-family: Poppins-600;
+  font-family: Poppins-600, sans-serif;
+  font-weight: 600;
   padding: 16px 20px;
   font-size: 18px;
   border: none;
@@ -117,7 +122,8 @@
   width: 550px;
 }
 .interorDesignContactUsTitle {
-  font-family: Poppins-600;
+  font-family: Poppins-600, sans-serif;
+  font-weight: 600;
   font-size: 48px;
 }
 .interorDesignContactUsDescription {
@@ -146,7 +152,8 @@
   border-radius: 8px;
   border: 1px dashed rgba(255, 255, 255, 0.6);
   box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.04);
-  font-family: Poppins-500;
+  font-family: Poppins-500, sans-serif;
+  font-weight: 500;
   display: flex;
   align-items: center;
   gap: 10px;

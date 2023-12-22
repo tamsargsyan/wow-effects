@@ -16,11 +16,7 @@ import "./style.css";
 import { useEffect, useState } from "react";
 import PasswordRecovery from "./PasswordRecovery";
 import { motion } from "framer-motion";
-import {
-  passwordRecoverySchema,
-  resetPassSchema,
-  signInSchema,
-} from "../../utils/validationSchema";
+import ValidationSchema from "../../utils/ValidationSchema";
 import { animate, initial } from "../../utils/transition";
 import Checkbox from "../../components/Checkbox/Checkbox";
 import apiService from "../../services/apiService";
@@ -29,8 +25,12 @@ import Modal from "../../components/Modal/Modal";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/actions/authActions";
 import ARROW_LEFT from "../../assets/icons/arrow-left-pink.svg";
+import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
 
 const ResetPassword = () => {
+  const { t } = useTranslation();
+  const lang = Cookies.get("i18next") || "en";
   const [resetPass, setResetPass] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -104,11 +104,12 @@ const ResetPassword = () => {
   const [searchParams] = useSearchParams();
   const code = searchParams.get("code");
   const navigate = useNavigate();
+  const { resetPassSchema } = ValidationSchema();
 
   return (
     <motion.div initial={initial} animate={animate} className='authContainer'>
       <div className='authFormContainer container'>
-        <NavLink to='/' className='authLogo'>
+        <NavLink to={`/${lang}/`} className='authLogo'>
           <Img src={LOGO} alt='Wow Logo' className='authLogoImg' />
         </NavLink>
         <motion.div
@@ -126,7 +127,7 @@ const ResetPassword = () => {
             // onClick={() => setPasswordRecovery(false)}
           >
             <Img src={ARROW_LEFT} alt='Arrow Left' />
-            Back
+            {t("back")}
           </button>
           <div className='passwordRecoveryGreeting'>
             <p className='authGreetingTitle'>Set new password</p>
@@ -268,7 +269,8 @@ const ResetPassword = () => {
                   style={{
                     backgroundColor: "var(--main-color-pink)",
                     border: "none",
-                    fontFamily: "Poppins-600",
+                    fontFamily: "Poppins-600, sans-serif",
+                    fontWeight: "600",
                     borderRadius: "var(--main-border-radius)",
                     color: "var(--secondary-color-white)",
                   }}
@@ -288,7 +290,8 @@ const ResetPassword = () => {
         onClose={() => {
           setResetPassResponseData(null);
           resetPassResponseData.message ===
-            "password has been successfully reset" && navigate("/sign-in");
+            "password has been successfully reset" &&
+            navigate(`/${lang}/sign-in`);
         }}>
         <p className='authResponseMessage'>{resetPassResponseData?.message}</p>
       </Modal>

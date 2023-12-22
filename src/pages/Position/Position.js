@@ -3,13 +3,17 @@ import "./style.css";
 import Img from "../../components/Img";
 import Button from "../../components/Button/Button";
 import UPLOAD from "../../assets/icons/upload-white.svg";
-import { contactSchema } from "../../utils/validationSchema";
+import ValidationSchema from "../../utils/ValidationSchema";
 import Footer from "../../components/Footer/Footer";
 import ARROW from "../../assets/icons/arrow-left-pink.svg";
 import LOCATION from "../../assets/icons/location-white.svg";
 import TIME from "../../assets/icons/time-white.svg";
+import { useTranslation } from "react-i18next";
 
 const Position = () => {
+  const { t } = useTranslation();
+  const { contactSchema } = ValidationSchema();
+
   return (
     <div>
       <div className='positionContainer container'>
@@ -19,7 +23,7 @@ const Position = () => {
               <div>
                 <Img src={ARROW} alt='Arrow' />
               </div>
-              Back
+              {t("back")}
             </button>
           </div>
           <div className='positionDescriptionTitle'>
@@ -170,7 +174,8 @@ const Position = () => {
                   style={{
                     backgroundColor: "var(--main-color-pink)",
                     border: "none",
-                    fontFamily: "Poppins-600",
+                    fontFamily: "Poppins-600, sans-serif",
+                    fontWeight: "600",
                     borderRadius: "var(--main-border-radius)",
                     color: "var(--secondary-color-white)",
                     width: "fit-content",

@@ -27,7 +27,7 @@
 }
 .whyChooseUsTitle {
   color: var(--secondary-color-white);
-  font-family: Poppins-900;
+  font-family: Poppins-900, sans-serif;
   font-weight: 900;
   text-transform: uppercase;
   font-size: 40px;
@@ -35,7 +35,8 @@
 .reasonBoxTitle {
   color: var(--secondary-color-white);
   text-transform: uppercase;
-  font-family: Poppins-600;
+  font-family: Poppins-600, sans-serif;
+  font-weight: 600;
   margin-top: 16px;
   margin-bottom: 8px;
   font-size: 20px;

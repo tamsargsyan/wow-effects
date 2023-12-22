@@ -3,6 +3,8 @@ import ARROW from "../../assets/icons/arrow-right-white.svg";
 import "./style.css";
 import Button from "../Button/Button";
 import { Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import Cookies from "js-cookie";
 
 const SingleBlogBox = ({
   style,
@@ -14,6 +16,9 @@ const SingleBlogBox = ({
   img,
   to,
 }) => {
+  const lang = Cookies.get("i18next") || "en";
+  const { t } = useTranslation();
+
   return (
     <div
       className={`singleBlogBoxContainer_${size} ${className} singleBlogBoxContainer`}
@@ -30,8 +35,8 @@ const SingleBlogBox = ({
           <p className='singleBlogBoxDescription'>{description}</p>
         </div>
         <div className='singleBlogBoxLink'>
-          <Link to={to}>
-            Read More
+          <Link to={`/${lang}${to}`}>
+            {t("read-more")}
             <Img src={ARROW} alt='Arrow' />
           </Link>
         </div>

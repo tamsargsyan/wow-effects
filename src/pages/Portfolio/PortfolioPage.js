@@ -22,6 +22,7 @@ import {
 import Spinner from "../../components/Spinner/Spinner";
 import { removeHtmlTags } from "../../Helpers/removeHtmlTags";
 import { STORAGE_URL } from "../../services/apiService";
+import Cookies from "js-cookie";
 
 export const filterStatus = [
   {
@@ -106,7 +107,7 @@ export const portfolios = [
 ];
 
 const PortfolioPage = () => {
-  const lang = "en";
+  const lang = Cookies.get("i18next") || "en";
   const filterBtns = [
     {
       id: 1,

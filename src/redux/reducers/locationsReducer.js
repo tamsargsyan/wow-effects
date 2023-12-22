@@ -6,7 +6,7 @@ const initialState = {
   error: null,
 };
 
-const partnersReducer = (state = initialState, action) => {
+const locationsReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.FETCH_LOCATIONS_LOADING:
       return {
@@ -31,4 +31,4 @@ const partnersReducer = (state = initialState, action) => {
   }
 };
 
-export default partnersReducer;
+export default locationsReducer;

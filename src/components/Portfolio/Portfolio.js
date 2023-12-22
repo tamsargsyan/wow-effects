@@ -11,8 +11,11 @@ import PortfolioBox from "./PortfolioBox";
 import "./style.css";
 import { removeHtmlTags } from "../../Helpers/removeHtmlTags";
 import { STORAGE_URL } from "../../services/apiService";
+import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
 
 const Portfolio = ({ portfolio_main }) => {
+  const { t } = useTranslation();
   const works = portfolio_main.works;
 
   // const portfolio = [
@@ -54,7 +57,7 @@ const Portfolio = ({ portfolio_main }) => {
   // ];
 
   const { width } = useWindowSize();
-  const lang = "en";
+  const lang = Cookies.get("i18next") || "en";
 
   return (
     <div className='portfolioContainer container'>
@@ -92,7 +95,7 @@ const Portfolio = ({ portfolio_main }) => {
       </div>
       {width < 797 && (
         <Button
-          text='View More'
+          text={t("view-more")}
           className='fullTitleBtnMobile'
           style={{
             border: "1px solid rgba(255, 255, 255, 0.40)",

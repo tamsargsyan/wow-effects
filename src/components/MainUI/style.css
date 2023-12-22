@@ -93,7 +93,8 @@
 }
 .mainUISearchTitle {
   margin-bottom: 16px;
-  font-family: Poppins-500;
+  font-family: Poppins-500, sans-serif;
+  font-weight: 500;
   font-size: 20px;
 }
 .mainUIHouseDesignArrows {
@@ -124,12 +125,14 @@
 }
 .mainUIHouseDesignInfo_applyBtn {
   padding: 12px 24px;
-  font-family: Poppins-600;
+  font-family: Poppins-600, sans-serif;
+  font-weight: 600;
   display: block;
   width: fit-content;
 }
 .mainUIHouseDesignInfo_title {
-  font-family: Poppins-700;
+  font-family: Poppins-700, sans-serif;
+  font-weight: 700;
   text-transform: uppercase;
 }
 .header .mainUIHouseDesignContent {

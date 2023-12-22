@@ -4,6 +4,7 @@ import "./style.css";
 import Product from "../../../components/Product/Product";
 import Modal from "../../../components/Modal/Modal";
 import IMG from "../../../assets/ui-fake-images/portfolio-page-1.jpg";
+import { useTranslation } from "react-i18next";
 
 export const orders = [
   {
@@ -33,6 +34,7 @@ export const orders = [
 ];
 
 const Orders = () => {
+  const { t } = useTranslation();
   const [viewOrder, setViewOrder] = useState(false);
 
   const orderPipeline = [
@@ -67,7 +69,7 @@ const Orders = () => {
     <AccountLayout>
       <div className='ordersContainer'>
         <div className='accountPageTitleContainer'>
-          <p className='accountPageTitle'>Orders</p>
+          <p className='accountPageTitle'>{t("orders")}</p>
         </div>
         <div className='orders'>
           {orders.map((order, i) => (
@@ -77,7 +79,7 @@ const Orders = () => {
                 price={order.price}
                 pending={order.pending}
                 onBtnClick={() => setViewOrder(true)}
-                btnText='Manage'
+                btnText={t("manage")}
                 img={IMG}
               />
             </Fragment>

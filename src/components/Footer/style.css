@@ -40,19 +40,25 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
   outline: none;
   background: transparent;
-  color: var(--secondary-color-white);;
+  color: var(--secondary-color-white);
   font-size: 16px;
 }
 .footerItems input::placeholder {
   font-size: 16px;
 }
 .footerTitle {
-  color: var(--secondary-color-white);;
-  font-family: Poppins-700;
+  color: var(--secondary-color-white);
+  font-family: Poppins-700, sans-serif;
   font-weight: 700;
   text-transform: uppercase;
   margin-bottom: 12px;
   font-size: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.footerSubscribe .footerTitle {
+  width: 280px;
 }
 .footerItems p {
   color: #ccc;
@@ -76,7 +82,7 @@
 .footerPrivacy,
 .footerTerms,
 .footerCopyRight {
-  color: var(--secondary-color-white);;
+  color: var(--secondary-color-white);
   font-size: 16px;
   text-decoration: none;
 }

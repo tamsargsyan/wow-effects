@@ -1,5 +1,6 @@
 .filteringSectionTitle {
-  font-family: Poppins-700;
+  font-family: Poppins-700, sans-serif;
+  font-weight: 700;
   font-size: 24px;
 }
 .filterOptionsContainer {
@@ -15,7 +16,8 @@
   /* margin-bottom: 16px; */
 }
 .filterOptionsTitle {
-  font-family: Poppins-600;
+  font-family: Poppins-600, sans-serif;
+  font-weight: 600;
   font-size: 20px;
 }
 .filteringOptions {
@@ -37,7 +39,8 @@
 .filteringOptionCategoryActive p {
   color: #af4b85;
   opacity: 1;
-  font-family: Poppins-700;
+  font-family: Poppins-700, sans-serif;
+  font-weight: 700;
   font-size: 16px;
 }
 

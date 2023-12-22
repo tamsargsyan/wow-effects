@@ -52,7 +52,8 @@
   width: 80%;
 }
 .portfolioBoxTitle {
-  font-family: Poppins-700;
+  font-family: Poppins-700, sans-serif;
+  font-weight: 700;
   font-size: 24px;
 }
 .portfolioBoxDesc {

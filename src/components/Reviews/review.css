@@ -37,7 +37,8 @@
   gap: 6px;
 }
 .reviewProfileName {
-  font-family: Poppins-700;
+  font-family: Poppins-700, sans-serif;
+  font-weight: 700;
   font-size: 20px;
 }
 .reviewProfileDesc p {

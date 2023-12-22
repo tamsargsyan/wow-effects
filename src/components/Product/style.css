@@ -24,7 +24,8 @@
 }
 .productRegulatorBtn {
   padding: 12px;
-  font-family: Poppins-600;
+  font-family: Poppins-600, sans-serif;
+  font-weight: 600;
   border-radius: 8px;
   font-size: 18px;
 }
@@ -48,7 +49,8 @@
   color: #27ae60;
 }
 .productPendingTitle {
-  font-family: Poppins-600;
+  font-family: Poppins-600, sans-serif;
+  font-weight: 600;
   font-size: 16px;
 }
 .productGuideTitle {
@@ -56,6 +58,7 @@
 }
 .productGuidePrice {
   opacity: 0.8;
-  font-family: Poppins-700;
+  font-family: Poppins-700, sans-serif;
+  font-weight: 700;
   font-size: 24px;
 }

@@ -35,7 +35,8 @@
   width: 824px;
 }
 .portfolioSummaryTitle {
-  font-family: Poppins-700;
+  font-family: Poppins-700, sans-serif;
+  font-weight: 700;
   margin-bottom: 16px;
   font-size: 56px;
 }
@@ -53,7 +54,8 @@
   height: 116px;
 }
 .portfolioSpecsTitle {
-  font-family: Poppins-700;
+  font-family: Poppins-700, sans-serif;
+  font-weight: 700;
   font-size: 24px;
 }
 .portfolioSpecsDescription {
@@ -98,13 +100,13 @@
 }
 /* sizes */
 .portfolioAchievementItemTitle {
-  font-family: Poppins-600;
+  font-family: Poppins-600, sans-serif;
+  font-weight: 600;
   margin-bottom: 16px;
   font-size: 24px;
 }
 .portfolioAchievementItemDescription {
   color: rgba(255, 255, 255, 0.6);
-  font-family: Poppins;
   font-size: 18px;
 }
 .portfolioAchievementImages img {

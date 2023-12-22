@@ -15,8 +15,12 @@ import "./style.css";
 import Button from "../Button/Button";
 import { NavLink } from "react-router-dom";
 import { useWindowSize } from "../../hooks/useWindowSize";
+import { useTranslation } from "react-i18next";
+import Cookies from "js-cookie";
 
 const Footer = ({ slider }) => {
+  const { t } = useTranslation();
+  const lang = Cookies.get("i18next") || "en";
   const imgs = [IMG_1, IMG_2, IMG_3, IMG_4, IMG_5, IMG_6];
   const { width } = useWindowSize();
 
@@ -43,28 +47,28 @@ const Footer = ({ slider }) => {
           {width < 797 ? (
             <div className='footerServicesHelpfullLinks'>
               <div className='footerServices'>
-                <p className='footerTitle'>Services</p>
+                <p className='footerTitle'>{t("services")}</p>
                 <div className='footerItems'>
-                  <p>Custom Furniture Production</p>
-                  <p>Interior Design</p>
+                  <p>{t("bottomHeader.customcraft")}</p>
+                  <p>{t("bottomHeader.interior-design")}</p>
                   <p>
-                    Shop
+                    {t("bottomHeader.shop")}
                     {/* <img src={ARROW} /> */}
                   </p>
                 </div>
               </div>
               <div className='footerHelpfullLinks'>
-                <p className='footerTitle'>Helpfull Links</p>
+                <p className='footerTitle'>{t("helpful-links")}</p>
                 <div className='footerHelpfullLinksWrapper'>
                   <div className='footerItems'>
-                    <p>About Us</p>
-                    <p>Portfolio</p>
-                    <p>Contact Us</p>
+                    <p>{t("bottomHeader.about-us")}</p>
+                    <p>{t("bottomHeader.portfolio")}</p>
+                    <p>{t("bottomHeader.contact-us")}</p>
                   </div>
                   <div className='footerItems'>
-                    <p>Blog</p>
-                    <p>Carrer</p>
-                    <p>FAQs</p>
+                    <p>{t("bottomHeader.blog")}</p>
+                    <p>{t("bottomHeader.career")}</p>
+                    <p>{t("faq")}</p>
                   </div>
                 </div>
               </div>
@@ -72,28 +76,28 @@ const Footer = ({ slider }) => {
           ) : (
             <>
               <div className='footerServices'>
-                <p className='footerTitle'>Services</p>
+                <p className='footerTitle'>{t("services")}</p>
                 <div className='footerItems'>
-                  <p>Custom Furniture Production</p>
-                  <p>Interior Design</p>
+                  <p>{t("bottomHeader.customcraft")}</p>
+                  <p>{t("bottomHeader.interior-design")}</p>
                   <p>
-                    Shop
+                    {t("bottomHeader.shop")}
                     {/* <img src={ARROW} /> */}
                   </p>
                 </div>
               </div>
               <div className='footerHelpfullLinks'>
-                <p className='footerTitle'>Helpfull Links</p>
+                <p className='footerTitle'>{t("helpful-links")}</p>
                 <div className='footerHelpfullLinksWrapper'>
                   <div className='footerItems'>
-                    <p>About Us</p>
-                    <p>Portfolio</p>
-                    <p>Contact Us</p>
+                    <p>{t("bottomHeader.about-us")}</p>
+                    <p>{t("bottomHeader.portfolio")}</p>
+                    <p>{t("bottomHeader.contact-us")}</p>
                   </div>
                   <div className='footerItems'>
-                    <p>Blog</p>
-                    <p>Carrer</p>
-                    <p>FAQs</p>
+                    <p>{t("bottomHeader.blog")}</p>
+                    <p>{t("bottomHeader.career")}</p>
+                    <p>{t("faq")}</p>
                   </div>
                 </div>
               </div>
@@ -113,12 +117,12 @@ const Footer = ({ slider }) => {
             </div>
           </div>
           <div className='footerSubscribe'>
-            <p className='footerTitle'>Subscribe to our newsletters</p>
+            <p className='footerTitle'>{t("subscribe")}</p>
             <div className='footerItems'>
-              <input type='email' placeholder='E-mail address' />
+              <input type='email' placeholder={t("email_address")} />
               <Button
                 className='footerSendBtn'
-                text='Send'
+                text={t("send")}
                 style={{
                   borderRadius: "4px",
                   background: "var(--main-color-pink)",
@@ -132,11 +136,13 @@ const Footer = ({ slider }) => {
         </div>
         <div className='footerBottom'>
           <div className='footerPrivacyWrapper'>
-            <NavLink className='footerPrivacy'>Privacy Policy</NavLink>
-            <NavLink className='footerTerms'>Terms of Service</NavLink>
+            <NavLink to={`/${lang}/privacy-policy`} className='footerPrivacy'>
+              {t("privacy_policy")}
+            </NavLink>
+            <NavLink className='footerTerms'>{t("terms_of_services")}</NavLink>
           </div>
           <div className='footerCopyRight'>
-            <p>© 2023 , All Rights Reserved</p>
+            <p>© 2023 , {t("all_rights_reserved")}</p>
           </div>
         </div>
       </div>

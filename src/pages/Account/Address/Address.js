@@ -8,10 +8,17 @@ import "./style.css";
 import Modal from "../../../components/Modal/Modal";
 import { useState } from "react";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { newAddressSchema } from "../../../utils/validationSchema";
+import ValidationSchema from "../../../utils/ValidationSchema";
 import Checkbox from "../../../components/Checkbox/Checkbox";
+import { useTranslation } from "react-i18next";
+import apiService from "../../../services/apiService";
+import Spinner from "../../../components/Spinner/Spinner";
 
 const Address = () => {
+  const { t } = useTranslation();
+  const user = JSON.parse(localStorage.getItem("user"));
+  const token = localStorage.getItem("token");
+
   const addresses = [
     {
       id: 1,
@@ -27,20 +34,43 @@ const Address = () => {
     },
   ];
 
-  const [addNewAddress, setAddNewAddress] = useState(false);
+  const [addNewAddressModal, setAddNewAddressModal] = useState(false);
+  const { newAddressSchema } = ValidationSchema();
+
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [responseData, setResponseData] = useState(null);
+
+  const [isDefault, setIsDefault] = useState(false);
+
+  const addNewAddress = async values => {
+    setLoading(true);
+    setError(null);
+
+    await apiService.post(
+      `addUserAddress/${user.id}`,
+      values,
+      {
+        Authorization: `Bearer ${token}`,
+      },
+      ({ loading, error, data }) => {
+        setLoading(loading);
+        setError(error);
+        setResponseData(data);
+      }
+    );
+  };
 
   return (
     <AccountLayout>
       <div className='addressContainer'>
         <div className='accountPageTitleContainer'>
-          <p className='accountPageTitle'>Addresses</p>
-          <p className='accountPageDescription'>
-            All your shipping addresses are stored here.
-          </p>
+          <p className='accountPageTitle'>{t("addresses")}</p>
+          <p className='accountPageDescription'>{t("address_page_desc")}</p>
         </div>
         <div className='addressSegment'>
           <Button
-            text='Add new address'
+            text={t("add_new_address")}
             icon={PLUS}
             alt='Plus'
             className='addNewAddressBtn'
@@ -50,18 +80,18 @@ const Address = () => {
               border: "none",
               color: "var(--secondary-color-white)",
             }}
-            onClick={() => setAddNewAddress(true)}
+            onClick={() => setAddNewAddressModal(true)}
           />
           <div className='adressesWrapper'>
             {addresses.map((address, i) => (
               <div className='addressWrapper' key={i}>
                 <div className='addressLabel'>
-                  <label htmlFor='html'>
+                  <label htmlFor={`address_${address.title}`}>
                     <input
                       type='radio'
-                      id='html'
-                      name='fav_language'
-                      value='HTML'
+                      id={`address_${address.title}`}
+                      name='address'
+                      checked={address.default}
                     />
                     <div>
                       <div
@@ -91,9 +121,9 @@ const Address = () => {
         </div>
       </div>
       <Modal
-        title='Add new address'
-        open={addNewAddress}
-        onClose={() => setAddNewAddress(false)}>
+        title={t("add_new_address")}
+        open={addNewAddressModal}
+        onClose={() => setAddNewAddressModal(false)}>
         <Formik
           initialValues={{
             country: "",
@@ -102,7 +132,13 @@ const Address = () => {
             zip_code: "",
           }}
           onSubmit={(values, actions) => {
-            console.log(values);
+            const result = {
+              ...values,
+              title: "test3",
+              is_default: isDefault,
+            };
+            console.log(result);
+            addNewAddress(result);
             actions.setSubmitting(false);
           }}
           validationSchema={newAddressSchema}>
@@ -110,13 +146,13 @@ const Address = () => {
             <Form id='newAddressForm'>
               <div className='newAddresFormGroup'>
                 <label htmlFor='country'>
-                  Country <span>*</span>
+                  {t("country")} <span>*</span>
                 </label>
                 <div className='newAddresFormGroupInput'>
                   <Field
                     type='text'
                     name='country'
-                    placeholder='Enter your password'
+                    placeholder={t("placeholder.enter_your_country")}
                   />
                 </div>
                 <ErrorMessage
@@ -127,13 +163,13 @@ const Address = () => {
               </div>
               <div className='newAddresFormGroup'>
                 <label htmlFor='city'>
-                  City <span>*</span>
+                  {t("city")} <span>*</span>
                 </label>
                 <div className='newAddresFormGroupInput'>
                   <Field
                     type='text'
                     name='city'
-                    placeholder='Enter your password'
+                    placeholder={t("placeholder.enter_your_city")}
                   />
                 </div>
                 <ErrorMessage
@@ -144,13 +180,13 @@ const Address = () => {
               </div>
               <div className='newAddresFormGroup'>
                 <label htmlFor='address'>
-                  Address <span>*</span>
+                  {t("address")} <span>*</span>
                 </label>
                 <div className='newAddresFormGroupInput'>
                   <Field
                     type='text'
                     name='address'
-                    placeholder='Enter your password'
+                    placeholder={t("placeholder.enter_your_address")}
                   />
                 </div>
                 <ErrorMessage
@@ -161,13 +197,13 @@ const Address = () => {
               </div>
               <div className='newAddresFormGroup'>
                 <label htmlFor='zip_code'>
-                  Zip Code <span>*</span>
+                  {t("zip_code")} <span>*</span>
                 </label>
                 <div className='newAddresFormGroupInput'>
                   <Field
                     type='text'
                     name='zip_code'
-                    placeholder='Enter your password'
+                    placeholder={t("placeholder.enter_your_zip_code")}
                   />
                 </div>
                 <ErrorMessage
@@ -176,15 +212,28 @@ const Address = () => {
                   className='newAddressError'
                 />
               </div>
-              <Checkbox text='Make the address default' />
+              <Checkbox
+                text={t("make_address_default")}
+                uniqueId='make_address_default'
+                checked={isDefault}
+                onChange={e => setIsDefault(e.target.checked)}
+              />
               <Button
-                text='Add Address'
+                text={
+                  loading ? (
+                    <Spinner color='#fff' size={18} />
+                  ) : (
+                    t("add_address")
+                  )
+                }
+                btnType='submit'
                 className='addAddressBtn'
                 style={{
                   background: "var(--main-color-pink)",
                   color: "var(--secondary-color-white)",
                   border: "none",
-                  fontFamily: "Poppins-600",
+                  fontFamily: "Poppins-600, sans-serif",
+                  fontWeight: "600",
                 }}
               />
             </Form>

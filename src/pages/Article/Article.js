@@ -20,32 +20,35 @@ import { fetchPost } from "../../redux/actions/postActions";
 import Spinner from "../../components/Spinner/Spinner";
 import { STORAGE_URL } from "../../services/apiService";
 import { removeHtmlTags } from "../../Helpers/removeHtmlTags";
+import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
 
 const Article = () => {
-  const medias = [
-    {
-      id: 1,
-      name: "Link",
-      icon: LINK,
-    },
-    {
-      id: 2,
-      name: "Linked In",
-      icon: LINKEDIN,
-    },
-    {
-      id: 3,
-      name: "Twitter",
-      icon: TWITTER,
-    },
-    {
-      id: 4,
-      name: "Facebook",
-      icon: FACEBOOK,
-    },
-  ];
+  const { t } = useTranslation();
+  // const medias = [
+  //   {
+  //     id: 1,
+  //     name: "Link",
+  //     icon: LINK,
+  //   },
+  //   {
+  //     id: 2,
+  //     name: "Linked In",
+  //     icon: LINKEDIN,
+  //   },
+  //   {
+  //     id: 3,
+  //     name: "Twitter",
+  //     icon: TWITTER,
+  //   },
+  //   {
+  //     id: 4,
+  //     name: "Facebook",
+  //     icon: FACEBOOK,
+  //   },
+  // ];
 
-  const lang = "en";
+  const lang = Cookies.get("i18next") || "en";
 
   const { width } = useWindowSize();
   const [showArrowBtns, setShowArrowBtns] = useState(false);
@@ -88,11 +91,11 @@ const Article = () => {
         <>
           <div className='articleContainer'>
             <div className='articleBackBtnContainer'>
-              <Link to='/blog' className='articleBackBtn'>
+              <Link to={`/${lang}/blog`} className='articleBackBtn'>
                 <div>
                   <Img src={ARROW} alt='Arrow' />
                 </div>
-                Back
+                {t("back")}
               </Link>
             </div>
             {width < 600 && (
@@ -225,10 +228,10 @@ const Article = () => {
                       gap: "32px",
                     }}
                     name={blog[`title_${lang}`]}
-                    description={blog[`description_${lang}`]}
+                    description={removeHtmlTags(blog[`description_${lang}`])}
                     btnText='Interior Design'
                     img={`${STORAGE_URL}/${blog.image}`}
-                    to={`/blog/${blog.id}`}
+                    to={`/${lang}/blog/${blog.id}`}
                   />
                 </div>
               ))}

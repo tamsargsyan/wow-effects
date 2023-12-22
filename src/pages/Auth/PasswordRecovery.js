@@ -1,7 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import ARROW_LEFT from "../../assets/icons/arrow-left-pink.svg";
 import "./passwordRecovery.css";
-import { passwordRecoverySchema } from "../../utils/validationSchema";
+import ValidationSchema from "../../utils/ValidationSchema";
 import Button from "../../components/Button/Button";
 import { motion } from "framer-motion";
 import Img from "../../components/Img";
@@ -9,8 +9,12 @@ import { useState } from "react";
 import EMAIL from "../../assets/icons/sms-bg-white.svg";
 import apiService from "../../services/apiService";
 import Spinner from "../../components/Spinner/Spinner";
+import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
 
 const PasswordRecovery = ({ setPasswordRecovery }) => {
+  const { t } = useTranslation();
+  const lang = Cookies.get("i18next") || "en";
   const [resetPass, setResetPass] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -25,7 +29,10 @@ const PasswordRecovery = ({ setPasswordRecovery }) => {
 
     await apiService.post(
       "password/email",
-      values,
+      {
+        ...values,
+        lang,
+      },
       {},
       ({ loading, error, data }) => {
         setLoading(loading);
@@ -35,6 +42,8 @@ const PasswordRecovery = ({ setPasswordRecovery }) => {
       }
     );
   };
+
+  const { passwordRecoverySchema } = ValidationSchema();
 
   return (
     <motion.div
@@ -51,7 +60,7 @@ const PasswordRecovery = ({ setPasswordRecovery }) => {
         className='passwordRecoveryBackBtn'
         onClick={() => setPasswordRecovery(false)}>
         <Img src={ARROW_LEFT} alt='Arrow Left' />
-        Back
+        {t("back")}
       </button>
       {responseData?.message === "We have emailed your password reset link!" ? (
         <motion.div
@@ -98,7 +107,7 @@ const PasswordRecovery = ({ setPasswordRecovery }) => {
             {() => (
               <Form className='authForm'>
                 <div className='authFormGroup'>
-                  <label htmlFor='email'>Email address</label>
+                  <label htmlFor='email'>{t("email_address")}</label>
                   <div className='authFormGroupInput'>
                     <Field
                       type='email'
@@ -127,7 +136,8 @@ const PasswordRecovery = ({ setPasswordRecovery }) => {
                     width: "100%",
                     backgroundColor: "var(--main-color-pink)",
                     border: "none",
-                    fontFamily: "Poppins-600",
+                    fontFamily: "Poppins-600, sans-serif",
+                    fontWeight: "600",
                     borderRadius: "var(--main-border-radius)",
                     color: "var(--secondary-color-white)",
                   }}

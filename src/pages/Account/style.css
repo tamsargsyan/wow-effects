@@ -11,12 +11,12 @@
 }
 .accountPageTitle {
   color: #fff;
-  font-family: Poppins-600;
+  font-family: Poppins-600, sans-serif;
+  font-weight: 600;
   font-size: 24px;
 }
 .accountPageDescription {
   color: rgba(255, 255, 255, 0.6);
-  font-family: Poppins;
   font-size: 16px;
 }
 @media screen and (max-width: 1600px) {

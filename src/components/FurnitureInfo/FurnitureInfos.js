@@ -1,13 +1,5 @@
 import Button from "../Button/Button";
 import FullTitle from "../FullTitle/FullTitle";
-import FURNITURE_1 from "../../assets/ui-fake-images/burning-suggestions-1.jpg";
-import FURNITURE_2 from "../../assets/ui-fake-images/burning-suggestions-2.jpg";
-import FURNITURE_3 from "../../assets/ui-fake-images/burning-suggestions-3.jpg";
-import FURNITURE_4 from "../../assets/ui-fake-images/burning-suggestions-4.jpg";
-import FURNITURE_5 from "../../assets/ui-fake-images/furniture-1.jpg";
-import FURNITURE_6 from "../../assets/ui-fake-images/furniture-2.jpg";
-import FURNITURE_7 from "../../assets/ui-fake-images/furniture-3.jpg";
-import FURNITURE_8 from "../../assets/ui-fake-images/furniture-4.jpg";
 import "./style.css";
 import { useWindowSize } from "../../hooks/useWindowSize";
 import { removeHtmlTags } from "../../Helpers/removeHtmlTags";
@@ -16,107 +8,14 @@ import Product from "../../components/Product/Product";
 import { useDispatch, useSelector } from "react-redux";
 import { addToBasket } from "../../redux/actions/basketActions";
 import apiService, { STORAGE_URL } from "../../services/apiService";
+import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
 
 const FurnitureInfos = ({ product_suggestions }) => {
-  const furnitures = [
-    {
-      id: 1,
-      name: "burning suggestions",
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-      furnitures: [
-        {
-          id: 1,
-          name: "Bronze faucet",
-          price: "99.00",
-          img: FURNITURE_1,
-        },
-        {
-          id: 2,
-          name: "Bronze faucet",
-          price: "99.00",
-          img: FURNITURE_2,
-        },
-        {
-          id: 3,
-          name: "Bronze faucet",
-          price: "99.00",
-          img: FURNITURE_3,
-        },
-        {
-          id: 4,
-          name: "Bronze faucet",
-          price: "99.00",
-          img: FURNITURE_4,
-        },
-      ],
-    },
-    {
-      id: 2,
-      name: "Furniture",
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-      furnitures: [
-        {
-          id: 1,
-          name: "Bronze faucet",
-          price: "99.00",
-          img: FURNITURE_5,
-        },
-        {
-          id: 2,
-          name: "Bronze faucet",
-          price: "99.00",
-          img: FURNITURE_6,
-        },
-        {
-          id: 3,
-          name: "Bronze faucet",
-          price: "99.00",
-          img: FURNITURE_7,
-        },
-        {
-          id: 4,
-          name: "Bronze faucet",
-          price: "99.00",
-          img: FURNITURE_8,
-        },
-      ],
-    },
-    {
-      id: 3,
-      name: "Furniture parts",
-      desc: "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s",
-      furnitures: [
-        {
-          id: 1,
-          name: "Bronze faucet",
-          price: "99.00",
-          img: FURNITURE_1,
-        },
-        {
-          id: 2,
-          name: "Bronze faucet",
-          price: "99.00",
-          img: FURNITURE_2,
-        },
-        {
-          id: 3,
-          name: "Bronze faucet",
-          price: "99.00",
-          img: FURNITURE_3,
-        },
-        {
-          id: 4,
-          name: "Bronze faucet",
-          price: "99.00",
-          img: FURNITURE_4,
-        },
-      ],
-    },
-  ];
-
+  const { t } = useTranslation();
   const { width } = useWindowSize();
   const dispatch = useDispatch();
-  const lang = "en";
+  const lang = Cookies.get("i18next") || "en";
 
   const [favoriteProjects, setFavoriteProjects] = useState(
     JSON.parse(localStorage.getItem("favoriteProjects") || "[]")
@@ -148,7 +47,6 @@ const FurnitureInfos = ({ product_suggestions }) => {
       }
     );
   };
-  console.log(addToFavoritesResponseData);
 
   const heartit = product_id => {
     if (isAuthenticated) {
@@ -173,8 +71,6 @@ const FurnitureInfos = ({ product_suggestions }) => {
       );
     }
   };
-
-  console.log(product_suggestions);
 
   return (
     <div className='furnitureContainer container'>
@@ -205,7 +101,7 @@ const FurnitureInfos = ({ product_suggestions }) => {
                   // onBtnClick={() => setViewOrder(true)}
                   onBtnClick={() => dispatch(addToBasket(f))}
                   heartit={() => heartit(f.id)}
-                  btnText='Add to cart'
+                  btnText={t("add-to-cart")}
                   img={`${STORAGE_URL}/${f.image}`}
                   id={f.id}
                 />
@@ -241,7 +137,7 @@ const FurnitureInfos = ({ product_suggestions }) => {
           {width < 797 && (
             <Button
               link={true}
-              text='View More'
+              text={t("view-more")}
               style={{
                 border: "none",
                 borderRadius: "8px",

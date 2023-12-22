@@ -22,10 +22,13 @@ import { fetchReviews } from "../../redux/actions/reviewsActions";
 import Blog from "../../components/Blog/Blog";
 import Button from "../../components/Button/Button";
 import "./style.css";
+import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
 
 const AboutUs = () => {
   const dispatch = useDispatch();
-  const lang = "en";
+  const lang = Cookies.get("i18next") || "en";
+  const { t } = useTranslation();
 
   useEffect(() => {
     dispatch(fetchPartners());
@@ -90,19 +93,20 @@ const AboutUs = () => {
           <MeetUs meet_us={about.about.meet_us} />
           <Blog />
           <div className='hiringContainer'>
-            <p className='hiringTitle'>We're hiring!</p>
+            <p className='hiringTitle'>{t("we_are_hiring")}</p>
             <p className='hiringDescription'>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               Suspendisse varius enim in eros elementum tristique.
             </p>
             <Button
               link={true}
-              to='/career'
-              text='Join our team'
+              to={`/${lang}/career`}
+              text={t("join_our_team")}
               style={{
                 backgroundColor: "var(--main-color-pink)",
                 border: "none",
-                fontFamily: "Poppins-600",
+                fontFamily: "Poppins-600, sans-serif",
+                fontWeight: "600",
                 borderRadius: "var(--main-border-radius)",
                 color: "var(--secondary-color-white)",
                 display: "block",

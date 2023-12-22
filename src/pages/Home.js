@@ -23,10 +23,12 @@ import { fetchFAQ } from "../redux/actions/faqActions";
 import Locations from "../components/Locations/Locations";
 import { fetchLocations } from "../redux/actions/locationsActions";
 import { fetchProductsHome } from "../redux/actions/productsHomeActions";
+import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
 
 const Home = () => {
-  const lang = "en";
-
+  const lang = Cookies.get("i18next") || "en";
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -36,7 +38,7 @@ const Home = () => {
     dispatch(fetchFAQ());
     dispatch(fetchLocations());
     dispatch(fetchProductsHome());
-  }, [dispatch]);
+  }, []);
 
   const home = useSelector(state => state.home);
   const reviews = useSelector(state => state.reviews);
@@ -85,10 +87,11 @@ const Home = () => {
                 <Button
                   link={true}
                   to={`/${home.home.about_section.link}`}
-                  text='Read More'
+                  text={t("read-more")}
                   className='aboutCompanyReadMoreBtn'
                   style={{
-                    fontFamily: "Poppins-600",
+                    fontFamily: "Poppins-600, sans-serif",
+                    fontWeight: "600",
                     textDecoration: "none",
                     color: "var(--secondary-color-white)",
                     background: "var(--main-color-pink)",
@@ -108,7 +111,7 @@ const Home = () => {
               product_suggestions={productsHome.productsHome.products_in_home}
             />
             <Blog />
-            <FAQ title='faq' className='mainFAQ' data={faq.faq} />
+            <FAQ title={t("faq")} className='mainFAQ' data={faq.faq} />
             <Locations locations={locations.locations?.locations} />
             <Footer slider={false} />
           </>

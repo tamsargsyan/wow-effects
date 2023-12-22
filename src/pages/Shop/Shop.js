@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import PagesTitle from "../../components/Title/PagesTitle";
 import Filter from "./Filter/Filter";
 import Checkbox from "../../components/Checkbox/Checkbox";
-import { categories, colors, material, type } from "./data";
+import { colors } from "./data";
 import "./style.css";
 import { Slider } from "antd";
 import { Fragment, useEffect, useState } from "react";
@@ -24,9 +24,13 @@ import Modal from "../../components/Modal/Modal";
 import { fetchShop } from "../../redux/actions/shopActions";
 import Spinner from "../../components/Spinner/Spinner";
 import apiService, { STORAGE_URL } from "../../services/apiService";
+import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
+import { fetchWantedProducts } from "../../redux/actions/searchActions";
 
 const Shop = () => {
-  const lang = "en";
+  const { t } = useTranslation();
+  const lang = Cookies.get("i18next") || "en";
   const [showMenu, setShowMenu] = useState(false);
   const [selectedItem, setSelectedItem] = useState("Sort by");
 
@@ -73,8 +77,6 @@ const Shop = () => {
       }
     );
   };
-
-  console.log(addToFavoritesResponseData);
 
   const heartit = product_id => {
     if (isAuthenticated) {
@@ -158,7 +160,7 @@ const Shop = () => {
       const newKey = `${key}[${index}]`;
       const newData = { ...prevData };
 
-      if (newData[newKey] === id) {
+      if (newData[newKey] !== undefined) {
         delete newData[newKey];
       } else {
         newData[newKey] = id;
@@ -169,8 +171,28 @@ const Shop = () => {
   };
 
   useEffect(() => {
-    body && productFilter(body);
+    body && Object.keys(body).length > 0
+      ? productFilter(body)
+      : setPorductFilterResponseData(null);
   }, [body]);
+
+  const wanted_products = useSelector(state => state.wanted_products);
+  const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    query && dispatch(fetchWantedProducts(query));
+  }, [query]);
+
+  const products = () => {
+    if (query && wanted_products.wanted_products) {
+      if (wanted_products.wanted_products)
+        return wanted_products.wanted_products.products;
+    }
+    if (porductFilterResponseData) return porductFilterResponseData.products;
+    else return shop?.shop?.products.data;
+  };
+
+  console.log(t("our_shop"));
 
   if (shop.shop === null && shop.loading)
     return (
@@ -183,11 +205,11 @@ const Shop = () => {
     <motion.div initial={initial} animate={animate} className='shopContainer'>
       {shop.shop && (
         <>
-          <PagesTitle title='Our Shop' />
+          <PagesTitle title={t("our_shop")} />
           <div className='shopmart container'>
             <div className='filteringSection filteringSectionDesktop'>
-              <p className='filteringSectionTitle'>Filters</p>
-              <Filter title='Categories'>
+              <p className='filteringSectionTitle'>{t("filters")}</p>
+              <Filter title={t("categories")}>
                 {shop.shop.product_categories.map((ctg, i) => {
                   return (
                     <Link
@@ -204,23 +226,25 @@ const Shop = () => {
                 })}
               </Filter>
               <div className='filteringSectionDividor'></div>
-              <Filter title='Type'>
+              <Filter title={t("type")}>
                 {shop.shop.product_types.map((tp, i) => (
                   // <Link className='filteringOption' key={i}>
                   <div
                     style={{ width: "fit-content" }}
                     key={i}
-                    onClick={() => updateFilter("types", i, tp.id)}>
+                    // onClick={() => updateFilter("types", i, tp.id)}
+                  >
                     <Checkbox
+                      onChange={() => updateFilter("types", i, tp.id)}
                       text={tp[`title_${lang}`]}
-                      uniqueId={tp.title_en + i}
+                      uniqueId={`typeCheckbox_${tp.title_en + i}`}
                     />
                   </div>
                   // </Link>
                 ))}
               </Filter>
               <div className='filteringSectionDividor'></div>
-              <Filter title='Material'>
+              <Filter title={t("material")}>
                 {shop.shop.product_materials.map((mat, i) => (
                   // <Link className='filteringOption filteringOptionCategory' key={i}>
                   //   <p>{ctg.title}</p>
@@ -228,8 +252,10 @@ const Shop = () => {
                   <div
                     key={i}
                     style={{ width: "fit-content" }}
-                    onClick={() => updateFilter("materials", i, mat.id)}>
+                    // onClick={() => updateFilter("materials", i, mat.id)}
+                  >
                     <Checkbox
+                      onChange={() => updateFilter("materials", i, mat.id)}
                       text={mat[`title_${lang}`]}
                       uniqueId={mat.title_en + i}
                     />
@@ -237,7 +263,7 @@ const Shop = () => {
                 ))}
               </Filter>
               <div className='filteringSectionDividor'></div>
-              <Filter title='Price'>
+              <Filter title={t("price")}>
                 {/* <RangeSlider /> */}
                 <Slider
                   range
@@ -247,7 +273,7 @@ const Shop = () => {
                 />
               </Filter>
               <div className='filteringSectionDividor'></div>
-              <Filter title='Color'>
+              <Filter title={t("color")}>
                 {colors.map(({ color }, i) => (
                   <Link className='filteringOption' key={i}>
                     <div
@@ -261,7 +287,12 @@ const Shop = () => {
             <div className='productShowcaseContainer'>
               <div className='searchPanelContainer'>
                 <div className='searchPanel'>
-                  <input type='text' placeholder='Search' />
+                  <input
+                    type='text'
+                    placeholder={t("placeholder.search")}
+                    value={query}
+                    onChange={e => setQuery(e.target.value)}
+                  />
                   <Img src={SEARCH} alt='Search' />
                 </div>
                 {width > 900 ? (
@@ -291,16 +322,13 @@ const Shop = () => {
                 )}
               </div>
               <div className='productShowcase'>
-                {porductFilterLoading ? (
+                {porductFilterLoading || wanted_products.loading ? (
                   <div className='productShowcaseContainerLoading'>
                     <Spinner />
                   </div>
                 ) : (
                   <>
-                    {(porductFilterResponseData
-                      ? porductFilterResponseData.products
-                      : shop.shop.products
-                    ).map((order, i) => (
+                    {products().map((order, i) => (
                       <Fragment key={i}>
                         <Product
                           name={order[`title_${lang}`]}
@@ -316,7 +344,7 @@ const Shop = () => {
                               : dispatch(addToBasket(order));
                           }}
                           heartit={() => heartit(order.id)}
-                          btnText='Add to cart'
+                          btnText={t("add-to-cart")}
                           img={`${STORAGE_URL}/${order.image}`}
                           id={order.id}
                         />
@@ -341,7 +369,7 @@ const Shop = () => {
           <Footer />
           {width < 900 && (
             <Modal
-              title='Filters'
+              title={t("filters")}
               open={openFilters}
               onClose={() => setOpenFilters(false)}>
               <div className='filteringSection'>
@@ -360,8 +388,8 @@ const Shop = () => {
                     ))}
                   </ul>
                 </div>
-                <p className='filteringSectionTitle'>Filters</p>
-                <Filter title='Categories'>
+                <p className='filteringSectionTitle'>{t("filters")}</p>
+                <Filter title={t("categories")}>
                   {shop.shop.product_categories.map((ctg, i) => (
                     <Link
                       className='filteringOption filteringOptionCategory'
@@ -371,7 +399,7 @@ const Shop = () => {
                   ))}
                 </Filter>
                 <div className='filteringSectionDividor'></div>
-                <Filter title='Type'>
+                <Filter title={t("type")}>
                   {shop.shop.product_types.map((tp, i) => (
                     // <Link className='filteringOption' key={i}>
                     <Fragment key={i}>
@@ -381,7 +409,7 @@ const Shop = () => {
                   ))}
                 </Filter>
                 <div className='filteringSectionDividor'></div>
-                <Filter title='Material'>
+                <Filter title={t("material")}>
                   {shop.shop.product_materials.map((mat, i) => (
                     // <Link className='filteringOption filteringOptionCategory' key={i}>
                     //   <p>{ctg.title}</p>
@@ -392,7 +420,7 @@ const Shop = () => {
                   ))}
                 </Filter>
                 <div className='filteringSectionDividor'></div>
-                <Filter title='Price'>
+                <Filter title={t("price")}>
                   {/* <RangeSlider /> */}
                   <Slider
                     range
@@ -402,7 +430,7 @@ const Shop = () => {
                   />
                 </Filter>
                 <div className='filteringSectionDividor'></div>
-                <Filter title='Color'>
+                <Filter title={t("color")}>
                   {colors.map(({ color }, i) => (
                     <Link className='filteringOption' key={i}>
                       <div

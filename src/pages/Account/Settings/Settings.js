@@ -2,15 +2,19 @@ import AccountLayout from "../AccountLayout";
 import PERSON from "../../../assets/person-images/1.jpg";
 import "./style.css";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import { accountManagementSchema } from "../../../utils/validationSchema";
+import ValidationSchema from "../../../utils/ValidationSchema";
 import Button from "../../../components/Button/Button";
+import { useTranslation } from "react-i18next";
 
 const Settings = () => {
+  const { t } = useTranslation();
+  const { accountManagementSchema } = ValidationSchema();
+
   return (
     <AccountLayout>
       <div className='accountSettingsContainer'>
         <div className='accountPageTitleContainer'>
-          <p className='accountPageTitle'>Personal info</p>
+          <p className='accountPageTitle'>{t("personal_info")}</p>
         </div>
         <div className='accountManagement'>
           <div className='accountManagementAvatar'>
@@ -19,7 +23,7 @@ const Settings = () => {
             </div>
             <div className='accountAvatarUploadBtn'>
               <input type='file' id='upload' hidden />
-              <label htmlFor='upload'>Upload image</label>
+              <label htmlFor='upload'>{t("upload_image")}</label>
             </div>
           </div>
           <div className='accountManagementForm'>
@@ -43,13 +47,13 @@ const Settings = () => {
                   <div className='accountManagementPersonalData'>
                     <div className='accountMangementFormGroup'>
                       <label htmlFor='name'>
-                        Name <span>*</span>
+                        {t("name")} <span>*</span>
                       </label>
                       <div className='accountMangementFormGroupInput'>
                         <Field
                           type='text'
                           name='name'
-                          placeholder='Enter your name'
+                          placeholder={t("placeholder.enter_your_name")}
                         />
                       </div>
                       <ErrorMessage
@@ -60,13 +64,13 @@ const Settings = () => {
                     </div>
                     <div className='accountMangementFormGroup'>
                       <label htmlFor='last_name'>
-                        Surname <span>*</span>
+                        {t("surname")} <span>*</span>
                       </label>
                       <div className='accountMangementFormGroupInput'>
                         <Field
                           type='text'
                           name='last_name'
-                          placeholder='Enter your surname'
+                          placeholder={t("placeholder.enter_your_surname")}
                         />
                       </div>
                       <ErrorMessage
@@ -77,13 +81,13 @@ const Settings = () => {
                     </div>
                     <div className='accountMangementFormGroup'>
                       <label htmlFor='email'>
-                        Email <span>*</span>
+                        {t("email")} <span>*</span>
                       </label>
                       <div className='accountMangementFormGroupInput'>
                         <Field
                           type='text'
                           name='email'
-                          placeholder='Enter your email'
+                          placeholder={t("placeholder.enter_your_email")}
                         />
                       </div>
                       <ErrorMessage
@@ -94,13 +98,13 @@ const Settings = () => {
                     </div>
                     <div className='accountMangementFormGroup'>
                       <label htmlFor='phone'>
-                        Phone Number <span>*</span>
+                        {t("phone_number")} <span>*</span>
                       </label>
                       <div className='accountMangementFormGroupInput'>
                         <Field
                           type='text'
                           name='phone'
-                          placeholder='Enter your phone number'
+                          placeholder={t("placeholder.enter_your_phone_number")}
                         />
                       </div>
                       <ErrorMessage
@@ -113,17 +117,19 @@ const Settings = () => {
                   <div className='accountManagementDivider'></div>
                   <div className='passwordModification'>
                     <p className='passwordModificationTitle'>
-                      Password Information
+                      {t("password_information")}
                     </p>
                     <div className='accountMangementFormGroup'>
                       <label htmlFor='current_password'>
-                        Current password <span>*</span>
+                        {t("current_password")} <span>*</span>
                       </label>
                       <div className='accountMangementFormGroupInput'>
                         <Field
                           type='text'
                           name='current_password'
-                          placeholder='Enter your phone number'
+                          placeholder={t(
+                            "placeholder.enter_your_current_password"
+                          )}
                         />
                       </div>
                       <ErrorMessage
@@ -134,13 +140,13 @@ const Settings = () => {
                     </div>
                     <div className='accountMangementFormGroup'>
                       <label htmlFor='new_password'>
-                        New password <span>*</span>
+                        {t("new_password")} <span>*</span>
                       </label>
                       <div className='accountMangementFormGroupInput'>
                         <Field
                           type='text'
                           name='new_password'
-                          placeholder='Enter your phone number'
+                          placeholder={t("placeholder.enter_your_new_password")}
                         />
                       </div>
                       <ErrorMessage
@@ -151,13 +157,13 @@ const Settings = () => {
                     </div>
                     <div className='accountMangementFormGroup'>
                       <label htmlFor='password_confirmation'>
-                        Conform password <span>*</span>
+                        {t("password_confirmation")} <span>*</span>
                       </label>
                       <div className='accountMangementFormGroupInput'>
                         <Field
                           type='text'
                           name='password_confirmation'
-                          placeholder='Enter your phone number'
+                          placeholder={t("placeholder.enter_your_new_password")}
                         />
                       </div>
                       <ErrorMessage
@@ -168,13 +174,14 @@ const Settings = () => {
                     </div>
                   </div>
                   <Button
-                    text='Save Changes'
+                    text={t("save_changes")}
                     className='accountMangementSaveBtn'
                     style={{
                       background: "var(--main-color-pink)",
                       color: "var(--secondary-color-white)",
                       border: "none",
-                      fontFamily: "Poppins-600",
+                      fontFamily: "Poppins-600, sans-serif",
+                      fontWeight: "600",
                     }}
                   />
                 </Form>

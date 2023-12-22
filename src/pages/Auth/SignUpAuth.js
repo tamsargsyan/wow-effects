@@ -9,15 +9,19 @@ import { NavLink, useNavigate } from "react-router-dom";
 import "./style.css";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { signUpSchema } from "../../utils/validationSchema";
+import ValidationSchema from "../../utils/ValidationSchema";
 import { animate, initial } from "../../utils/transition";
 import apiService from "../../services/apiService";
 import Spinner from "../../components/Spinner/Spinner";
 import Modal from "../../components/Modal/Modal";
 import { useDispatch } from "react-redux";
 import { login } from "../../redux/actions/authActions";
+import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
 
 const Auth = ({ auth }) => {
+  const { t } = useTranslation();
+  const lang = Cookies.get("i18next") || "en";
   const [showPasswords, setShowPasswords] = useState({
     password1: false,
     password2: false,
@@ -52,7 +56,7 @@ const Auth = ({ auth }) => {
           localStorage.setItem("token", data.token);
           localStorage.setItem("user", JSON.stringify(data.user));
           setHasNavigated(true);
-          !hasNavigated && navigate(`/account/control-panel`);
+          !hasNavigated && navigate(`/${lang}/account/control-panel`);
           dispatch(login());
         }
         setResponseData(data);
@@ -60,10 +64,12 @@ const Auth = ({ auth }) => {
     );
   };
 
+  const { signUpSchema } = ValidationSchema();
+
   return (
     <motion.div initial={initial} animate={animate} className='authContainer'>
       <div className='authFormContainer container'>
-        <NavLink to='/' className='authLogo'>
+        <NavLink to={`/${lang}/`} className='authLogo'>
           <Img src={LOGO} alt='Wow Logo' className='authLogoImg' />
         </NavLink>
         <motion.div
@@ -78,8 +84,8 @@ const Auth = ({ auth }) => {
           <div className='authGreeting'>
             <p className='authGreetingTitle'>
               {auth === "sign-up"
-                ? "Hey, register to our website"
-                : "Hey, sign in to your account "}
+                ? t("sign_up_greeting1")
+                : t("sign_in_greeting1")}
             </p>
             <p className='authGreetingDescription'>
               Welcome to Wow transforming furniture
@@ -99,7 +105,7 @@ const Auth = ({ auth }) => {
             {() => (
               <Form className='authForm'>
                 <div className='authFormGroup'>
-                  <label htmlFor='email'>Email address</label>
+                  <label htmlFor='email'>{t("email_address")}</label>
                   <div className='authFormGroupInput'>
                     <Field
                       type='email'
@@ -230,7 +236,8 @@ const Auth = ({ auth }) => {
                   style={{
                     backgroundColor: "var(--main-color-pink)",
                     border: "none",
-                    fontFamily: "Poppins-600",
+                    fontFamily: "Poppins-600, sans-serif",
+                    fontWeight: "600",
                     borderRadius: "var(--main-border-radius)",
                     color: "var(--secondary-color-white)",
                   }}

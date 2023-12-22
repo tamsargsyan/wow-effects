@@ -19,10 +19,12 @@ import Spinner from "../../components/Spinner/Spinner";
 import { STORAGE_URL } from "../../services/apiService";
 import { removeHtmlTags } from "../../Helpers/removeHtmlTags";
 import Img from "../../components/Img";
+import Cookies from "js-cookie";
 
 const SinglePortfolioPage = () => {
+  const lang = Cookies.get("i18next") || "en";
   const { portfolioName } = useParams();
-  const lang = "en";
+
   const portfolio = {
     id: 1,
     img: ABOUT_US_PAGE_1,

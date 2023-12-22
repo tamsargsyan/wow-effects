@@ -27,7 +27,8 @@
 }
 .authFormGroup label {
   display: block;
-  font-family: Poppins-600;
+  font-family: Poppins-600, sans-serif;
+  font-weight: 600;
   margin-bottom: 12px;
   font-size: 16px;
 }
@@ -59,7 +60,8 @@
   opacity: 0.7;
 }
 .authGreetingTitle {
-  font-family: Poppins-700;
+  font-family: Poppins-700, sans-serif;
+  font-weight: 700;
   text-transform: uppercase;
   margin-bottom: 8px;
   font-size: 32px;
@@ -87,7 +89,8 @@
   background: transparent;
   border: none;
   color: var(--main-color-pink);
-  font-family: Poppins-700;
+  font-family: Poppins-700, sans-serif;
+  font-weight: 700;
   text-decoration: none;
   font-size: 16px;
 }
@@ -119,7 +122,8 @@
   border-radius: 8px;
   background: var(--alternative-black-color);
   color: var(--secondary-color-white);
-  font-family: Poppins-500;
+  font-family: Poppins-500, sans-serif;
+  font-weight: 500;
   outline: none;
   border: none;
   font-size: 16px;

@@ -16,9 +16,12 @@ import Button from "../../../components/Button/Button";
 import { useWindowSize } from "../../../hooks/useWindowSize";
 import { STORAGE_URL } from "../../../services/apiService";
 import { removeHtmlTags } from "../../../Helpers/removeHtmlTags";
+import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
 
 const CheckoutOrder = () => {
-  const lang = "en";
+  const { t } = useTranslation();
+  const lang = Cookies.get("i18next") || "en";
   const basketItems = useSelector(state => state.basket.items);
   const dispatch = useDispatch();
   const { width } = useWindowSize();
@@ -103,14 +106,15 @@ const CheckoutOrder = () => {
             // icon={PLUS}
             // alt='Plus'
             link={true}
-            to='/checkout/place-order'
+            to={`/${lang}/checkout/place-order`}
             className='checkoutContinueBtn'
             style={{
               background: "var(--main-color-pink)",
               boxShadow: "0px 4px 10px 0px rgba(0, 0, 0, 0.04)",
               border: "none",
               color: "var(--secondary-color-white)",
-              fontFamily: "Poppins-600",
+              fontFamily: "Poppins-600, sans-serif",
+              fontWeight: "600",
               textDecoration: "none",
               display: "block",
               textAlign: "center",
@@ -128,7 +132,7 @@ const CheckoutOrder = () => {
                 price={order.price}
                 // pending={order.pending}
                 // onBtnClick={() => setViewOrder(true)}
-                btnText='Add to cart'
+                btnText={t("add-to-cart")}
               />
             </div>
           ))}

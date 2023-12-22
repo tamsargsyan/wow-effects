@@ -4,7 +4,8 @@
 }
 .careerTitle {
   color: #fff;
-  font-family: Poppins-700;
+  font-family: Poppins-700, sans-serif;
+  font-weight: 700;
   font-size: 54px;
   text-transform: uppercase;
 }
@@ -20,7 +21,8 @@
 .positionsFilteringTitle {
   color: #fff;
   /* text-align: center; */
-  font-family: Poppins-700;
+  font-family: Poppins-700, sans-serif;
+  font-weight: 700;
   font-size: 24px;
 }
 .positionsFilteringTitle span {
@@ -73,7 +75,8 @@
 .vacancyDetailsTitle {
   color: #fff;
   /* text-align: center; */
-  font-family: Poppins-700;
+  font-family: Poppins-700, sans-serif;
+  font-weight: 700;
   font-size: 24px;
 }
 .vacancyDetailsTitleBtn {
@@ -82,7 +85,8 @@
   border: 1px solid #af4b85;
   background: transparent;
   color: #af4b85;
-  font-family: Poppins-500;
+  font-family: Poppins-500, sans-serif;
+  font-weight: 500;
   font-size: 14px;
 }
 .vacancyDetailsTitleContainer {

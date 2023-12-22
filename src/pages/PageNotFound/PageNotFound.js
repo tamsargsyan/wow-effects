@@ -5,8 +5,13 @@ import Img from "../../components/Img";
 import { motion } from "framer-motion";
 import { initial, animate } from "../../utils/transition";
 import "./style.css";
+import { useTranslation } from "react-i18next";
+import Cookies from "js-cookie";
 
 const PageNotFound = () => {
+  const { t } = useTranslation();
+  const lang = Cookies.get("i18next") || "en";
+
   return (
     <motion.div initial={initial} animate={animate}>
       <div className='pageNotFoundContainer'>
@@ -21,13 +26,11 @@ const PageNotFound = () => {
         </motion.div>
         <div className='pageNotFoundTitleContainer'>
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-            <p className='pageNotFoundTitle'>Oops...</p>
+            <p className='pageNotFoundTitle'>{t("oops")}</p>
           </motion.div>
-          <p className='pageNotFoundDescription'>
-            Sorry, the page you are looking for doesn’t exist or has been moved.
-          </p>
+          <p className='pageNotFoundDescription'>{t("page_not_found_desc")}</p>
           <Button
-            text='Go Home'
+            text={t("go_home")}
             className='pageNotFoundBtn'
             style={{
               background: "var(--main-color-pink)",
@@ -38,8 +41,7 @@ const PageNotFound = () => {
               textDecoration: "none",
             }}
             link={true}
-            // onClick={() => dispatch(closeBasketModal())}
-            to='/'
+            to={`/${lang}/`}
           />
         </div>
       </div>

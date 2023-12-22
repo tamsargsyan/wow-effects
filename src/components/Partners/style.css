@@ -27,7 +27,8 @@
 }
 .partner p {
   margin-top: 24px;
-  font-family: Poppins-500;
+  font-family: Poppins-500, sans-serif;
+  font-weight: 500;
   text-align: center;
   font-size: 18px;
 }

@@ -59,12 +59,14 @@
   margin-bottom: 22px;
 }
 .valueVaultTitle {
-  font-family: Poppins-500;
+  font-family: Poppins-500, sans-serif;
+  font-weight: 500;
   font-size: 24px;
   /* letter-spacing: 0.6px; */
 }
 .valueVaultPrice {
-  font-family: Poppins-700;
+  font-family: Poppins-700, sans-serif;
+  font-weight: 700;
   font-size: 32px;
 }
 .valueVaultDescription {
@@ -82,7 +84,8 @@
   align-items: center;
 }
 .priceCountTitle {
-  font-family: Poppins-500;
+  font-family: Poppins-500, sans-serif;
+  font-weight: 500;
   font-size: 18px;
 }
 .priceCountOptions {
@@ -135,7 +138,8 @@
 }
 .addToCartBtn {
   border-radius: 8px;
-  font-family: Poppins-600;
+  font-family: Poppins-600, sans-serif;
+  font-weight: 600;
   padding: 12px 32px;
   font-size: 18px;
 }

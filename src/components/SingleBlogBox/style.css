@@ -8,7 +8,8 @@
   border: 1px solid #af4b85;
   background: transparent;
   color: #af4b85;
-  font-family: Poppins-500;
+  font-family: Poppins-500, sans-serif;
+  font-weight: 500;
   font-size: 14px;
 }
 .singleBlogBoxImg {
@@ -55,7 +56,8 @@
 }
 .singleBlogBoxContainer_small .singleBlogBoxTitle {
   color: #fff;
-  font-family: Poppins-700;
+  font-family: Poppins-700, sans-serif;
+  font-weight: 700;
   font-size: 18px;
 }
 .singleBlogBoxContainer_small .singleBlogBoxDescription {
@@ -76,7 +78,8 @@
 }
 .overviewLargeBlog .singleBlogBoxTitle {
   color: #fff;
-  font-family: Poppins-700;
+  font-family: Poppins-700, sans-serif;
+  font-weight: 700;
   font-size: 24px;
 }
 .overviewLargeBlog .singleBlogBoxDescription {

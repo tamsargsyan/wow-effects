@@ -10,11 +10,14 @@ import Img from "../Img";
 import { STORAGE_URL } from "../../services/apiService";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Cookies from "js-cookie";
+import { useTranslation } from "react-i18next";
 
 const MainUI = ({ go_shopping, slides }) => {
   const { width } = useWindowSize();
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-  const lang = "en";
+  const lang = Cookies.get("i18next") || "en";
+  const { t } = useTranslation();
 
   return (
     <div className='mainUiContainer container'>
@@ -248,10 +251,10 @@ const MainUI = ({ go_shopping, slides }) => {
           </div>
         )}
         <div className='box content'>
-          <p className='mainUISearchTitle'>Search for any product</p>
+          <p className='mainUISearchTitle'>{t("search-any-product")}</p>
           <div className='search'>
             <img src={SEARCH} alt='Search' />
-            <input placeholder='Search' />
+            <input placeholder={t("placeholder.search")} />
           </div>
         </div>
       </div>

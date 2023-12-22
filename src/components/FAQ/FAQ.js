@@ -2,6 +2,7 @@ import Title from "../Title/Title";
 import ARROW from "../../assets/icons/arrow-down-white.svg";
 import "./style.css";
 import { useState } from "react";
+import Cookies from "js-cookie";
 
 const FAQ = ({ title, className, data }) => {
   const faq2 = {
@@ -26,7 +27,7 @@ const FAQ = ({ title, className, data }) => {
     },
   };
 
-  const lang = "en";
+  const lang = Cookies.get("i18next") || "en";
   const [openAccordion, setOpenAccordion] = useState(null);
 
   return (

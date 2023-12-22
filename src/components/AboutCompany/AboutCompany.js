@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import Img from "../Img";
 import Title from "../Title/Title";
 import "./style.css";
@@ -14,6 +15,8 @@ const AboutCompany = ({
   hours_saved,
   year_growth,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div className={`${className} aboutCompanyContainer`}>
       {bgImg && <Img src={bgImg} alt='Background' className='aboutCompanyBG' />}
@@ -25,23 +28,23 @@ const AboutCompany = ({
             <div className='aboutCountingNumber1'>
               <div className='customerSavings'>
                 <p className='customerSavingsTitle'>${customer_savings}</p>
-                <p className='customerSavingsDescription'>Customer savings</p>
+                <p className='customerSavingsDescription'>
+                  {t("customer_savings")}
+                </p>
               </div>
               <div className='hoursSaved'>
                 <p className='customerSavingsTitle'>{hours_saved}m+</p>
-                <p className='customerSavingsDescription'>Hours saved</p>
+                <p className='customerSavingsDescription'>{t("hours_saved")}</p>
               </div>
             </div>
             <div className='aboutCountingNumber2'>
               <div className='customerSavings'>
                 <p className='customerSavingsTitle'>{year_growth}%</p>
-                <p className='customerSavingsDescription'>
-                  Year on year growth
-                </p>
+                <p className='customerSavingsDescription'>{t("year_growth")}</p>
               </div>
               <div className='hoursSaved'>
                 <p className='customerSavingsTitle'>{downloads}k+</p>
-                <p className='customerSavingsDescription'>Downloads</p>
+                <p className='customerSavingsDescription'>{t("downloads")}</p>
               </div>
             </div>
           </div>

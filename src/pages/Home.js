@@ -29,7 +29,6 @@ import { useTranslation } from "react-i18next";
 const Home = () => {
   const lang = Cookies.get("i18next") || "en";
   const { t } = useTranslation();
-
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -39,7 +38,7 @@ const Home = () => {
     dispatch(fetchFAQ());
     dispatch(fetchLocations());
     dispatch(fetchProductsHome());
-  }, [dispatch]);
+  }, []);
 
   const home = useSelector(state => state.home);
   const reviews = useSelector(state => state.reviews);

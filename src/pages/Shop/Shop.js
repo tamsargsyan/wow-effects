@@ -184,13 +184,15 @@ const Shop = () => {
   }, [query]);
 
   const products = () => {
-    if (query) {
+    if (query && wanted_products.wanted_products) {
       if (wanted_products.wanted_products)
         return wanted_products.wanted_products.products;
     }
     if (porductFilterResponseData) return porductFilterResponseData.products;
-    else return shop.shop.products;
+    else return shop?.shop?.products.data;
   };
+
+  console.log(t("our_shop"));
 
   if (shop.shop === null && shop.loading)
     return (

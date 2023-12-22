@@ -19,7 +19,7 @@ export const fetchHome = () => {
   return dispatch => {
     dispatch(fetchDataStart());
     apiService
-      .get("/")
+      .get("")
       .then(data => {
         dispatch(fetchDataSuccess(data));
       })
